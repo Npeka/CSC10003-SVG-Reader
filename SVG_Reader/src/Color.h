@@ -16,6 +16,7 @@ public:
 	Color(const float& r, const float& g, const float& b , const float& a = 255);
 
 	// Set attribute
+	void setA(const string& a);
 	void setA(const float& a);
 	void setRGB(const string& color);
 	void setRGB(const float& r, const float& g, const float& b, const float& a = 255);

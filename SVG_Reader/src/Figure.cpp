@@ -44,10 +44,7 @@ void FigureFactory::deleteInstance() {
 // class Ficgure
 // Constructor
 Figure::Figure() {
-	isfill = false;
-	fill_opacity = 0;
 	stroke_width = 0;
-	stroke_opacity = 0; 
 	stroke_linecap = "butt";
 	stroke_linejoin = "milter";
 	stroke_dasharray = "none";
@@ -55,15 +52,11 @@ Figure::Figure() {
 
 // Set attribute
 void Figure::setFill(const string& fill) {
-	if (fill != "none") {
-		isfill = true;
 		this->fill.setRGB(fill);
-	}
 }
 
 void Figure::setFillOpacity(const string& fill_opacity) {
-	this->fill_opacity = stof(fill_opacity);
-	fill.setA(this->fill_opacity);
+	fill.setA(fill_opacity);
 }
 
 void Figure::setStroke(const string& stroke) {
@@ -75,8 +68,7 @@ void Figure::setStrokeWidth(const string& stroke_width) {
 }
 
 void Figure::setStrokeOpacity(const string& stroke_opacity) {
-	this->stroke_opacity = stof(stroke_opacity);
-	stroke.setA(this->stroke_opacity);
+	stroke.setA(stroke_opacity);
 }
 
 void Figure::setStrokeLinecap(const string& stroke_linecap) {
