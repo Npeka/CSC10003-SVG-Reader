@@ -25,9 +25,28 @@ void Line::setY2(const string& y2) {
 
 // Virtual method
 void Line::setAttribute(const string& attribute, const string& value) {
-	
+	if (attribute == "x1") setX1(value);
+	else if (attribute == "y1") setY1(value);
+	else if (attribute == "x2") setX2(value);
+	else if (attribute == "y2") setY2(value);
 }
 
 void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	
+	Point start = { x1, y1 };
+	Point end = { x2, y2 };
+	if (end.x < start.x) swap(start, end);
+
+	float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
+	sf::RectangleShape line(sf::Vector2f(length, stroke_width));
+
+	float angle = atan((end.y - start.y) / (end.x - start.x));
+	angle = angle * 180 / M_PI;
+	start.x -= stroke_width / 2 * cos(angle);
+	start.y -= stroke_width / 2 * cos(angle);
+
+	line.rotate(angle);
+	line.setPosition(start.x, start.y);
+	line.setFillColor(stroke.sfColor());
+	line.setOutlineThickness(0);
+	window.draw(line, transform);
 }
