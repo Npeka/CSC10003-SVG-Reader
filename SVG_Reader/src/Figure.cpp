@@ -44,7 +44,6 @@ void FigureFactory::deleteInstance() {
 // class Ficgure
 // Constructor
 Figure::Figure() {
-	isfill = false;
 	fill_opacity = 0;
 	stroke_width = 0;
 	stroke_opacity = 0; 
@@ -56,8 +55,10 @@ Figure::Figure() {
 // Set attribute
 void Figure::setFill(const string& fill) {
 	if (fill != "none") {
-		isfill = true;
 		this->fill.setRGB(fill);
+	}
+	else {
+		this->fill.setA(0);
 	}
 }
 

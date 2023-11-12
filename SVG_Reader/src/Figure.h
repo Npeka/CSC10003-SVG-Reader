@@ -5,7 +5,6 @@
 
 class Figure {
 protected:
-	bool isfill;
 	Color fill;
 	Color stroke;
 	float fill_opacity; // fill.a
