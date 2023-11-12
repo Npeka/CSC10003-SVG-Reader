@@ -24,9 +24,29 @@ void Ellipse::setRY(const string& ry) {
 
 // Virtual method
 void Ellipse::setAttribute(const string& attribute, const string& value) {
-	
+	if (attribute == "cx") setCX(value);
+	else if (attribute == "cy") setCY(value);
+	else if (attribute == "rx") setRX(value);
+	else if (attribute == "ry") setRY(value);
 }
 
 void Ellipse::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	
+	sf::ConvexShape ellipse;
+	ellipse.setPosition(cx, cy);
+	ellipse.setOutlineThickness(stroke_width);
+	ellipse.setOutlineColor(stroke.sfColor());
+	ellipse.setFillColor(fill.sfColor());
+	sf::CircleShape circle(rx, ry);
+	//sf::Vector2f center(cx - rx, cy - ry);
+
+	unsigned short quality = 180;
+	ellipse.setPointCount(quality);
+
+	for (unsigned short i = 0; i < quality; ++i) {
+		float rad = (360 / quality * i) / (360 / M_PI / 2);
+		float x = cos(rad) * rx;
+		float y = sin(rad) * ry;
+		ellipse.setPoint(i, sf::Vector2f(x, y));
+	}
+	window.draw(ellipse, transform);
 }
