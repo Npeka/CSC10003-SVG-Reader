@@ -29,6 +29,10 @@ void Color::setA(const float& a) {
 	this->a = a * 255;
 }
 
+void Color::setA(const string& a) {
+    if (this->a) this->a = stof(a) * 256;
+}
+
 void Color::setRGB(const string& color) {
 	if (color.find("rgb") != string::npos) {
 		string rgb(color);

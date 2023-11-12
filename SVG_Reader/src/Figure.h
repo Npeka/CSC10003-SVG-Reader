@@ -7,9 +7,7 @@ class Figure {
 protected:
 	Color fill;
 	Color stroke;
-	float fill_opacity; // fill.a
 	float stroke_width; // stroke.a
-	float stroke_opacity;
 	// wait
 	string stroke_linecap;
 	string stroke_linejoin;
