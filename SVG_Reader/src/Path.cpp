@@ -9,17 +9,29 @@ SubPathFactory::SubPathFactory() {}
 
 // Public
 SubPathFactory* SubPathFactory::getInstance() {
-	
+	if (Instance == NULL)
+		Instance = new SubPathFactory();
 	return Instance;
 }
 
 SubPath* SubPathFactory::getSubPath(const char& command) {
-	
+	if (command == 'M' || command == 'm') return new MPath;
+	else if (command == 'L' || command == 'l') return new LPath();
+	else if (command == 'H' || command == 'h') return new HPath();
+	else if (command == 'V' || command == 'v') return new VPath();
+	else if (command == 'C' || command == 'c') return new CPath();
+	else if (command == 'S' || command == 's') return new SPath();
+	else if (command == 'Q' || command == 'q') return new QPath();
+	else if (command == 'T' || command == 't') return new TPath();
+	else if (command == 'A' || command == 'a') return new APath();
+	else if (command == 'Z' || command == 'z') return new ZPath();
 	return NULL;
 }
 
 void SubPathFactory::deleteInstance() {
-	
+	if (Instance != NULL)
+		delete Instance;
+	Instance = NULL;
 }
 
 // class Path
@@ -54,11 +66,12 @@ void Path::setPath(const string& line) {
 
 // Virtual method
 void Path::setAttribute(const string& attribute, const string& value) {
-	
+	if (attribute == "d") setPath(value);
 }
 
 void Path::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	
+	for (SubPath* p : path)
+		p->draw(window, transform);
 }
 
 Path::~Path() {
@@ -70,12 +83,14 @@ Path::~Path() {
 // class SubPath
 // Constructor
 SubPath::SubPath() {
-	
+	command = ' ';
 }
 
 // Set attribute
 void SubPath::setCommand(const char& command) {
-	
+	this->command = command;
+	//cout << ++n << " " << this->command << '\n';
+	//cout << (char) this->command << endl;
 }
 
 // Virtual method
@@ -83,7 +98,8 @@ void SubPath::setCommand(const char& command) {
 // class MPath
 MPath::MPath() {}
 MPath::MPath(const float& x, const float& y) {
-	
+	move.x = x;
+	move.y = y;
 }
 
 void MPath::setAttribute(const string& value) {
