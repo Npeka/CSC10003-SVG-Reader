@@ -41,12 +41,11 @@ void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
 
 	float angle = atan((end.y - start.y) / (end.x - start.x));
 	angle = angle * 180 / M_PI;
-	start.x -= stroke_width / 2 * cos(angle);
-	start.y -= stroke_width / 2 * cos(angle);
+	start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
+	start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
 
 	line.rotate(angle);
 	line.setPosition(start.x, start.y);
 	line.setFillColor(stroke.sfColor());
-	line.setOutlineThickness(0);
 	window.draw(line, transform);
 }

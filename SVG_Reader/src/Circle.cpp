@@ -29,8 +29,15 @@ void Circle::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	sf::CircleShape circle(r);
 	circle.setPosition(cx - r, cy - r);								// cx cy
 	circle.setFillColor(fill.sfColor());							// fill
-	circle.setOutlineThickness(stroke_width);						// stroke-width
-	circle.setOutlineColor(stroke.sfColor());						// 
+	circle.setOutlineThickness(stroke_width / 2);					// stroke-width
+	circle.setOutlineColor(stroke.sfColor());
 	circle.setPointCount(2000);
+
+	sf::CircleShape outline = circle;
+
+	outline.setFillColor(sf::Color(0, 0, 0, 0));
+	outline.setOutlineThickness(-stroke_width / 2);
+
 	window.draw(circle, transform);
+	window.draw(outline, transform);
 }
