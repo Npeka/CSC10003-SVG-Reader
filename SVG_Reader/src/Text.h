@@ -4,9 +4,9 @@
 
 class Text : public Figure {
 private:
-	int x;
-	int y;
-	int font_size;
+	float x;
+	float y;
+	float font_size;
 	string font_weight;
 	string font_family;
 	string text_anchor;
