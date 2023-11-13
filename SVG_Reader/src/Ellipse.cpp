@@ -33,11 +33,9 @@ void Ellipse::setAttribute(const string& attribute, const string& value) {
 void Ellipse::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	sf::ConvexShape ellipse;
 	ellipse.setPosition(cx, cy);
-	ellipse.setOutlineThickness(stroke_width);
-	ellipse.setOutlineColor(stroke.sfColor());
 	ellipse.setFillColor(fill.sfColor());
-	sf::CircleShape circle(rx, ry);
-	//sf::Vector2f center(cx - rx, cy - ry);
+	ellipse.setOutlineThickness(stroke_width / 2);
+	ellipse.setOutlineColor(stroke.sfColor());
 
 	unsigned short quality = 180;
 	ellipse.setPointCount(quality);
@@ -48,5 +46,11 @@ void Ellipse::draw(sf::RenderWindow& window, sf::Transform& transform) {
 		float y = sin(rad) * ry;
 		ellipse.setPoint(i, sf::Vector2f(x, y));
 	}
+
+	sf::ConvexShape outline = ellipse;
+	outline.setFillColor(sf::Color(0, 0, 0, 0));
+	outline.setOutlineThickness(-stroke_width / 2);
+
 	window.draw(ellipse, transform);
+	window.draw(outline, transform);
 }

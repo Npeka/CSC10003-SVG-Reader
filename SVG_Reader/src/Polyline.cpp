@@ -33,7 +33,7 @@ float Polyline::getAngle(const Point& start, const Point& end) {
 	return angle;
 }
 
-sf::RectangleShape Polyline::Line(Point start, Point end, const float& x, const float& y) {
+sf::RectangleShape Polyline::Line(Point start, Point end) {
 	if (end.x < start.x) swap(start, end);
 
 	float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
@@ -44,14 +44,14 @@ sf::RectangleShape Polyline::Line(Point start, Point end, const float& x, const 
 
 	line.rotate(angle);
 	line.setOutlineThickness(0);
-	line.setPosition(start.x + x - stroke_width / 2, start.y + y - stroke_width / 2);
+	line.setPosition(start.x - stroke_width / 2, start.y - stroke_width / 2);
 	return line;
 }
 
-void Polyline::drawPolyline(vector<Point> PointArr, const float& x, const float& y, sf::RenderWindow& window, sf::Transform transform) {
+void Polyline::drawPolyline(vector<Point> PointArr, sf::RenderWindow& window, sf::Transform transform) {
 	sf::RectangleShape* lines = new sf::RectangleShape[PointArr.size()];
 	for (int i = 0; i < PointArr.size() - 1; i++) {
-		lines[i] = Line(PointArr[i], PointArr[i + 1], x, y);
+		lines[i] = Line(PointArr[i], PointArr[i + 1]);
 		lines[i].setFillColor(stroke.sfColor());
 		window.draw(lines[i], transform);
 
@@ -62,7 +62,7 @@ void Polyline::drawPolyline(vector<Point> PointArr, const float& x, const float&
 			float p3_x = PointArr[i].x - stroke_width * cos(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
 			float p3_y = PointArr[i].y + stroke_width * sin(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
 
-			sf::ConvexShape joint;
+			sf::ConvexShape joint, clear, fillArea;
 			joint.setPointCount(4);
 
 			joint.setPoint(0, sf::Vector2f(PointArr[i].x, PointArr[i].y));
@@ -72,13 +72,22 @@ void Polyline::drawPolyline(vector<Point> PointArr, const float& x, const float&
 
 			joint.setOutlineThickness(0);
 			joint.setFillColor(sf::Color(stroke.sfColor()));
-			joint.setPosition(x - stroke_width / 2, y - stroke_width / 2);
+			joint.setPosition(- stroke_width / 2, - stroke_width / 2);
+
+			clear = joint;
+			clear.setFillColor(sf::Color(255, 255, 255));
+
+			fillArea = joint;
+			fillArea.setFillColor(fill.sfColor());
+
+			window.draw(clear, transform);
+			window.draw(fillArea, transform);
 			window.draw(joint, transform);
 		}
 	}
 }
 
-void Polyline::drawPolyline2(vector<Point> listPoint, const float& x, const float& y, sf::RenderWindow& window, sf::Transform transform) {
+void Polyline::drawPolyline2(vector<Point> listPoint, sf::RenderWindow& window, sf::Transform transform) {
 	vector <Point> temp = point;
 	updateListPoint(listPoint);
 	int start, end;
@@ -91,7 +100,7 @@ void Polyline::drawPolyline2(vector<Point> listPoint, const float& x, const floa
 					break;
 				}
 				else if (listPoint[j].fill == false && j == listPoint.size() - 1) {
-					drawPolyline(temp, x, y, window, transform);
+					drawPolyline(temp, window, transform);
 					return;
 				}
 			}
@@ -103,13 +112,13 @@ void Polyline::drawPolyline2(vector<Point> listPoint, const float& x, const floa
 			}
 
 			fillArea.setOutlineThickness(0);
-			fillArea.setPosition(x - stroke_width / 2, y - stroke_width / 2);
+			fillArea.setPosition( - stroke_width / 2,  - stroke_width / 2);
 			fillArea.setFillColor(fill.sfColor());
 			window.draw(fillArea, transform);
 			i = end - 1;
 		}
 	}
-	drawPolyline(temp, x, y, window, transform);
+	drawPolyline(temp, window, transform);
 }
 
 // Public
@@ -131,5 +140,5 @@ void Polyline::setAttribute(const string& attribute, const string& value) {
 }
 
 void Polyline::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	drawPolyline2(point, 0, 0, window, transform);
+	drawPolyline2(point, window, transform);
 }

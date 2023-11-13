@@ -14,9 +14,9 @@ private:
 	bool checkIntersection(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
 	void updateListPoint(vector<Point>& PointArr);
 	float getAngle(const Point& start, const Point& end);
-	sf::RectangleShape Line(Point start, Point end, const float& x, const float& y);
-	void drawPolyline(vector <Point> PointArr, const float& x, const float& y, sf::RenderWindow& window, sf::Transform transform);
-	void drawPolyline2(vector <Point> listPoint, const float& x, const float& y, sf::RenderWindow& window, sf::Transform transform);
+	sf::RectangleShape Line(Point start, Point end);
+	void drawPolyline(vector <Point> PointArr, sf::RenderWindow& window, sf::Transform transform);
+	void drawPolyline2(vector <Point> listPoint, sf::RenderWindow& window, sf::Transform transform);
 public:
 	// Constructor
 	Polyline();
