@@ -5,6 +5,7 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(1024, 720), "SFML Drawing", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 	sf::Vector2f screenPosition(400, 300);
 	float zoom = 1;
+	float angle = 0;
 	// load file lưu vô class
 	SVGImage image("sample.svg");
 
@@ -19,6 +20,10 @@ int main() {
 					zoom *= 1.2;
 				else if (event.key.code == sf::Keyboard::Subtract)
 					zoom *= 0.8;
+				else if (event.key.code == sf::Keyboard::Q)
+					angle -= 5;
+				else if (event.key.code == sf::Keyboard::E)
+					angle += 5;
 			}
 
 			// Di chuyển màn hình
@@ -38,7 +43,7 @@ int main() {
 		// Tính toán tỉ lệ to nhỏ của hình ảnh
 		sf::Transform transform;
 		transform.scale(zoom, zoom);
-
+		transform.rotate(angle, 400, 300);
 		// vẽ hình
 		image.draw(window, transform);
 

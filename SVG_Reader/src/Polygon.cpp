@@ -24,7 +24,13 @@ void Polygon::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	for (int i = 0; i < vertex; ++i)
 		polygon.setPoint(i, sf::Vector2f(point[i].x, point[i].y));
 	polygon.setFillColor(fill.sfColor());							// fill + fill-opacity
-	polygon.setOutlineThickness(stroke_width);						// stroke-width
-	polygon.setOutlineColor(stroke.sfColor());						
+	polygon.setOutlineThickness(stroke_width / 2);						// stroke-width
+	polygon.setOutlineColor(stroke.sfColor());		
+
+	sf::ConvexShape outline = polygon;
+	outline.setOutlineThickness(-stroke_width / 2);						// stroke-width
+	outline.setFillColor(sf::Color(0, 0, 0, 0));
+
 	window.draw(polygon, transform);
+	window.draw(outline, transform);
 }

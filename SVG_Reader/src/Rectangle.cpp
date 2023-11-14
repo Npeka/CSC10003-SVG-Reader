@@ -44,8 +44,14 @@ void Rectangle::setAttribute(const string& attribute, const string& value) {
 void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
 	sf::RectangleShape rectangle(sf::Vector2f(width, height));	// width height
 	rectangle.setPosition(x, y);								// x y
-	rectangle.setOutlineThickness(stroke_width);				// stroke_width
-	rectangle.setOutlineColor(stroke.sfColor());				// stroke + stroke-opacity
 	rectangle.setFillColor(fill.sfColor());						// fill 
+	rectangle.setOutlineThickness(stroke_width / 2);
+	rectangle.setOutlineColor(stroke.sfColor());
+
+	sf::RectangleShape outline = rectangle;
+	outline.setFillColor(sf::Color(0, 0, 0, 0));
+	outline.setOutlineThickness(-stroke_width / 2);
+
 	window.draw(rectangle, transform);
+	window.draw(outline, transform);
 }
