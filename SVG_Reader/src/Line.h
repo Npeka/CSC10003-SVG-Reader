@@ -5,13 +5,12 @@
 class Line : public Figure
 {
 private:
-	float x1;
-	float y1;
-	float x2;
-	float y2;
+	Point p1; 
+	Point p2; 
 public:
 	// Constructor
 	Line();
+	Line(Point p1, Point p2);
 
 	// Set attribute
 	void setX1(const string& x1);

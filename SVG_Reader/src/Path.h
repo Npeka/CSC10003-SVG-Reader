@@ -1,7 +1,14 @@
 #ifndef PATH_H
 #define PATH_H
+
 #include "Figure.h"
 #include "Point.h"
+#include "Circle.h"
+#include "Ellipse.h" 
+#include "Line.h" 
+#include "Polygon.h"
+#include "Rectangle.h" 
+#include "Text.h" 
 
 class SubPath;
 
@@ -30,7 +37,8 @@ public:
 	void setCommand(const char& command);
 
 	// Virtual method
-	virtual void setAttribute(const string& value) = 0;
+	virtual Point getEndPoint() = 0;
+	virtual void setAttribute(const string& value, Point initialPoint) = 0;
 	virtual void draw(sf::RenderWindow& window, sf::Transform& transform) = 0;
 };
 
@@ -53,68 +61,106 @@ private:
 public:
 	MPath();
 	MPath(const float& x, const float& y);
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class LPath : public SubPath {
 private:
-	vector<Point> point;
+	Point initialPoint;
+	Point lineTo; 
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class HPath : public SubPath {
 private:
+	Point initialPoint;
 	float px;
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class VPath : public SubPath {
 private:
+	Point initialPoint;
+	float py;
+public:
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
+	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
+};
+
+class hPath : public SubPath {
+private:
+	Point initialPoint;
 	float px;
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
+	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
+};
+
+class vPath : public SubPath {
+private:
+	Point initialPoint;
+	float py;
+public:
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class CPath : public SubPath {
 private:
+	Point initialPoint;
 	vector<Point> point;
+	float computeBinominal(int n, int k);
+	vector<Point> BezierCurveVertices(vector<Point> Position);
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class SPath : public SubPath {
 private:
+	Point initialPoint;
 	vector<Point> point;
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class QPath : public SubPath {
 private:
+	Point initialPoint;
 	vector<Point> point;
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class TPath : public SubPath {
 private:
+	Point initialPoint;
 	vector<Point> point;
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class APath : public SubPath {
 private:
+	Point initialPoint;
 	float rx;
 	float ry;
 	float large_arc_flag;
@@ -122,7 +168,8 @@ private:
 	float rotation;
 	vector<Point> point;
 public:
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -130,7 +177,8 @@ class ZPath : public SubPath {
 private:
 public:
 	ZPath(){}
-	void setAttribute(const string& value) override;
+	Point getEndPoint();
+	void setAttribute(const string& value, Point initialPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
