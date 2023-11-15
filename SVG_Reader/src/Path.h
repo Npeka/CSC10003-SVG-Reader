@@ -36,9 +36,14 @@ public:
 	// Set attribute
 	void setCommand(const char& command);
 
+	// Calculate method 
+	float computeBinominal(int n, int k);
+	vector<Point> BezierCurveVertices(vector<Point> Position);
+
 	// Virtual method
+	virtual Point getControlPoint() = 0;
 	virtual Point getEndPoint() = 0;
-	virtual void setAttribute(const string& value, Point initialPoint) = 0;
+	virtual void setAttribute(const string& value, Point initialPoint, Point controlPoint) = 0;
 	virtual void draw(sf::RenderWindow& window, sf::Transform& transform) = 0;
 };
 
@@ -62,7 +67,8 @@ public:
 	MPath();
 	MPath(const float& x, const float& y);
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -72,7 +78,8 @@ private:
 	Point lineTo; 
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -82,7 +89,8 @@ private:
 	float px;
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -92,7 +100,8 @@ private:
 	float py;
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -102,7 +111,8 @@ private:
 	float px;
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -112,49 +122,33 @@ private:
 	float py;
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class CPath : public SubPath {
 private:
+	Point controlPoint; 
 	Point initialPoint;
 	vector<Point> point;
-	float computeBinominal(int n, int k);
-	vector<Point> BezierCurveVertices(vector<Point> Position);
+
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
 class SPath : public SubPath {
 private:
+	Point controlPoint; 
 	Point initialPoint;
 	vector<Point> point;
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
-};
-
-class QPath : public SubPath {
-private:
-	Point initialPoint;
-	vector<Point> point;
-public:
-	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
-};
-
-class TPath : public SubPath {
-private:
-	Point initialPoint;
-	vector<Point> point;
-public:
-	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override; // cannot use 
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -169,7 +163,8 @@ private:
 	vector<Point> point;
 public:
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
@@ -178,7 +173,8 @@ private:
 public:
 	ZPath(){}
 	Point getEndPoint();
-	void setAttribute(const string& value, Point initialPoint) override;
+	Point getControlPoint();
+	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 

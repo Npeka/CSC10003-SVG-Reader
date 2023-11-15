@@ -2,17 +2,18 @@
 
 // Constructor
 Rectangle::Rectangle() {
-	x = y = rx = ry = 0;
+	p = { 0, 0 };
+	rx = ry = 0; 
 	width = height = 0;
 }
 
 // Set attribute
 void Rectangle::setX(const string& x) {
-	this->x = stof(x);
+	this->p.x = stof(x);
 }
 
 void Rectangle::setY(const string& y) {
-	this->y = stof(y);
+	this->p.y = stof(y);
 }
 
 void Rectangle::setRX(const string& rx) {
@@ -43,7 +44,7 @@ void Rectangle::setAttribute(const string& attribute, const string& value) {
 
 void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
 	sf::RectangleShape rectangle(sf::Vector2f(width, height));	// width height
-	rectangle.setPosition(x, y);								// x y
+	rectangle.setPosition(p.x, p.y);								// x y
 	rectangle.setOutlineThickness(stroke_width);				// stroke_width
 	rectangle.setOutlineColor(stroke.sfColor());				// stroke + stroke-opacity
 	rectangle.setFillColor(fill.sfColor());						// fill 

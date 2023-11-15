@@ -1,6 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 #include "Figure.h"
+#include "Point.h"
 
 class Line : public Figure
 {

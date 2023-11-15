@@ -1,13 +1,13 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 #include "Figure.h"
+#include "Point.h"
 
 class Rectangle : public Figure {
 private:
-    float x;
-    float y;
-    float rx;
-    float ry;
+    Point p; 
+    float rx; 
+    float ry; 
     float width;
     float height;
 public:
