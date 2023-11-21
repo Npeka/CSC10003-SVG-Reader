@@ -44,7 +44,8 @@ void FigureFactory::deleteInstance() {
 // class Ficgure
 // Constructor
 Figure::Figure() {
-	stroke_width = 0;
+	stroke_width = 1;
+	stroke.setA(0);
 	stroke_linecap = "butt";
 	stroke_linejoin = "milter";
 	stroke_dasharray = "none";

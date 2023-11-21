@@ -16,6 +16,8 @@ public:
 	void setAttribute(const string& attribute, const string& value) override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Path() override;
+
+	void setSFigure() {};
 };
 
 class SubPath

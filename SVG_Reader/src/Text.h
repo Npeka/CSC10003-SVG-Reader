@@ -11,6 +11,8 @@ private:
 	string font_family;
 	string text_anchor;
 	string data;
+	sf::Font font;
+	sf::Text text;
 public:
 	// Constructor
 	Text();
@@ -25,8 +27,9 @@ public:
 	void setData(const string& data);
 
 	// Virtual method
-	void setAttribute(const string& attribute, const string& value);
-	void draw(sf::RenderWindow& window, sf::Transform& transform);
+	void setAttribute(const string& attribute, const string& value) override;
+	void setSFigure() override;
+	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Text() override = default;
 };
 

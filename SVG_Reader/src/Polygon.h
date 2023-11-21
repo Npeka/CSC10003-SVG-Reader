@@ -7,6 +7,9 @@ class Polygon : public Figure
 {
 private:
 	vector <Point> point;
+	sf::ConvexShape polygon;
+	sf::ConvexShape outline;
+
 public:
 	// Constructor
 	Polygon();
@@ -16,6 +19,7 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
+	void setSFigure() override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Polygon() override = default;
 };

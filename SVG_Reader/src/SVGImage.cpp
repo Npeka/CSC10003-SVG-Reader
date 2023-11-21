@@ -63,8 +63,10 @@ void SVGImage::parse() {
 			if (newFigure != NULL) {
 				if (g.top() != NULL) {
 					newFigure->setAttribute(g.top());
+          newFigure->setSFigure();
 				}
 				newFigure->setAttribute(info);
+        newFigure->setSFigure();
 				figure.push_back(newFigure);
 			}
 		}

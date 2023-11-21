@@ -30,8 +30,7 @@ void Ellipse::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "ry") setRY(value);
 }
 
-void Ellipse::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	sf::ConvexShape ellipse;
+void Ellipse::setSFigure() {
 	ellipse.setPosition(cx, cy);
 	ellipse.setFillColor(fill.sfColor());
 	ellipse.setOutlineThickness(stroke_width / 2);
@@ -47,10 +46,12 @@ void Ellipse::draw(sf::RenderWindow& window, sf::Transform& transform) {
 		ellipse.setPoint(i, sf::Vector2f(x, y));
 	}
 
-	sf::ConvexShape outline = ellipse;
+	outline = ellipse;
 	outline.setFillColor(sf::Color(0, 0, 0, 0));
 	outline.setOutlineThickness(-stroke_width / 2);
+};
 
+void Ellipse::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	window.draw(ellipse, transform);
 	window.draw(outline, transform);
 }

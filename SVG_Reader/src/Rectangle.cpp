@@ -41,17 +41,20 @@ void Rectangle::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "height") setHeight(value);
 }
 
-void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
-	sf::RectangleShape rectangle(sf::Vector2f(width, height));	// width height
+void Rectangle::setSFigure() {
+	rectangle.setSize(sf::Vector2f(width, height));	// width height
 	rectangle.setPosition(x, y);								// x y
 	rectangle.setFillColor(fill.sfColor());						// fill 
 	rectangle.setOutlineThickness(stroke_width / 2);
 	rectangle.setOutlineColor(stroke.sfColor());
 
-	sf::RectangleShape outline = rectangle;
+	outline = rectangle;
 	outline.setFillColor(sf::Color(0, 0, 0, 0));
 	outline.setOutlineThickness(-stroke_width / 2);
 
+};
+
+void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
 	window.draw(rectangle, transform);
 	window.draw(outline, transform);
 }

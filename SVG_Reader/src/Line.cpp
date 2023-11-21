@@ -31,13 +31,13 @@ void Line::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "y2") setY2(value);
 }
 
-void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	Point start = { x1, y1 };
-	Point end = { x2, y2 };
+void Line::setSFigure() {
+	Point start{ x1, y1 };
+	Point end{ x2, y2 };
 	if (end.x < start.x) swap(start, end);
 
 	float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-	sf::RectangleShape line(sf::Vector2f(length, stroke_width));
+	line.setSize(sf::Vector2f(length, stroke_width));
 
 	float angle = atan((end.y - start.y) / (end.x - start.x));
 	angle = angle * 180 / M_PI;
@@ -47,5 +47,8 @@ void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	line.rotate(angle);
 	line.setPosition(start.x, start.y);
 	line.setFillColor(stroke.sfColor());
+};
+
+void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	window.draw(line, transform);
 }
