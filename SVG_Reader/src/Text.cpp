@@ -5,7 +5,7 @@ Text::Text() {
 	x = 0;
 	y = 0;
 	font_family = "times-new-roman";
-	font_size = 0;
+	font_size = 16;
 	font_weight = "";
 	text_anchor = "start";
 	data = "";
