@@ -37,6 +37,8 @@ void Color::setRGB(const string& color) {
 		string rgb(color);
 		for (char& c : rgb) if (!isdigit(c)) c = ' ';
 		stringstream ss(rgb); ss >> r >> g >> b;
+        if (a == 0)
+            a = 255;
 	}
 	else if (color[0] == '#') {
 		r = stoi(color.substr(1, 2), NULL, 16);

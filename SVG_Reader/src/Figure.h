@@ -29,6 +29,7 @@ public:
 
 	// Virtual method
 	virtual void setAttribute(const string& attribute, const string& value) = 0;
+	virtual void setSFigure() = 0;
 	virtual void draw(sf::RenderWindow& window, sf::Transform& transform) = 0;
 	virtual ~Figure() = default;
 };

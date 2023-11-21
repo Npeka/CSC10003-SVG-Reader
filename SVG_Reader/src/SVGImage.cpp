@@ -48,6 +48,7 @@ void SVGImage::parse() {
 		Figure* newFigure = figureFactory->getFigure(word);
 		if (newFigure != NULL) {
 			newFigure->setAttribute(info);
+			newFigure->setSFigure();
 			figure.push_back(newFigure);
 		}
 	}

@@ -1,7 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 #include "Figure.h"
-
+#include "Point.h"
 class Line : public Figure
 {
 private:
@@ -9,6 +9,7 @@ private:
 	float y1;
 	float x2;
 	float y2;
+	sf::RectangleShape line;
 public:
 	// Constructor
 	Line();
@@ -21,6 +22,7 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
+	void setSFigure() override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Line() override = default;
 };
