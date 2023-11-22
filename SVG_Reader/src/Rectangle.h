@@ -3,18 +3,17 @@
 #include "Figure.h"
 
 class Rectangle : public Figure {
-private:
+protected:
     float x;
     float y;
     float rx;
     float ry;
     float width;
     float height;
-    sf::RectangleShape rectangle;
-    sf::RectangleShape outline;
 public:
     // Constructor
     Rectangle();
+    Rectangle(const Rectangle& rectangle);
 
     // Set attribute
     void setX(const string& x);

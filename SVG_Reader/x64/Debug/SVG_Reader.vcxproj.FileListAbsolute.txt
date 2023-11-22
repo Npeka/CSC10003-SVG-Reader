@@ -1,2 +1,0 @@
-D:\OneDrive - VNU-HCMUS\Documents\GitHub\SVG_Reader\SVG_Reader\x64\Debug\SVG_Reader.exe
-C:\Users\ADMIN\source\repos\SVG_Reader\SVG_Reader\x64\Debug\SVG_Reader.exe
