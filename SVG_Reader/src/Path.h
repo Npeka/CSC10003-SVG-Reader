@@ -152,21 +152,22 @@ public:
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 };
 
-class APath : public SubPath {
-private:
-	Point initialPoint;
-	float rx;
-	float ry;
-	float large_arc_flag;
-	float sweep_flag;
-	float rotation;
-	vector<Point> point;
-public:
-	Point getEndPoint();
-	Point getControlPoint();
-	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
-};
+//class APath : public SubPath {
+//private:
+//	Point initialPoint;
+//	float rx;
+//	float ry;
+//	float large_arc_flag;
+//	float sweep_flag;
+//	float rotation;
+//	vector<Point> point;
+//public:
+//	Point getEndPoint();
+//	Point getControlPoint();
+//	void setAttribute(const string& value, Point initialPoint, Point controlPoint) override;
+//	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
+//};
+//
 
 class ZPath : public SubPath {
 private:

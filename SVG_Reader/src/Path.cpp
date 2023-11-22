@@ -22,10 +22,10 @@ SubPath* SubPathFactory::getSubPath(const char& command) {
 	else if (command == 'V') return new VPath();
 	else if (command == 'v') return new vPath();
 	else if (command == 'C' || command == 'c') return new CPath();
-	else if (command == 'Q' || command == 'q') return new CPath();
-	else if (command == 'S' || command == 's') return new SPath();
-	else if (command == 'T' || command == 't') return new SPath();
-	else if (command == 'A' || command == 'a') return new APath();
+	//else if (command == 'Q' || command == 'q') return new CPath();
+	//else if (command == 'S' || command == 's') return new SPath();
+	//else if (command == 'T' || command == 't') return new SPath();
+	//else if (command == 'A' || command == 'a') return new APath();
 	else if (command == 'Z' || command == 'z') return new ZPath();
 	return NULL;
 }
@@ -39,17 +39,23 @@ void SubPathFactory::deleteInstance() {
 // class Path
 // Set attribute
 void Path::setPath(const string& line) {
-	stringstream ss(line);
-	vector <string> v; string value;
-	size_t getM = line.find('M');
-	if (getM == string::npos) getM = line.find('m');
-	for (size_t i = getM + 1; i < line.size(); i++) {
-		if (isalpha(line[i])) {
-			getline(ss, value, line[i]);
-			v.push_back(value);
-			ss.seekg(-1, ios::cur);
-		}
+	cout << "line: " << line << endl;
+	vector<int> positions; 
+	vector<string> substrings; 
+
+	for (int i = 0; i < line.length(); i++) {
+		if (isalpha(line[i])) 
+			positions.push_back(i);
+		if (i == line.length() - 1)
+			positions.push_back(i + 1); 
 	}
+
+	for (int i = 0; i < positions.size() - 1; i++) {
+		string substring = line.substr(positions[i], positions[i + 1] - positions[i]);
+		substrings.push_back(substring);
+	}
+ 
+	for (auto x : substrings) cout << x << endl; 
 
 	char command;
 	float x, y;
@@ -59,10 +65,11 @@ void Path::setPath(const string& line) {
 	char previousCommand; // Previous command 
 
 	SubPathFactory* subPathFactory = SubPathFactory::getInstance();
-	for (int i = 0; i < v.size(); i++) {
-		stringstream sss(v[i]);
-		sss >> command;
-		getline(sss, value);
+	for (int i = 0; i < substrings.size(); i++) {
+		stringstream ss(substrings[i]); string value;
+		ss >> command;
+		getline(ss, value);
+		//cout << command << endl << value << endl;
 		SubPath* newSubPath = subPathFactory->getSubPath(command);
 		newSubPath->setCommand(command);
 		
@@ -102,8 +109,11 @@ void Path::setAttribute(const string& attribute, const string& value) {
 }
 
 void Path::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	for (SubPath* p : path)
+	for (SubPath* p : path) {
+		//cout << p->getEndPoint().x << " " << p->getEndPoint().y << endl;
 		p->draw(window, transform);
+	}		
+	//exit(1);
 }
 
 Path::~Path() {
@@ -190,6 +200,9 @@ void LPath::setAttribute(const string& value, Point initialPoint, Point controlP
 
 void LPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	Line* line = new Line(initialPoint, lineTo);
+	line->setStroke("black"); 
+	line->setFill("black");
+	line->setStrokeWidth("10");
 	line->draw(window, transform);
 }
 
@@ -209,6 +222,8 @@ void HPath::setAttribute(const string& value, Point initialPoint, Point controlP
 
 void HPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	Line* line = new Line(initialPoint, Point(px, initialPoint.y));
+	line->setStroke("black"); line->setFill("black");
+	line->setStrokeWidth("10");
 	line->draw(window, transform);
 }
 
@@ -228,6 +243,8 @@ void hPath::setAttribute(const string& value, Point initialPoint, Point controlP
 
 void hPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	Line* line = new Line(initialPoint, Point(initialPoint.x + px, initialPoint.y));
+	line->setStroke("black"); line->setFill("black");
+	line->setStrokeWidth("10");
 	line->draw(window, transform);
 }
 
@@ -247,6 +264,8 @@ void VPath::setAttribute(const string& value, Point initialPoint, Point controlP
 
 void VPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	Line* line = new Line(initialPoint, Point(initialPoint.x, py)); 
+	line->setStroke("black"); line->setFill("black");
+	line->setStrokeWidth("10");
 	line->draw(window, transform);
 }
 
@@ -266,6 +285,8 @@ void vPath::setAttribute(const string& value, Point initialPoint, Point controlP
 
 void vPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	Line* line = new Line(initialPoint, Point(initialPoint.x, initialPoint.y + py));
+	line->setStroke("black"); line->setFill("black");
+	line->setStrokeWidth("10");
 	line->draw(window, transform);
 }
 
@@ -296,6 +317,8 @@ void CPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 
 	for (int i = 0; i < vertices.size() - 1; i++) {
 		Line* line = new Line(vertices[i], vertices[i + 1]);
+		line->setStroke("black"); line->setFill("black");
+		line->setStrokeWidth("10");
 		line->draw(window, transform);
 	}
 }
@@ -336,6 +359,8 @@ void SPath::draw(sf::RenderWindow& window, sf::Transform& transform) {
 
 	for (int i = 0; i < vertices.size() - 1; i++) {
 		Line* line = new Line(vertices[i], vertices[i + 1]);
+		line->setStroke("black"); line->setFill("black");
+		line->setStrokeWidth("10");
 		line->draw(window, transform);
 	}
 }
@@ -349,24 +374,25 @@ Point SPath::getControlPoint() {
 }
 
 // class APath
-void APath::setAttribute(const string& value, Point initialPoint, Point controlPoint) {
-	stringstream ss(value);
-	float x, y;
-	while (ss >> x >> y) {
-		point.push_back(Point(x, y));
-	}
-	this->initialPoint = initialPoint;
-}
+//void APath::setAttribute(const string& value, Point initialPoint, Point controlPoint) {
+//	stringstream ss(value);
+//	float x, y;
+//	while (ss >> x >> y) {
+//		point.push_back(Point(x, y));
+//	}
+//	this->initialPoint = initialPoint;
+//}
+//
+//void APath::draw(sf::RenderWindow& window, sf::Transform& transform) {}
+//
+//Point APath::getEndPoint() {
+//	return point[point.size() - 1];  // check this again 
+//}
+//
+//Point APath::getControlPoint() {
+//	return { 0, 0 };
+//}
 
-void APath::draw(sf::RenderWindow& window, sf::Transform& transform) {}
-
-Point APath::getEndPoint() {
-	return point[point.size() - 1];  // check this again 
-}
-
-Point APath::getControlPoint() {
-	return { 0, 0 };
-}
 
 // class ZPath
 void ZPath::setAttribute(const string& value, Point initialPoint, Point controlPoint) {}

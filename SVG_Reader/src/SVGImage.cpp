@@ -20,6 +20,32 @@ void SVGImage::standardizeTag(string& line) {
 	for (int i = 0; i < line.size(); ++i) {
 		if (line[i] == '=') line[i] = ' ';
 	}
+
+	//int idx = 0; 
+	//while (idx != line.size() - 1) {
+	//	if (line[idx] == ' ') {
+	//		if (line[idx + 1] == ' ') {
+	//			line.erase(idx + 1, 1);
+	//		}
+	//		else idx++;
+	//	}
+	//	else idx++;
+	//}
+
+	 // Remove redundant spaces
+	//line.erase(
+	//	std::unique(line.begin(), line.end(),
+	//		[](char a, char b) { return std::isspace(a) && std::isspace(b); }),
+	//	line.end()
+	//);
+
+	//// Remove leading and trailing spaces
+	//line.erase(line.begin(), std::find_if(line.begin(), line.end(), [](int ch) {
+	//	return !std::isspace(ch);
+	//	}));
+	//line.erase(std::find_if(line.rbegin(), line.rend(), [](int ch) {
+	//	return !std::isspace(ch);
+	//	}).base(), line.end());
 }
 
 void SVGImage::parse() {
@@ -27,11 +53,16 @@ void SVGImage::parse() {
 	string line;
 	FigureFactory* figureFactory = FigureFactory::getInstance();
 	while (getline(inFile, line, '>')) {
+		//cout << "line: " << line << endl;
 		stringstream ss(line);
 		string word, info;
 		getline(ss, word, '<');
 		getline(ss, word, ' ');
-		getline(ss, info);
+		getline(ss, info, '/');
+
+	/*	cout << "line: " << line << endl; 
+		cout << "word: " << word << endl; 
+		cout << "info: " << info << endl;*/
 
 		if (word == "text") {
 			string dataText, ignore;
@@ -41,6 +72,7 @@ void SVGImage::parse() {
 		}
 
 		standardizeTag(info);
+
 		if (word == "svg") {
 			setAttribute(info);
 			continue;

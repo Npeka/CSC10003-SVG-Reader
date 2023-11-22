@@ -84,6 +84,7 @@ void Figure::setStrokeDasharray(const string& stroke_dasharray) {
 }
 
 void Figure::setAttribute(const string& line) {
+	//cout << "line: " << line << endl; 
 	stringstream ss(line);
 	string attribute, value;
 	while (ss >> attribute) {
