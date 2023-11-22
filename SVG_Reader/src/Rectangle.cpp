@@ -6,6 +6,15 @@ Rectangle::Rectangle() {
 	width = height = 0;
 }
 
+Rectangle::Rectangle(const Rectangle& rectangle) : Figure(rectangle) {
+	x = rectangle.x;
+	y = rectangle.y;
+	rx = rectangle.rx;
+	ry = rectangle.ry;
+	width = rectangle.width;
+	height = rectangle.height;
+}
+
 // Set attribute
 void Rectangle::setX(const string& x) {
 	this->x = stof(x);
@@ -41,17 +50,10 @@ void Rectangle::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "height") setHeight(value);
 }
 
+void Rectangle::setSFigure() {
+	
+};
+
 void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
-	sf::RectangleShape rectangle(sf::Vector2f(width, height));	// width height
-	rectangle.setPosition(x, y);								// x y
-	rectangle.setFillColor(fill.sfColor());						// fill 
-	rectangle.setOutlineThickness(stroke_width / 2);
-	rectangle.setOutlineColor(stroke.sfColor());
-
-	sf::RectangleShape outline = rectangle;
-	outline.setFillColor(sf::Color(0, 0, 0, 0));
-	outline.setOutlineThickness(-stroke_width / 2);
-
-	window.draw(rectangle, transform);
-	window.draw(outline, transform);
+	
 }

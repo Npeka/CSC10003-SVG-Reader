@@ -3,7 +3,7 @@
 #include "Header.h"
 
 class Color {
-private:
+public:
 	float r;
 	float g;
 	float b;

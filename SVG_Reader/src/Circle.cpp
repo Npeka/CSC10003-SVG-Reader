@@ -25,19 +25,20 @@ void Circle::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "r") setR(value);
 }
 
-void Circle::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	sf::CircleShape circle(r);
+void Circle::setSFigure() {
+	circle.setRadius(r);
 	circle.setPosition(cx - r, cy - r);								// cx cy
 	circle.setFillColor(fill.sfColor());							// fill
 	circle.setOutlineThickness(stroke_width / 2);					// stroke-width
 	circle.setOutlineColor(stroke.sfColor());
 	circle.setPointCount(2000);
 
-	sf::CircleShape outline = circle;
-
+	outline = circle;
 	outline.setFillColor(sf::Color(0, 0, 0, 0));
 	outline.setOutlineThickness(-stroke_width / 2);
+};
 
+void Circle::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	window.draw(circle, transform);
 	window.draw(outline, transform);
 }

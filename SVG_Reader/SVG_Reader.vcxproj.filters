@@ -60,6 +60,9 @@
     <ClInclude Include="src\Text.h">
       <Filter>Header Files\SubHeader</Filter>
     </ClInclude>
+    <ClInclude Include="src\Render.h">
+      <Filter>Header Files\SubHeader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -99,6 +102,9 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Text.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>

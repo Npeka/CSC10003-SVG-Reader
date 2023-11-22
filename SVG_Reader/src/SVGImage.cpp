@@ -13,6 +13,7 @@ void ViewBox::setAttribute(const string& viewbox) {
 	stringstream ss(viewbox);
 	ss >> min_x >> min_y >> width >> height;
 }
+//-----------end-of-implementation-----------//
 
 // class SVGImage
 // Private
@@ -63,8 +64,10 @@ void SVGImage::parse() {
 			if (newFigure != NULL) {
 				if (g.top() != NULL) {
 					newFigure->setAttribute(g.top());
+					newFigure->setSFigure();
 				}
 				newFigure->setAttribute(info);
+				newFigure->setSFigure();
 				figure.push_back(newFigure);
 			}
 		}
@@ -81,6 +84,14 @@ SVGImage::SVGImage(const string& nameFile) {
 	height = 0;
 	background.setRGB(255, 255, 255);
 	parse();
+}
+
+SVGImage::SVGImage(const SVGImage& svgImage) {
+	nameFile = svgImage.nameFile;
+	viewbox = svgImage.viewbox;
+	background = svgImage.background;
+	width = svgImage.width;
+	height = svgImage.height;
 }
 
 // Destructor
@@ -131,3 +142,8 @@ void SVGImage::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	for (Figure* f : figure)
 		f->draw(window, transform);
 }
+
+const vector<Figure*>& SVGImage::getFigure() const {
+	return figure;
+}
+//-----------end-of-implementation-----------//

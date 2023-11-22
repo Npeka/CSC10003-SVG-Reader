@@ -1,8 +1,0 @@
-﻿  Polygon.cpp
-  Generating code
-D:\OneDrive - VNU-HCMUS\Documents\GitHub\CSC10003-SVG-Reader\SVG_Reader\src\Color.cpp(221): warning C4172: returning address of local variable or temporary
-  756 of 769 functions (98.3%) were compiled, the rest were copied from previous compilation.
-    148 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  SVG_Reader.vcxproj -> D:\OneDrive - VNU-HCMUS\Documents\GitHub\CSC10003-SVG-Reader\SVG_Reader\x64\Release\SVG_Reader.exe
