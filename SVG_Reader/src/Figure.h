@@ -26,10 +26,12 @@ public:
 	void setStrokeLinejoin(const string& stroke_linejoin);
 	void setStrokeDasharray(const string& stroke_dasharray);
 	void setAttribute(const string& line);
+	void setAttribute(const Figure* other);
 
 	// Virtual method
-	virtual void setAttribute(const string& attribute, const string& value) = 0;
-	virtual void draw(sf::RenderWindow& window, sf::Transform& transform) = 0;
+	virtual void setAttribute(const string& attribute, const string& value) {};
+	virtual void setSFigure() {};
+	virtual void draw(sf::RenderWindow& window, sf::Transform& transform) {};
 	virtual ~Figure() = default;
 };
 

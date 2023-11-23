@@ -1,4 +1,5 @@
 ﻿#include "SVGImage.h"
+#include "stack"
 
 // class ViewBox
 // Constructor
@@ -12,50 +13,29 @@ void ViewBox::setAttribute(const string& viewbox) {
 	stringstream ss(viewbox);
 	ss >> min_x >> min_y >> width >> height;
 }
+//-----------end-of-implementation-----------//
 
 // class SVGImage
 // Private
 // Method
 void SVGImage::standardizeTag(string& line) {
-	for (int i = 0; i < line.size(); ++i) {
+	for (int i = 0; i < line.size(); ++i) {	
 		if (line[i] == '=') line[i] = ' ';
+		else if (line[i] == '|') return;
 	}
-
-	// Remove redundant spaces
-	line.erase(
-		std::unique(line.begin(), line.end(),
-			[](char a, char b) { return std::isspace(a) && std::isspace(b); }),
-		line.end()
-	);
-
-	// Remove leading and trailing spaces
-	line.erase(line.begin(), std::find_if(line.begin(), line.end(), [](int ch) {
-		return !std::isspace(ch);
-		}));
-	line.erase(std::find_if(line.rbegin(), line.rend(), [](int ch) {
-		return !std::isspace(ch);
-		}).base(), line.end());
-
-	//Remove line break 
-	line.erase(std::remove_if(line.begin(), line.end(),
-		[](char c) { return c == '\n' || c == '\r'; }),
-		line.end());
 }
 
 void SVGImage::parse() {
 	ifstream inFile(nameFile);
 	string line;
 	FigureFactory* figureFactory = FigureFactory::getInstance();
+	stack<Figure*> g; g.push(NULL);
 	while (getline(inFile, line, '>')) {
-		//cout << "line: " << line << endl;
 		stringstream ss(line);
 		string word, info;
 		getline(ss, word, '<');
 		getline(ss, word, ' ');
-		getline(ss, info, '/');
-
-		//cout << "line: " << line << endl; 
-		//cout << "word: " << word << endl; 
+		getline(ss, info, '\0');
 
 		if (word == "text") {
 			string dataText, ignore;
@@ -65,16 +45,31 @@ void SVGImage::parse() {
 		}
 
 		standardizeTag(info);
-		//cout << "info: " << info << endl; 
-
-		if (word == "svg") {
-			setAttribute(info);
-			continue;
+		if (word == "svg") setAttribute(info);
+		else if (word == "g") {
+			Figure* prev = g.top();
+			g.push(new Figure());
+			if (prev != NULL) {
+				g.top()->setAttribute(prev);
+			}
+			g.top()->setAttribute(info);
 		}
-		Figure* newFigure = figureFactory->getFigure(word);
-		if (newFigure != NULL) {
-			newFigure->setAttribute(info);
-			figure.push_back(newFigure);
+		else if (word == "/g") {
+			delete g.top();
+			g.top() = NULL;
+			g.pop();
+		}
+		else {
+			Figure* newFigure = figureFactory->getFigure(word);
+			if (newFigure != NULL) {
+				if (g.top() != NULL) {
+					newFigure->setAttribute(g.top());
+					newFigure->setSFigure();
+				}
+				newFigure->setAttribute(info);
+				newFigure->setSFigure();
+				figure.push_back(newFigure);
+			}
 		}
 	}
 	figureFactory->deleteInstance();
@@ -89,6 +84,14 @@ SVGImage::SVGImage(const string& nameFile) {
 	height = 0;
 	background.setRGB(255, 255, 255);
 	parse();
+}
+
+SVGImage::SVGImage(const SVGImage& svgImage) {
+	nameFile = svgImage.nameFile;
+	viewbox = svgImage.viewbox;
+	background = svgImage.background;
+	width = svgImage.width;
+	height = svgImage.height;
 }
 
 // Destructor
@@ -139,3 +142,8 @@ void SVGImage::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	for (Figure* f : figure)
 		f->draw(window, transform);
 }
+
+const vector<Figure*>& SVGImage::getFigure() const {
+	return figure;
+}
+//-----------end-of-implementation-----------//

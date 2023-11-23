@@ -1,5 +1,5 @@
-#ifndef PICTURE_H
-#define PICTURE_H
+#ifndef SVG_IMAGE_H
+#define SVG_IMAGE_H
 #include "Figure.h"
 
 class ViewBox {
@@ -18,7 +18,7 @@ public:
 };
 
 class SVGImage {
-private:
+protected:
 	// Attribute
 	string nameFile;
 	vector<Figure*> figure;
@@ -33,7 +33,8 @@ private:
 public:
 	// Constructor
 	SVGImage(const string& nameFile = "");
-	
+	SVGImage(const SVGImage& svgImage);
+
 	// Destructor
 	~SVGImage();
 
@@ -44,6 +45,8 @@ public:
 	void setViewBox(const string& viewbox);
 	void setAttribute(const string& line);
 	void draw(sf::RenderWindow& window, sf::Transform& transform);
+
+	const vector<Figure*>& getFigure() const;
 };
 
-#endif // !PICTURE_H
+#endif // !SVG_IMAGE_H

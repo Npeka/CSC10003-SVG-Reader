@@ -7,10 +7,13 @@ private:
 	float cx;
 	float cy;
 	float r;
+	sf::CircleShape circle;
+	sf::CircleShape outline;
+
 public:
 	// Constructor
 	Circle();
-	
+
 	// Set attribute
 	void setCX(const string& cx);
 	void setCY(const string& cy);
@@ -18,8 +21,11 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
+	void setSFigure() override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Circle() override = default;
+
+	
 };
 
 #endif // !CIRCLE_H
