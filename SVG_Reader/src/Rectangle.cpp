@@ -1,9 +1,18 @@
-﻿#include "Rectangle.h"
+#include "Rectangle.h"
 
 // Constructor
 Rectangle::Rectangle() {
 	x = y = rx = ry = 0; 
 	width = height = 0;
+}
+
+Rectangle::Rectangle(const Rectangle& rectangle) : Figure(rectangle) {
+	x = rectangle.x;
+	y = rectangle.y;
+	rx = rectangle.rx;
+	ry = rectangle.ry;
+	width = rectangle.width;
+	height = rectangle.height;
 }
 
 // Set attribute
@@ -40,6 +49,8 @@ void Rectangle::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "width") setWidth(value);
 	else if (attribute == "height") setHeight(value);
 }
+
+void Rectangle::setSFigure() {}
 
 void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
 	sf::RectangleShape rectangle;

@@ -14,6 +14,7 @@ protected:
 public:
     // Constructor
     Rectangle();
+    Rectangle(const Rectangle& rectangle);
 
     // Set attribute
     void setX(const string& x);
@@ -25,6 +26,7 @@ public:
 
     // Virtual method
     void setAttribute(const string& attribute, const string& value) override;
+    void setSFigure() override;
     void draw(sf::RenderWindow& window, sf::Transform& transform) override;
     ~Rectangle() override = default;
 };

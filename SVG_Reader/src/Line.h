@@ -7,6 +7,7 @@ class Line : public Figure {
 private:
 	Point p1; 
 	Point p2;
+	sf::RectangleShape line;
 public:
 	// Constructor
 	Line();
@@ -20,6 +21,7 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
+	void setSFigure() override;
 	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Line() override = default;
 };

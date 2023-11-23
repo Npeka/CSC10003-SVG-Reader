@@ -1,4 +1,4 @@
-﻿#include "Line.h"
+#include "Line.h"
 #include "Point.h"
 
 // Constructor
@@ -36,13 +36,15 @@ void Line::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "y2") setY2(value);
 }
 
+void Line::setSFigure() {}
+
 void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	Point start(p1);
+  Point start(p1);
 	Point end(p2);
 	if (end.x < start.x) swap(start, end);
 
 	float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-	sf::RectangleShape line(sf::Vector2f(length, stroke_width));
+	line.setSize(sf::Vector2f(length, stroke_width));
 
 	float angle = atan((end.y - start.y) / (end.x - start.x));
 	angle = angle * 180 / M_PI;
