@@ -2,13 +2,7 @@
 #define PATH_H
 
 #include "Figure.h"
-#include "Point.h"
-#include "Circle.h"
-#include "Ellipse.h" 
-#include "Line.h" 
-#include "Polygon.h"
-#include "Rectangle.h" 
-#include "Text.h" 
+#include "Line.h"
 
 class SubPath;
 
@@ -27,12 +21,10 @@ public:
 	void setSFigure() {};
 };
 
-class SubPath
-{
+class SubPath {
 protected:
 	Point initialPoint; 
 	char command;
-
 public:
 	// Constructor
 	SubPath();

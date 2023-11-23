@@ -16,15 +16,15 @@ SubPathFactory* SubPathFactory::getInstance() {
 
 SubPath* SubPathFactory::getSubPath(const char& command) {
 	if (command == 'M' || command == 'm') return new MPath;
-	else if (command == 'L') return new LPath();
-	else if (command == 'l') return new lPath();
-	else if (command == 'H') return new HPath();
-	else if (command == 'h') return new hPath();
-	else if (command == 'V') return new VPath();
-	else if (command == 'v') return new vPath();
-	else if (command == 'C') return new CPath();
-	else if (command == 'c') return new cPath();
-	else if (command == 'z' || command == 'Z') return new ZPath();
+	if (command == 'L') return new LPath();
+	if (command == 'l') return new lPath();
+	if (command == 'H') return new HPath();
+	if (command == 'h') return new hPath();
+	if (command == 'V') return new VPath();
+	if (command == 'v') return new vPath();
+	if (command == 'C') return new CPath();
+	if (command == 'c') return new cPath();
+	if (command == 'z' || command == 'Z') return new ZPath();
 	return NULL;
 }
 
@@ -37,7 +37,6 @@ void SubPathFactory::deleteInstance() {
 // class Path
 // Set attribute
 void Path::setPath(const string& line) {
-	//cout << "line: " << line << endl;
 	vector<int> positions; 
 	vector<string> substrings; 
 
@@ -77,6 +76,7 @@ void Path::setPath(const string& line) {
 		cout << command << endl << value << endl;
 
 		SubPath* newSubPath = subPathFactory->getSubPath(command);
+		if (newSubPath == NULL) continue;
 		newSubPath->setCommand(command);
 
 		if (command == 'm' || command == 'M') {
@@ -175,9 +175,8 @@ MPath::MPath(const float& x, const float& y) {
 void MPath::setAttribute(const string& value, Point initialPoint) {
 	stringstream ss(value);
 	ss >> move.x >> move.y;
-
-	cout << "Move: ";
-	cout << move.x << " " << move.y << endl; 
+	/*cout << "Move: ";
+	cout << move.x << " " << move.y << endl; */
 }
 
 void MPath::draw(sf::RenderWindow& window, sf::Transform& transform) {}
@@ -194,8 +193,8 @@ void LPath::setAttribute(const string& value, Point initialPoint) {
 	ss >> x >> y;
 	lineTo = Point(x, y);
 	this->initialPoint = initialPoint; 
-	cout << "Line: ";
-	cout << initialPoint.x << " " << initialPoint.y << endl;
+	/*cout << "Line: ";
+	cout << initialPoint.x << " " << initialPoint.y << endl;*/
 }
 
 void LPath::draw(sf::RenderWindow& window, sf::Transform& transform) {

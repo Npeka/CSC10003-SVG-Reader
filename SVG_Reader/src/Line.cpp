@@ -6,7 +6,7 @@ Line::Line() {
 	p1 = p2 = { 0, 0 };
 }
 
-Line::Line(Point p1, Point p2) {
+Line::Line(const Point& p1, const Point& p2) {
 	this->p1 = p1; 
 	this->p2 = p2; 
 }
@@ -37,18 +37,20 @@ void Line::setAttribute(const string& attribute, const string& value) {
 }
 
 void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
+	Point start(p1);
+	Point end(p2);
+	if (end.x < start.x) swap(start, end);
 
-	if (p2.x < p1.x) swap(p1, p2);
-
-	float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
+	float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
 	sf::RectangleShape line(sf::Vector2f(length, stroke_width));
 
-	float angle = atan((p2.y - p1.y) / (p2.x - p1.x));
+	float angle = atan((end.y - start.y) / (end.x - start.x));
 	angle = angle * 180 / M_PI;
+	start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
+	start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
 
 	line.rotate(angle);
-	line.setPosition(p1.x - stroke_width / 2 * cos(angle), p1.y - stroke_width / 2 * cos(angle));
+	line.setPosition(start.x, start.y);
 	line.setFillColor(stroke.sfColor());
-	line.setOutlineThickness(0);
 	window.draw(line, transform);
 }

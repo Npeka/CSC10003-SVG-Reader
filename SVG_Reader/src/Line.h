@@ -3,15 +3,14 @@
 #include "Figure.h"
 #include "Point.h"
 
-class Line : public Figure
-{
+class Line : public Figure {
 private:
 	Point p1; 
-	Point p2; 
+	Point p2;
 public:
 	// Constructor
 	Line();
-	Line(Point p1, Point p2);
+	Line(const Point& p1, const Point& p2);
 
 	// Set attribute
 	void setX1(const string& x1);
@@ -26,4 +25,3 @@ public:
 };
 
 #endif // !LINE_H
-

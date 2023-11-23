@@ -4,8 +4,9 @@
 #include "Point.h"
 
 class Rectangle : public Figure {
-private:
-    Point p; 
+protected:
+    float x;
+    float y;
     float rx; 
     float ry; 
     float width;
