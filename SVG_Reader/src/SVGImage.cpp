@@ -21,31 +21,25 @@ void SVGImage::standardizeTag(string& line) {
 		if (line[i] == '=') line[i] = ' ';
 	}
 
-	//int idx = 0; 
-	//while (idx != line.size() - 1) {
-	//	if (line[idx] == ' ') {
-	//		if (line[idx + 1] == ' ') {
-	//			line.erase(idx + 1, 1);
-	//		}
-	//		else idx++;
-	//	}
-	//	else idx++;
-	//}
+	// Remove redundant spaces
+	line.erase(
+		std::unique(line.begin(), line.end(),
+			[](char a, char b) { return std::isspace(a) && std::isspace(b); }),
+		line.end()
+	);
 
-	 // Remove redundant spaces
-	//line.erase(
-	//	std::unique(line.begin(), line.end(),
-	//		[](char a, char b) { return std::isspace(a) && std::isspace(b); }),
-	//	line.end()
-	//);
+	// Remove leading and trailing spaces
+	line.erase(line.begin(), std::find_if(line.begin(), line.end(), [](int ch) {
+		return !std::isspace(ch);
+		}));
+	line.erase(std::find_if(line.rbegin(), line.rend(), [](int ch) {
+		return !std::isspace(ch);
+		}).base(), line.end());
 
-	//// Remove leading and trailing spaces
-	//line.erase(line.begin(), std::find_if(line.begin(), line.end(), [](int ch) {
-	//	return !std::isspace(ch);
-	//	}));
-	//line.erase(std::find_if(line.rbegin(), line.rend(), [](int ch) {
-	//	return !std::isspace(ch);
-	//	}).base(), line.end());
+	//Remove line break 
+	line.erase(std::remove_if(line.begin(), line.end(),
+		[](char c) { return c == '\n' || c == '\r'; }),
+		line.end());
 }
 
 void SVGImage::parse() {
@@ -60,9 +54,8 @@ void SVGImage::parse() {
 		getline(ss, word, ' ');
 		getline(ss, info, '/');
 
-	/*	cout << "line: " << line << endl; 
-		cout << "word: " << word << endl; 
-		cout << "info: " << info << endl;*/
+		//cout << "line: " << line << endl; 
+		//cout << "word: " << word << endl; 
 
 		if (word == "text") {
 			string dataText, ignore;
@@ -72,6 +65,7 @@ void SVGImage::parse() {
 		}
 
 		standardizeTag(info);
+		//cout << "info: " << info << endl; 
 
 		if (word == "svg") {
 			setAttribute(info);
