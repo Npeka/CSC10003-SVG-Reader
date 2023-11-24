@@ -3,24 +3,19 @@
 #include "Figure.h"
 #include "Point.h"
 
-class Polygon : public Figure
-{
-private:
+class Polygon : public Figure {
+protected:
 	vector <Point> point;
-	sf::ConvexShape polygon;
-	sf::ConvexShape outline;
-
 public:
 	// Constructor
 	Polygon();
+	Polygon(const Polygon& polygon);
 
 	// Set attribute
 	void setPoint(const string& line);
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
-	void setSFigure() override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Polygon() override = default;
 };
 
