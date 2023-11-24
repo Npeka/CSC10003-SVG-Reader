@@ -1,5 +1,4 @@
 #include "Line.h"
-#include "Point.h"
 
 // Constructor
 Line::Line() {

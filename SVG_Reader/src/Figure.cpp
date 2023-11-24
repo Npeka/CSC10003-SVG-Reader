@@ -52,6 +52,7 @@ Figure::Figure(const Figure& figure) {
 	fill = figure.fill;
 	stroke = figure.stroke;
 	stroke_width = figure.stroke_width;
+	transform = figure.transform;
 }
 
 // Set attribute
@@ -75,6 +76,38 @@ void Figure::setStrokeWidth(const string& stroke_width) {
 	this->stroke_width = stof(stroke_width);
 }
 
+void Figure::setTranslate(const string& translate) {
+	stringstream ss(translate);
+	float x, y;
+	ss >> x >> y;
+	transform.push_back({ Translate, Point(x, y) });
+}
+
+void Figure::setRotate(const string& rotate) {
+	transform.push_back({ Rotate, Point(stof(rotate), 0) });
+}
+
+void Figure::setScale(const string& scale) {
+	stringstream ss(scale);
+	float x, y = 0;
+	ss >> x >> y;
+	transform.push_back({ Scale, Point(x, y) });
+}
+
+void Figure::setTransform(const string& transform) {
+	string line = transform;
+	for (char& c : line) if (c == '(' || c == ',') c = ' ';
+
+	stringstream ss(line);
+	string attribute, value;
+	while (ss >> attribute) {
+		getline(ss, value, ')');
+		if (attribute == "translate") setTranslate(value);
+		else if (attribute == "rotate") setRotate(value);
+		else if (attribute == "scale") setScale(value);
+	}
+}
+
 void Figure::setAttribute(const string& line) {
 	stringstream ss(line);
 	string attribute, value;
@@ -88,6 +121,7 @@ void Figure::setAttribute(const string& line) {
 		else if (attribute == "fill-opacity") setFillOpacity(value);
 		else if (attribute == "stroke-width") setStrokeWidth(value);
 		else if (attribute == "stroke-opacity") setStrokeOpacity(value);
+		else if (attribute == "transform") setTransform(value);
 		else setAttribute(attribute, value);
 		if (attribute == "/") break;
 		//cout << "{" << attribute << "," << value << "}\n";
@@ -98,6 +132,7 @@ void Figure::setAttribute(const Figure* other) {
 	fill = other->fill;
 	stroke = other->stroke;
 	stroke_width = other->stroke_width;
+	transform = other->transform;
 }
 
 // Virtual method

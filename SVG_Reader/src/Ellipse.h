@@ -25,4 +25,3 @@ public:
 };
 
 #endif // !ELLIPSE_H
-

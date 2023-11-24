@@ -1,5 +1,36 @@
 ﻿#include "Render.h"
 
+/*
+	Template class for convert from Figure to other library's Figure
+*/
+template <class _Figure, class _Rectangle, class _Ellipse, class _Circle, class _Line, class _Polyline, class _Polygon, class _Text, class _Path>
+_Figure* getLibFigure(Figure* figure) {
+	if (ISVALID(Rectangle*, figure))	return new _Rectangle(CONVERT(Rectangle*, figure));
+	if (ISVALID(Ellipse*, figure))		return new _Ellipse(CONVERT(Ellipse*, figure));
+	if (ISVALID(Circle*, figure))		return new _Circle(CONVERT(Circle*, figure));
+	if (ISVALID(Line*, figure))			return new _Line(CONVERT(Line*, figure));
+	if (ISVALID(Polyline*, figure))		return new _Polyline(CONVERT(Polyline*, figure));
+	if (ISVALID(Polygon*, figure))		return new _Polygon(CONVERT(Polygon*, figure));
+	if (ISVALID(Text*, figure))			return new _Text(CONVERT(Text*, figure));
+	if (ISVALID(Path*, figure))			return new _Path(CONVERT(Path*, figure));
+	return NULL;
+}
+
+template <class _Figure, class _Rectangle, class _Ellipse, class _Circle, class _Line, class _Polyline, class _Polygon, class _Text, class _Path>
+void Convert(const SVGImage& svgImage, vector <_Figure*>& shapes) {
+	vector <Figure*> figure = svgImage.getFigure();
+	for (int i = 0; i < figure.size(); i++) {
+		_Figure* new_Figure = getLibFigure<_Figure, _Rectangle, _Ellipse, _Circle, _Line, _Polyline, _Polygon, _Text, _Path>(figure[i]);
+		if (new_Figure == NULL) continue;
+		shapes.push_back(new_Figure);
+	}
+}
+/*
+						end of implementation
+*/
+
+
+
 namespace sfml {
 	// class SF_Rectangle
 	SF_Rectangle::SF_Rectangle(const Rectangle* other) : Rectangle(*other) {
@@ -8,6 +39,8 @@ namespace sfml {
 		rectangle.setFillColor(set_SF_Color(fill));
 		rectangle.setOutlineColor(set_SF_Color(stroke));
 		rectangle.setOutlineThickness(stroke_width / 2);
+
+		set_SF_ShapeTransform<sf::RectangleShape>(rectangle, transform);
 
 		outline = rectangle;
 		outline.setFillColor(sf::Color::Transparent);
@@ -19,7 +52,10 @@ namespace sfml {
 		window.draw(outline, transform);
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
+
+	*/
 	// class SF_Ellipse
 	SF_Ellipse::SF_Ellipse(const Ellipse* other) : Ellipse(*other) {
 		ellipse.setPosition(cx, cy);
@@ -37,6 +73,8 @@ namespace sfml {
 			ellipse.setPoint(i, sf::Vector2f(x, y));
 		}
 
+		set_SF_ShapeTransform<sf::ConvexShape>(ellipse, transform);
+
 		outline = ellipse;
 		outline.setFillColor(sf::Color::Transparent);
 		outline.setOutlineThickness(-stroke_width / 2);
@@ -47,7 +85,10 @@ namespace sfml {
 		window.draw(outline, transform);
 	}
 	//-----------end-of-implementation-----------//
-	
+	/*
+
+
+	*/
 	// class SF_Circle
 	SF_Circle::SF_Circle(const Circle* other) : Circle(*other) {
 		circle.setRadius(r);
@@ -56,6 +97,8 @@ namespace sfml {
 		circle.setOutlineColor(set_SF_Color(stroke));
 		circle.setOutlineThickness(stroke_width / 2);
 		circle.setPointCount(2000);
+
+		set_SF_ShapeTransform<sf::CircleShape>(circle, transform);
 
 		outline = circle;
 		outline.setFillColor(sf::Color::Transparent);
@@ -67,7 +110,10 @@ namespace sfml {
 		window.draw(outline, transform);
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
+
+	*/
 	// class SF_Line
 	SF_Line::SF_Line(const Line* other) : Line(*other) {
 		Point start(p1);
@@ -85,13 +131,18 @@ namespace sfml {
 		line.rotate(angle);
 		line.setPosition(start.x, start.y);
 		line.setFillColor(set_SF_Color(stroke));
+
+		set_SF_ShapeTransform<sf::RectangleShape>(line, transform);
 	}
 
 	void SF_Line::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
 		window.draw(line, transform);
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
+
+	*/
 	// class SF_Polyline
 	SF_Polyline::SF_Polyline(const Polyline* polyline) : Polyline(*polyline) {
 		lines = new sf::RectangleShape[fpoint.size()];
@@ -185,7 +236,10 @@ namespace sfml {
 		drawPolyline2(window, transform);
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
+
+	*/
 	// class SF_Polygon
 	SF_Polygon::SF_Polygon(const Polygon* other) : Polygon(*other) {
 		int vertex = (int)point.size();
@@ -195,6 +249,8 @@ namespace sfml {
 		polygon.setFillColor(set_SF_Color(fill));
 		polygon.setOutlineColor(set_SF_Color(stroke));
 		polygon.setOutlineThickness(stroke_width / 2);
+
+		set_SF_ShapeTransform<sf::ConvexShape>(polygon, transform);
 
 		outline = polygon;
 		outline.setOutlineThickness(-stroke_width / 2);
@@ -206,7 +262,10 @@ namespace sfml {
 		window.draw(outline, transform);
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
+
+	*/
 	// class SF_Text
 	SF_Text::SF_Text(const Text* other) : Text(*other) {
 		if (!font.loadFromFile(string("SFML/font-family/" + font_family + ".ttf"))) exit(1);
@@ -215,37 +274,38 @@ namespace sfml {
 		text.setPosition(x, y - font_size);
 		text.setFillColor(set_SF_Color(fill));
 		text.setString(data);
+
+		set_SF_ShapeTransform<sf::Text>(text, transform);
 	}
 
 	void SF_Text::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
 		window.draw(text, transform);
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
-	// class SF_ShapeFactory
-	SF_Shape* SF_ShapeFactory::get_SF_Shape(Figure* figure) {
-		if (ISVALID(Rectangle*, figure))	return new SF_Rectangle(CONVERT(Rectangle*, figure));
-		if (ISVALID(Ellipse*, figure))		return new SF_Ellipse(CONVERT(Ellipse*, figure));
-		if (ISVALID(Circle*, figure))		return new SF_Circle(CONVERT(Circle*, figure));
-		if (ISVALID(Line*, figure))			return new SF_Line(CONVERT(Line*, figure));
-		if (ISVALID(Polyline*, figure))		return new SF_Polyline(CONVERT(Polyline*, figure));
-		if (ISVALID(Polygon*, figure))		return new SF_Polygon(CONVERT(Polygon*, figure));
-		if (ISVALID(Text*, figure))			return new SF_Text(CONVERT(Text*, figure));
-		return NULL;
+
+	*/
+	// class SF_Path
+	SF_Path::SF_Path(const Path* path) {
+
+	}
+
+	void SF_Path::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
+
+	*/
 	// class SF_SVGImage
 	SF_SVGImage::SF_SVGImage() : SVGImage() {
 
 	}
 
 	SF_SVGImage::SF_SVGImage(const SVGImage& svgImage) : SVGImage(svgImage) {
-		for (int i = 0; i < svgImage.getFigure().size(); i++) {
-			SF_Shape* new_SF_Shape = SF_ShapeFactory().get_SF_Shape(svgImage.getFigure()[i]);
-			if (new_SF_Shape == NULL) continue;
-			shapes.push_back(new_SF_Shape);
-		}
+		Convert<SF_Shape, SF_Rectangle, SF_Ellipse, SF_Circle, SF_Line, SF_Polyline, SF_Polygon, SF_Text, SF_Path>(svgImage, shapes);
 	}
 
 	void SF_SVGImage::draw_SF_SVGImage(sf::RenderWindow& window, sf::Transform& transform) {
@@ -254,8 +314,30 @@ namespace sfml {
 		}
 	}
 	//-----------end-of-implementation-----------//
+	/*
 
-	// Function namespace 
+
+	*/
+	// Function namespace
+	template <class sf_shape>
+	void set_SF_ShapeTransform(sf_shape& shape, const vector< pair<int, Point> >& transform) {
+		for (int i = 0; i < transform.size(); ++i) {
+			if (transform[i].first == Translate) {
+				shape.move(transform[i].second.x, transform[i].second.y);
+			}
+			else if (transform[i].first == Rotate) {
+				float alpha = transform[i].second.x * M_PI / 180;
+				int x = shape.getPosition().x;
+				int y = shape.getPosition().y;
+				shape.rotate(transform[i].second.x);
+				shape.setPosition(x * cos(alpha) - y * sin(alpha), x * sin(alpha) + y * cos(alpha));
+			}
+			else if (transform[i].first == Scale) {
+				shape.scale(transform[i].second.x, transform[i].second.y);
+			}
+		}
+	}
+
 	sf::Color set_SF_Color(const Color& color) {
 		return sf::Color(color.r, color.g, color.b, color.a);
 	}

@@ -1,7 +1,6 @@
 #ifndef POLYGON_H
 #define POLYGON_H
 #include "Figure.h"
-#include "Point.h"
 
 class Polygon : public Figure {
 protected:
