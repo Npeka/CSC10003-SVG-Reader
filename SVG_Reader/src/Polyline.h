@@ -15,9 +15,7 @@ protected:
 	bool checkIntersection(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
 	void updateListPoint(vector<FPoint>& FPoint);
 	float getAngle(const FPoint& start, const FPoint& end);
-	sf::RectangleShape Line(FPoint start, FPoint end);
-	void drawPolyline(sf::RenderWindow& window, sf::Transform transform);
-	void drawPolyline2(sf::RenderWindow& window, sf::Transform transform);
+
 public:
 	// Constructor
 	Polyline();

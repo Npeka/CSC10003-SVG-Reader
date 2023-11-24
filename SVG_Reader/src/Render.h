@@ -62,10 +62,12 @@ namespace sfml {
 	//-------------end-of-declaration------------//
 
 	// class SF_Polyline
-	class SF_Polyine : public SF_Shape, public Polyline {
+	class SF_Polyline : public SF_Shape, public Polyline {
 	private:
-		sf::RectangleShape* lines;
-		sf::ConvexShape* joint;
+		sf::RectangleShape Line(FPoint start, FPoint end);
+		void drawPolyline(sf::RenderWindow& window, sf::Transform transform);
+		void drawPolyline2(sf::RenderWindow& window, sf::Transform transform);
+
 	public:
 		SF_Polyline(const Polyline* polyline);
 		void set_SF_Shape();
