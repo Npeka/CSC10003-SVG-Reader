@@ -64,10 +64,8 @@ void SVGImage::parse() {
 			if (newFigure != NULL) {
 				if (g.top() != NULL) {
 					newFigure->setAttribute(g.top());
-					newFigure->setSFigure();
 				}
 				newFigure->setAttribute(info);
-				newFigure->setSFigure();
 				figure.push_back(newFigure);
 			}
 		}
@@ -136,11 +134,6 @@ void SVGImage::setAttribute(const string& line) {
 		else if (attribute == "style") setStyle(value);
 		else if (attribute == "viewBox") setViewBox(value);
 	}
-}
-
-void SVGImage::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	for (Figure* f : figure)
-		f->draw(window, transform);
 }
 
 const vector<Figure*>& SVGImage::getFigure() const {

@@ -21,7 +21,6 @@ public:
 	void setRGB(const string& color);
 	void setRGB(const float& r, const float& g, const float& b, const float& a = 255);
 	Color& operator=(const Color& color);
-	sf::Color sfColor();
 };
 
 const Color& setColorByName(const string& color);
