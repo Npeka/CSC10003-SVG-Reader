@@ -2,14 +2,12 @@
 
 namespace sfml {
 	// class SF_Rectangle
-	SF_Rectangle::SF_Rectangle(const Rectangle* rect) : Rectangle(*rect) {}
-
-	void SF_Rectangle::set_SF_Shape() {
+	SF_Rectangle::SF_Rectangle(const Rectangle* other) : Rectangle(*other) {
 		rectangle.setSize(sf::Vector2f(width, height));
 		rectangle.setPosition(x, y);
 		rectangle.setFillColor(set_SF_Color(fill));
-		rectangle.setOutlineThickness(stroke_width / 2);
 		rectangle.setOutlineColor(set_SF_Color(stroke));
+		rectangle.setOutlineThickness(stroke_width / 2);
 
 		outline = rectangle;
 		outline.setFillColor(sf::Color::Transparent);
@@ -22,9 +20,217 @@ namespace sfml {
 	}
 	//-----------end-of-implementation-----------//
 
+	// class SF_Ellipse
+	SF_Ellipse::SF_Ellipse(const Ellipse* other) : Ellipse(*other) {
+		ellipse.setPosition(cx, cy);
+		ellipse.setFillColor(set_SF_Color(fill));
+		ellipse.setOutlineColor(set_SF_Color(stroke));
+		ellipse.setOutlineThickness(stroke_width / 2);
+
+		unsigned short quality = 180;
+		ellipse.setPointCount(quality);
+
+		for (unsigned short i = 0; i < quality; ++i) {
+			float rad = (360 / quality * i) / (360 / M_PI / 2);
+			float x = cos(rad) * rx;
+			float y = sin(rad) * ry;
+			ellipse.setPoint(i, sf::Vector2f(x, y));
+		}
+
+		outline = ellipse;
+		outline.setFillColor(sf::Color::Transparent);
+		outline.setOutlineThickness(-stroke_width / 2);
+	}
+
+	void SF_Ellipse::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		window.draw(ellipse, transform);
+		window.draw(outline, transform);
+	}
+	//-----------end-of-implementation-----------//
+	
+	// class SF_Circle
+	SF_Circle::SF_Circle(const Circle* other) : Circle(*other) {
+		circle.setRadius(r);
+		circle.setPosition(cx - r, cy - r);
+		circle.setFillColor(set_SF_Color(fill));
+		circle.setOutlineColor(set_SF_Color(stroke));
+		circle.setOutlineThickness(stroke_width / 2);
+		circle.setPointCount(2000);
+
+		outline = circle;
+		outline.setFillColor(sf::Color::Transparent);
+		outline.setOutlineThickness(-stroke_width / 2);
+	}
+
+	void SF_Circle::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		window.draw(circle, transform);
+		window.draw(outline, transform);
+	}
+	//-----------end-of-implementation-----------//
+
+	// class SF_Line
+	SF_Line::SF_Line(const Line* other) : Line(*other) {
+		Point start(p1);
+		Point end(p2);
+		if (end.x < start.x) swap(start, end);
+
+		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
+		line.setSize(sf::Vector2f(length, stroke_width));
+
+		float angle = atan((end.y - start.y) / (end.x - start.x));
+		angle = angle * 180 / M_PI;
+		start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
+		start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
+
+		line.rotate(angle);
+		line.setPosition(start.x, start.y);
+		line.setFillColor(set_SF_Color(stroke));
+	}
+
+	void SF_Line::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		window.draw(line, transform);
+	}
+	//-----------end-of-implementation-----------//
+
+	// class SF_Polyline
+	SF_Polyline::SF_Polyline(const Polyline* polyline) : Polyline(*polyline) {
+		lines = new sf::RectangleShape[fpoint.size()];
+		joint = new sf::ConvexShape[fpoint.size() - 2];
+
+		for (int i = 0; i < fpoint.size() - 1; i++) {
+			lines[i] = Line(fpoint[i], fpoint[i + 1]);
+			lines[i].setFillColor(set_SF_Color(stroke));
+
+			if (i > 0 && i < fpoint.size() - 1) {
+				float angle1 = getAngle(fpoint[i - 1], fpoint[i]) * M_PI / 180;
+				float angle2 = getAngle(fpoint[i], fpoint[i + 1]) * M_PI / 180;
+
+				float p3_x = fpoint[i].x - stroke_width * cos(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
+				float p3_y = fpoint[i].y + stroke_width * sin(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
+
+				joint[i - 1].setPointCount(4);
+
+				joint[i - 1].setPoint(0, sf::Vector2f(fpoint[i].x, fpoint[i].y));
+				joint[i - 1].setPoint(1, sf::Vector2f(fpoint[i].x - stroke_width * sin(angle1), fpoint[i].y + stroke_width * cos(angle1)));
+				joint[i - 1].setPoint(2, sf::Vector2f(p3_x, p3_y));
+				joint[i - 1].setPoint(3, sf::Vector2f(fpoint[i].x - stroke_width * sin(angle2), fpoint[i].y + stroke_width * cos(angle2)));
+
+				joint[i - 1].setPosition(-stroke_width / 2, -stroke_width / 2);
+			}
+		}
+	}
+
+	sf::RectangleShape SF_Polyline::Line(FPoint start, FPoint end) {
+		if (end.x < start.x) swap(start, end);
+
+		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
+		sf::RectangleShape line(sf::Vector2f(length, stroke_width));
+
+		float angle = atan((end.y - start.y) / (end.x - start.x));
+		angle = angle * 180 / M_PI;
+
+		line.rotate(angle);
+		line.setOutlineThickness(0);
+		line.setPosition(start.x - stroke_width / 2, start.y - stroke_width / 2);
+		return line;
+	}
+
+	void SF_Polyline::drawPolyline(sf::RenderWindow& window, sf::Transform transform) {
+
+		for (int i = 0; i < fpoint.size() - 1; i++) {
+			window.draw(lines[i], transform);
+
+			if (i > 0 && i < fpoint.size() - 1) {
+				joint[i - 1].setFillColor(sf::Color(stroke.sfColor()));
+				window.draw(joint[i - 1], transform); //draw joint
+			}
+		}
+	}
+
+	void SF_Polyline::drawPolyline2(sf::RenderWindow& window, sf::Transform transform) {
+		vector <FPoint> temp = fpoint;
+		updateListPoint(temp);
+		int start, end;
+		for (int i = 0; i < temp.size(); i++) {
+			if (temp[i].fill == true) {
+				start = i;
+				for (int j = i + 1; j < temp.size(); j++) {
+					if (temp[j].fill == true) {
+						end = j;
+						break;
+					}
+					else if (temp[j].fill == false && j == temp.size() - 1) {
+						drawPolyline(window, transform);
+						return;
+					}
+				}
+
+				sf::ConvexShape fillArea;
+				for (int k = 0; k < end - start + 1; k++) {
+					fillArea.setPointCount(end - start + 1);
+					fillArea.setPoint(k, sf::Vector2f(temp[start + k].x, temp[start + k].y));
+				}
+
+				fillArea.setOutlineThickness(0);
+				fillArea.setPosition(-stroke_width / 2, -stroke_width / 2);
+				fillArea.setFillColor(set_SF_Color(fill));
+				window.draw(fillArea, transform);
+				i = end - 1;
+			}
+		}
+		drawPolyline(window, transform);
+	}
+
+	void SF_Polyline::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		drawPolyline2(window, transform);
+	}
+	//-----------end-of-implementation-----------//
+
+	// class SF_Polygon
+	SF_Polygon::SF_Polygon(const Polygon* other) : Polygon(*other) {
+		int vertex = (int)point.size();
+		polygon.setPointCount(vertex);
+		for (int i = 0; i < vertex; ++i)
+			polygon.setPoint(i, sf::Vector2f(point[i].x, point[i].y));
+		polygon.setFillColor(set_SF_Color(fill));
+		polygon.setOutlineColor(set_SF_Color(stroke));
+		polygon.setOutlineThickness(stroke_width / 2);
+
+		outline = polygon;
+		outline.setOutlineThickness(-stroke_width / 2);
+		outline.setFillColor(sf::Color::Transparent);
+	}
+
+	void SF_Polygon::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		window.draw(polygon, transform);
+		window.draw(outline, transform);
+	}
+	//-----------end-of-implementation-----------//
+
+	// class SF_Text
+	SF_Text::SF_Text(const Text* other) : Text(*other) {
+		if (!font.loadFromFile(string("SFML/font-family/" + font_family + ".ttf"))) exit(1);
+		text.setFont(font);
+		text.setCharacterSize(font_size);
+		text.setPosition(x, y - font_size);
+		text.setFillColor(set_SF_Color(fill));
+		text.setString(data);
+	}
+
+	void SF_Text::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		window.draw(text, transform);
+	}
+	//-----------end-of-implementation-----------//
+
 	// class SF_ShapeFactory
 	SF_Shape* SF_ShapeFactory::get_SF_Shape(Figure* figure) {
-		if (ISVALID(Rectangle*, figure)) return new SF_Rectangle(CONVERT(Rectangle*, figure));
+		if (ISVALID(Rectangle*, figure))	return new SF_Rectangle(CONVERT(Rectangle*, figure));
+		if (ISVALID(Ellipse*, figure))		return new SF_Ellipse(CONVERT(Ellipse*, figure));
+		if (ISVALID(Circle*, figure))		return new SF_Circle(CONVERT(Circle*, figure));
+		if (ISVALID(Line*, figure))			return new SF_Line(CONVERT(Line*, figure));
+		if (ISVALID(Polyline*, figure))		return new SF_Polyline(CONVERT(Polyline*, figure));
+		if (ISVALID(Polygon*, figure))		return new SF_Polygon(CONVERT(Polygon*, figure));
+		if (ISVALID(Text*, figure))			return new SF_Text(CONVERT(Text*, figure));
 		return NULL;
 	}
 	//-----------end-of-implementation-----------//
@@ -38,7 +244,6 @@ namespace sfml {
 		for (int i = 0; i < svgImage.getFigure().size(); i++) {
 			SF_Shape* new_SF_Shape = SF_ShapeFactory().get_SF_Shape(svgImage.getFigure()[i]);
 			if (new_SF_Shape == NULL) continue;
-			new_SF_Shape->set_SF_Shape();
 			shapes.push_back(new_SF_Shape);
 		}
 	}

@@ -44,7 +44,6 @@ public:
 	void setStyle(const string& style);
 	void setViewBox(const string& viewbox);
 	void setAttribute(const string& line);
-	void draw(sf::RenderWindow& window, sf::Transform& transform);
 
 	const vector<Figure*>& getFigure() const;
 };

@@ -3,33 +3,29 @@
 #include "Figure.h"
 #include "Point.h"
 
-class Polyline : public Figure
-{
-private:
+class Polyline : public Figure {
+protected:
 	// Attribute
-	vector <Point> point;
+	vector <FPoint> fpoint;
 	sf::RectangleShape* lines;
 	sf::ConvexShape* joint;
 
 	// Method
-	Point IntersectionPoint(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
-	bool checkIntersection(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
-	void updateListPoint(vector<Point>& point);
-	float getAngle(const Point& start, const Point& end);
-	sf::RectangleShape Line(Point start, Point end);
-	void drawPolyline(sf::RenderWindow& window, sf::Transform transform);
-	void drawPolyline2(sf::RenderWindow& window, sf::Transform transform);
+	FPoint IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
+	bool checkIntersection(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
+	void updateListPoint(vector<FPoint>& FPoint);
+	float getAngle(const FPoint& start, const FPoint& end);
+
 public:
 	// Constructor
 	Polyline();
-	
+	Polyline(const Polyline& polyline);
+
 	// Set attribute
 	void setPoint(const string& line);
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
-	void setSFigure() override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 
 	~Polyline() override = default;
 };
