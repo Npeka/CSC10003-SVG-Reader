@@ -3,16 +3,15 @@
 #include "Figure.h"
 
 class Circle : public Figure {
-private:
+protected:
 	float cx;
 	float cy;
 	float r;
-	sf::CircleShape circle;
-	sf::CircleShape outline;
 
 public:
 	// Constructor
 	Circle();
+	Circle(const Circle& circle);
 
 	// Set attribute
 	void setCX(const string& cx);
@@ -21,11 +20,7 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
-	void setSFigure() override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Circle() override = default;
-
-	
 };
 
 #endif // !CIRCLE_H

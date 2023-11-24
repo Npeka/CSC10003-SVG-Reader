@@ -38,6 +38,41 @@ namespace sfml {
 	};
 	//-------------end-of-declaration------------//
 
+	// class SF_Circle
+	class SF_Circle : public SF_Shape, public Circle {
+	private:
+		sf::CircleShape circle;
+		sf::CircleShape outline;
+	public:
+		SF_Circle(const Circle* circle);
+		void set_SF_Shape();
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
+	};
+	//-------------end-of-declaration------------//
+
+	// class SF_Line
+	class SF_Line : public SF_Shape, public Line {
+	private:
+		sf::RectangleShape line;
+	public:
+		SF_Line(const Line* line);
+		void set_SF_Shape();
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
+	};
+	//-------------end-of-declaration------------//
+
+	// class SF_Polyline
+	class SF_Polyine : public SF_Shape, public Polyline {
+	private:
+		sf::RectangleShape* lines;
+		sf::ConvexShape* joint;
+	public:
+		SF_Polyline(const Polyline* polyline);
+		void set_SF_Shape();
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
+	};
+	//-------------end-of-declaration------------//
+
 	// class SF_Ellipse
 	class SF_ShapeFactory {
 	public:
