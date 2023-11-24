@@ -7,8 +7,16 @@ Text::Text() {
 	font_family = "times-new-roman";
 	font_size = 16;
 	font_weight = "";
-	text_anchor = "start";
 	data = "";
+}
+
+Text::Text(const Text& text) : Figure(text) {
+	x = text.x;
+	y = text.y;
+	font_family = text.font_family;
+	font_size = text.font_size;
+	font_weight = text.font_weight;
+	data = text.font_weight;
 }
 
 // Set attribute
@@ -27,12 +35,9 @@ void Text::setFontSize(const string& font_size) {
 void Text::setFontWeight(const string& font_weight) {
 	this->font_weight = font_weight;
 }
+
 void Text::setFontFamily(const string& font_family) {
 	this->font_family = font_family;
-}
-
-void Text::setTextAnchor(const string& text_anchor) {
-	this->text_anchor = text_anchor;
 }
 
 void Text::setData(const string& data) {
@@ -54,18 +59,4 @@ void Text::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "y") setY(value);
 	else if (attribute == "font-family") setFontFamily(value);
 	else if (attribute == "font-size") setFontSize(value);
-	else if (attribute == "text-anchor") setTextAnchor(value);
-}
-
-void Text::setSFigure() {
-	if (!font.loadFromFile(string("SFML/font-family/" + font_family + ".ttf"))) exit(1);
-	text.setFont(font);
-	text.setCharacterSize(font_size);
-	text.setPosition(x, y - font_size);
-	text.setFillColor(fill.sfColor());
-	text.setString(data);
-};
-
-void Text::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	window.draw(text, transform);
 }
