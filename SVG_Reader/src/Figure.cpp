@@ -44,15 +44,19 @@ void FigureFactory::deleteInstance() {
 // class Ficgure
 // Constructor
 Figure::Figure() {
-	stroke_width = 0;
-	stroke_linecap = "butt";
-	stroke_linejoin = "milter";
-	stroke_dasharray = "none";
+	stroke_width = 1;
+	stroke.setA(0);
+}
+
+Figure::Figure(const Figure& figure) {
+	fill = figure.fill;
+	stroke = figure.stroke;
+	stroke_width = figure.stroke_width;
 }
 
 // Set attribute
 void Figure::setFill(const string& fill) {
-		this->fill.setRGB(fill);
+	this->fill.setRGB(fill);
 }
 
 void Figure::setFillOpacity(const string& fill_opacity) {
@@ -63,24 +67,12 @@ void Figure::setStroke(const string& stroke) {
 	this->stroke.setRGB(stroke);
 }
 
-void Figure::setStrokeWidth(const string& stroke_width) {
-	this->stroke_width = stof(stroke_width);
-}
-
 void Figure::setStrokeOpacity(const string& stroke_opacity) {
 	stroke.setA(stroke_opacity);
 }
 
-void Figure::setStrokeLinecap(const string& stroke_linecap) {
-	this->stroke_linecap = stroke_linecap;
-}
-
-void Figure::setStrokeLinejoin(const string& stroke_linejoin) {
-	this->stroke_linejoin = stroke_linejoin;
-}
-
-void Figure::setStrokeDasharray(const string& stroke_dasharray) {
-	this->stroke_dasharray = stroke_dasharray;
+void Figure::setStrokeWidth(const string& stroke_width) {
+	this->stroke_width = stof(stroke_width);
 }
 
 void Figure::setAttribute(const string& line) {
@@ -96,13 +88,16 @@ void Figure::setAttribute(const string& line) {
 		else if (attribute == "fill-opacity") setFillOpacity(value);
 		else if (attribute == "stroke-width") setStrokeWidth(value);
 		else if (attribute == "stroke-opacity") setStrokeOpacity(value);
-		else if (attribute == "stroke-linecap") setStrokeLinecap(value);
-		else if (attribute == "stroke_linejoin") setStrokeLinejoin(value);
-		else if (attribute == "stroke_dasharray") setStrokeDasharray(value);
 		else setAttribute(attribute, value);
 		if (attribute == "/") break;
 		//cout << "{" << attribute << "," << value << "}\n";
 	}
+}
+
+void Figure::setAttribute(const Figure* other) {
+	fill = other->fill;
+	stroke = other->stroke;
+	stroke_width = other->stroke_width;
 }
 
 // Virtual method

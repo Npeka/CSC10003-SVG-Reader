@@ -1,18 +1,20 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 #include "Figure.h"
+#include "Point.h"
 
 class Rectangle : public Figure {
-private:
+protected:
     float x;
     float y;
-    float rx;
-    float ry;
+    float rx; 
+    float ry; 
     float width;
     float height;
 public:
     // Constructor
     Rectangle();
+    Rectangle(const Rectangle& rectangle);
 
     // Set attribute
     void setX(const string& x);
@@ -24,7 +26,6 @@ public:
 
     // Virtual method
     void setAttribute(const string& attribute, const string& value) override;
-    void draw(sf::RenderWindow& window, sf::Transform& transform) override;
     ~Rectangle() override = default;
 };
 

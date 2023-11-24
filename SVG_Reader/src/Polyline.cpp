@@ -2,52 +2,57 @@
 
 // Private
 // Method
-Point Polyline::IntersectionPoint(const Point& p1, const Point& p2, const Point& p3, const Point& p4) {
-
+FPoint Polyline::IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4) {
+	FPoint IntersectionPoint;
+	IntersectionPoint.x = ((p1.x * p2.y - p1.y * p2.x) * (p3.x - p4.x) - (p1.x - p2.x) * (p3.x * p4.y - p3.y * p4.x)) / ((p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x));
+	IntersectionPoint.y = ((p1.x * p2.y - p1.y * p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x * p4.y - p3.y * p4.x)) / ((p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x));
+	IntersectionPoint.fill = true;
+	return IntersectionPoint;
 }
 
-bool Polyline::checkIntersection(const Point& p1, const Point& p2, const Point& p3, const Point& p4) {
-	
+bool Polyline::checkIntersection(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4) {
+	if ((p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x) == 0)
+		return false;
+	else
+		return true;
 }
 
-void Polyline::updateListPoint(vector<Point>& pointList) {
-	
+void Polyline::updateListPoint(vector<FPoint>& pointList) {
+	for (int i = 1; i < pointList.size(); i++) {
+		if (checkIntersection(pointList[i - 1], pointList[i], pointList.front(), pointList.back())) {
+			FPoint p = IntersectionPoint(pointList[i - 1], pointList[i], pointList.front(), pointList.back());
+			pointList.insert(pointList.begin() + i, p);
+			i++;
+		}
+	}
 }
 
-float Polyline::getAngle(const Point& start, const Point& end) {
-	
+float Polyline::getAngle(const FPoint& start, const FPoint& end) {
+	float angle = atan((end.y - start.y) / (end.x - start.x));
+	angle = angle * 180 / M_PI;
+	return angle;
 }
 
-sf::RectangleShape Polyline::Line(Point start, Point end, const float& x, const float& y) {
-	
-}
-
-void Polyline::drawPolyline(vector<Point> PointArr, const float& x, const float& y, sf::RenderWindow& window, sf::Transform transform) {
-	
-}
-
-void Polyline::drawPolyline2(vector<Point> listPoint, const float& x, const float& y, sf::RenderWindow& window, sf::Transform transform) {
-	
-}
-  
 // Public
 // Constructor
 Polyline::Polyline() {}
+
+Polyline::Polyline(const Polyline& polyline) {
+	fpoint = polyline.fpoint;
+	lines = NULL;
+	joint = NULL;
+}
 
 // Set attribute
 void Polyline::setPoint(const string& line) {
 	stringstream ss(line);
 	float x, y; char ignore;
 	while (ss >> x >> ignore >> y) {
-		point.push_back(Point(x, y));
+		fpoint.push_back(FPoint(x, y));
 	}
 }
 
 // Virtual method
 void Polyline::setAttribute(const string& attribute, const string& value) {
-	
-}
-
-void Polyline::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	
+	if (attribute == "points") setPoint(value);
 }

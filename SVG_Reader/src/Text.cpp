@@ -57,14 +57,15 @@ void Text::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "text-anchor") setTextAnchor(value);
 }
 
-void Text::draw(sf::RenderWindow& window, sf::Transform& transform) {
-	sf::Font font;
+void Text::setSFigure() {
 	if (!font.loadFromFile(string("SFML/font-family/" + font_family + ".ttf"))) exit(1);
-	sf::Text text;
 	text.setFont(font);
 	text.setCharacterSize(font_size);
 	text.setPosition(x, y - font_size);
 	text.setFillColor(fill.sfColor());
 	text.setString(data);
+};
+
+void Text::draw(sf::RenderWindow& window, sf::Transform& transform) {
 	window.draw(text, transform);
 }
