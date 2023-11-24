@@ -141,7 +141,7 @@ namespace sfml {
 			window.draw(lines[i], transform);
 
 			if (i > 0 && i < fpoint.size() - 1) {
-				joint[i - 1].setFillColor(sf::Color(stroke.sfColor()));
+				joint[i - 1].setFillColor(set_SF_Color(stroke));
 				window.draw(joint[i - 1], transform); //draw joint
 			}
 		}
