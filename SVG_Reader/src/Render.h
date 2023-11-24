@@ -21,7 +21,6 @@ namespace sfml {
 	// class SF_Shape
 	class SF_Shape {
 	public:
-		virtual void set_SF_Shape() = 0;
 		virtual void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) = 0;
 	};
 	//-------------end-of-declaration------------//
@@ -33,7 +32,17 @@ namespace sfml {
 		sf::RectangleShape outline;
 	public:
 		SF_Rectangle(const Rectangle* rect);
-		void set_SF_Shape();
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
+	};
+	//-------------end-of-declaration------------//
+	
+	// class SF_Ellipse
+	class SF_Ellipse : public SF_Shape, public Ellipse {
+	private:
+		sf::ConvexShape ellipse;
+		sf::ConvexShape outline;
+	public:
+		SF_Ellipse(const Ellipse* rect);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
 	//-------------end-of-declaration------------//
@@ -45,7 +54,6 @@ namespace sfml {
 		sf::CircleShape outline;
 	public:
 		SF_Circle(const Circle* circle);
-		void set_SF_Shape();
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
 	//-------------end-of-declaration------------//
@@ -56,7 +64,6 @@ namespace sfml {
 		sf::RectangleShape line;
 	public:
 		SF_Line(const Line* line);
-		void set_SF_Shape();
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
 	//-------------end-of-declaration------------//
@@ -70,19 +77,40 @@ namespace sfml {
 
 	public:
 		SF_Polyline(const Polyline* polyline);
-		void set_SF_Shape();
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
 	//-------------end-of-declaration------------//
 
-	// class SF_Ellipse
+	// class SF_Polygon
+	class SF_Polygon : public SF_Shape, public Polygon {
+	private:
+		sf::ConvexShape polygon;
+		sf::ConvexShape outline;
+	public:
+		SF_Polygon(const Polygon* polygon);
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
+	};
+	//-------------end-of-declaration------------//
+
+	// class SF_Text
+	class SF_Text : public SF_Shape, public Text {
+	private:
+		sf::Font font;
+		sf::Text text;
+	public:
+		SF_Text(const Text* text);
+		void draw_SF_Shape(sf::RenderWindow & window, sf::Transform & transform);
+	};
+	//-------------end-of-declaration------------//
+
+	// class SF_ShapeFactory
 	class SF_ShapeFactory {
 	public:
 		SF_Shape* get_SF_Shape(Figure* figure);
 	};
 	//-------------end-of-declaration------------//
 
-	// class SF_Ellipse
+	// class SF_SVGImage
 	class SF_SVGImage : public SVGImage {
 	private:
 		vector <SF_Shape*> shapes;
