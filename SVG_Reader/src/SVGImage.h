@@ -18,7 +18,7 @@ public:
 };
 
 class SVGImage {
-private:
+protected:
 	// Attribute
 	string nameFile;
 	vector<Figure*> figure;
@@ -33,6 +33,7 @@ private:
 public:
 	// Constructor
 	SVGImage(const string& nameFile = "");
+	SVGImage(const SVGImage& svgImage);
 
 	// Destructor
 	~SVGImage();
@@ -44,6 +45,8 @@ public:
 	void setViewBox(const string& viewbox);
 	void setAttribute(const string& line);
 	void draw(sf::RenderWindow& window, sf::Transform& transform);
+
+	const vector<Figure*>& getFigure() const;
 };
 
 #endif // !SVG_IMAGE_H

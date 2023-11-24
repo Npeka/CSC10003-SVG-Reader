@@ -25,6 +25,7 @@
     <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\Line.h" />
     <ClInclude Include="src\Path.h" />
+    <ClInclude Include="src\Render.h" />
     <ClInclude Include="src\SVGImage.h" />
     <ClInclude Include="src\Point.h" />
     <ClInclude Include="src\Polygon.h" />
@@ -43,6 +44,7 @@
     <ClCompile Include="src\Point.cpp" />
     <ClCompile Include="src\Polygon.cpp" />
     <ClCompile Include="src\Polyline.cpp" />
+    <ClCompile Include="src\Render.cpp" />
     <ClCompile Include="src\SVGImage.cpp" />
     <ClCompile Include="src\Rectangle.cpp" />
     <ClCompile Include="src\Figure.cpp" />

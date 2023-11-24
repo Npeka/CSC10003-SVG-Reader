@@ -10,3 +10,9 @@ Point::Point(const float& x, const float& y) {
 	this->y = y;
 	fill = false;
 }
+
+Point::Point(const Point& point) {
+	x = point.x;
+	y = point.y;
+	fill = point.fill;
+}

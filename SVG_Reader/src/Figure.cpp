@@ -85,6 +85,7 @@ void Figure::setStrokeDasharray(const string& stroke_dasharray) {
 }
 
 void Figure::setAttribute(const string& line) {
+	//cout << "line: " << line << endl; 
 	stringstream ss(line);
 	string attribute, value;
 	while (ss >> attribute) {
@@ -104,6 +105,12 @@ void Figure::setAttribute(const string& line) {
 		if (attribute == "/") break;
 		//cout << "{" << attribute << "," << value << "}\n";
 	}
+}
+
+void Figure::setAttribute(const Figure* other) {
+	fill = other->fill;
+	stroke = other->stroke;
+	stroke_width = other->stroke_width;
 }
 
 // Virtual method

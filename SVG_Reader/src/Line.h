@@ -2,17 +2,16 @@
 #define LINE_H
 #include "Figure.h"
 #include "Point.h"
-class Line : public Figure
-{
+
+class Line : public Figure {
 private:
-	float x1;
-	float y1;
-	float x2;
-	float y2;
+	Point p1; 
+	Point p2;
 	sf::RectangleShape line;
 public:
 	// Constructor
 	Line();
+	Line(const Point& p1, const Point& p2);
 
 	// Set attribute
 	void setX1(const string& x1);
@@ -28,4 +27,3 @@ public:
 };
 
 #endif // !LINE_H
-
