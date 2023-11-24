@@ -11,6 +11,11 @@ Line::Line(const Point& p1, const Point& p2) {
 	this->p2 = p2; 
 }
 
+Line::Line(const Line& line) : Figure(line) {
+	p1 = line.p1;
+	p2 = line.p2;
+}
+
 // Set attribute
 void Line::setX1(const string& x1) {
 	this->p1.x = stof(x1);
@@ -34,25 +39,4 @@ void Line::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "y1") setY1(value);
 	else if (attribute == "x2") setX2(value);
 	else if (attribute == "y2") setY2(value);
-}
-
-void Line::setSFigure() {}
-
-void Line::draw(sf::RenderWindow& window, sf::Transform& transform) {
-  Point start(p1);
-	Point end(p2);
-	if (end.x < start.x) swap(start, end);
-
-	float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-	line.setSize(sf::Vector2f(length, stroke_width));
-
-	float angle = atan((end.y - start.y) / (end.x - start.x));
-	angle = angle * 180 / M_PI;
-	start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
-	start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
-
-	line.rotate(angle);
-	line.setPosition(start.x, start.y);
-	line.setFillColor(stroke.sfColor());
-	window.draw(line, transform);
 }
