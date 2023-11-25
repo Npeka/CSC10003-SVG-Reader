@@ -1,5 +1,6 @@
 ﻿#ifndef RENDER_H
 #define RENDER_H
+
 #include "Header.h"
 #include "SVGImage.h"
 #include "Rectangle.h"
@@ -10,9 +11,6 @@
 #include "Polygon.h"
 #include "Path.h"
 #include "Text.h"
-#ifdef DEBUG
-#include "SVGImage.cpp"
-#endif // DEBUG
 
 #define CONVERT(T, figure) static_cast<T>(figure)
 #define ISVALID(T, figure) dynamic_cast<T>(figure)
@@ -31,7 +29,8 @@ void Convert(const SVGImage& svgImage, vector <_Figure*>& shapes);
 						end of declaration
 */
 
-
+// Library SFML
+#include <SFML/Graphics.hpp>
 
 // SFML RENDER
 namespace sfml {
@@ -149,8 +148,6 @@ namespace sfml {
 	// class SF_Path
 	class SF_Path : public SF_Shape, public Path {
 	private:
-		sf::Font font;
-		sf::Text text;
 	public:
 		SF_Path(const Path* path);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);

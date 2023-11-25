@@ -29,8 +29,6 @@ void Convert(const SVGImage& svgImage, vector <_Figure*>& shapes) {
 						end of implementation
 */
 
-
-
 namespace sfml {
 	// class SF_Rectangle
 	SF_Rectangle::SF_Rectangle(const Rectangle* other) : Rectangle(*other) {
@@ -327,8 +325,8 @@ namespace sfml {
 			}
 			else if (transform[i].first == Rotate) {
 				float alpha = transform[i].second.x * M_PI / 180;
-				int x = shape.getPosition().x;
-				int y = shape.getPosition().y;
+				float x = shape.getPosition().x;
+				float y = shape.getPosition().y;
 				shape.rotate(transform[i].second.x);
 				shape.setPosition(x * cos(alpha) - y * sin(alpha), x * sin(alpha) + y * cos(alpha));
 			}
