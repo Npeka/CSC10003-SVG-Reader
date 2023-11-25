@@ -1,7 +1,6 @@
 #ifndef POLYLINE_H
 #define POLYLINE_H
 #include "Figure.h"
-#include "Point.h"
 
 class Polyline : public Figure {
 protected:
