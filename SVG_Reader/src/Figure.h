@@ -4,10 +4,6 @@
 #include "Color.h"
 #include "Point.h"
 
-#define Translate 1
-#define Rotate 2
-#define Scale 3
-
 class Figure {
 protected:
 	Color fill;
