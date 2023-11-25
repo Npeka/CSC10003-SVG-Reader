@@ -1,14 +1,11 @@
 #ifndef POLYLINE_H
 #define POLYLINE_H
 #include "Figure.h"
-#include "Point.h"
 
 class Polyline : public Figure {
 protected:
 	// Attribute
 	vector <FPoint> fpoint;
-	sf::RectangleShape* lines;
-	sf::ConvexShape* joint;
 
 	// Method
 	FPoint IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
@@ -18,7 +15,7 @@ protected:
 
 public:
 	// Constructor
-	Polyline();
+	Polyline() = default;
 	Polyline(const Polyline& polyline);
 
 	// Set attribute
@@ -26,7 +23,6 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
-
 	~Polyline() override = default;
 };
 

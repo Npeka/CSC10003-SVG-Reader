@@ -35,12 +35,8 @@ float Polyline::getAngle(const FPoint& start, const FPoint& end) {
 
 // Public
 // Constructor
-Polyline::Polyline() {}
-
-Polyline::Polyline(const Polyline& polyline) {
+Polyline::Polyline(const Polyline& polyline) : Figure(polyline) {
 	fpoint = polyline.fpoint;
-	lines = NULL;
-	joint = NULL;
 }
 
 // Set attribute
