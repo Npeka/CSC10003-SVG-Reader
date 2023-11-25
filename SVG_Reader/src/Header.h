@@ -23,7 +23,7 @@
 */
 // Exception
 #define tag(figure) "<" << figure << ">"
-#define check_exeption(figure, attribute, code) \
+#define check_exception(figure, attribute, code) \
 	try { code; } \
 	catch (const std::invalid_argument& e) { \
 		cerr << tag(figure) << '\n'; \

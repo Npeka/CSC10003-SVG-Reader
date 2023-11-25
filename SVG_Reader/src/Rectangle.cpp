@@ -17,27 +17,27 @@ Rectangle::Rectangle(const Rectangle& rectangle) : Figure(rectangle) {
 
 // Set attribute
 void Rectangle::setX(const string& x) {
-	this->x = stof(x);
+	check_exception("rectangle", "x", this->x = stof(x));
 }
 
 void Rectangle::setY(const string& y) {
-	this->y = stof(y);
+	check_exception("rectangle", "y", this->y = stof(y));
 }
 
 void Rectangle::setRX(const string& rx) {
-	this->rx = stof(rx);
+	check_exception("rectangle", "rx", this->rx = stof(rx));
 }
 
 void Rectangle::setRY(const string& ry) {
-	this->ry = stof(ry);
+	check_exception("rectangle", "ry", this->ry = stof(ry));
 }
 
 void Rectangle::setWidth(const string& width) {
-	this->width = stof(width);
+	check_exception("rectangle", "width", this->width = stof(width));
 }
 
 void Rectangle::setHeight(const string& height) {
-	this->height = stof(height);
+	check_exception("rectangle", "height", this->height = stof(height));
 }
 
 // Virtual method
