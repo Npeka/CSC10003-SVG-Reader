@@ -16,16 +16,19 @@ public:
 	// Set attribute
 	void setAttribute(const string& viewBox);
 };
+/*
 
+
+*/
 class SVGImage {
 protected:
 	// Attribute
 	string nameFile;
-	vector<Figure*> figure;
 	float width;
 	float height;
 	Color background;
 	ViewBox viewbox;
+	vector<Figure*> figure;
 
 	// Method
 	void standardizeTag(string& line);
@@ -44,7 +47,6 @@ public:
 	void setStyle(const string& style);
 	void setViewBox(const string& viewbox);
 	void setAttribute(const string& line);
-	void draw(sf::RenderWindow& window, sf::Transform& transform);
 
 	const vector<Figure*>& getFigure() const;
 };

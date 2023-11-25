@@ -1,7 +1,6 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 #include "Figure.h"
-#include "Point.h"
 
 class Rectangle : public Figure {
 protected:
@@ -26,8 +25,6 @@ public:
 
     // Virtual method
     void setAttribute(const string& attribute, const string& value) override;
-    void setSFigure() override;
-    void draw(sf::RenderWindow& window, sf::Transform& transform) override;
     ~Rectangle() override = default;
 };
 

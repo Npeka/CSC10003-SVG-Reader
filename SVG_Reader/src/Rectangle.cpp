@@ -49,20 +49,3 @@ void Rectangle::setAttribute(const string& attribute, const string& value) {
 	else if (attribute == "width") setWidth(value);
 	else if (attribute == "height") setHeight(value);
 }
-
-void Rectangle::setSFigure() {}
-
-void Rectangle::draw(sf::RenderWindow & window, sf::Transform & transform) {
-	sf::RectangleShape rectangle;
-	sf::RectangleShape outline;
-
-	rectangle.setSize(sf::Vector2f(width, height));
-	rectangle.setPosition(x, y);
-	rectangle.setFillColor(fill.sfColor());
-	rectangle.setOutlineThickness(stroke_width / 2);
-	rectangle.setOutlineColor(stroke.sfColor());
-
-	outline = rectangle;
-	outline.setFillColor(sf::Color::Transparent);
-	outline.setOutlineThickness(-stroke_width / 2);
-}

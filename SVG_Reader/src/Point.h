@@ -5,10 +5,17 @@ class Point {
 public:
 	float x;
 	float y;
-	bool fill;
 	Point();
 	Point(const float& x, const float& y);
 	Point(const Point& point);
+};
+
+class FPoint : public Point {
+public:
+	bool fill;
+	FPoint();
+	FPoint(const float& x, const float& y);
+	FPoint(const FPoint& fpoint);
 };
 
 #endif // !POINT_H

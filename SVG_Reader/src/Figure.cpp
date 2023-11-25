@@ -46,14 +46,18 @@ void FigureFactory::deleteInstance() {
 Figure::Figure() {
 	stroke_width = 1;
 	stroke.setA(0);
-	stroke_linecap = "butt";
-	stroke_linejoin = "milter";
-	stroke_dasharray = "none";
+}
+
+Figure::Figure(const Figure& figure) {
+	fill = figure.fill;
+	stroke = figure.stroke;
+	stroke_width = figure.stroke_width;
+	transform = figure.transform;
 }
 
 // Set attribute
 void Figure::setFill(const string& fill) {
-		this->fill.setRGB(fill);
+	this->fill.setRGB(fill);
 }
 
 void Figure::setFillOpacity(const string& fill_opacity) {
@@ -64,28 +68,47 @@ void Figure::setStroke(const string& stroke) {
 	this->stroke.setRGB(stroke);
 }
 
-void Figure::setStrokeWidth(const string& stroke_width) {
-	this->stroke_width = stof(stroke_width);
-}
-
 void Figure::setStrokeOpacity(const string& stroke_opacity) {
 	stroke.setA(stroke_opacity);
 }
 
-void Figure::setStrokeLinecap(const string& stroke_linecap) {
-	this->stroke_linecap = stroke_linecap;
+void Figure::setStrokeWidth(const string& stroke_width) {
+	this->stroke_width = stof(stroke_width);
 }
 
-void Figure::setStrokeLinejoin(const string& stroke_linejoin) {
-	this->stroke_linejoin = stroke_linejoin;
+void Figure::setTranslate(const string& translate) {
+	stringstream ss(translate);
+	float x, y;
+	ss >> x >> y;
+	transform.push_back({ Translate, Point(x, y) });
 }
 
-void Figure::setStrokeDasharray(const string& stroke_dasharray) {
-	this->stroke_dasharray = stroke_dasharray;
+void Figure::setRotate(const string& rotate) {
+	transform.push_back({ Rotate, Point(stof(rotate), 0) });
+}
+
+void Figure::setScale(const string& scale) {
+	stringstream ss(scale);
+	float x, y = 0;
+	ss >> x >> y;
+	transform.push_back({ Scale, Point(x, y) });
+}
+
+void Figure::setTransform(const string& transform) {
+	string line = transform;
+	for (char& c : line) if (c == '(' || c == ',') c = ' ';
+
+	stringstream ss(line);
+	string attribute, value;
+	while (ss >> attribute) {
+		getline(ss, value, ')');
+		if (attribute == "translate") setTranslate(value);
+		else if (attribute == "rotate") setRotate(value);
+		else if (attribute == "scale") setScale(value);
+	}
 }
 
 void Figure::setAttribute(const string& line) {
-	//cout << "line: " << line << endl; 
 	stringstream ss(line);
 	string attribute, value;
 	while (ss >> attribute) {
@@ -98,9 +121,7 @@ void Figure::setAttribute(const string& line) {
 		else if (attribute == "fill-opacity") setFillOpacity(value);
 		else if (attribute == "stroke-width") setStrokeWidth(value);
 		else if (attribute == "stroke-opacity") setStrokeOpacity(value);
-		else if (attribute == "stroke-linecap") setStrokeLinecap(value);
-		else if (attribute == "stroke_linejoin") setStrokeLinejoin(value);
-		else if (attribute == "stroke_dasharray") setStrokeDasharray(value);
+		else if (attribute == "transform") setTransform(value);
 		else setAttribute(attribute, value);
 		if (attribute == "/") break;
 		//cout << "{" << attribute << "," << value << "}\n";
@@ -111,6 +132,7 @@ void Figure::setAttribute(const Figure* other) {
 	fill = other->fill;
 	stroke = other->stroke;
 	stroke_width = other->stroke_width;
+	transform = other->transform;
 }
 
 // Virtual method

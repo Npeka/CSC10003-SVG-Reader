@@ -1,17 +1,17 @@
 #ifndef LINE_H
 #define LINE_H
 #include "Figure.h"
-#include "Point.h"
 
 class Line : public Figure {
-private:
+protected:
 	Point p1; 
 	Point p2;
-	sf::RectangleShape line;
+
 public:
 	// Constructor
 	Line();
 	Line(const Point& p1, const Point& p2);
+	Line(const Line& line);
 
 	// Set attribute
 	void setX1(const string& x1);
@@ -21,8 +21,6 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
-	void setSFigure() override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Line() override = default;
 };
 

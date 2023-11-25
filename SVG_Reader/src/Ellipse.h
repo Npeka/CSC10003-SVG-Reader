@@ -3,16 +3,15 @@
 #include "Figure.h"
 
 class Ellipse : public Figure {
-private:
+protected:
 	float cx;
 	float cy;
 	float rx;
 	float ry;
-	sf::ConvexShape ellipse;
-	sf::ConvexShape outline;
 public:
 	// Constructor
 	Ellipse();
+	Ellipse(const Ellipse& ellipse);
 	
 	// Set attribute
 	void setCX(const string& cx);
@@ -22,12 +21,7 @@ public:
 
 	// Virtual method
 	void setAttribute(const string& attribute, const string& value) override;
-	void setSFigure() override;
-	void draw(sf::RenderWindow& window, sf::Transform& transform) override;
 	~Ellipse() override = default;
-
-
 };
 
 #endif // !ELLIPSE_H
-
