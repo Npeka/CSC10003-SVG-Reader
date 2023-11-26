@@ -9,7 +9,9 @@
 #include <cstring>
 #include <string>
 #include <vector>
+//-------------END-OF-DECLARATION------------//
 /*
+
 
 
 */
@@ -17,11 +19,13 @@
 #define Translate 1
 #define Rotate 2
 #define Scale 3
+//-------------END-OF-DECLARATION------------//
 /*
 
 
+
 */
-// Exception
+// Define shorter code
 #define tag(figure) "<" << figure << ">"
 #define check_exception(figure, attribute, code) \
 	try { code; } \
@@ -37,7 +41,11 @@
 		cerr << tag(figure); \
 		cerr << tag(attribute) << " : An unknown exception occurred.\n"; \
 	}
+#define CONVERT(T, figure) static_cast<T>(figure)
+#define ISVALID(T, figure) dynamic_cast<T>(figure)
+//-------------END-OF-DECLARATION------------//
 /*
+
 
 
 */

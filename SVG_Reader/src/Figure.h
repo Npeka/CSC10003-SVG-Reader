@@ -1,9 +1,11 @@
 #ifndef FIGURE_H
 #define FIGURE_H
+
 #include "Header.h"
 #include "Color.h"
 #include "Point.h"
 
+// class Ficgure
 class Figure {
 protected:
 	Color fill;
@@ -29,25 +31,29 @@ public:
 	void setAttribute(const Figure* other);
 
 	// Virtual method
-	virtual void setAttribute(const string& attribute, const string& value) {};
+	virtual void setAttribute(const string& attribute, const string& value);
 	virtual ~Figure() = default;
 };
+//-------------END-OF-DECLARATION------------//
 /*
 
 
+
 */
+// class FicgureFactory
 class FigureFactory {
 private:
 	// Attribute
 	static FigureFactory* Instance;
 
 	// Method
-	FigureFactory();
+	FigureFactory() = default;
 public:
 	static FigureFactory* getInstance();
 	static Figure* getFigure(const string& figure);
 	static void deleteInstance();
 };
+//-------------END-OF-DECLARATION------------//
 
 #endif // !FIGURE_H
 

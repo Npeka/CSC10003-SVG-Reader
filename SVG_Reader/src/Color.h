@@ -1,14 +1,16 @@
 #ifndef COLOR_H
 #define COLOR_H
+
 #include "Header.h"
 
 class Color {
 public:
+	// Attribute
 	float r;
 	float g;
 	float b;
 	float a;
-public:
+
 	// Constructor
 	Color();
 	Color(const string& color);

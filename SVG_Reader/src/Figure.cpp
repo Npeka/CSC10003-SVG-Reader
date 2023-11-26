@@ -8,39 +8,6 @@
 #include "Path.h"
 #include "Text.h"
 
-// class FigureFactory
-// Private
-// Attribute
-FigureFactory* FigureFactory::Instance = NULL;
-// Method
-FigureFactory::FigureFactory() {};
-
-// Public
-// Method
-FigureFactory* FigureFactory::getInstance() {
-	if (Instance == NULL)
-		Instance = new FigureFactory();
-	return Instance;
-}
-
-Figure* FigureFactory::getFigure(const string& figure) {
-	if (figure == "rect") return new Rectangle();
-	if (figure == "ellipse") return new Ellipse();
-	if (figure == "circle") return new Circle();
-	if (figure == "line") return new Line();
-	if (figure == "polyline") return new Polyline();
-	if (figure == "polygon") return new Polygon();
-	if (figure == "path") return new Path();
-	if (figure == "text") return new Text();
-	return NULL;
-}
-
-void FigureFactory::deleteInstance() {
-	if (Instance != NULL)
-		delete Instance;
-	Instance = NULL;
-}
-
 // class Ficgure
 // Constructor
 Figure::Figure() {
@@ -91,6 +58,7 @@ void Figure::setScale(const string& scale) {
 	stringstream ss(scale);
 	float x, y = 0;
 	ss >> x >> y;
+	if (y == 0) y = x;
 	transform.push_back({ Scale, Point(x, y) });
 }
 
@@ -123,7 +91,6 @@ void Figure::setAttribute(const string& line) {
 		else if (attribute == "stroke-opacity") setStrokeOpacity(value);
 		else if (attribute == "transform") setTransform(value);
 		else setAttribute(attribute, value);
-		if (attribute == "/") break;
 		//cout << "{" << attribute << "," << value << "}\n";
 	}
 }
@@ -134,5 +101,42 @@ void Figure::setAttribute(const Figure* other) {
 	stroke_width = other->stroke_width;
 	transform = other->transform;
 }
-
 // Virtual method
+void Figure::setAttribute(const string& attribute, const string& value) {};
+//-----------END-OF-IMPLEMENTATION-----------//
+/*
+
+
+
+*/
+// class FigureFactory
+// Private
+	// Attribute
+FigureFactory* FigureFactory::Instance = NULL;
+
+// Public
+	// Method
+FigureFactory* FigureFactory::getInstance() {
+	if (Instance == NULL)
+		Instance = new FigureFactory();
+	return Instance;
+}
+
+Figure* FigureFactory::getFigure(const string& figure) {
+	if (figure == "rect") return new Rectangle();
+	if (figure == "ellipse") return new Ellipse();
+	if (figure == "circle") return new Circle();
+	if (figure == "line") return new Line();
+	if (figure == "polyline") return new Polyline();
+	if (figure == "polygon") return new Polygon();
+	if (figure == "path") return new Path();
+	if (figure == "text") return new Text();
+	return NULL;
+}
+
+void FigureFactory::deleteInstance() {
+	if (Instance != NULL)
+		delete Instance;
+	Instance = NULL;
+}
+//-----------END-OF-IMPLEMENTATION-----------//

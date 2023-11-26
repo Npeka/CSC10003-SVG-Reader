@@ -16,7 +16,7 @@ Text::Text(const Text& text) : Figure(text) {
 	font_family = text.font_family;
 	font_size = text.font_size;
 	font_weight = text.font_weight;
-	data = text.font_weight;
+	data = text.data;
 }
 
 // Set attribute
