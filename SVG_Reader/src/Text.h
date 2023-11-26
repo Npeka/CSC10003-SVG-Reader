@@ -1,5 +1,6 @@
 #ifndef TEXT_H
 #define TEXT_H
+
 #include "Figure.h"
 
 class Text : public Figure {

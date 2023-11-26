@@ -1,8 +1,6 @@
 ﻿#include "Polygon.h"
 
 // Constructor
-Polygon::Polygon() = default;
-
 Polygon::Polygon(const Polygon& polygon) : Figure(polygon) {
 	point = polygon.point;
 }

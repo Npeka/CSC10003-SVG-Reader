@@ -1,7 +1,9 @@
 #ifndef SVG_IMAGE_H
 #define SVG_IMAGE_H
+
 #include "Figure.h"
 
+// class ViewBox
 class ViewBox {
 public:
 	// Attribute
@@ -16,12 +18,14 @@ public:
 	// Set attribute
 	void setAttribute(const string& viewBox);
 };
+//-------------END-OF-DECLARATION------------//
 /*
 
 
 */
+// class SVGImage
 class SVGImage {
-public:
+protected:
 	// Attribute
 	string nameFile;
 	float width;
@@ -30,7 +34,7 @@ public:
 	ViewBox viewbox;
 	vector<Figure*> figure;
 
-	// Method
+	// Methods
 	void standardizeTag(string& line);
 	void parse();
 public:
@@ -41,14 +45,17 @@ public:
 	// Destructor
 	~SVGImage();
 
-	// Method
+	// Set attribute
+	void setNameFile(const string& nameFile);
 	void setWidth(const string& width);
 	void setHeight(const string& height);
 	void setStyle(const string& style);
 	void setViewBox(const string& viewbox);
 	void setAttribute(const string& line);
 
+	// Get attribute
 	const vector<Figure*>& getFigure() const;
 };
+//-------------END-OF-DECLARATION------------//
 
 #endif // !SVG_IMAGE_H
