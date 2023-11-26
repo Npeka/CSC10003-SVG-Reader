@@ -21,15 +21,15 @@ Text::Text(const Text& text) : Figure(text) {
 
 // Set attribute
 void Text::setX(const string& x) {
-	check_exeption("text", "x", this->x = stof(x));
+	check_exception("text", "x", this->x = stof(x));
 }
 
 void Text::setY(const string& y) {
-	check_exeption("text", "y", this->y = stof(y));
+	check_exception("text", "y", this->y = stof(y));
 }
 
 void Text::setFontSize(const string& font_size) {
-	check_exeption("text", "font-size", this->font_size = stof(font_size));
+	check_exception("text", "font-size", this->font_size = stof(font_size));
 }
 
 void Text::setFontWeight(const string& font_weight) {

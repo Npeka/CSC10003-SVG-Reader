@@ -17,19 +17,19 @@ Line::Line(const Line& line) : Figure(line) {
 
 // Set attribute
 void Line::setX1(const string& x1) {
-	this->p1.x = stof(x1);
+	check_exception("line", "x1", this->p1.x = stof(x1));
 }
 
 void Line::setY1(const string& y1) {
-	this->p1.y = stof(y1);
+	check_exception("line", "y1", this->p1.y = stof(y1));
 }
 
 void Line::setX2(const string& x2) {
-	this->p2.x = stof(x2);
+	check_exception("line", "x2", this->p2.x = stof(x2));
 }
 
 void Line::setY2(const string& y2) {
-	this->p2.y = stof(y2);
+	check_exception("line", "y2", this->p2.y = stof(y2));
 }
 
 // Virtual method

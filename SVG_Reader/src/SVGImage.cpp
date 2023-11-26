@@ -103,11 +103,11 @@ SVGImage::~SVGImage() {
 
 // Method
 void SVGImage::setWidth(const string& width) {
-	this->width = stof(width);
+	check_exception("SVGImage", "width", this->width = stof(width));
 }
 
 void SVGImage::setHeight(const string& height) {
-	this->height = stof(height);
+	check_exception("SVGImage", "height", this->height = stof(height));
 }
 
 void SVGImage::setStyle(const string& style) {

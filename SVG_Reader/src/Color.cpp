@@ -26,7 +26,7 @@ Color::Color(const float& r, const float& g, const float& b, const float& a) {
 
 // Set attribute
 void Color::setA(const string& a) {
-    if (this->a) this->a = stof(a) * 255;
+    if (this->a) check_exception("color", "a", this->a = stof(a));
 }
 void Color::setA(const float& a) {
     if (this->a) this->a = a * 255;

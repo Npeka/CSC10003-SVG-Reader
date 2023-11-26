@@ -342,9 +342,16 @@ namespace sfml {
 
 	void render(const SVGImage& svgImage) {
 		sf::RenderWindow window(sf::VideoMode(1024, 720), "SFML Drawing", sf::Style::Default, sf::ContextSettings(0, 0, 8));
+
 		sf::Vector2f screenPosition(400, 300);
 
 		SF_SVGImage sf_svgImage(svgImage);
+		window.clear(set_SF_Color(white)); //set color background
+
+		//set viewbox
+		sf::View view(sf::FloatRect(0, 0, sf_svgImage.viewbox.width, sf_svgImage.viewbox.height));
+
+		window.setView(view);
 
 		float zoom = 1;
 		float angle = 0;
