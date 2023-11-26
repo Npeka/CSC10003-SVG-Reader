@@ -21,7 +21,7 @@ public:
 
 */
 class SVGImage {
-public:
+protected:
 	// Attribute
 	string nameFile;
 	float width;
