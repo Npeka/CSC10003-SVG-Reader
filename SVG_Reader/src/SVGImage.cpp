@@ -5,7 +5,8 @@
 // Constructor
 ViewBox::ViewBox() {
 	min_x = min_y = 0;
-	width = height = 0;
+	width = 1024;
+	height = 720;
 }
 
 // Set attribute
