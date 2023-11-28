@@ -2,7 +2,7 @@
 #include "src/Render.h"
 
 int main() {
-    SVGImage svgImage("sample.svg");
+    SVGImage svgImage("Ztest.svg");
     sfml::render(svgImage);
     return 0;
 }

@@ -148,6 +148,8 @@ namespace sfml {
 	// class SF_Path
 	class SF_Path : public SF_Shape, public Path {
 	private:
+		sf::RectangleShape Line(Point start, Point end);
+		void drawPath(sf::RenderWindow& window, sf::Transform& transform);
 	public:
 		SF_Path(const Path* path);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);

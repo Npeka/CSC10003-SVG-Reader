@@ -119,12 +119,10 @@ namespace sfml {
 		if (end.x < start.x) swap(start, end);
 
 		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-		line.setSize(sf::Vector2f(length, stroke_width));
+		line.setSize(sf::Vector2f(length, stroke_width / 2));
 
 		float angle = atan((end.y - start.y) / (end.x - start.x));
 		angle = angle * 180 / M_PI;
-		start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
-		start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
 
 		line.rotate(angle);
 		line.setPosition(start.x, start.y);
@@ -135,6 +133,10 @@ namespace sfml {
 
 	void SF_Line::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
 		window.draw(line, transform);
+		float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
+		line.setSize(sf::Vector2f(length, -stroke_width / 2));
+		window.draw(line, transform);
+
 	}
 	//-----------end-of-implementation-----------//
 	/*
@@ -228,6 +230,7 @@ namespace sfml {
 			}
 		}
 		drawPolyline(window, transform);
+		
 	}
 
 	void SF_Polyline::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
@@ -284,13 +287,62 @@ namespace sfml {
 
 
 	*/
-	// class SF_Path
-	SF_Path::SF_Path(const Path* path) {
 
+	// class SF_Path
+	sf::RectangleShape SF_Path::Line(Point start, Point end) {
+		if (end.x < start.x) swap(start, end);
+		stroke_width = 1; 
+		sf::RectangleShape line; 
+		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
+		line.setSize(sf::Vector2f(length, stroke_width));
+
+		float angle = atan((end.y - start.y) / (end.x - start.x));
+		angle = angle * 180 / M_PI;
+		start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
+		start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
+
+		line.rotate(angle);
+		line.setPosition(start.x, start.y);
+		line.setFillColor(set_SF_Color(stroke));
+		cout << "stroke: " << stroke.r << " " << stroke.g << " " << stroke.b << endl; 
+		set_SF_ShapeTransform<sf::RectangleShape>(line, transform);
+		return line; 
 	}
 
-	void SF_Path::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+	SF_Path::SF_Path(const Path* path) : Path(*path) { 
+		
+	}
 
+	void SF_Path::drawPath(sf::RenderWindow& window, sf::Transform& transform) {
+		for (auto x : path) {
+			char cmd = x.first; 
+
+			if (cmd == 'V' || cmd == 'H') {
+				sf::RectangleShape line1 = Line(x.second[0], x.second[1]);
+				sf::RectangleShape line2 = Line(x.second[0], x.second[2]);
+				window.draw(line1, transform);
+				window.draw(line2, transform);
+			}
+
+			else if (cmd == 'c' || cmd == 'C') {
+				for (auto y : x.second) {
+					cout << y.x << " " << y.y << endl; 
+				}
+				vector<Point> CVertices = Path::CVertices(x.second);
+				for (int i = 0; i < CVertices.size() - 1; i++) {
+					sf::RectangleShape line = Line(CVertices[i], CVertices[i + 1]);
+					window.draw(line, transform);
+				}
+			}
+
+			else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'z' || cmd == 'Z') {
+				sf::RectangleShape line = Line(x.second[0], x.second[1]);
+				window.draw(line, transform);
+			}
+		}
+	}
+	void SF_Path::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
+		drawPath(window, transform);
 	}
 	//-----------end-of-implementation-----------//
 	/*
