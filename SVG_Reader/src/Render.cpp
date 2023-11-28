@@ -342,7 +342,6 @@ namespace sfml {
 		sf::Vector2f screenPosition(400, 300);
 
 		window.clear(set_SF_Color(background)); //set color background
-		window.setView(view); //set viewbox
 
 		float zoom = 1;
 		float angle = 0;
@@ -385,7 +384,7 @@ namespace sfml {
 			draw_SF_SVGImage(window, transform);
 
 			// Di chuyển màn hình
-			window.setView(sf::View(screenPosition, sf::Vector2f(window.getSize().x, window.getSize().y)));
+			window.setView(view);
 			window.display();
 		}
 	}
