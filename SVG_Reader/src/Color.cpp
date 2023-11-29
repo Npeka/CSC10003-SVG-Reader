@@ -45,6 +45,7 @@ void Color::setRGB(const string& color) {
         a = 0;
     }
     else {
+        if (a == 0) a = 255;
         *this = setColorByName(color);
 	}
 }
