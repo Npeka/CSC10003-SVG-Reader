@@ -14,19 +14,19 @@ Ellipse::Ellipse(const Ellipse& ellipse) : Figure(ellipse) {
 
 // Set attribute
 void Ellipse::setCX(const string& cx) {
-	this->cx = stof(cx);
+	check_exception("ellipse", "cx", this->cx = stof(cx));
 }
 
 void Ellipse::setCY(const string& cy) {
-	this->cy = stof(cy);
+	check_exception("ellipse", "cy", this->cy = stof(cy));
 }
 
 void Ellipse::setRX(const string& rx) {
-	this->rx = stof(rx);
+	check_exception("ellipse", "rx", this->rx = stof(rx));
 }
 
 void Ellipse::setRY(const string& ry) {
-	this->ry = stof(ry);
+	check_exception("ellipse", "ry", this->ry = stof(ry));
 }
 
 // Virtual method

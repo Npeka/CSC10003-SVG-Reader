@@ -5,19 +5,24 @@
 // Constructor
 ViewBox::ViewBox() {
 	min_x = min_y = 0;
-	width = height = 0;
+	width = 1024;
+	height = 720;
 }
 
 // Set attribute
 void ViewBox::setAttribute(const string& viewbox) {
 	stringstream ss(viewbox);
-	ss >> min_x >> min_y >> width >> height;
+	check_exception("viewbox", "value", ss >> min_x >> min_y >> width >> height);
 }
-//-----------end-of-implementation-----------//
+//-----------END-OF-IMPLEMENTATION-----------//
+/*
 
+
+
+*/
 // class SVGImage
 // Private
-// Method
+	// Methods
 void SVGImage::standardizeTag(string& line) {
 	for (int i = 0; i < line.size(); ++i) {	
 		if (line[i] == '=') line[i] = ' ';
@@ -75,7 +80,7 @@ void SVGImage::parse() {
 }
 
 // Public
-// Constructors
+	// Constructors
 SVGImage::SVGImage(const string& nameFile) {
 	this->nameFile = nameFile;	
 	width = 0;
@@ -92,7 +97,7 @@ SVGImage::SVGImage(const SVGImage& svgImage) {
 	height = svgImage.height;
 }
 
-// Destructor
+	// Destructor
 SVGImage::~SVGImage() {
 	for (Figure* f : figure) {
 		delete f;
@@ -101,13 +106,18 @@ SVGImage::~SVGImage() {
 	figure.resize(0);
 }
 
-// Method
+	// Set attribute
+void SVGImage::setNameFile(const string& nameFile) {
+	this->nameFile = nameFile;
+	parse();
+}
+
 void SVGImage::setWidth(const string& width) {
-	this->width = stof(width);
+	check_exception("SVGImage", "width", this->width = stof(width));
 }
 
 void SVGImage::setHeight(const string& height) {
-	this->height = stof(height);
+	check_exception("SVGImage", "height", this->height = stof(height));
 }
 
 void SVGImage::setStyle(const string& style) {
@@ -136,7 +146,8 @@ void SVGImage::setAttribute(const string& line) {
 	}
 }
 
+	// Get attribute
 const vector<Figure*>& SVGImage::getFigure() const {
 	return figure;
 }
-//-----------end-of-implementation-----------//
+//-----------END-OF-IMPLEMENTATION-----------//

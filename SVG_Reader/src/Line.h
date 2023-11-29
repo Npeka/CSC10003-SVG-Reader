@@ -1,12 +1,12 @@
 #ifndef LINE_H
 #define LINE_H
+
 #include "Figure.h"
 
 class Line : public Figure {
 protected:
 	Point p1; 
 	Point p2;
-
 public:
 	// Constructor
 	Line();

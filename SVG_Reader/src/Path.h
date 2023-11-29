@@ -4,8 +4,6 @@
 #include "Figure.h"
 #include "Line.h"
 
-class SubPath;
-
 class Path : public Figure {
 protected:
 	vector<pair<char, vector<Point>>> path;

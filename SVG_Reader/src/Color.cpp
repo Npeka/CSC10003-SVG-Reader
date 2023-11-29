@@ -11,10 +11,7 @@ Color::Color(const string& color) {
 }
 
 Color::Color(const Color& color) {
-    r = color.r;
-    g = color.g;
-    b = color.b;
-    a = color.a;
+    *this = color;
 }
 
 Color::Color(const float& r, const float& g, const float& b, const float& a) {
@@ -26,7 +23,7 @@ Color::Color(const float& r, const float& g, const float& b, const float& a) {
 
 // Set attribute
 void Color::setA(const string& a) {
-    if (this->a) this->a = stof(a) * 255;
+    if (this->a) check_exception("color", "a", this->a = stof(a) * 255);
 }
 void Color::setA(const float& a) {
     if (this->a) this->a = a * 255;
@@ -40,9 +37,9 @@ void Color::setRGB(const string& color) {
         if (a == 0) a = 255;
 	}
 	else if (color[0] == '#') {
-		r = stoi(color.substr(1, 2), NULL, 16);
-		g = stoi(color.substr(3, 2), NULL, 16);
-		b = stoi(color.substr(5, 2), NULL, 16);
+		check_exception("color", "r", r = stoi(color.substr(1, 2), NULL, 16));
+		check_exception("color", "g", g = stoi(color.substr(3, 2), NULL, 16));
+		check_exception("color", "b", b = stoi(color.substr(5, 2), NULL, 16));
 	}
     else if (color == "none") {
         a = 0;

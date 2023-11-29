@@ -1,5 +1,6 @@
 #ifndef POLYGON_H
 #define POLYGON_H
+
 #include "Figure.h"
 
 class Polygon : public Figure {
@@ -7,7 +8,7 @@ protected:
 	vector <Point> point;
 public:
 	// Constructor
-	Polygon();
+	Polygon() = default;
 	Polygon(const Polygon& polygon);
 
 	// Set attribute
