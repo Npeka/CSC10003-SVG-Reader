@@ -131,7 +131,6 @@ namespace sfml {
 		line.rotate(angle);
 		line.setPosition(start.x, start.y);
 		line.setFillColor(set_SF_Color(stroke));
-		set_SF_ShapeTransform<sf::RectangleShape>(line, transform);
 	}
 
 	void SF_Line::setLine(Color stroke) {
@@ -141,9 +140,9 @@ namespace sfml {
 	// Virtual method
 	void SF_Line::draw_SF_Shape(sf_Render(window, transform)) {
 		sf_Transform(window.draw(line, transform));
-    float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
+		float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 		line.setSize(sf::Vector2f(length, -stroke_width / 2));
-    sf_Transform(window.draw(line, transform);
+		sf_Transform(window.draw(line, transform));
 	}
 	//-----------END-OF-IMPLEMENTATION-----------//
 	/*
@@ -344,13 +343,13 @@ namespace sfml {
 	}
 	void SF_Path::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
 		drawPath(window, transform);
+	}
 
 	// Virtual method
 	void SF_Path::draw_SF_Shape(sf_Render(window, transform)) {
 		SF_Transform_First(this->transform, window, transform);
 
 		SF_Transform_Second(this->transform, window, transform);
-
 	}
 	//-----------END-OF-IMPLEMENTATION-----------//
 	/*

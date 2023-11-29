@@ -205,6 +205,7 @@ namespace sfml {
 		SF_Path(const Path* path);
 
 		// Virtual method
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 		void draw_SF_Shape(sf_Render(window, transform)) override;
 		~SF_Path() override = default;
 	};

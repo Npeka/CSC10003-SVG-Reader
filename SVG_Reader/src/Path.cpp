@@ -8,6 +8,7 @@ void Path::setPath(const string& line) {
 	vector<int> pos;
 	vector<string> subline;
 
+
 	for (int i = 0; i < value.length(); i++) {
 		if (isalpha(value[i])) pos.push_back(i);
 		if (i == value.length() - 1) pos.push_back(i + 1);
