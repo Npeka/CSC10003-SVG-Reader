@@ -68,7 +68,7 @@ namespace sfml {
 		SF_Ellipse(const Ellipse* rect);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
 
 
@@ -82,7 +82,7 @@ namespace sfml {
 		SF_Circle(const Circle* circle);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
 
 
@@ -92,10 +92,12 @@ namespace sfml {
 	private:
 		sf::RectangleShape line;
 	public:
+		SF_Line();
 		SF_Line(const Line* line);
+		void setLine(Color stroke);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
 
 
@@ -112,9 +114,9 @@ namespace sfml {
 		SF_Polyline(const Polyline* polyline);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
-	
+
 
 	*/
 	// class SF_Polygon
@@ -126,7 +128,7 @@ namespace sfml {
 		SF_Polygon(const Polygon* polygon);
 		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
 
 
@@ -138,17 +140,17 @@ namespace sfml {
 		sf::Text text;
 	public:
 		SF_Text(const Text* text);
-		void draw_SF_Shape(sf::RenderWindow & window, sf::Transform & transform);
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
 
 
 	*/
 	// class SF_Path
-	class SF_Path : public SF_Shape, public Path {
+	class SF_Path : public SF_Shape, public Path, public SF_Line {
 	private:
-		sf::RectangleShape Line(Point start, Point end);
+		Color getStroke();
 		void drawPath(sf::RenderWindow& window, sf::Transform& transform);
 	public:
 		SF_Path(const Path* path);
@@ -168,7 +170,7 @@ namespace sfml {
 		SF_SVGImage(const SVGImage& svgImage);
 		void draw_SF_SVGImage(sf::RenderWindow& window, sf::Transform& transform);
 	};
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 	/*
 
 
@@ -178,7 +180,7 @@ namespace sfml {
 	void set_SF_ShapeTransform(sf_shape& shape, const vector< pair<int, Point> >& transform);
 	sf::Color set_SF_Color(const Color& color);
 	void render(const SVGImage& svgImage);
-    //-------------END-OF-DECLARATION------------//
+	//-------------END-OF-DECLARATION------------//
 }
 
 #endif // !RENDER_H
