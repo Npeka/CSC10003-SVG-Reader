@@ -139,10 +139,11 @@ namespace sfml {
 
 	// Virtual method
 	void SF_Line::draw_SF_Shape(sf_Render(window, transform)) {
+		sf::RectangleShape tmpLine = line; 
 		sf_Transform(window.draw(line, transform));
 		float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
-		line.setSize(sf::Vector2f(length, -stroke_width / 2));
-		sf_Transform(window.draw(line, transform));
+		tmpLine.setSize(sf::Vector2f(length, -stroke_width / 2));
+		sf_Transform(window.draw(tmpLine, transform));
 	}
 	//-----------END-OF-IMPLEMENTATION-----------//
 	/*
@@ -214,7 +215,7 @@ namespace sfml {
 		
 	}
 	// Public
-		// Constructor
+	// Constructor
 	SF_Polyline::SF_Polyline(const Polyline* polyline) : Polyline(*polyline) {
 		int size = (int)fpoint.size();
 
@@ -306,7 +307,7 @@ namespace sfml {
 	// class SF_Path
 
 	// Constructor
-	SF_Path::SF_Path(const Path* path) : Path(*path), SF_Line() {}
+	SF_Path::SF_Path(const Path* path) : Path(*path) {}
 
 	Color SF_Path::getStroke() {
 		return Path::stroke; 
@@ -341,15 +342,12 @@ namespace sfml {
 			}
 		}
 	}
-	void SF_Path::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
-		drawPath(window, transform);
-	}
 
 	// Virtual method
 	void SF_Path::draw_SF_Shape(sf_Render(window, transform)) {
-		SF_Transform_First(this->transform, window, transform);
-
-		SF_Transform_Second(this->transform, window, transform);
+		//SF_Transform_First(this->transform, window, transform);
+		//SF_Transform_Second(this->transform, window, transform);
+		sf_Transform(drawPath(window, transform));
 	}
 	//-----------END-OF-IMPLEMENTATION-----------//
 	/*
@@ -384,7 +382,7 @@ namespace sfml {
 	void SF_SVGImage::render() {
 		sf::RenderWindow window(sf::VideoMode(1024, 720), "SFML Drawing", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 		sf::View view(sf::FloatRect(0, 0, viewbox.width, viewbox.height));
-		sf::Vector2f screenPosition(400, 300);
+		sf::Vector2f screenPosition(viewbox.width / 2, viewbox.height / 2);
 
 		window.clear(set_SF_Color(background)); //set color background
 
@@ -429,7 +427,7 @@ namespace sfml {
 			draw_SF_SVGImage(window, transform);
 
 			// Di chuyển màn hình
-			window.setView(view);
+			window.setView(sf::View(screenPosition, sf::Vector2f(window.getSize().x, window.getSize().y)));
 			window.display();
 		}
 	}
