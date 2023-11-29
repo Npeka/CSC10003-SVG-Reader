@@ -120,7 +120,6 @@ namespace sfml {
 		SF_Line();
 		SF_Line(const Line* line);
 		void setLine(Color stroke);
-		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
     
 		// Virtual method
 		void draw_SF_Shape(sf_Render(window, transform)) override;
@@ -196,7 +195,7 @@ namespace sfml {
 
 	*/
 	// class SF_Path
-	class SF_Path : public SF_Shape, public Path, public SF_Line {
+	class SF_Path : public SF_Shape, public Path {
 	private:
 		Color getStroke();
 		void drawPath(sf::RenderWindow& window, sf::Transform& transform);
@@ -205,7 +204,6 @@ namespace sfml {
 		SF_Path(const Path* path);
 
 		// Virtual method
-		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
 		void draw_SF_Shape(sf_Render(window, transform)) override;
 		~SF_Path() override = default;
 	};
