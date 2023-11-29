@@ -1,4 +1,4 @@
-﻿#include "src/SVGImage.h"
+#include "src/SVGImage.h"
 #include "src/Render.h"
 
 int main() {

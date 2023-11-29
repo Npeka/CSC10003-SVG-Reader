@@ -1,4 +1,4 @@
-﻿#ifndef RENDER_H
+#ifndef RENDER_H
 #define RENDER_H
 
 #include "Header.h"
@@ -116,9 +116,12 @@ namespace sfml {
 	private:
 		sf::RectangleShape line;
 	public:
-		// Constructor
+    // Constructor 
+		SF_Line();
 		SF_Line(const Line* line);
-
+		void setLine(Color stroke);
+		void draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform);
+    
 		// Virtual method
 		void draw_SF_Shape(sf_Render(window, transform)) override;
 		~SF_Line() override = default;
@@ -151,7 +154,6 @@ namespace sfml {
 	};
 	//-------------END-OF-DECLARATION------------//
 	/*
-
 
 
 	*/
@@ -194,8 +196,10 @@ namespace sfml {
 
 	*/
 	// class SF_Path
-	class SF_Path : public SF_Shape, public Path {
+	class SF_Path : public SF_Shape, public Path, public SF_Line {
 	private:
+		Color getStroke();
+		void drawPath(sf::RenderWindow& window, sf::Transform& transform);
 	public:
 		// Constructor
 		SF_Path(const Path* path);
