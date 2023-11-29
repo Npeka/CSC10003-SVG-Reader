@@ -113,18 +113,18 @@ namespace sfml {
 
 	*/
 	// class SF_Line
+	SF_Line::SF_Line() {};
+
 	SF_Line::SF_Line(const Line* other) : Line(*other) {
 		Point start(p1);
 		Point end(p2);
-		if (end.x < start.x) swap(start, end);
+		//if (end.x < start.x) swap(start, end);
 
 		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-		line.setSize(sf::Vector2f(length, stroke_width));
+		line.setSize(sf::Vector2f(length, stroke_width / 2));
 
 		float angle = atan((end.y - start.y) / (end.x - start.x));
 		angle = angle * 180 / M_PI;
-		start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
-		start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
 
 		line.rotate(angle);
 		line.setPosition(start.x, start.y);
@@ -135,6 +135,10 @@ namespace sfml {
 
 	void SF_Line::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
 		window.draw(line, transform);
+		float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
+		line.setSize(sf::Vector2f(length, -stroke_width / 2));
+		window.draw(line, transform);
+		
 	}
 	//-----------end-of-implementation-----------//
 	/*
@@ -151,44 +155,108 @@ namespace sfml {
 			lines[i].setFillColor(set_SF_Color(stroke));
 
 			if (i > 0 && i < fpoint.size() - 1) {
-				float angle1 = getAngle(fpoint[i - 1], fpoint[i]) * M_PI / 180;
-				float angle2 = getAngle(fpoint[i], fpoint[i + 1]) * M_PI / 180;
+				double angle1 = getAngle(fpoint[i - 1], fpoint[i]) * M_PI / 180;
+				double angle2 = getAngle(fpoint[i], fpoint[i + 1]) * M_PI / 180;
 
-				float p3_x = fpoint[i].x - stroke_width * cos(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
-				float p3_y = fpoint[i].y + stroke_width * sin(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
+				FPoint A, B, C, D;
+				A.x = fpoint[i].x - (stroke_width / 2) * sin(angle1);
+				A.y = fpoint[i].y + (stroke_width / 2) * cos(angle1);
+
+				B.x = fpoint[i - 1].x - (stroke_width / 2) * sin(angle1);
+				B.y = fpoint[i - 1].y + (stroke_width / 2)* cos(angle1);
+
+				C.x = fpoint[i].x - (stroke_width / 2) * sin(angle2);
+				C.y = fpoint[i].y + (stroke_width / 2) * cos(angle2);
+
+				D.x = fpoint[i + 1].x - (stroke_width / 2) * sin(angle2);
+				D.y = fpoint[i + 1].y + (stroke_width / 2) * cos(angle2);
+				
+				cout << A.x << " " << A.y << endl;
+				cout << B.x << " " << B.y << endl;
+				cout << C.x << " " << C.y << endl;
+				cout << D.x << " " << D.y << endl;
+				cout << endl;
+
+				FPoint p1, p2, p3, p4;
+				p1 = IntersectionPoint(A, B, C, D);
+				cout << p1.x << " " << p1.y << endl << endl;
+				
+				p3.x = 2 * fpoint[i].x - p1.x;
+				p3.y = 2 * fpoint[i].y - p1.y;
+
+				if (angle1 > angle2) {
+					swap(p1, p3);
+					p2.x = p1.x - stroke_width * sin(angle1);
+					p2.y = p1.y + stroke_width * cos(angle1);
+
+					p4.x = p1.x - stroke_width * sin(angle2);
+					p4.y = p1.y + stroke_width * cos(angle2);
+				}
+
+				else{
+					p2.x = p1.x + stroke_width * sin(angle1);
+					p2.y = p1.y - stroke_width * cos(angle1);
+
+					p4.x = p1.x + stroke_width * sin(angle2);
+					p4.y = p1.y - stroke_width * cos(angle2);
+				}
 
 				joint[i - 1].setPointCount(4);
 
-				joint[i - 1].setPoint(0, sf::Vector2f(fpoint[i].x, fpoint[i].y));
-				joint[i - 1].setPoint(1, sf::Vector2f(fpoint[i].x - stroke_width * sin(angle1), fpoint[i].y + stroke_width * cos(angle1)));
-				joint[i - 1].setPoint(2, sf::Vector2f(p3_x, p3_y));
-				joint[i - 1].setPoint(3, sf::Vector2f(fpoint[i].x - stroke_width * sin(angle2), fpoint[i].y + stroke_width * cos(angle2)));
-
-				joint[i - 1].setPosition(-stroke_width / 2, -stroke_width / 2);
+				joint[i - 1].setPoint(0, sf::Vector2f(p1.x, p1.y));
+				joint[i - 1].setPoint(1, sf::Vector2f(p2.x, p2.y));
+				joint[i - 1].setPoint(2, sf::Vector2f(p3.x, p3.y));
+				joint[i - 1].setPoint(3, sf::Vector2f(p4.x, p4.y));
 			}
 		}
 	}
 
 	sf::RectangleShape SF_Polyline::Line(FPoint start, FPoint end) {
+		sf::RectangleShape line;
 		if (end.x < start.x) swap(start, end);
 
 		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-		sf::RectangleShape line(sf::Vector2f(length, stroke_width));
 
 		float angle = atan((end.y - start.y) / (end.x - start.x));
 		angle = angle * 180 / M_PI;
 
+		line.setSize(sf::Vector2f(length, stroke_width / 2));
+
 		line.rotate(angle);
-		line.setOutlineThickness(0);
-		line.setPosition(start.x - stroke_width / 2, start.y - stroke_width / 2);
+		line.setPosition(start.x, start.y);
+		line.setFillColor(set_SF_Color(stroke));
 		return line;
 	}
 
+
 	void SF_Polyline::drawPolyline(sf::RenderWindow& window, sf::Transform transform) {
-
+		sf::RectangleShape line, next_line;
+		next_line = lines[0];
 		for (int i = 0; i < fpoint.size() - 1; i++) {
-			window.draw(lines[i], transform);
+			line = next_line;
+			if (i != fpoint.size() - 2)
+			{
+				next_line = lines[i + 1];
 
+				float angle1 = getAngle(fpoint[i], fpoint[i + 1]);
+				float angle2 = getAngle(fpoint[i + 1], fpoint[i + 2]);
+				float angle = 180 - angle1 - angle2;
+
+				angle = angle * M_PI / 180;
+				angle1 = angle1 * M_PI / 180;
+				angle2 = angle2 * M_PI / 180;
+
+				float delta_length = abs(tan(angle / 2) * (stroke_width / 2));
+
+				line.setSize(sf::Vector2f(line.getSize().x - delta_length, line.getSize().y));
+
+				next_line.setSize(sf::Vector2f(next_line.getSize().x - delta_length, next_line.getSize().y));
+				next_line.setPosition(next_line.getPosition().x + delta_length * cos(angle2), next_line.getPosition().y + delta_length * sin(angle2));		
+			}
+			
+			window.draw(line, transform);
+			line.setSize(sf::Vector2f(line.getSize().x, -line.getSize().y));
+			window.draw(line, transform);
 			if (i > 0 && i < fpoint.size() - 1) {
 				joint[i - 1].setFillColor(set_SF_Color(stroke));
 				window.draw(joint[i - 1], transform); //draw joint
@@ -221,7 +289,6 @@ namespace sfml {
 				}
 
 				fillArea.setOutlineThickness(0);
-				fillArea.setPosition(-stroke_width / 2, -stroke_width / 2);
 				fillArea.setFillColor(set_SF_Color(fill));
 				window.draw(fillArea, transform);
 				i = end - 1;
@@ -285,12 +352,37 @@ namespace sfml {
 
 	*/
 	// class SF_Path
-	SF_Path::SF_Path(const Path* path) {
 
+	SF_Path::SF_Path(const Path* path) : Path(*path), SF_Line(){}
+
+	void SF_Path::drawPath(sf::RenderWindow& window, sf::Transform& transform) {
+		for (auto x : path) {
+			char cmd = x.first;
+
+			if (cmd == 'V' || cmd == 'H') {
+				SF_Line line1 = new Line(x.second[0], x.second[1]);
+				SF_Line line2 = new Line(x.second[0], x.second[2]);
+				line1.draw_SF_Shape(window, transform);
+				line2.draw_SF_Shape(window, transform);
+			}
+
+			else if (cmd == 'c' || cmd == 'C') {
+				vector<Point> CVertices = Path::CVertices(x.second);
+
+				for (int i = 0; i < CVertices.size() - 1; i++) {
+					SF_Line line = new Line(CVertices[i], CVertices[i + 1]);
+					line.draw_SF_Shape(window, transform);
+				}
+			}
+
+			else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'z' || cmd == 'Z') {
+				SF_Line line = new Line(x.second[0], x.second[1]);
+				line.draw_SF_Shape(window, transform);
+			}
+		}
 	}
-
 	void SF_Path::draw_SF_Shape(sf::RenderWindow& window, sf::Transform& transform) {
-
+		drawPath(window, transform);
 	}
 	//-----------end-of-implementation-----------//
 	/*
@@ -384,6 +476,7 @@ namespace sfml {
 			transform.scale(zoom, zoom);
 			transform.rotate(angle, 400, 300);
 			// vẽ hình
+
 			sf_svgImage.draw_SF_SVGImage(window, transform);
 
 			// Di chuyển màn hình

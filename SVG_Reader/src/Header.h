@@ -3,12 +3,15 @@
 
 // C++ library
 #define _USE_MATH_DEFINES
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <cstring>
 #include <string>
 #include <vector>
+#include <cmath>
+#include <math.h>
 /*
 
 
