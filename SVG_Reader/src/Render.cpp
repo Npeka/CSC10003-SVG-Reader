@@ -1,4 +1,4 @@
-﻿#include "Render.h"
+#include "Render.h"
 
 // Template method
 template <class _Figure, class _Rectangle, class _Ellipse, class _Circle, class _Line, class _Polyline, class _Polygon, class _Text, class _Path>
@@ -114,28 +114,36 @@ namespace sfml {
 
 	*/
 	// class SF_Line
-	// Constructor
+  
+  // Constructor
+	SF_Line::SF_Line() {};
 	SF_Line::SF_Line(const Line* other) : Line(*other) {
 		Point start(p1);
 		Point end(p2);
 		if (end.x < start.x) swap(start, end);
 
 		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
-		line.setSize(sf::Vector2f(length, stroke_width));
+		line.setSize(sf::Vector2f(length, stroke_width / 2));
 
 		float angle = atan((end.y - start.y) / (end.x - start.x));
 		angle = angle * 180 / M_PI;
-		start.x += (stroke_width / 2) * cos(M_PI_2 - angle);
-		start.y -= (stroke_width / 2) * sin(M_PI_2 - angle);
 
 		line.rotate(angle);
 		line.setPosition(start.x, start.y);
 		line.setFillColor(set_SF_Color(stroke));
 	}
 
+	void SF_Line::setLine(Color stroke) {
+		this->line.setFillColor(set_SF_Color(stroke));
+	}
+
 	// Virtual method
 	void SF_Line::draw_SF_Shape(sf_Render(window, transform)) {
+		sf::RectangleShape tmpLine = line; 
 		sf_Transform(window.draw(line, transform));
+		float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
+		tmpLine.setSize(sf::Vector2f(length, -stroke_width / 2));
+		sf_Transform(window.draw(tmpLine, transform));
 	}
 	//-----------END-OF-IMPLEMENTATION-----------//
 	/*
@@ -204,9 +212,10 @@ namespace sfml {
 			}
 		}
 		drawPolyline(window, transform);
+		
 	}
 	// Public
-		// Constructor
+	// Constructor
 	SF_Polyline::SF_Polyline(const Polyline* polyline) : Polyline(*polyline) {
 		int size = (int)fpoint.size();
 
@@ -275,7 +284,7 @@ namespace sfml {
 	// class SF_Text
 	// Constructor
 	SF_Text::SF_Text(const Text* other) : Text(*other) {
-		if (!font.loadFromFile(string("SFML/font-family/" + font_family + ".ttf"))) exit(1);
+		if (!font.loadFromFile(string("SFML/font-family/" + font_family + ".ttf")));
 		text.setFont(font);
 		text.setCharacterSize(font_size);
 		text.setPosition(x, y - font_size);
@@ -294,17 +303,51 @@ namespace sfml {
 
 
 	*/
-	// class SF_Path
-	// Constructor
-	SF_Path::SF_Path(const Path* path) {
 
+	// class SF_Path
+
+	// Constructor
+	SF_Path::SF_Path(const Path* path) : Path(*path) {}
+
+	Color SF_Path::getStroke() {
+		return Path::stroke; 
+	}
+
+	void SF_Path::drawPath(sf::RenderWindow& window, sf::Transform& transform) {
+		for (auto x : path) {
+			char cmd = x.first;
+			if (cmd == 'V' || cmd == 'H') {
+				SF_Line line1 = new Line(x.second[0], x.second[1]);
+				SF_Line line2 = new Line(x.second[0], x.second[2]);
+				line1.setLine(getStroke());
+				line2.setLine(getStroke());
+				line1.draw_SF_Shape(window, transform);
+				line2.draw_SF_Shape(window, transform);
+			}
+
+			else if (cmd == 'c' || cmd == 'C') {
+				vector<Point> CVertices = Path::CVertices(x.second);
+
+				for (int i = 0; i < CVertices.size() - 1; i++) {
+					SF_Line line = new Line(CVertices[i], CVertices[i + 1]);
+					line.setLine(getStroke());
+					line.draw_SF_Shape(window, transform);
+				}
+			}
+
+			else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'z' || cmd == 'Z') {
+				SF_Line line = new Line(x.second[0], x.second[1]);
+				line.setLine(getStroke());
+				line.draw_SF_Shape(window, transform);
+			}
+		}
 	}
 
 	// Virtual method
 	void SF_Path::draw_SF_Shape(sf_Render(window, transform)) {
-		SF_Transform_First(this->transform, window, transform);
-
-		SF_Transform_Second(this->transform, window, transform);
+		//SF_Transform_First(this->transform, window, transform);
+		//SF_Transform_Second(this->transform, window, transform);
+		sf_Transform(drawPath(window, transform));
 	}
 	//-----------END-OF-IMPLEMENTATION-----------//
 	/*
@@ -339,7 +382,7 @@ namespace sfml {
 	void SF_SVGImage::render() {
 		sf::RenderWindow window(sf::VideoMode(1024, 720), "SFML Drawing", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 		sf::View view(sf::FloatRect(0, 0, viewbox.width, viewbox.height));
-		sf::Vector2f screenPosition(400, 300);
+		sf::Vector2f screenPosition(viewbox.width / 2, viewbox.height / 2);
 
 		window.clear(set_SF_Color(background)); //set color background
 
@@ -384,7 +427,7 @@ namespace sfml {
 			draw_SF_SVGImage(window, transform);
 
 			// Di chuyển màn hình
-			window.setView(view);
+			window.setView(sf::View(screenPosition, sf::Vector2f(window.getSize().x, window.getSize().y)));
 			window.display();
 		}
 	}
