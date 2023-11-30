@@ -30,23 +30,35 @@ void Color::setA(const float& a) {
 }
 
 void Color::setRGB(const string& color) {
-	if (color.find("rgb") != string::npos) {
-		string rgb(color);
-		for (char& c : rgb) if (!isdigit(c)) c = ' ';
-		stringstream ss(rgb); ss >> r >> g >> b;
-        if (a == 0) a = 255;
-	}
-	else if (color[0] == '#') {
-		check_exception("color", "r", r = stoi(color.substr(1, 2), NULL, 16));
-		check_exception("color", "g", g = stoi(color.substr(3, 2), NULL, 16));
-		check_exception("color", "b", b = stoi(color.substr(5, 2), NULL, 16));
-	}
-    else if (color == "none") {
+    string Color(color);
+    for (int i = 0; i < Color.size(); i++) {
+        if (Color[i] == ' ') {
+            Color.erase(i, 1);
+            i--;
+        }
+    }
+
+    if (a == 0) a = 255;
+    if (Color == "none") {
         a = 0;
     }
+	else if (color.find("rgb") != string::npos) {
+		string rgb(Color);
+		for (char& c : rgb) if (!isdigit(c)) c = ' ';
+		stringstream ss(rgb); ss >> r >> g >> b;
+	}
+    else if (Color[0] == '#') {
+        if (Color.size() < 7) {
+            Color.insert(2, 1, Color[1]);
+            Color.insert(4, 1, Color[3]);
+            Color.insert(6, 1, Color[5]);
+        }
+        check_exception("color #6", "r", r = stoi(Color.substr(1, 2), NULL, 16));
+        check_exception("color #6", "g", g = stoi(Color.substr(3, 2), NULL, 16));
+        check_exception("color #6", "b", b = stoi(Color.substr(5, 2), NULL, 16));
+	}
     else {
-        if (a == 0) a = 255;
-        *this = setColorByName(color);
+        *this = setColorByName(Color);
 	}
 }
 
