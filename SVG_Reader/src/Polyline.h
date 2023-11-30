@@ -10,6 +10,7 @@ protected:
 	// Method
 	FPoint IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
 	bool checkIntersection(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
+	void findCornerPoint(float& min_x, float& max_x, float& min_y, float& max_y);
 	void updateListPoint(vector<FPoint>& FPoint);
 	float getAngle(const FPoint& start, const FPoint& end);
 

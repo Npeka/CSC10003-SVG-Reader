@@ -17,7 +17,22 @@ bool Polyline::checkIntersection(const FPoint& p1, const FPoint& p2, const FPoin
 		return true;
 }
 
+void Polyline::findCornerPoint(float& min_x, float& max_x, float& min_y, float& max_y) {
+	for (int i = 0; i < fpoint.size(); i++) {
+		if (fpoint[i].x < min_x) min_x = fpoint[i].x;
+		if (fpoint[i].x > max_x) max_x = fpoint[i].x;
+		if (fpoint[i].x < min_y) min_y = fpoint[i].y;
+		if (fpoint[i].x > max_y) max_y = fpoint[i].y;
+	}
+}
+
 void Polyline::updateListPoint(vector<FPoint>& pointList) {
+	float min_x = INT_MAX;
+	float min_y = INT_MAX;
+	float max_x = INT_MIN;
+	float max_y = INT_MIN;
+	findCornerPoint(min_x, max_x, min_y, max_y);
+
 	for (int i = 1; i < pointList.size(); i++) {
 		if (checkIntersection(pointList[i - 1], pointList[i], pointList.front(), pointList.back())) {
 			FPoint p = IntersectionPoint(pointList[i - 1], pointList[i], pointList.front(), pointList.back());
@@ -28,6 +43,11 @@ void Polyline::updateListPoint(vector<FPoint>& pointList) {
 					break;
 				}
 			}
+
+			if (p.x > max_x || p.x < min_x || p.y > max_y || p.y < min_y) {
+				add = false;
+			}
+
 			if (p.x > max(pointList[i].x, pointList[i - 1].x) || p.x < min(pointList[i].x, pointList[i - 1].x) || p.y > max(pointList[i].y, pointList[i - 1].y) || p.y < min(pointList[i].y, pointList[i - 1].y)) {
 				add = false;
 			}
@@ -44,13 +64,20 @@ float Polyline::getAngle(const FPoint& start, const FPoint& end) {
 	float angle;
 	if (end.x - start.x == 0) {
 		if (end.y < start.y)
-			angle = -90;
+			angle = 270;
 		else
 			angle = 90;
 	}
 	else {
 		angle = atan((end.y - start.y) / (end.x - start.x));
 		angle = angle * 180 / M_PI;
+
+		if (end.x < start.x)
+			angle += 180;
+		else {
+			if (end.y < start.y)
+				angle += 360;
+		}
 	}
 	return angle;
 }

@@ -118,7 +118,7 @@ namespace sfml {
 	SF_Line::SF_Line(const Line* other) : Line(*other) {
 		Point start(p1);
 		Point end(p2);
-		//if (end.x < start.x) swap(start, end);
+		if (end.x < start.x) swap(start, end);
 
 		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
 		line.setSize(sf::Vector2f(length, stroke_width / 2));
@@ -170,35 +170,46 @@ namespace sfml {
 
 				D.x = fpoint[i + 1].x - (stroke_width / 2) * sin(angle2);
 				D.y = fpoint[i + 1].y + (stroke_width / 2) * cos(angle2);
-				
-				cout << A.x << " " << A.y << endl;
-				cout << B.x << " " << B.y << endl;
-				cout << C.x << " " << C.y << endl;
-				cout << D.x << " " << D.y << endl;
-				cout << endl;
 
 				FPoint p1, p2, p3, p4;
 				p1 = IntersectionPoint(A, B, C, D);
-				cout << p1.x << " " << p1.y << endl << endl;
 				
 				p3.x = 2 * fpoint[i].x - p1.x;
 				p3.y = 2 * fpoint[i].y - p1.y;
 
-				if (angle1 > angle2) {
-					swap(p1, p3);
-					p2.x = p1.x - stroke_width * sin(angle1);
-					p2.y = p1.y + stroke_width * cos(angle1);
+				if (angle1 < M_PI) {
+					if (angle2 < angle1 || angle2 > angle1 + M_PI) {
+						swap(p1, p3);
+						p2.x = p1.x - stroke_width * sin(angle1);
+						p2.y = p1.y + stroke_width * cos(angle1);
 
-					p4.x = p1.x - stroke_width * sin(angle2);
-					p4.y = p1.y + stroke_width * cos(angle2);
+						p4.x = p1.x - stroke_width * sin(angle2);
+						p4.y = p1.y + stroke_width * cos(angle2);
+					}
+					else {
+						p2.x = p1.x + stroke_width * sin(angle1);
+						p2.y = p1.y - stroke_width * cos(angle1);
+
+						p4.x = p1.x + stroke_width * sin(angle2);
+						p4.y = p1.y - stroke_width * cos(angle2);
+					}
 				}
+				else {
+					if (angle1 - M_PI < angle2 && angle2 < angle1) {
+						swap(p1, p3);
+						p2.x = p1.x - stroke_width * sin(angle1);
+						p2.y = p1.y + stroke_width * cos(angle1);
 
-				else{
-					p2.x = p1.x + stroke_width * sin(angle1);
-					p2.y = p1.y - stroke_width * cos(angle1);
+						p4.x = p1.x - stroke_width * sin(angle2);
+						p4.y = p1.y + stroke_width * cos(angle2);
+					}
+					else {
+						p2.x = p1.x + stroke_width * sin(angle1);
+						p2.y = p1.y - stroke_width * cos(angle1);
 
-					p4.x = p1.x + stroke_width * sin(angle2);
-					p4.y = p1.y - stroke_width * cos(angle2);
+						p4.x = p1.x + stroke_width * sin(angle2);
+						p4.y = p1.y - stroke_width * cos(angle2);
+					}
 				}
 
 				joint[i - 1].setPointCount(4);
@@ -213,12 +224,9 @@ namespace sfml {
 
 	sf::RectangleShape SF_Polyline::Line(FPoint start, FPoint end) {
 		sf::RectangleShape line;
-		if (end.x < start.x) swap(start, end);
-
 		float length = sqrt(pow(start.x - end.x, 2) + pow(start.y - end.y, 2));
 
-		float angle = atan((end.y - start.y) / (end.x - start.x));
-		angle = angle * 180 / M_PI;
+		float angle = getAngle(start, end);
 
 		line.setSize(sf::Vector2f(length, stroke_width / 2));
 
@@ -240,13 +248,13 @@ namespace sfml {
 
 				float angle1 = getAngle(fpoint[i], fpoint[i + 1]);
 				float angle2 = getAngle(fpoint[i + 1], fpoint[i + 2]);
-				float angle = 180 - angle1 - angle2;
-
+				float angle = abs(angle1 + 180 - angle2); 
+				
 				angle = angle * M_PI / 180;
 				angle1 = angle1 * M_PI / 180;
 				angle2 = angle2 * M_PI / 180;
 
-				float delta_length = abs(tan(angle / 2) * (stroke_width / 2));
+				float delta_length = abs((stroke_width / 2) / tan(angle / 2));
 
 				line.setSize(sf::Vector2f(line.getSize().x - delta_length, line.getSize().y));
 
@@ -259,7 +267,7 @@ namespace sfml {
 			window.draw(line, transform);
 			if (i > 0 && i < fpoint.size() - 1) {
 				joint[i - 1].setFillColor(set_SF_Color(stroke));
-				window.draw(joint[i - 1], transform); //draw joint
+				window.draw(joint[i - 1], transform); 
 			}
 		}
 	}
