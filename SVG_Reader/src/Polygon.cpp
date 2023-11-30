@@ -7,10 +7,11 @@ Polygon::Polygon(const Polygon& polygon) : Figure(polygon) {
 
 // Set attribute
 void Polygon::setPoint(const string& line) {
-	stringstream ss(line);
+	string modifiedLine = line;
+	COMMA_TO_SPACE(modifiedLine);
+	stringstream ss(modifiedLine);
 	float x, y;
-	char ignore;
-	while (ss >> x >> ignore >> y) {
+	while (ss >> x >> y) {
 		point.push_back(Point(x, y));
 	}
 }

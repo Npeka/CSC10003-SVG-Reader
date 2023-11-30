@@ -8,6 +8,7 @@
 #include <sstream>
 #include <cstring>
 #include <string>
+#include <algorithm>
 #include <vector>
 //-------------END-OF-DECLARATION------------//
 /*
@@ -43,6 +44,10 @@
 	}
 #define CONVERT(T, figure) static_cast<T>(figure)
 #define ISVALID(T, figure) dynamic_cast<T>(figure)
+#define COMMA_TO_SPACE(line) \
+    do { \
+        std::replace(line.begin(), line.end(), ',', ' '); \
+    } while(0)
 //-------------END-OF-DECLARATION------------//
 /*
 
