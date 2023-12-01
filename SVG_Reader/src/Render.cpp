@@ -114,8 +114,8 @@ namespace sfml {
 
 	*/
 	// class SF_Line
-  	// Constructor
-	SF_Line::SF_Line() {};
+	// Constructor
+		SF_Line::SF_Line() {};
 
 	SF_Line::SF_Line(const Line* other) : Line(*other) {
 		Point start(p1);
@@ -133,9 +133,13 @@ namespace sfml {
 		line.setFillColor(set_SF_Color(stroke));
 	}
 
+	void SF_Line::setLine(Color stroke) {
+		this->line.setFillColor(set_SF_Color(stroke));
+	}
+
 	// Virtual method
 	void SF_Line::draw_SF_Shape(sf_Render(window, transform)) {
-		sf::RectangleShape tmpLine = line; 
+		sf::RectangleShape tmpLine = line;
 		sf_Transform(window.draw(line, transform));
 		float length = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 		tmpLine.setSize(sf::Vector2f(length, -stroke_width / 2));
@@ -238,7 +242,7 @@ namespace sfml {
 		return line;
 	}
 
-	void SF_Polyline::drawPolyline(sf::RenderWindow& window, sf::Transform transform) {
+	void SF_Polyline::drawPolyline(sf_Render(window, transform)) {
 		sf::RectangleShape line, next_line;
 		next_line = lines[0];
 
@@ -305,40 +309,10 @@ namespace sfml {
 			}
 		}
 		drawPolyline(window, transform);
-		
-	}
-	// Public
-	// Constructor
-	SF_Polyline::SF_Polyline(const Polyline* polyline) : Polyline(*polyline) {
-		int size = (int)fpoint.size();
-
-		lines = new sf::RectangleShape[size];
-		joint = new sf::ConvexShape[size - 2];
-
-		for (int i = 0; i < size - 1; i++) {
-			lines[i] = Line(fpoint[i], fpoint[i + 1]);
-			lines[i].setFillColor(set_SF_Color(stroke));
-
-			if (i > 0 && i < size - 1) {
-				float angle1 = getAngle(fpoint[i - 1], fpoint[i]) * M_PI / 180;
-				float angle2 = getAngle(fpoint[i], fpoint[i + 1]) * M_PI / 180;
-
-				float p3_x = fpoint[i].x - stroke_width * cos(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
-				float p3_y = fpoint[i].y + stroke_width * sin(M_PI_2 - (angle1 + angle2) / 2) / cos((angle1 - angle2) / 2);
-
-				joint[i - 1].setPointCount(4);
-
-				joint[i - 1].setPoint(0, sf::Vector2f(fpoint[i].x, fpoint[i].y));
-				joint[i - 1].setPoint(1, sf::Vector2f(fpoint[i].x - stroke_width * sin(angle1), fpoint[i].y + stroke_width * cos(angle1)));
-				joint[i - 1].setPoint(2, sf::Vector2f(p3_x, p3_y));
-				joint[i - 1].setPoint(3, sf::Vector2f(fpoint[i].x - stroke_width * sin(angle2), fpoint[i].y + stroke_width * cos(angle2)));
-
-				joint[i - 1].setPosition(-stroke_width / 2, -stroke_width / 2);
-			}
-		}
 	}
 
-		// Virtual method
+
+	// Virtual method
 	void SF_Polyline::draw_SF_Shape(sf_Render(window, transform)) {
 		sf_Transform(drawPolyline2(window, transform));
 	}
