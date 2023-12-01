@@ -88,7 +88,7 @@ void Figure::setAttribute(const string& line) {
 	}
 }
 
-void Figure::setAttribute(const Figure* other) {
+void Figure::setGroup(const Figure* other) {
 	fill = other->fill;
 	stroke = other->stroke;
 	stroke_width = other->stroke_width;

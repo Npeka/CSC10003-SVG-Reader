@@ -27,8 +27,8 @@ public:
 	void setRotate(const string& rotate);
 	void setScale(const string& scale);
 	void setTransform(const string& transform);
+	void setGroup(const Figure* other);
 	void setAttribute(const string& line);
-	void setAttribute(const Figure* other);
 
 	// Virtual method
 	virtual void setAttribute(const string& attribute, const string& value);
