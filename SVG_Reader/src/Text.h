@@ -11,6 +11,7 @@ protected:
 	string font_weight;
 	string font_family;
 	string data;
+	const static string font[];
 public:
 	// Constructor
 	Text();
@@ -28,6 +29,8 @@ public:
 	void setAttribute(const string& attribute, const string& value) override;
 	~Text() override = default;
 };
+
+extern const string font[];
 
 #endif // !TEXT_H
 

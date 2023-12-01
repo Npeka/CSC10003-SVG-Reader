@@ -1,6 +1,20 @@
 #include "Text.h"
 
-// Constructor
+const string Text::font[] = {
+	"arial.ttf",
+	"OpenSans-Bold.ttf",
+	"OpenSans-Boldltalic.ttf",
+	"OpenSans-ExtraBold.ttf",
+	"OpenSans-ExtraBoldltalic.ttf",
+	"OpenSans-Italic.ttf",
+	"OpenSans-Light.ttf",
+	"OpenSans-Lightltalic.ttf",
+	"OpenSans-Regular.ttf",
+	"OpenSans-Semibold.ttf",
+	"OpenSans-SemiboldItalic.ttf",
+	"times-new-roman.ttf"
+};
+
 Text::Text() {
 	x = 0;
 	y = 0;
@@ -37,7 +51,13 @@ void Text::setFontWeight(const string& font_weight) {
 }
 
 void Text::setFontFamily(const string& font_family) {
-	this->font_family = font_family;
+	cout << font_family << endl;
+	for (int i = 0; i < font->length(); ++i) {
+		if (font_family == font[i]) {
+			this->font_family = font_family;
+		}
+	}
+	return;
 }
 
 void Text::setData(const string& data) {

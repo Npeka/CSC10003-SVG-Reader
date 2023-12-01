@@ -23,6 +23,7 @@ void ViewBox::setAttribute(const string& viewbox) {
 // class SVGImage
 // Private
 	// Methods
+
 void SVGImage::standardizeTag(string& line) {
 	for (int i = 0; i < line.size(); ++i) {	
 		if (line[i] == '=') line[i] = ' ';
@@ -71,7 +72,11 @@ void SVGImage::parse() {
 					newFigure->setAttribute(g.top());
 				}
 				newFigure->setAttribute(info);
-				figure.push_back(newFigure);
+				Drawable* newDrawable = dynamic_cast<Drawable*>(newFigure);
+				if (newDrawable != NULL) {
+					newDrawable->setAtrribute();
+					figure.push_back(newDrawable);
+				}
 			}
 		}
 	}
@@ -99,7 +104,7 @@ SVGImage::SVGImage(const SVGImage& svgImage) {
 
 	// Destructor
 SVGImage::~SVGImage() {
-	for (Figure* f : figure) {
+	for (Drawable* f : figure) {
 		delete f;
 		f = NULL;
 	}
@@ -144,10 +149,5 @@ void SVGImage::setAttribute(const string& line) {
 		else if (attribute == "style") setStyle(value);
 		else if (attribute == "viewBox") setViewBox(value);
 	}
-}
-
-	// Get attribute
-const vector<Figure*>& SVGImage::getFigure() const {
-	return figure;
 }
 //-----------END-OF-IMPLEMENTATION-----------//

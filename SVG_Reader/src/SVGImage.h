@@ -2,6 +2,7 @@
 #define SVG_IMAGE_H
 
 #include "Figure.h"
+#include "Render.h"
 
 // class ViewBox
 class ViewBox {
@@ -32,7 +33,7 @@ protected:
 	float height;
 	Color background;
 	ViewBox viewbox;
-	vector<Figure*> figure;
+	vector<Drawable*> figure;
 
 	// Methods
 	void standardizeTag(string& line);
@@ -52,9 +53,7 @@ public:
 	void setStyle(const string& style);
 	void setViewBox(const string& viewbox);
 	void setAttribute(const string& line);
-
-	// Get attribute
-	const vector<Figure*>& getFigure() const;
+	void render();
 };
 //-------------END-OF-DECLARATION------------//
 

@@ -41,9 +41,9 @@ Polyline::Polyline(const Polyline& polyline) : Figure(polyline) {
 
 	// Set attribute
 void Polyline::setPoint(const string& line) {
-	stringstream ss(line);
 	string modifiedline = line;
 	COMMA_TO_SPACE(modifiedline);
+	stringstream ss(modifiedline);
 	float x, y; 
 	while (ss >> x >> y) {
 		fpoint.push_back(FPoint(x, y));

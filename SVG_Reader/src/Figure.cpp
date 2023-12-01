@@ -1,12 +1,5 @@
 #include "Figure.h"
-#include "Rectangle.h"
-#include "Ellipse.h"
-#include "Circle.h"
-#include "Line.h"
-#include "Polyline.h"
-#include "Polygon.h"
-#include "Path.h"
-#include "Text.h"
+#include "Render.h"
 
 // class Ficgure
 // Constructor
@@ -123,14 +116,14 @@ FigureFactory* FigureFactory::getInstance() {
 }
 
 Figure* FigureFactory::getFigure(const string& figure) {
-	if (figure == "rect") return new Rectangle();
-	if (figure == "ellipse") return new Ellipse();
-	if (figure == "circle") return new Circle();
-	if (figure == "line") return new Line();
-	if (figure == "polyline") return new Polyline();
-	if (figure == "polygon") return new Polygon();
-	if (figure == "path") return new Path();
-	if (figure == "text") return new Text();
+	if (figure == "rect") return new DrawableRectangle();
+	if (figure == "ellipse") return new DrawableEllipse();
+	if (figure == "circle") return new DrawableCircle();
+	if (figure == "line") return new DrawableLine();
+	if (figure == "polyline") return new DrawablePolyline();
+	if (figure == "polygon") return new DrawablePolygon();
+	if (figure == "text") return new DrawableText();
+	if (figure == "path") return new DrawablePath();
 	return NULL;
 }
 
