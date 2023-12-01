@@ -4,26 +4,20 @@
 #include "Figure.h"
 #include "Line.h"
 
-class SubPath;
-
 class Path : public Figure {
 protected:
-	vector< pair<char, vector<Point>> > path;
+	vector<pair<char, vector<Point>>> path;
 public:
+	// Constructor 
+	Path() = default; 
+	Path(const Path& other);
+
 	// Set attribute
 	void setPath(const string& line);
 
-	// test
-	void drawCPath(vector<Point> point) {
-
-	}
-	void draw() {
-		for (int i = 0; i < path.size(); i++) {
-			char cmd = path[i].first;
-			if (tolower(cmd) == 'C') drawCPath(path[i].second);
-		}
-	}
-	//--end-test--//
+	// Calculate method 
+	float computeBinominal(int n, int k);
+	vector<Point> CVertices(vector<Point> Position);
 
 	// Virtual method 
 	void setAttribute(const string& attribute, const string& value) override;

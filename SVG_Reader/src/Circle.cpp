@@ -13,15 +13,15 @@ Circle::Circle(const Circle& circle) : Figure(circle){
 
 // Set attribute
 void Circle::setCX(const string& cx) {
-	this->cx = stof(cx);
+	check_exception("circle", "cx", this->cx = stof(cx));
 }
 
 void Circle::setCY(const string& cy) {
-	this->cy = stof(cy);
+	check_exception("circle", "cy", this->cy = stof(cy));
 }
 
 void Circle::setR(const string& r) {
-	this->r = stof(r);
+	check_exception("circle", "r", this->r = stof(r));
 }
 
 // Virtual method

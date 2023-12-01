@@ -1,7 +1,7 @@
 #include "Polyline.h"
 
 // Private
-// Method
+	// Methods
 FPoint Polyline::IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4) {
 	FPoint IntersectionPoint;
 	IntersectionPoint.x = ((p1.x * p2.y - p1.y * p2.x) * (p3.x - p4.x) - (p1.x - p2.x) * (p3.x * p4.y - p3.y * p4.x)) / ((p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x));
@@ -83,21 +83,23 @@ float Polyline::getAngle(const FPoint& start, const FPoint& end) {
 }
 
 // Public
-// Constructor
+	// Constructor
 Polyline::Polyline(const Polyline& polyline) : Figure(polyline) {
 	fpoint = polyline.fpoint;
 }
 
-// Set attribute
+	// Set attribute
 void Polyline::setPoint(const string& line) {
 	stringstream ss(line);
-	float x, y; char ignore;
-	while (ss >> x >> ignore >> y) {
+	string modifiedline = line;
+	COMMA_TO_SPACE(modifiedline);
+	float x, y; 
+	while (ss >> x >> y) {
 		fpoint.push_back(FPoint(x, y));
 	}
 }
 
-// Virtual method
+	// Virtual method
 void Polyline::setAttribute(const string& attribute, const string& value) {
 	if (attribute == "points") setPoint(value);
 }

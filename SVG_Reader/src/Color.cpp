@@ -11,10 +11,7 @@ Color::Color(const string& color) {
 }
 
 Color::Color(const Color& color) {
-    r = color.r;
-    g = color.g;
-    b = color.b;
-    a = color.a;
+    *this = color;
 }
 
 Color::Color(const float& r, const float& g, const float& b, const float& a) {
@@ -26,29 +23,42 @@ Color::Color(const float& r, const float& g, const float& b, const float& a) {
 
 // Set attribute
 void Color::setA(const string& a) {
-    if (this->a) this->a = stof(a) * 255;
+    if (this->a) check_exception("color", "a", this->a = stof(a) * 255);
 }
 void Color::setA(const float& a) {
     if (this->a) this->a = a * 255;
 }
 
 void Color::setRGB(const string& color) {
-	if (color.find("rgb") != string::npos) {
-		string rgb(color);
-		for (char& c : rgb) if (!isdigit(c)) c = ' ';
-		stringstream ss(rgb); ss >> r >> g >> b;
-        if (a == 0) a = 255;
-	}
-	else if (color[0] == '#') {
-		r = stoi(color.substr(1, 2), NULL, 16);
-		g = stoi(color.substr(3, 2), NULL, 16);
-		b = stoi(color.substr(5, 2), NULL, 16);
-	}
-    else if (color == "none") {
+    string Color(color);
+    for (int i = 0; i < Color.size(); i++) {
+        if (Color[i] == ' ') {
+            Color.erase(i, 1);
+            i--;
+        }
+    }
+
+    if (a == 0) a = 255;
+    if (Color == "none") {
         a = 0;
     }
+	else if (color.find("rgb") != string::npos) {
+		string rgb(Color);
+		for (char& c : rgb) if (!isdigit(c)) c = ' ';
+		stringstream ss(rgb); ss >> r >> g >> b;
+	}
+    else if (Color[0] == '#') {
+        if (Color.size() < 7) {
+            Color.insert(2, 1, Color[1]);
+            Color.insert(4, 1, Color[3]);
+            Color.insert(6, 1, Color[5]);
+        }
+        check_exception("color #6", "r", r = stoi(Color.substr(1, 2), NULL, 16));
+        check_exception("color #6", "g", g = stoi(Color.substr(3, 2), NULL, 16));
+        check_exception("color #6", "b", b = stoi(Color.substr(5, 2), NULL, 16));
+	}
     else {
-        *this = setColorByName(color);
+        *this = setColorByName(Color);
 	}
 }
 
