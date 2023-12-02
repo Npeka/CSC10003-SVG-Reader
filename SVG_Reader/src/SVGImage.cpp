@@ -56,7 +56,7 @@ void SVGImage::parse() {
 			Figure* prev = g.top();
 			g.push(new Figure());
 			if (prev != NULL) {
-				g.top()->setAttribute(prev);
+				g.top()->setGroup(prev);
 			}
 			g.top()->setAttribute(info);
 		}
@@ -69,7 +69,7 @@ void SVGImage::parse() {
 			Figure* newFigure = figureFactory->getFigure(word);
 			if (newFigure != NULL) {
 				if (g.top() != NULL) {
-					newFigure->setAttribute(g.top());
+					newFigure->setGroup(g.top());
 				}
 				newFigure->setAttribute(info);
 				Drawable* newDrawable = dynamic_cast<Drawable*>(newFigure);
