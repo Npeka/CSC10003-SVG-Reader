@@ -1,6 +1,6 @@
 #include "Text.h"
 
-const string Text::font[] = {
+const std::string Text::font[] = {
 	"arial.ttf",
 	"OpenSans-Bold.ttf",
 	"OpenSans-Boldltalic.ttf",
@@ -34,24 +34,23 @@ Text::Text(const Text& text) : Figure(text) {
 }
 
 // Set attribute
-void Text::setX(const string& x) {
+void Text::setX(const std::string& x) {
 	check_exception("text", "x", this->x = stof(x));
 }
 
-void Text::setY(const string& y) {
+void Text::setY(const std::string& y) {
 	check_exception("text", "y", this->y = stof(y));
 }
 
-void Text::setFontSize(const string& font_size) {
+void Text::setFontSize(const std::string& font_size) {
 	check_exception("text", "font-size", this->font_size = stof(font_size));
 }
 
-void Text::setFontWeight(const string& font_weight) {
+void Text::setFontWeight(const std::string& font_weight) {
 	this->font_weight = font_weight;
 }
 
-void Text::setFontFamily(const string& font_family) {
-	cout << font_family << endl;
+void Text::setFontFamily(const std::string& font_family) {
 	for (int i = 0; i < font->length(); ++i) {
 		if (font_family == font[i]) {
 			this->font_family = font_family;
@@ -60,8 +59,8 @@ void Text::setFontFamily(const string& font_family) {
 	return;
 }
 
-void Text::setData(const string& data) {
-	string line(data);
+void Text::setData(const std::string& data) {
+	std::string line(data);
 	int i = 0;
 	while (i < line.size()) {
 		if (line[i] == ' ' && line[i + 1] == ' ')
@@ -73,7 +72,7 @@ void Text::setData(const string& data) {
 }
 
 // Virtual method
-void Text::setAttribute(const string& attribute, const string& value) {
+void Text::setAttribute(const std::string& attribute, const std::string& value) {
 	if (attribute == "|") setData(value);
 	else if (attribute == "x") setX(value);
 	else if (attribute == "y") setY(value);

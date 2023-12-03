@@ -13,19 +13,19 @@ public:
 
 	// Constructor
 	Color();
-	Color(const string& color);
+	Color(const std::string& color);
 	Color(const Color& color);
 	Color(const float& r, const float& g, const float& b , const float& a = 255);
 
 	// Set attribute
-	void setA(const string& a);
+	void setA(const std::string& a);
 	void setA(const float& a);
-	void setRGB(const string& color);
+	void setRGB(const std::string& color);
 	void setRGB(const float& r, const float& g, const float& b, const float& a = 255);
 	Color& operator=(const Color& color);
 };
 
-const Color& setColorByName(const string& color);
+const Color& setColorByName(const std::string& color);
 
 extern const Color aliceblue, antiquewhite, aqua, aquamarine,
 azure, beige, bisque, black, blanchedalmond, blue, blueviolet,

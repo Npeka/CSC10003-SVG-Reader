@@ -11,17 +11,17 @@
 #include "Path.h"
 #include "Text.h"
 
-// SFML RENDERER
-// SFML library
-#include <SFML/Graphics.hpp>
+// Include lib for render
+#include <windows.h>
+#include <gdiplus.h>
 
-// SFML Define shorter code
-#define sf_Render(window, transform) sf::RenderWindow& window, sf::Transform& transform
-#define sf_Transform(code1, code2) \
-	SF_Transform_First(this->transform, window, transform); \
-	code1; \
-	code2; \
-	SF_Transform_Second(this->transform, window, transform); \
+// Define parameters needed for render lib
+#define Render_Window Gdiplus::Graphics& graphics
+
+// Function to convert from Color to Graphics library Colors
+Gdiplus::Color GDI_Color(const Color& color);
+void Transform_First(const std::vector< std::pair<int, Point> >& t, Render_Window);
+void Transform_Second(const std::vector< std::pair<int, Point> >& t, Render_Window);
 /*
 
 
@@ -29,9 +29,13 @@
 */
 // Drawable
 class Drawable {
+protected:
+	Gdiplus::Pen pen;
+	Gdiplus::SolidBrush brush;
 public:
+	Drawable() : pen(Gdiplus::Color(0, 0, 0)), brush(Gdiplus::Color(0, 0, 0)) {}
 	virtual void setAtrribute() = 0;
-	virtual void draw(sf_Render(window, transform)) = 0;
+	virtual void draw(Render_Window) = 0;
 	virtual ~Drawable() = default;
 };
 //-------------END-OF-DECLARATION------------//
@@ -41,18 +45,17 @@ public:
 
 */
 // DrawableRectangle
-class DrawableRectangle : public Drawable, public Rectangle {
+class Drawable_Rectangle : public Drawable, public Rectangle {
 private:
-	sf::RectangleShape rectangle;
-	sf::RectangleShape outline;
+	Gdiplus::Rect rect;
 public:
 	// Constructor
-	DrawableRectangle() = default;
+	Drawable_Rectangle() = default;
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawableRectangle() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Rectangle() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -61,18 +64,17 @@ public:
 
 */
 // DrawableEllipse
-class DrawableEllipse : public Drawable, public Ellipse {
+class Drawable_Ellipse : public Drawable, public Ellipse {
 private:
-	sf::ConvexShape ellipse;
-	sf::ConvexShape outline;
+	
 public:
 	// Constructor
-	DrawableEllipse() = default;
+	Drawable_Ellipse() = default;
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawableEllipse() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Ellipse() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -81,18 +83,17 @@ public:
 
 */
 // class DrawableCircle
-class DrawableCircle : public Drawable, public Circle {
+class Drawable_Circle : public Drawable, public Circle {
 private:
-	sf::CircleShape circle;
-	sf::CircleShape outline;
+	
 public:
 	// Constructor
-	DrawableCircle() = default;
+	Drawable_Circle() = default;
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawableCircle() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Circle() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -101,19 +102,19 @@ public:
 
 */
 // class DrawableLine
-class DrawableLine : public Drawable, public Line {
+class Drawable_Line : public Drawable, public Line {
 private:
-	sf::RectangleShape line;
+	
 public:
 	// Constructor 
-	DrawableLine() = default;
-	DrawableLine(const Line* line);
+	Drawable_Line() = default;
+	Drawable_Line(const Line* line);
 	void setLine(Color stroke);
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawableLine() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Line() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -122,25 +123,20 @@ public:
 
 */
 // class DrawablePolyline
-class DrawablePolyline : public Drawable, public Polyline {
+class Drawable_Polyline : public Drawable, public Polyline {
 private:
 	// Attributes
-	sf::RectangleShape* lines;
-	sf::ConvexShape* joint;
-
-
-	// Methods
-	sf::RectangleShape Line(FPoint start, FPoint end);
-	void drawPolyline(sf_Render(window, transform));
-	void drawPolyline2(sf_Render(window, transform));
+	
+	void drawPolyline(Render_Window);
+	void drawPolyline2(Render_Window);
 public:
 	// Constructor
-	DrawablePolyline() = default;
+	Drawable_Polyline() = default;
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawablePolyline() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Polyline() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -148,18 +144,17 @@ public:
 
 */
 // class DrawablePolygon
-class DrawablePolygon : public Drawable, public Polygon {
+class Drawable_Polygon : public Drawable, public Polygon {
 private:
-	sf::ConvexShape polygon;
-	sf::ConvexShape outline;
+	
 public:
 	// Constructor
-	DrawablePolygon() = default;
+	Drawable_Polygon() = default;
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawablePolygon() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Polygon() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -168,18 +163,17 @@ public:
 
 */
 // class DrawableText
-class DrawableText : public Drawable, public Text {
+class Drawable_Text : public Drawable, public Text {
 private:
-	sf::Font font;
-	sf::Text text;
+	
 public:
 	// Constructor
-	DrawableText() = default;
+	Drawable_Text() = default;
 
 	// Virtual method
     void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawableText() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Text() override = default;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -188,23 +182,19 @@ public:
 
 */
 // class SF_Path
-class DrawablePath : public Drawable, public Path {
+class Drawable_Path : public Drawable, public Path {
 private:
 	Color getStroke();
-	void drawPath(sf::RenderWindow& window, sf::Transform& transform);
+	void drawPath(Render_Window);
 public:
 	// Constructor
-	DrawablePath() = default;
+	Drawable_Path() = default;
 
 	// Virtual method
 	void setAtrribute();
-	void draw(sf_Render(window, transform)) override;
-	~DrawablePath() override = default;
+	void draw(Render_Window) override;
+	~Drawable_Path() override = default;
 };
-
-void SF_Transform_First(const vector< pair<int, Point> >& t, sf_Render(window, transform));
-void SF_Transform_Second(const vector< pair<int, Point> >& t, sf_Render(window, transform));
-sf::Color set_SF_Color(const Color& color);
 //-------------END-OF-DECLARATION------------//
 
 #endif // !RENDER_H

@@ -37,21 +37,21 @@ public:
      *
      * @param cx The new value for the X-coordinate.
      */
-    void setCX(const string& cx);
+    void setCX(const std::string& cx);
 
     /**
      * @brief Set the Y-coordinate of the center.
      *
      * @param cy The new value for the Y-coordinate.
      */
-    void setCY(const string& cy);
+    void setCY(const std::string& cy);
 
     /**
      * @brief Set the radius of the circle.
      *
      * @param r The new value for the radius.
      */
-    void setR(const string& r);
+    void setR(const std::string& r);
 
     /**
      * @brief Set an attribute of the circle based on the attribute name and value.
@@ -61,7 +61,7 @@ public:
      * @param attribute The name of the attribute to set.
      * @param value The new value for the attribute.
      */
-    void setAttribute(const string& attribute, const string& value) override;
+    void setAttribute(const std::string& attribute, const std::string& value) override;
 
     /**
      * @brief Destructor for the Circle class.

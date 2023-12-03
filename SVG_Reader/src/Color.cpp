@@ -6,7 +6,7 @@ Color::Color() {
 	a = 255;
 }
 
-Color::Color(const string& color) {
+Color::Color(const std::string& color) {
 	setRGB(color);
 }
 
@@ -22,15 +22,15 @@ Color::Color(const float& r, const float& g, const float& b, const float& a) {
 }
 
 // Set attribute
-void Color::setA(const string& a) {
+void Color::setA(const std::string& a) {
     if (this->a) check_exception("color", "a", this->a = stof(a) * 255);
 }
 void Color::setA(const float& a) {
     if (this->a) this->a = a * 255;
 }
 
-void Color::setRGB(const string& color) {
-    string Color(color);
+void Color::setRGB(const std::string& color) {
+    std::string Color(color);
     for (int i = 0; i < Color.size(); i++) {
         if (Color[i] == ' ') {
             Color.erase(i, 1);
@@ -42,10 +42,10 @@ void Color::setRGB(const string& color) {
     if (Color == "none") {
         a = 0;
     }
-	else if (color.find("rgb") != string::npos) {
-		string rgb(Color);
+	else if (color.find("rgb") != std::string::npos) {
+		std::string rgb(Color);
 		for (char& c : rgb) if (!isdigit(c)) c = ' ';
-		stringstream ss(rgb); ss >> r >> g >> b;
+		std::stringstream ss(rgb); ss >> r >> g >> b;
 	}
     else if (Color[0] == '#') {
         if (Color.size() < 7) {
@@ -79,7 +79,7 @@ Color& Color::operator=(const Color& color) {
     return *this;
 }
 
-const Color& setColorByName(const string& color) {
+const Color& setColorByName(const std::string& color) {
     if (color == "aliceblue") return aliceblue;
     if (color == "antiquewhite") return antiquewhite;
     if (color == "aqua") return aqua;

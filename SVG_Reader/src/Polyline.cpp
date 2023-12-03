@@ -17,7 +17,7 @@ bool Polyline::checkIntersection(const FPoint& p1, const FPoint& p2, const FPoin
 		return true;
 }
 
-void Polyline::updateListPoint(vector<FPoint>& pointList) {
+void Polyline::updateListPoint(std::vector<FPoint>& pointList) {
 	for (int i = 1; i < pointList.size(); i++) {
 		if (checkIntersection(pointList[i - 1], pointList[i], pointList.front(), pointList.back())) {
 			FPoint p = IntersectionPoint(pointList[i - 1], pointList[i], pointList.front(), pointList.back());
@@ -29,7 +29,7 @@ void Polyline::updateListPoint(vector<FPoint>& pointList) {
 
 float Polyline::getAngle(const FPoint& start, const FPoint& end) {
 	float angle = atan((end.y - start.y) / (end.x - start.x));
-	angle = angle * 180 / M_PI;
+	angle = angle * 180 / 1;
 	return angle;
 }
 
@@ -40,10 +40,10 @@ Polyline::Polyline(const Polyline& polyline) : Figure(polyline) {
 }
 
 	// Set attribute
-void Polyline::setPoint(const string& line) {
-	string modifiedline = line;
+void Polyline::setPoint(const std::string& line) {
+	std::string modifiedline = line;
 	COMMA_TO_SPACE(modifiedline);
-	stringstream ss(modifiedline);
+	std::stringstream ss(modifiedline);
 	float x, y; 
 	while (ss >> x >> y) {
 		fpoint.push_back(FPoint(x, y));
@@ -51,6 +51,6 @@ void Polyline::setPoint(const string& line) {
 }
 
 	// Virtual method
-void Polyline::setAttribute(const string& attribute, const string& value) {
+void Polyline::setAttribute(const std::string& attribute, const std::string& value) {
 	if (attribute == "points") setPoint(value);
 }

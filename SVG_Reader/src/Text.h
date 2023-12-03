@@ -8,29 +8,27 @@ protected:
 	float x;
 	float y;
 	float font_size;
-	string font_weight;
-	string font_family;
-	string data;
-	const static string font[];
+	std::string font_weight;
+	std::string font_family;
+	std::string data;
+	const static std::string font[];
 public:
 	// Constructor
 	Text();
 	Text(const Text& text);
 
 	// Set attribute
-	void setX(const string& x);
-	void setY(const string& y);
-	void setFontSize(const string& font_size);
-	void setFontWeight(const string& font_weight);
-	void setFontFamily(const string& font_family);
-	void setData(const string& data);
+	void setX(const std::string& x);
+	void setY(const std::string& y);
+	void setFontSize(const std::string& font_size);
+	void setFontWeight(const std::string& font_weight);
+	void setFontFamily(const std::string& font_family);
+	void setData(const std::string& data);
 
 	// Virtual method
-	void setAttribute(const string& attribute, const string& value) override;
+	void setAttribute(const std::string& attribute, const std::string& value) override;
 	~Text() override = default;
 };
-
-extern const string font[];
 
 #endif // !TEXT_H
 
