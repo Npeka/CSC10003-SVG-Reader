@@ -96,16 +96,13 @@ Drawable_Line::Drawable_Line(const Line* other) : Line(*other) {
 }
 
 void Drawable_Line::setAtrribute() {
-	
-}
-
-void Drawable_Line::setLine(Color stroke) {
-	
+	pen.SetColor(GDI_Color(stroke));
+	pen.SetWidth(stroke_width);
 }
 
 // Virtual method
 void Drawable_Line::draw(Render_Window) {
-	
+	graphics.DrawLine(&pen, p1.x, p1.y, p2.x, p2.y);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -116,22 +113,24 @@ void Drawable_Line::draw(Render_Window) {
 // class DrawablePolyline
 // Private
 	// Methods
-void Drawable_Polyline::drawPolyline(Render_Window) {
-	
-}
 
-void Drawable_Polyline::drawPolyline2(Render_Window) {
-	
-}
 // Public
 // Constructor
 void Drawable_Polyline::setAtrribute() {
-	
+	points = new Gdiplus::PointF[fpoint.size()];
+	for (int i = 0; i < fpoint.size(); i++) {
+		points[i].X = fpoint[i].x;
+		points[i].Y = fpoint[i].y;
+	}
+	pen.SetWidth(stroke_width);
+	pen.SetColor(GDI_Color(stroke));
+	brush.SetColor(GDI_Color(fill));
 }
 
 // Virtual method
 void Drawable_Polyline::draw(Render_Window) {
-	
+	graphics.FillPolygon(&brush, points, fpoint.size());
+	graphics.DrawLines(&pen, points, fpoint.size());
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*

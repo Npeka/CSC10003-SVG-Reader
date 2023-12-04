@@ -109,7 +109,6 @@ public:
 	// Constructor 
 	Drawable_Line() = default;
 	Drawable_Line(const Line* line);
-	void setLine(Color stroke);
 
 	// Virtual method
 	void setAtrribute();
@@ -125,10 +124,8 @@ public:
 // class DrawablePolyline
 class Drawable_Polyline : public Drawable, public Polyline {
 private:
-	// Attributes
-	
-	void drawPolyline(Render_Window);
-	void drawPolyline2(Render_Window);
+	Gdiplus::PointF* points;
+
 public:
 	// Constructor
 	Drawable_Polyline() = default;
