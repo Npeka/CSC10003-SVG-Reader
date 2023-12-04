@@ -17,9 +17,11 @@
 
 */
 // Transform type <class Figure>
-#define Translate 1
-#define Rotate 2
-#define Scale 3
+#define SVG_Translate 1
+#define SVG_Rotate 2
+#define SVG_Scale 3
+// type <class Figure>
+
 //-------------END-OF-DECLARATION------------//
 /*
 
@@ -31,19 +33,17 @@
 #define check_exception(figure, attribute, code) \
 	try { code; } \
 	catch (const std::invalid_argument& e) { \
-		cerr << tag(figure) << '\n'; \
-		cerr << tag(attribute) << " : " << e.what() << '\n'; \
+		std::cerr << tag(figure) << '\n'; \
+		std::cerr << tag(attribute) << " : " << e.what() << '\n'; \
 	} \
 	catch (const std::out_of_range& e) { \
-		cerr << tag(figure) << '\n'; \
-		cerr << tag(attribute) << " : " << e.what() << '\n'; \
+		std::cerr << tag(figure) << '\n'; \
+		std::cerr << tag(attribute) << " : " << e.what() << '\n'; \
 	} \
 	catch (...) { \
-		cerr << tag(figure); \
-		cerr << tag(attribute) << " : An unknown exception occurred.\n"; \
+		std::cerr << tag(figure); \
+		std::cerr << tag(attribute) << " : An unknown exception occurred.\n"; \
 	}
-#define CONVERT(T, figure) static_cast<T>(figure)
-#define ISVALID(T, figure) dynamic_cast<T>(figure)
 #define COMMA_TO_SPACE(line) \
     do { \
         std::replace(line.begin(), line.end(), ',', ' '); \
@@ -55,6 +55,6 @@
 
 */
 // namespace
-using namespace std;
+//using namespace std;
 
 #endif // !HEADER_H

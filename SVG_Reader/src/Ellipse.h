@@ -15,13 +15,13 @@ public:
 	Ellipse(const Ellipse& ellipse);
 	
 	// Set attribute
-	void setCX(const string& cx);
-	void setCY(const string& cy);
-	void setRX(const string& rx);
-	void setRY(const string& ry);
+	void setCX(const std::string& cx);
+	void setCY(const std::string& cy);
+	void setRX(const std::string& rx);
+	void setRY(const std::string& ry);
 
 	// Virtual method
-	void setAttribute(const string& attribute, const string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Ellipse() override = default;
 };
 

@@ -6,10 +6,10 @@ Polygon::Polygon(const Polygon& polygon) : Figure(polygon) {
 }
 
 // Set attribute
-void Polygon::setPoint(const string& line) {
-	string modifiedLine = line;
+void Polygon::setPoint(const std::string& line) {
+	std::string modifiedLine = line;
 	COMMA_TO_SPACE(modifiedLine);
-	stringstream ss(modifiedLine);
+	std::stringstream ss(modifiedLine);
 	float x, y;
 	while (ss >> x >> y) {
 		point.push_back(Point(x, y));
@@ -17,6 +17,6 @@ void Polygon::setPoint(const string& line) {
 }
 
 // Virtual method
-void Polygon::setAttribute(const string& attribute, const string& value) {
+void Polygon::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "points") setPoint(value);
 }

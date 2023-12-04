@@ -6,12 +6,12 @@
 class Polyline : public Figure {
 protected:
 	// Attribute
-	vector <FPoint> fpoint;
+	std::vector <FPoint> fpoint;
 
 	// Methods
 	FPoint IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
 	bool checkIntersection(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
-	void updateListPoint(vector<FPoint>& FPoint);
+	void updateListPoint(std::vector<FPoint>& FPoint);
 	float getAngle(const FPoint& start, const FPoint& end);
 public:
 	// Constructor
@@ -19,10 +19,10 @@ public:
 	Polyline(const Polyline& polyline);
 
 	// Set attribute
-	void setPoint(const string& line);
+	void setPoint(const std::string& line);
 
 	// Virtual method
-	void setAttribute(const string& attribute, const string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Polyline() override = default;
 };
 

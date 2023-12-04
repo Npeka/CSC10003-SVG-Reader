@@ -1,5 +1,4 @@
 ﻿#include "SVGImage.h"
-#include "stack"
 
 // class ViewBox
 // Constructor
@@ -10,8 +9,8 @@ ViewBox::ViewBox() {
 }
 
 // Set attribute
-void ViewBox::setAttribute(const string& viewbox) {
-	stringstream ss(viewbox);
+void ViewBox::setAttribute(const std::string& viewbox) {
+	std::stringstream ss(viewbox);
 	check_exception("viewbox", "value", ss >> min_x >> min_y >> width >> height);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
@@ -23,74 +22,26 @@ void ViewBox::setAttribute(const string& viewbox) {
 // class SVGImage
 // Private
 	// Methods
-void SVGImage::standardizeTag(string& line) {
+
+void SVGImage::standardizeTag(std::string& line) {
 	for (int i = 0; i < line.size(); ++i) {	
 		if (line[i] == '=') line[i] = ' ';
 		else if (line[i] == '|') return;
 	}
 }
 
-void SVGImage::parse() {
-	ifstream inFile(nameFile);
-	string line;
-	FigureFactory* figureFactory = FigureFactory::getInstance();
-	stack<Figure*> g; g.push(NULL);
-	while (getline(inFile, line, '>')) {
-		stringstream ss(line);
-		string word, info;
-		getline(ss, word, '<');
-		getline(ss, word, ' ');
-		getline(ss, info, '\0');
-
-		if (word == "text") {
-			string dataText, ignore;
-			getline(inFile, dataText, '<');
-			getline(inFile, ignore, '>');
-			info += "| <" + dataText + "<";
-		}
-
-		standardizeTag(info);
-		if (word == "svg") setAttribute(info);
-		else if (word == "g") {
-			Figure* prev = g.top();
-			g.push(new Figure());
-			if (prev != NULL) {
-				g.top()->setAttribute(prev);
-			}
-			g.top()->setAttribute(info);
-		}
-		else if (word == "/g") {
-			delete g.top();
-			g.top() = NULL;
-			g.pop();
-		}
-		else {
-			Figure* newFigure = figureFactory->getFigure(word);
-			if (newFigure != NULL) {
-				if (g.top() != NULL) {
-					newFigure->setAttribute(g.top());
-				}
-				newFigure->setAttribute(info);
-				figure.push_back(newFigure);
-			}
-		}
-	}
-	figureFactory->deleteInstance();
-	inFile.close();
-}
-
 // Public
 	// Constructors
-SVGImage::SVGImage(const string& nameFile) {
-	this->nameFile = nameFile;	
+SVGImage::SVGImage(const std::string& nameFile) {
+	root = new Group();
+	root->setParent(root);
 	width = 0;
 	height = 0;
 	background.setRGB(255, 255, 255);
-	parse();
+	parse(nameFile);
 }
 
 SVGImage::SVGImage(const SVGImage& svgImage) {
-	nameFile = svgImage.nameFile;
 	viewbox = svgImage.viewbox;
 	background = svgImage.background;
 	width = svgImage.width;
@@ -99,43 +50,39 @@ SVGImage::SVGImage(const SVGImage& svgImage) {
 
 	// Destructor
 SVGImage::~SVGImage() {
-	for (Figure* f : figure) {
-		delete f;
-		f = NULL;
-	}
-	figure.resize(0);
+	if (root != nullptr) delete root;
+}
+
+	// Getter
+const Group* SVGImage::getRoot() const {
+	return root;
 }
 
 	// Set attribute
-void SVGImage::setNameFile(const string& nameFile) {
-	this->nameFile = nameFile;
-	parse();
+void SVGImage::setWidth(const std::string& width) {
+	check_exception("SVGImage", "width", this->width = std::stof(width));
 }
 
-void SVGImage::setWidth(const string& width) {
-	check_exception("SVGImage", "width", this->width = stof(width));
+void SVGImage::setHeight(const std::string& height) {
+	check_exception("SVGImage", "height", this->height = std::stof(height));
 }
 
-void SVGImage::setHeight(const string& height) {
-	check_exception("SVGImage", "height", this->height = stof(height));
-}
-
-void SVGImage::setStyle(const string& style) {
-	stringstream ss(style);
-	string attribute, value;
+void SVGImage::setStyle(const std::string& style) {
+	std::stringstream ss(style);
+	std::string attribute, value;
 	while (getline(ss, attribute, ':')) {
 		getline(ss, value, ';');
 		if (attribute == "background-color") background.setRGB(value);
 	}
 }
 
-void SVGImage::setViewBox(const string& viewbox) {
+void SVGImage::setViewBox(const std::string& viewbox) {
 	this->viewbox.setAttribute(viewbox);
 }
 
-void SVGImage::setAttribute(const string& line) {
-	stringstream ss(line);
-	string attribute, value;
+void SVGImage::setAttribute(const std::string& line) {
+	std::stringstream ss(line);
+	std::string attribute, value;
 	while (ss >> attribute) {
 		getline(ss, value, '"');
 		getline(ss, value, '"');
@@ -146,8 +93,52 @@ void SVGImage::setAttribute(const string& line) {
 	}
 }
 
-	// Get attribute
-const vector<Figure*>& SVGImage::getFigure() const {
-	return figure;
+void SVGImage::parse(const std::string& nameFile) {
+	std::ifstream inFile(nameFile);
+	std::string line;
+	FigureFactory* figureFactory = FigureFactory::getInstance();
+
+	Group* curGroup = root;
+	while (getline(inFile, line, '>')) {
+		std::stringstream ss(line);
+		std::string word, info;
+		getline(ss, word, '<');
+		getline(ss, word, ' ');
+		getline(ss, info, '\0');
+
+		if (word == "text") {
+			std::string dataText, ignore;
+			getline(inFile, dataText, '<');
+			getline(inFile, ignore, '>');
+			info += "| <" + dataText + "<";
+		}
+
+		standardizeTag(info);
+		if (word == "svg") setAttribute(info);
+		else if (word == "g") {
+			Group* newGroup = new Group();
+			newGroup->setParent(curGroup);		// Group
+			newGroup->setAttributes(info);		// Figure
+			curGroup->addDrawable(newGroup);	// Group parent
+			curGroup = newGroup;
+		}
+		else if (word == "/g") {
+			curGroup = curGroup->getParent();
+		}
+		else {
+			Figure* newFigure = figureFactory->getFigure(word);
+			if (newFigure != nullptr) {
+				newFigure->setGroupAttributes(curGroup);
+				newFigure->setAttributes(info);	// virtual Figure
+				Drawable* newDrawable = dynamic_cast<Drawable*>(newFigure);
+				if (newDrawable != nullptr) {
+					newDrawable->setDrawableAtrributes();
+					curGroup->addDrawable(newDrawable);
+				}
+			}
+		}
+	}
+	figureFactory->deleteInstance();
+	inFile.close();
 }
 //-----------END-OF-IMPLEMENTATION-----------//

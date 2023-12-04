@@ -14,13 +14,13 @@ public:
 	Line(const Line& line);
 
 	// Set attribute
-	void setX1(const string& x1);
-	void setY1(const string& y1);
-	void setX2(const string& x2);
-	void setY2(const string& y2);
+	void setX1(const std::string& x1);
+	void setY1(const std::string& y1);
+	void setX2(const std::string& x2);
+	void setY2(const std::string& y2);
 
 	// Virtual method
-	void setAttribute(const string& attribute, const string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Line() override = default;
 };
 
