@@ -7,13 +7,13 @@ Gdiplus::Color GDI_Color(const Color& color) {
 void Transform_First(const std::vector <std::pair <int, Point>>& t, Render_Window) {
 	for (int i = 0; i < t.size(); ++i) {
 		if (t[i].first == SVG_Translate) {
-
+			graphics.TranslateTransform(t[i].second.x, t[i].second.y);
 		}
 		else if (t[i].first == SVG_Rotate) {
-
+			graphics.RotateTransform(t[i].second.x);
 		}
 		else if (t[i].first == SVG_Scale) {
-
+			graphics.ScaleTransform(t[i].second.x, t[i].second.y);
 		}
 	}
 }
@@ -21,13 +21,13 @@ void Transform_First(const std::vector <std::pair <int, Point>>& t, Render_Windo
 void Transform_Second(const std::vector <std::pair <int, Point>>& t, Render_Window) {
 	for (int i = t.size() - 1; i >= 0; --i) {
 		if (t[i].first == SVG_Translate) {
-
+			graphics.TranslateTransform(-t[i].second.x, -t[i].second.y);
 		}
 		else if (t[i].first == SVG_Rotate) {
-
+			graphics.RotateTransform(-t[i].second.x);
 		}
 		else if (t[i].first == SVG_Scale) {
-
+			graphics.ScaleTransform(1 / t[i].second.x, 1 / t[i].second.y);
 		}
 	}
 }
@@ -43,8 +43,10 @@ void Drawable_Rectangle::setAtrribute() {
 
 // Virtual method
 void Drawable_Rectangle::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	graphics.FillRectangle(&brush, rect);
 	graphics.DrawRectangle(&pen, rect);
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -63,8 +65,10 @@ void Drawable_Ellipse::setAtrribute() {
 
 // Virtual method
 void Drawable_Ellipse::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	graphics.FillEllipse(&brush, ellipseRect);
 	graphics.DrawEllipse(&pen, ellipseRect);
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -83,8 +87,10 @@ void Drawable_Circle::setAtrribute() {
 
 // Virtual method
 void Drawable_Circle::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	graphics.DrawEllipse(&pen, cx, cy, r, r);
 	graphics.FillEllipse(&brush, cx, cy, r, r);
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -106,7 +112,9 @@ void Drawable_Line::setAtrribute() {
 
 // Virtual method
 void Drawable_Line::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	graphics.DrawLine(&pen, p1.x, p1.y, p2.x, p2.y);
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -133,8 +141,10 @@ void Drawable_Polyline::setAtrribute() {
 
 // Virtual method
 void Drawable_Polyline::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	graphics.FillPolygon(&brush, points, fpoint.size());
 	graphics.DrawLines(&pen, points, fpoint.size());
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -156,11 +166,13 @@ void Drawable_Polygon::setAtrribute() {
 
 // Virtual method
 void Drawable_Polygon::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	if (gdiPoints) {
 		graphics.FillPolygon(&brush, gdiPoints, static_cast<int>(point.size()));
 		graphics.DrawPolygon(&pen, gdiPoints, static_cast<int>(point.size()));
 		delete[] gdiPoints;
 	}
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -212,7 +224,10 @@ void Drawable_Text::draw(Render_Window) {
 	Gdiplus::FontFamily fontFamily();
 	Gdiplus::StringFormat stringFormat;
 	
+	Transform_First(transform, graphics);
 	graphics.DrawString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, position, &brush);
+	Transform_Second(transform, graphics);
+
 	if (font)
 		delete font;
 }
@@ -252,7 +267,9 @@ void Drawable_Path::setAtrribute() {
 
 // Virtual method
 void Drawable_Path::draw(Render_Window) {
+	Transform_First(transform, graphics);
 	graphics.DrawPath(&pen, &Gpath);
 	graphics.FillPath(&brush, &Gpath);
+	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
