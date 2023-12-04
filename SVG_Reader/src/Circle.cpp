@@ -29,4 +29,7 @@ void Circle::setAttribute(const std::string& attribute, const std::string& value
 	if (attribute == "cx") setCX(value);
 	else if (attribute == "cy") setCY(value);
 	else if (attribute == "r") setR(value);
+
+	this->cx = this->cx - r; 
+	this->cy = this->cy - r; 
 }

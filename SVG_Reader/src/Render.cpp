@@ -55,7 +55,7 @@ void Drawable_Rectangle::draw(Render_Window) {
 // class DrawableEllipse
 // Constructor
 void Drawable_Ellipse::setAtrribute() {
-
+	
 }
 
 // Virtual method
@@ -71,12 +71,16 @@ void Drawable_Ellipse::draw(Render_Window) {
 // class DrawableCircle
 // Constructor
 void Drawable_Circle::setAtrribute() {
-	
+	brush.SetColor(GDI_Color(fill));
+	std::cout << fill.r << fill.g << fill.b << std::endl; 
+	pen.SetColor(GDI_Color(stroke));
+	pen.SetWidth(stroke_width);
 }
 
 // Virtual method
 void Drawable_Circle::draw(Render_Window) {
-
+	graphics.DrawEllipse(&pen, cx, cy, r, r);
+	graphics.FillEllipse(&brush, cx, cy, r, r);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -173,14 +177,31 @@ void Drawable_Text::draw(Render_Window) {
 // Constructor
 void Drawable_Path::setAtrribute() {
 
-}
+	brush.SetColor(GDI_Color(fill));
+	pen.SetColor(GDI_Color(stroke));
+	pen.SetWidth(stroke_width);
 
-void Drawable_Path::drawPath(Render_Window) {
-	
+	for (auto x : path) {
+		char cmd = x.first; 
+		if (cmd == 'V' || cmd == 'H') {
+			Gpath.AddLine(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y);
+			Gpath.AddLine(x.second[2].x, x.second[2].y, x.second[1].x, x.second[1].y);
+		}
+
+		else if (cmd == 'c' || cmd == 'C') {
+			Gpath.AddBezier(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y, x.second[2].x, x.second[2].y, x.second[3].x, x.second[3].y); // add 4 points
+		}
+
+		else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'z' || cmd == 'Z') {
+			Gpath.AddLine(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y); // add 2 points  
+		}
+	}
+
 }
 
 // Virtual method
 void Drawable_Path::draw(Render_Window) {
-
+	graphics.DrawPath(&pen, &Gpath);
+	graphics.FillPath(&brush, &Gpath);
 }
 //-----------END-OF-IMPLEMENTATION-----------//

@@ -157,45 +157,10 @@ void Path::setPath(const std::string& line) {
 	}	
 }
 
+
 //Constructor 
 Path::Path(const Path& other) : Figure(other) {
 	this->path = other.path; 
-}
-
-// Calculate method 
-float Path::computeBinominal(int n, int k) {
-	double value = 1.0;
-
-	for (int i = 1; i <= k; i++)
-	{
-
-		value = value * ((n + 1 - i) / i);
-	}
-
-	if (n == k) {
-		value = 1;
-	}
-
-	return value;
-}
-
-std::vector<Point> Path::CVertices(const std::vector<Point> Position) {
-	std::vector<Point> CurvePositions;
-
-	int n = Position.size() - 1;
-
-	for (double t = 0.0; t <= 1.0; t += 0.001)
-	{
-		Point CurvePos = { 0.0, 0.0 };
-
-		for (int i = 0; i <= n; ++i) {
-			CurvePos.x += computeBinominal(n, i) * pow((1 - t), (n - i)) * pow(t, i) * Position[i].x;
-			CurvePos.y += computeBinominal(n, i) * pow((1 - t), (n - i)) * pow(t, i) * Position[i].y;
-		}
-
-		CurvePositions.push_back(CurvePos);
-	}
-	return CurvePositions;
 }
 
 // Virtual method

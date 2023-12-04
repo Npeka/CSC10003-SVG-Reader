@@ -184,11 +184,14 @@ public:
 // class SF_Path
 class Drawable_Path : public Drawable, public Path {
 private:
-	Color getStroke();
-	void drawPath(Render_Window);
+	Gdiplus::GraphicsPath Gpath; 
+	Gdiplus::Region region; 
 public:
 	// Constructor
 	Drawable_Path() = default;
+
+	//
+	Color getStroke();
 
 	// Virtual method
 	void setAtrribute();
