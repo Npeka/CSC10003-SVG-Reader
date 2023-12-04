@@ -48,19 +48,23 @@ void Drawable_Rectangle::draw(Render_Window) {
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
-
+	
 
 
 */
 // class DrawableEllipse
 // Constructor
 void Drawable_Ellipse::setAtrribute() {
-	
+	ellipseRect = Gdiplus::Rect(cx - rx, cy - ry, 2 * rx, 2 * ry);
+	brush.SetColor(GDI_Color(fill));
+	pen.SetColor(GDI_Color(stroke));
+	pen.SetWidth(stroke_width);
 }
 
 // Virtual method
 void Drawable_Ellipse::draw(Render_Window) {
-	
+	graphics.FillEllipse(&brush, ellipseRect);
+	graphics.DrawEllipse(&pen, ellipseRect);
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -142,12 +146,22 @@ void Drawable_Polyline::draw(Render_Window) {
 // class DrawablePolygon
 // Constructor
 void Drawable_Polygon::setAtrribute() {
-	
+	gdiPoints = new Gdiplus::PointF[point.size()];
+	for (size_t i = 0; i < point.size(); ++i) {
+		gdiPoints[i] = Gdiplus::PointF((point[i].x), (point[i].y));
+	}
+	brush.SetColor(GDI_Color(fill));
+	pen.SetColor(GDI_Color(stroke));
+	pen.SetWidth(stroke_width);
 }
 
 // Virtual method
 void Drawable_Polygon::draw(Render_Window) {
-	
+	if (gdiPoints) {
+		graphics.FillPolygon(&brush, gdiPoints, static_cast<int>(point.size()));
+		graphics.DrawPolygon(&pen, gdiPoints, static_cast<int>(point.size()));
+		delete[] gdiPoints;
+	}
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -158,12 +172,50 @@ void Drawable_Polygon::draw(Render_Window) {
 // class DrawableText
 // Constructor
 void Drawable_Text::setAtrribute() {
-	
+	this->x = x;
+	this->y = y;
+	this->font_size = font_size;
+	this->font_weight = font_weight;
+	this->font_family = font_family;
+	this->data = data;
+
+	brush.SetColor(GDI_Color(fill));
+
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+	std::wstring wideString = converter.from_bytes(font_family);
+
+	Gdiplus::FontFamily fontFamily(wideString.c_str());
+
+	// Create a FontStyle variable 
+	Gdiplus::FontStyle fontStyle = Gdiplus::FontStyle::FontStyleRegular;
+
+	if (font_weight == "bold") {
+		fontStyle = Gdiplus::FontStyle::FontStyleBold;
+	}
+	else if (font_weight == "bold") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
+
+	Gdiplus::REAL fontSize = static_cast<Gdiplus::REAL>(font_size);
+
+	Gdiplus::Unit unit = Gdiplus::UnitPoint;
+
+	auto tempFont = std::make_unique<Gdiplus::Font>(&fontFamily, fontSize, fontStyle, unit);
+
+	if (font)
+		delete font;
+	font = new Gdiplus::Font(&fontFamily, fontSize, fontStyle, unit);
 }
 
 // Virtual method
 void Drawable_Text::draw(Render_Window) {
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+	std::wstring wideStringData = converter.from_bytes(data);	
+	Gdiplus::PointF position(x, y);
+	Gdiplus::FontFamily fontFamily();
+	Gdiplus::StringFormat stringFormat;
 	
+	graphics.DrawString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, position, &brush);
+	if (font)
+		delete font;
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*

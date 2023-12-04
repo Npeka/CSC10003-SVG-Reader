@@ -18,7 +18,7 @@ const std::string Text::font[] = {
 Text::Text() {
 	x = 0;
 	y = 0;
-	font_family = "times-new-roman";
+	font_family = "Times New Roman";
 	font_size = 16;
 	font_weight = "";
 	data = "";

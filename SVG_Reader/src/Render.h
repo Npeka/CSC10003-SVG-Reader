@@ -66,7 +66,7 @@ public:
 // DrawableEllipse
 class Drawable_Ellipse : public Drawable, public Ellipse {
 private:
-	
+	Gdiplus::Rect ellipseRect;
 public:
 	// Constructor
 	Drawable_Ellipse() = default;
@@ -146,7 +146,7 @@ public:
 // class DrawablePolygon
 class Drawable_Polygon : public Drawable, public Polygon {
 private:
-	
+	Gdiplus::PointF* gdiPoints;
 public:
 	// Constructor
 	Drawable_Polygon() = default;
@@ -165,7 +165,7 @@ public:
 // class DrawableText
 class Drawable_Text : public Drawable, public Text {
 private:
-	
+	Gdiplus::Font* font;
 public:
 	// Constructor
 	Drawable_Text() = default;
@@ -200,4 +200,4 @@ public:
 };
 //-------------END-OF-DECLARATION------------//
 
-#endif // !RENDER_H
+#endif // _RENDER_H

@@ -10,6 +10,8 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <locale>
+#include <codecvt>
 //-------------END-OF-DECLARATION------------//
 /*
 
