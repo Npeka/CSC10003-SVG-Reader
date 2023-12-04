@@ -22,8 +22,9 @@ VOID OnPaint(HDC& hdc)
     graphics.ScaleTransform(zoomFactor, zoomFactor);
 
     SVGImage svg("sample.svg");
-    for (int i =0 ;i < svg.figure.size();i++) {
-		svg.figure[i]->draw(graphics);
+    const Group* root = svg.getRoot();
+    for (const auto& figure : root->getFigures()) {
+		figure->draw(graphics);
 	}
 }
 

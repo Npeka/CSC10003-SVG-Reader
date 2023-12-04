@@ -31,20 +31,22 @@ void Transform_Second(const std::vector <std::pair <int, Point>>& t, Render_Wind
 		}
 	}
 }
+// class Drawable
+Drawable::Drawable() : pen(Gdiplus::Color(0, 0, 0)), brush(Gdiplus::Color(0, 0, 0)) {};
+/*
 
+
+
+*/
 // class DrawableRectangle
 // Constructor
-void Drawable_Rectangle::setAtrribute() {
-	rect = Gdiplus::Rect(x, y, width, height);
-	brush.SetColor(GDI_Color(fill));
-	pen.SetColor(GDI_Color(stroke));
-	pen.SetWidth(stroke_width);
+void Drawable_Rectangle::setDrawableAtrributes() {
+	
 }
 
 // Virtual method
 void Drawable_Rectangle::draw(Render_Window) {
-	graphics.FillRectangle(&brush, rect);
-	graphics.DrawRectangle(&pen, rect);
+	
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -54,7 +56,8 @@ void Drawable_Rectangle::draw(Render_Window) {
 */
 // class DrawableEllipse
 // Constructor
-void Drawable_Ellipse::setAtrribute() {
+void Drawable_Ellipse::setDrawableAtrributes() {
+	
 
 }
 
@@ -70,7 +73,7 @@ void Drawable_Ellipse::draw(Render_Window) {
 */
 // class DrawableCircle
 // Constructor
-void Drawable_Circle::setAtrribute() {
+void Drawable_Circle::setDrawableAtrributes() {
 	
 }
 
@@ -91,7 +94,7 @@ Drawable_Line::Drawable_Line(const Line* other) : Line(*other) {
 	
 }
 
-void Drawable_Line::setAtrribute() {
+void Drawable_Line::setDrawableAtrributes() {
 	
 }
 
@@ -121,7 +124,7 @@ void Drawable_Polyline::drawPolyline2(Render_Window) {
 }
 // Public
 // Constructor
-void Drawable_Polyline::setAtrribute() {
+void Drawable_Polyline::setDrawableAtrributes() {
 	
 }
 
@@ -137,7 +140,7 @@ void Drawable_Polyline::draw(Render_Window) {
 */
 // class DrawablePolygon
 // Constructor
-void Drawable_Polygon::setAtrribute() {
+void Drawable_Polygon::setDrawableAtrributes() {
 	
 }
 
@@ -153,7 +156,7 @@ void Drawable_Polygon::draw(Render_Window) {
 */
 // class DrawableText
 // Constructor
-void Drawable_Text::setAtrribute() {
+void Drawable_Text::setDrawableAtrributes() {
 	
 }
 
@@ -171,7 +174,7 @@ void Drawable_Text::draw(Render_Window) {
 // class SF_Path
 
 // Constructor
-void Drawable_Path::setAtrribute() {
+void Drawable_Path::setDrawableAtrributes() {
 
 }
 

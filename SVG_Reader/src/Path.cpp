@@ -199,6 +199,6 @@ std::vector<Point> Path::CVertices(const std::vector<Point> Position) {
 }
 
 // Virtual method
-void Path::setAttribute(const std::string& attribute, const std::string& value) {
+void Path::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "d") setPath(value);
 }

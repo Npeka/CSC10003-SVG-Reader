@@ -21,7 +21,7 @@ public:
 	void setRY(const std::string& ry);
 
 	// Virtual method
-	void setAttribute(const std::string& attribute, const std::string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Ellipse() override = default;
 };
 

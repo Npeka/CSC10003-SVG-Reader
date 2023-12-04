@@ -20,7 +20,7 @@ public:
 	void setY2(const std::string& y2);
 
 	// Virtual method
-	void setAttribute(const std::string& attribute, const std::string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Line() override = default;
 };
 

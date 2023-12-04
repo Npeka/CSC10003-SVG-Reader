@@ -20,7 +20,7 @@ public:
 	std::vector<Point> CVertices(const std::vector<Point> Position);
 
 	// Virtual method 
-	void setAttribute(const std::string& attribute, const std::string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Path() override = default;
 };
 
