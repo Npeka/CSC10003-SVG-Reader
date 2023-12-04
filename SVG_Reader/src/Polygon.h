@@ -5,17 +5,17 @@
 
 class Polygon : public Figure {
 protected:
-	vector <Point> point;
+	std::vector <Point> point;
 public:
 	// Constructor
 	Polygon() = default;
 	Polygon(const Polygon& polygon);
 
 	// Set attribute
-	void setPoint(const string& line);
+	void setPoint(const std::string& line);
 
 	// Virtual method
-	void setAttribute(const string& attribute, const string& value) override;
+	void setAttribute(const std::string& attribute, const std::string& value) override;
 	~Polygon() override = default;
 };
 

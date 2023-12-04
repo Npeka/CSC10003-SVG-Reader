@@ -6,21 +6,21 @@
 
 class Path : public Figure {
 protected:
-	vector<pair<char, vector<Point>>> path;
+	std::vector<std::pair<char, std::vector<Point>>> path;
 public:
 	// Constructor 
 	Path() = default; 
 	Path(const Path& other);
 
 	// Set attribute
-	void setPath(const string& line);
+	void setPath(const std::string& line);
 
 	// Calculate method 
 	float computeBinominal(int n, int k);
-	vector<Point> CVertices(vector<Point> Position);
+	std::vector<Point> CVertices(const std::vector<Point> Position);
 
 	// Virtual method 
-	void setAttribute(const string& attribute, const string& value) override;
+	void setAttribute(const std::string& attribute, const std::string& value) override;
 	~Path() override = default;
 };
 

@@ -17,15 +17,15 @@ public:
     Rectangle(const Rectangle& rectangle);
 
     // Set attribute
-    void setX(const string& x);
-    void setY(const string& y);
-    void setRX(const string& rx);
-    void setRY(const string& ry);
-    void setWidth(const string& width);
-    void setHeight(const string& height);
+    void setX(const std::string& x);
+    void setY(const std::string& y);
+    void setRX(const std::string& rx);
+    void setRY(const std::string& ry);
+    void setWidth(const std::string& width);
+    void setHeight(const std::string& height);
 
     // Virtual method
-    void setAttribute(const string& attribute, const string& value) override;
+    void setAttribute(const std::string& attribute, const std::string& value) override;
     ~Rectangle() override = default;
 };
 

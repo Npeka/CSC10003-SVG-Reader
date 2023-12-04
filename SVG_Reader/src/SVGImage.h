@@ -2,6 +2,7 @@
 #define SVG_IMAGE_H
 
 #include "Figure.h"
+#include "Render.h"
 
 // class ViewBox
 class ViewBox {
@@ -16,7 +17,7 @@ public:
 	ViewBox();
 
 	// Set attribute
-	void setAttribute(const string& viewBox);
+	void setAttribute(const std::string& viewBox);
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -25,36 +26,34 @@ public:
 */
 // class SVGImage
 class SVGImage {
-protected:
+public:
 	// Attribute
-	string nameFile;
 	float width;
 	float height;
 	Color background;
 	ViewBox viewbox;
-	vector<Figure*> figure;
+	std::vector<Drawable*> figure;
 
 	// Methods
-	void standardizeTag(string& line);
-	void parse();
+	void standardizeTag(std::string& line);
+	
 public:
 	// Constructor
-	SVGImage(const string& nameFile = "");
+	SVGImage(const std::string& nameFile = "");
 	SVGImage(const SVGImage& svgImage);
 
 	// Destructor
 	~SVGImage();
 
 	// Set attribute
-	void setNameFile(const string& nameFile);
-	void setWidth(const string& width);
-	void setHeight(const string& height);
-	void setStyle(const string& style);
-	void setViewBox(const string& viewbox);
-	void setAttribute(const string& line);
+	void setWidth(const std::string& width);
+	void setHeight(const std::string& height);
+	void setStyle(const std::string& style);
+	void setViewBox(const std::string& viewbox);
+	void setAttribute(const std::string& line);
 
-	// Get attribute
-	const vector<Figure*>& getFigure() const;
+	void parse(const std::string& nameFile);
+	void render() {};
 };
 //-------------END-OF-DECLARATION------------//
 

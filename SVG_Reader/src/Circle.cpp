@@ -12,20 +12,20 @@ Circle::Circle(const Circle& circle) : Figure(circle){
 }
 
 // Set attribute
-void Circle::setCX(const string& cx) {
+void Circle::setCX(const std::string& cx) {
 	check_exception("circle", "cx", this->cx = stof(cx));
 }
 
-void Circle::setCY(const string& cy) {
+void Circle::setCY(const std::string& cy) {
 	check_exception("circle", "cy", this->cy = stof(cy));
 }
 
-void Circle::setR(const string& r) {
+void Circle::setR(const std::string& r) {
 	check_exception("circle", "r", this->r = stof(r));
 }
 
 // Virtual method
-void Circle::setAttribute(const string& attribute, const string& value) {
+void Circle::setAttribute(const std::string& attribute, const std::string& value) {
 	if (attribute == "cx") setCX(value);
 	else if (attribute == "cy") setCY(value);
 	else if (attribute == "r") setR(value);

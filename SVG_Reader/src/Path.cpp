@@ -2,11 +2,11 @@
 
 // class Path
 // Set attribute
-void Path::setPath(const string& line) {
-	string value = line;
+void Path::setPath(const std::string& line) {
+	std::string value = line;
 	for (char& c : value) if (c == ',') c = ' ';
-	vector<int> pos;
-	vector<string> subline;
+	std::vector<int> pos;
+	std::vector<std::string> subline;
 
 
 	for (int i = 0; i < value.length(); i++) {
@@ -15,7 +15,7 @@ void Path::setPath(const string& line) {
 	}
 
 	for (int i = 0; i < pos.size() - 1; i++) {
-		string substring = value.substr(pos[i], pos[i + 1] - pos[i]);
+		std::string substring = value.substr(pos[i], pos[i + 1] - pos[i]);
 		subline.push_back(substring);
 	}
 
@@ -24,12 +24,12 @@ void Path::setPath(const string& line) {
 	Point end;
 	// đọc file đưa vô vector
 	for (int i = 0; i < subline.size(); i++) {
-		stringstream ss(subline[i]);
+		std::stringstream ss(subline[i]);
 		ss >> cmd;
 
 		// in this case path.second contain array of Point, we just need the end one
 		if (cmd == 'M' || cmd == 'm') {
-			vector<Point> tmp;
+			std::vector<Point> tmp;
 			while (ss >> x >> y) {
 				Point point{ x, y };
 				tmp.push_back(point);
@@ -40,7 +40,7 @@ void Path::setPath(const string& line) {
 		// in this case, each 3 Point we set into an path element
 		else if (cmd == 'C' || cmd == 'c') {
 			while (ss >> x >> y) {
-				vector<Point> tmp(3);
+				std::vector<Point> tmp(3);
 				tmp[0] = { x, y };
 				for (int i = 1; i < 3; i++) {
 					ss >> x >> y;
@@ -53,7 +53,7 @@ void Path::setPath(const string& line) {
 		// in this case, each 1 Point we set into an path element
 		else if (cmd == 'L' || cmd == 'l') {
 			while (ss >> x >> y) {
-				vector<Point> tmp(1);
+				std::vector<Point> tmp(1);
 				tmp[0] = { x, y };
 				path.push_back({ cmd, tmp });
 			}
@@ -62,7 +62,7 @@ void Path::setPath(const string& line) {
 		// h and v base on previous point so we store it one by one 
 		else if (cmd == 'h' || cmd == 'v') {
 			while (ss >> x) {
-				vector<Point> tmp(1);
+				std::vector<Point> tmp(1);
 				if (cmd == 'h')
 					tmp[0] = { x, 0 };
 				if (cmd == 'v')
@@ -73,7 +73,7 @@ void Path::setPath(const string& line) {
 
 		// H and V base on the initial point (e.g: H 10 5 20), we store it into an vector
 		else if (cmd == 'H' || cmd == 'V') {
-			vector<Point> tmp;
+			std::vector<Point> tmp;
 			float minPoint = FLT_MAX;
 			float maxPoint = FLT_MIN;
 
@@ -100,7 +100,7 @@ void Path::setPath(const string& line) {
 
 		// Add M point into tmp for later processing 
 		else if (cmd == 'Z' || cmd == 'z') {
-			vector<Point> tmp;
+			std::vector<Point> tmp;
 			path.push_back({ cmd, tmp });
 		}
 	}
@@ -179,8 +179,8 @@ float Path::computeBinominal(int n, int k) {
 	return value;
 }
 
-vector<Point> Path::CVertices(vector<Point> Position) {
-	vector<Point> CurvePositions;
+std::vector<Point> Path::CVertices(const std::vector<Point> Position) {
+	std::vector<Point> CurvePositions;
 
 	int n = Position.size() - 1;
 
@@ -199,6 +199,6 @@ vector<Point> Path::CVertices(vector<Point> Position) {
 }
 
 // Virtual method
-void Path::setAttribute(const string& attribute, const string& value) {
+void Path::setAttribute(const std::string& attribute, const std::string& value) {
 	if (attribute == "d") setPath(value);
 }
