@@ -80,7 +80,6 @@ void Drawable_Ellipse::draw(Render_Window) {
 // Constructor
 void Drawable_Circle::setAtrribute() {
 	brush.SetColor(GDI_Color(fill));
-	std::cout << fill.r << fill.g << fill.b << std::endl; 
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
 }
@@ -88,8 +87,8 @@ void Drawable_Circle::setAtrribute() {
 // Virtual method
 void Drawable_Circle::draw(Render_Window) {
 	Transform_First(transform, graphics);
-	graphics.DrawEllipse(&pen, cx, cy, r, r);
-	graphics.FillEllipse(&brush, cx, cy, r, r);
+	graphics.DrawEllipse(&pen, cx - r, cy - r, r * 2, r * 2);
+	graphics.FillEllipse(&brush, cx - r, cy - r, r * 2, r * 2);
 	Transform_Second(transform, graphics);
 }
 //-----------END-OF-IMPLEMENTATION-----------//

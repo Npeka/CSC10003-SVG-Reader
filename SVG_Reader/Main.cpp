@@ -26,6 +26,13 @@ VOID OnPaint(HDC& hdc)
     graphics.TranslateTransform(offsetX, offsetY);
     graphics.RotateTransform(rotationAngle);
 
+    graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
+    graphics.SetTextRenderingHint(Gdiplus::TextRenderingHintAntiAlias);
+    graphics.SetTextContrast(100);
+    graphics.SetCompositingMode(Gdiplus::CompositingModeSourceOver);
+    graphics.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHighQuality);
+    graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
+
     SVGImage svg("sample.svg");
     for (int i = 0; i < svg.figure.size(); i++) {
         svg.figure[i]->draw(graphics);
