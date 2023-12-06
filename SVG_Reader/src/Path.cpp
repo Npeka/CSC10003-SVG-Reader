@@ -27,7 +27,7 @@ void Path::setPath(const std::string& line) {
 		std::stringstream ss(subline[i]);
 		ss >> cmd;
 
-		// in this case path.second contain array of Point, we just need the end one
+		// in this case path.second contain array of Point
 		if (cmd == 'M' || cmd == 'm') {
 			std::vector<Point> tmp;
 			while (ss >> x >> y) {
@@ -59,43 +59,16 @@ void Path::setPath(const std::string& line) {
 			}
 		}
 
-		// h and v base on previous point so we store it one by one 
-		else if (cmd == 'h' || cmd == 'v') {
+		// H, V, h and v base on previous point so we store it one by one 
+		else if (cmd == 'h' || cmd == 'v' || cmd == 'H' || cmd == 'V') {
 			while (ss >> x) {
 				std::vector<Point> tmp(1);
-				if (cmd == 'h')
+				if (cmd == 'h' || cmd == 'H')
 					tmp[0] = { x, 0 };
-				if (cmd == 'v')
+				if (cmd == 'v' || cmd == 'V')
 					tmp[0] = { 0, x };
 				path.push_back({ cmd, tmp });
 			}
-		}
-
-		// H and V base on the initial point (e.g: H 10 5 20), we store it into an vector
-		else if (cmd == 'H' || cmd == 'V') {
-			std::vector<Point> tmp;
-			float minPoint = FLT_MAX;
-			float maxPoint = FLT_MIN;
-
-			while (ss >> x) {
-				if (x < minPoint) minPoint = x;
-				if (x > maxPoint) maxPoint = x;
-			}
-
-			Point point1;
-			Point point2;
-			if (cmd == 'H') {
-				point1 = Point{ minPoint, 0 };
-				point2 = Point{ maxPoint, 0 };
-			}
-			if (cmd == 'V') {
-				point1 = Point{ 0, minPoint };
-				point2 = Point{ 0, maxPoint };
-			}
-			tmp.push_back(point1);
-			tmp.push_back(point2);
-
-			path.push_back({ cmd, tmp });
 		}
 
 		// Add M point into tmp for later processing 
@@ -114,7 +87,19 @@ void Path::setPath(const std::string& line) {
 		if (cmd != 'M' && cmd != 'm') {
 			end = path[i - 1].second[path[i - 1].second.size() - 1];
 		}
+
 		else {
+			if (i == 0) end = { 0,0 };
+			else end = path[i - 1].second[path[i - 1].second.size() - 1];
+			// process 'm' case 
+			if (cmd == 'm') {
+				path[i].second[0].x += end.x; 
+				path[i].second[0].y += end.y;
+				for (int j = 1; j < path[i].second.size(); j++) {
+					path[i].second[j].x += path[i].second[j - 1].x;
+					path[i].second[j].y += path[i].second[j - 1].y;
+				}
+			}
 			initialSubpath = path[i].second.back();
 		}
 
@@ -122,21 +107,7 @@ void Path::setPath(const std::string& line) {
 			path[i].second.insert(path[i].second.begin(), end); // đưa point cuối của vector trước vào đầu vector sau
 		}
 
-		else if (cmd == 'H') {
-			path[i].second.insert(path[i].second.begin(), end);
-			for (int j = 1; j < path[i].second.size(); j++) {
-				path[i].second[j].y = end.y;
-			}
-		}
-
-		else if (cmd == 'V') {
-			path[i].second.insert(path[i].second.begin(), end);
-			for (int j = 1; j < path[i].second.size(); j++) {
-				path[i].second[j].x = end.x;
-			}
-		}
-
-		else if (cmd == 'h' || cmd == 'v' || cmd == 'c' || cmd == 'l') {
+		else if (cmd == 'h' || cmd == 'v' || cmd == 'c' || cmd == 'l' || cmd == 'H' || cmd == 'V') {
 			path[i].second.insert(path[i].second.begin(), end);
 			for (int j = 1; j < path[i].second.size(); j++) {
 				path[i].second[j].x += end.x;
@@ -146,8 +117,8 @@ void Path::setPath(const std::string& line) {
 
 		// vector<Point> in z path just contain the initialPoint of all path
 		else if (cmd == 'Z' || cmd == 'z') {
-			path[i].second.insert(path[i].second.begin(), end);
 			path[i].second.push_back(initialSubpath);
+			path[i].second.push_back(end);
 		}
 
 		//cout << cmd << endl;

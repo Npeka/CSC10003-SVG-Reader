@@ -181,8 +181,8 @@ public:
 // class SF_Path
 class Drawable_Path : public Drawable, public Path {
 private:
-	Gdiplus::GraphicsPath Gpath; 
-	Gdiplus::Region region; 
+	Gdiplus::GraphicsPath Gpath;
+	int countSubpath; 
 public:
 	// Constructor
 	Drawable_Path() = default;

@@ -246,22 +246,41 @@ void Drawable_Path::setAtrribute() {
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
 
+	countSubpath = 0; 
+	for (auto x : path) {
+		if (x.first == 'z' || x.first == 'Z') countSubpath++;
+	}
+
+	Gdiplus::GraphicsPath* subpath;
+	subpath = new Gdiplus::GraphicsPath[countSubpath];
+	
+	int idx = 0; 
+
 	for (auto x : path) {
 		char cmd = x.first; 
-		if (cmd == 'V' || cmd == 'H') {
-			Gpath.AddLine(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y);
-			Gpath.AddLine(x.second[2].x, x.second[2].y, x.second[1].x, x.second[1].y);
+
+		if (cmd == 'c' || cmd == 'C') {
+			subpath[idx].AddBezier(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y, x.second[2].x, x.second[2].y, x.second[3].x, x.second[3].y); // add 4 points
 		}
 
-		else if (cmd == 'c' || cmd == 'C') {
-			Gpath.AddBezier(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y, x.second[2].x, x.second[2].y, x.second[3].x, x.second[3].y); // add 4 points
+		else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'H' || cmd == 'V') {
+			subpath[idx].AddLine(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y);
+		}
+		else if (cmd == 'z' || cmd == 'Z') {
+			subpath[idx].AddLine(x.second[1].x, x.second[1].y, x.second[0].x, x.second[0].y);
+			idx++;
 		}
 
-		else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'z' || cmd == 'Z') {
-			Gpath.AddLine(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y); // add 2 points  
+		else if (cmd == 'M' || cmd == 'm') {
+			for (int i = 0; i < x.second.size() - 1; i++) {
+				subpath[idx].AddLine(x.second[i].x, x.second[i].y, x.second[i + 1].x, x.second[i + 1].y);
+			}
 		}
 	}
 
+	for (int i = 0; i < countSubpath; i++) {
+		Gpath.AddPath(&subpath[i], FALSE);
+	}
 }
 
 // Virtual method
