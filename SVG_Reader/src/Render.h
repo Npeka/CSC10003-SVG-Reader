@@ -67,7 +67,7 @@ public:
 // DrawableEllipse
 class Drawable_Ellipse : public Drawable, public Ellipse {
 private:
-	
+	Gdiplus::Rect ellipseRect;
 public:
 	// Constructor
 	Drawable_Ellipse() = default;
@@ -110,7 +110,6 @@ public:
 	// Constructor 
 	Drawable_Line() = default;
 	Drawable_Line(const Line* line);
-	void setLine(Color stroke);
 
 	// Virtual method
 	void setDrawableAtrributes();
@@ -126,10 +125,8 @@ public:
 // class DrawablePolyline
 class Drawable_Polyline : public Drawable, public Polyline {
 private:
-	// Attributes
-	
-	void drawPolyline(Render_Window);
-	void drawPolyline2(Render_Window);
+	Gdiplus::PointF* points;
+
 public:
 	// Constructor
 	Drawable_Polyline() = default;
@@ -147,7 +144,7 @@ public:
 // class DrawablePolygon
 class Drawable_Polygon : public Drawable, public Polygon {
 private:
-	
+	Gdiplus::PointF* gdiPoints;
 public:
 	// Constructor
 	Drawable_Polygon() = default;
@@ -166,7 +163,7 @@ public:
 // class DrawableText
 class Drawable_Text : public Drawable, public Text {
 private:
-	
+	Gdiplus::Font* font;
 public:
 	// Constructor
 	Drawable_Text() = default;
@@ -185,11 +182,14 @@ public:
 // class SF_Path
 class Drawable_Path : public Drawable, public Path {
 private:
-	Color getStroke();
-	void drawPath(Render_Window);
+	Gdiplus::GraphicsPath Gpath;
+	int countSubpath; 
 public:
 	// Constructor
 	Drawable_Path() = default;
+
+	//
+	Color getStroke();
 
 	// Virtual method
 	void setDrawableAtrributes();
@@ -198,4 +198,4 @@ public:
 };
 //-------------END-OF-DECLARATION------------//
 
-#endif // !RENDER_H
+#endif // _RENDER_H

@@ -11,13 +11,9 @@ public:
 	// Constructor 
 	Path() = default; 
 	Path(const Path& other);
-
+	
 	// Set attribute
 	void setPath(const std::string& line);
-
-	// Calculate method 
-	float computeBinominal(int n, int k);
-	std::vector<Point> CVertices(const std::vector<Point> Position);
 
 	// Virtual method 
 	void setAttributes(const std::string& attribute, const std::string& value) override;

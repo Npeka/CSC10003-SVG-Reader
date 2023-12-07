@@ -14,12 +14,24 @@
 
 #include "src/SVGImage.h"
 
+float offsetX = 0.0f;
+float offsetY = 0.0f;
+float rotationAngle = 0.0f;
 float zoomFactor = 1.0f;
 
 VOID OnPaint(HDC& hdc)
 {
     Gdiplus::Graphics graphics(hdc);
     graphics.ScaleTransform(zoomFactor, zoomFactor);
+    graphics.TranslateTransform(offsetX, offsetY);
+    graphics.RotateTransform(rotationAngle);
+
+    graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
+    graphics.SetTextRenderingHint(Gdiplus::TextRenderingHintAntiAlias);
+    graphics.SetTextContrast(100);
+    graphics.SetCompositingMode(Gdiplus::CompositingModeSourceOver);
+    graphics.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHighQuality);
+    graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
 
     SVGImage svg("sample.svg");
     const Group* root = svg.getRoot();
@@ -28,13 +40,19 @@ VOID OnPaint(HDC& hdc)
 	}
 }
 
-void ZoomIn(HWND& hWnd) {
-    zoomFactor *= 1.2f;  // Tăng tỷ lệ zoom (có thể điều chỉnh)
-    InvalidateRect(hWnd, NULL, TRUE);  // Gọi OnPaint để vẽ lại
+void Translate(HWND& hWnd, float x, float y) {
+    offsetX += x;
+    offsetY += y;
+    InvalidateRect(hWnd, NULL, TRUE);
 }
 
-void ZoomOut(HWND& hWnd) {
-    zoomFactor /= 1.2f;  // Giảm tỷ lệ zoom (có thể điều chỉnh)
+void Rotate(HWND& hWnd, float angle) {
+    rotationAngle += angle;
+    InvalidateRect(hWnd, NULL, TRUE);
+}
+
+void Zoom(HWND& hWnd, float zoom) {
+    zoomFactor *= zoom;  // Tăng tỷ lệ zoom (có thể điều chỉnh)
     InvalidateRect(hWnd, NULL, TRUE);  // Gọi OnPaint để vẽ lại
 }
 
@@ -58,12 +76,37 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message,
         switch (wParam)
         {
         case VK_ADD:        // Phím "+" - Zoom in
-            ZoomIn(hWnd);
+            Zoom(hWnd, 1.2);
             break;
         case VK_SUBTRACT:   // Phím "-" - Zoom out
-            ZoomOut(hWnd);
+            Zoom(hWnd, 1/1.2);
+            break;
+
+        case 'W': case VK_UP:
+            Translate(hWnd, 0, 10);
+            break;
+
+        case 'S': case VK_DOWN:
+            Translate(hWnd, 0, -10);
+            break;
+
+        case 'A': case VK_LEFT:
+            Translate(hWnd, 10, 0);
+            break;
+
+        case 'D': case VK_RIGHT:
+            Translate(hWnd, -10, 0);
+            break;
+
+        case 'Q':
+            Rotate(hWnd, -5);
+            break;
+
+        case 'E':
+            Rotate(hWnd, 5);
             break;
         }
+
         return 0;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
