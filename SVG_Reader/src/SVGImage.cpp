@@ -1,5 +1,4 @@
 ﻿#include "SVGImage.h"
-#include "stack"
 
 // class ViewBox
 // Constructor
@@ -31,62 +30,11 @@ void SVGImage::standardizeTag(std::string& line) {
 	}
 }
 
-void SVGImage::parse(const std::string& nameFile) {
-	std::ifstream inFile(nameFile);
-	std::string line;
-	FigureFactory* figureFactory = FigureFactory::getInstance();
-	std::stack<Figure*> g; g.push(NULL);
-	while (getline(inFile, line, '>')) {
-		std::stringstream ss(line);
-		std::string word, info;
-		getline(ss, word, '<');
-		getline(ss, word, ' ');
-		getline(ss, info, '\0');
-
-		if (word == "text") {
-			std::string dataText, ignore;
-			getline(inFile, dataText, '<');
-			getline(inFile, ignore, '>');
-			info += "| <" + dataText + "<";
-		}
-
-		standardizeTag(info);
-		if (word == "svg") setAttribute(info);
-		else if (word == "g") {
-			Figure* prev = g.top();
-			g.push(new Figure());
-			if (prev != NULL) {
-				g.top()->setGroup(prev);
-			}
-			g.top()->setAttribute(info);
-		}
-		else if (word == "/g") {
-			delete g.top();
-			g.top() = NULL;
-			g.pop();
-		}
-		else {
-			Figure* newFigure = figureFactory->getFigure(word);
-			if (newFigure != NULL) {
-				if (g.top() != NULL) {
-					newFigure->setGroup(g.top());
-				}
-				newFigure->setAttribute(info);
-				Drawable* newDrawable = dynamic_cast<Drawable*>(newFigure);
-				if (newDrawable != NULL) {
-					newDrawable->setAtrribute();
-					figure.push_back(newDrawable);
-				}
-			}
-		}
-	}
-	figureFactory->deleteInstance();
-	inFile.close();
-}
-
 // Public
 	// Constructors
 SVGImage::SVGImage(const std::string& nameFile) {
+	root = new Group();
+	root->setParent(root);
 	width = 0;
 	height = 0;
 	background.setRGB(255, 255, 255);
@@ -102,11 +50,12 @@ SVGImage::SVGImage(const SVGImage& svgImage) {
 
 	// Destructor
 SVGImage::~SVGImage() {
-	for (Drawable* f : figure) {
-		delete f;
-		f = NULL;
-	}
-	figure.resize(0);
+	if (root != nullptr) delete root;
+}
+
+	// Getter
+const Group* SVGImage::getRoot() const {
+	return root;
 }
 
 	// Set attribute
@@ -142,5 +91,54 @@ void SVGImage::setAttribute(const std::string& line) {
 		else if (attribute == "style") setStyle(value);
 		else if (attribute == "viewBox") setViewBox(value);
 	}
+}
+
+void SVGImage::parse(const std::string& nameFile) {
+	std::ifstream inFile(nameFile);
+	std::string line;
+	FigureFactory* figureFactory = FigureFactory::getInstance();
+
+	Group* curGroup = root;
+	while (getline(inFile, line, '>')) {
+		std::stringstream ss(line);
+		std::string word, info;
+		getline(ss, word, '<');
+		getline(ss, word, ' ');
+		getline(ss, info, '\0');
+
+		if (word == "text") {
+			std::string dataText, ignore;
+			getline(inFile, dataText, '<');
+			getline(inFile, ignore, '>');
+			info += "| <" + dataText + "<";
+		}
+
+		standardizeTag(info);
+		if (word == "svg") setAttribute(info);
+		else if (word == "g") {
+			Group* newGroup = new Group();
+			newGroup->setParent(curGroup);		// Group
+			newGroup->setAttributes(info);		// Figure
+			curGroup->addDrawable(newGroup);	// Group parent
+			curGroup = newGroup;
+		}
+		else if (word == "/g") {
+			curGroup = curGroup->getParent();
+		}
+		else {
+			Figure* newFigure = figureFactory->getFigure(word);
+			if (newFigure != nullptr) {
+				newFigure->setGroupAttributes(curGroup);
+				newFigure->setAttributes(info);	// virtual Figure
+				Drawable* newDrawable = dynamic_cast<Drawable*>(newFigure);
+				if (newDrawable != nullptr) {
+					newDrawable->setDrawableAtrributes();
+					curGroup->addDrawable(newDrawable);
+				}
+			}
+		}
+	}
+	figureFactory->deleteInstance();
+	inFile.close();
 }
 //-----------END-OF-IMPLEMENTATION-----------//

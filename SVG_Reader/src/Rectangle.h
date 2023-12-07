@@ -25,7 +25,7 @@ public:
     void setHeight(const std::string& height);
 
     // Virtual method
-    void setAttribute(const std::string& attribute, const std::string& value) override;
+    void setAttributes(const std::string& attribute, const std::string& value) override;
     ~Rectangle() override = default;
 };
 

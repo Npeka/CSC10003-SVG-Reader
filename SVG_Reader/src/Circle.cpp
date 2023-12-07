@@ -25,7 +25,7 @@ void Circle::setR(const std::string& r) {
 }
 
 // Virtual method
-void Circle::setAttribute(const std::string& attribute, const std::string& value) {
+void Circle::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "cx") setCX(value);
 	else if (attribute == "cy") setCY(value);
 	else if (attribute == "r") setR(value);

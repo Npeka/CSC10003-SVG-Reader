@@ -41,7 +41,7 @@ void Rectangle::setHeight(const std::string& height) {
 }
 
 // Virtual method
-void Rectangle::setAttribute(const std::string& attribute, const std::string& value) {
+void Rectangle::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "x") setX(value);
 	else if (attribute == "y") setY(value);
 	else if (attribute == "rx") setRX(value);

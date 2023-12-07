@@ -33,7 +33,7 @@ void Line::setY2(const std::string& y2) {
 }
 
 // Virtual method
-void Line::setAttribute(const std::string& attribute, const std::string& value) {
+void Line::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "x1") setX1(value);
 	else if (attribute == "y1") setY1(value);
 	else if (attribute == "x2") setX2(value);

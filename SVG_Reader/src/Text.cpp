@@ -89,7 +89,7 @@ void Text::setData(const std::string& data) {
 }
 
 // Virtual method
-void Text::setAttribute(const std::string& attribute, const std::string& value) {
+void Text::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "|") setData(value);
 	else if (attribute == "x") setX(value);
 	else if (attribute == "y") setY(value);

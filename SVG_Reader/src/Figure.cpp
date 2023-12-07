@@ -69,7 +69,14 @@ void Figure::setTransform(const std::string& transform) {
 	}
 }
 
-void Figure::setAttribute(const std::string& line) {
+void Figure::setGroupAttributes(Figure* group) {
+	fill = group->fill;
+	stroke = group->stroke;
+	stroke_width = group->stroke_width;
+	transform = group->transform;
+}
+
+void Figure::setAttributes(const std::string& line) {
 	std::stringstream ss(line);
 	std::string attribute, value;
 	while (ss >> attribute) {
@@ -83,19 +90,10 @@ void Figure::setAttribute(const std::string& line) {
 		else if (attribute == "stroke-width") setStrokeWidth(value);
 		else if (attribute == "stroke-opacity") setStrokeOpacity(value);
 		else if (attribute == "transform") setTransform(value);
-		else setAttribute(attribute, value);
+		else setAttributes(attribute, value);
 		//cout << "{" << attribute << "," << value << "}\n";
 	}
 }
-
-void Figure::setGroup(const Figure* other) {
-	fill = other->fill;
-	stroke = other->stroke;
-	stroke_width = other->stroke_width;
-	transform = other->transform;
-}
-// Virtual method
-void Figure::setAttribute(const std::string& attribute, const std::string& value) {};
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
 

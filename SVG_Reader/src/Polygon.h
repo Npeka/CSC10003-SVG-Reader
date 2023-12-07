@@ -15,7 +15,7 @@ public:
 	void setPoint(const std::string& line);
 
 	// Virtual method
-	void setAttribute(const std::string& attribute, const std::string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Polygon() override = default;
 };
 

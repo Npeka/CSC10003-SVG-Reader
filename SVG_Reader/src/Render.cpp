@@ -31,10 +31,16 @@ void Transform_Second(const std::vector <std::pair <int, Point>>& t, Render_Wind
 		}
 	}
 }
+// class Drawable
+Drawable::Drawable() : pen(Gdiplus::Color(0, 0, 0)), brush(Gdiplus::Color(0, 0, 0)) {};
+/*
 
+
+
+*/
 // class DrawableRectangle
 // Constructor
-void Drawable_Rectangle::setAtrribute() {
+void Drawable_Rectangle::setDrawableAtrributes() {
 	rect = Gdiplus::Rect(x, y, width, height);
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
@@ -56,7 +62,7 @@ void Drawable_Rectangle::draw(Render_Window) {
 */
 // class DrawableEllipse
 // Constructor
-void Drawable_Ellipse::setAtrribute() {
+void Drawable_Ellipse::setDrawableAtrributes() {
 	ellipseRect = Gdiplus::Rect(cx - rx, cy - ry, 2 * rx, 2 * ry);
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
@@ -78,7 +84,7 @@ void Drawable_Ellipse::draw(Render_Window) {
 */
 // class DrawableCircle
 // Constructor
-void Drawable_Circle::setAtrribute() {
+void Drawable_Circle::setDrawableAtrributes() {
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
@@ -104,7 +110,7 @@ Drawable_Line::Drawable_Line(const Line* other) : Line(*other) {
 	
 }
 
-void Drawable_Line::setAtrribute() {
+void Drawable_Line::setDrawableAtrributes() {
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
 }
@@ -127,7 +133,7 @@ void Drawable_Line::draw(Render_Window) {
 
 // Public
 // Constructor
-void Drawable_Polyline::setAtrribute() {
+void Drawable_Polyline::setDrawableAtrributes() {
 	points = new Gdiplus::PointF[fpoint.size()];
 	for (int i = 0; i < fpoint.size(); i++) {
 		points[i].X = fpoint[i].x;
@@ -153,7 +159,7 @@ void Drawable_Polyline::draw(Render_Window) {
 */
 // class DrawablePolygon
 // Constructor
-void Drawable_Polygon::setAtrribute() {
+void Drawable_Polygon::setDrawableAtrributes() {
 	gdiPoints = new Gdiplus::PointF[point.size()];
 	for (size_t i = 0; i < point.size(); ++i) {
 		gdiPoints[i] = Gdiplus::PointF((point[i].x), (point[i].y));
@@ -181,7 +187,7 @@ void Drawable_Polygon::draw(Render_Window) {
 */
 // class DrawableText
 // Constructor
-void Drawable_Text::setAtrribute() {
+void Drawable_Text::setDrawableAtrributes() {
 	this->x = x;
 	this->y = y;
 	this->font_size = font_size;
@@ -289,8 +295,7 @@ void Drawable_Text::draw(Render_Window) {
 // class SF_Path
 
 // Constructor
-void Drawable_Path::setAtrribute() {
-
+void Drawable_Path::setDrawableAtrributes() {
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);

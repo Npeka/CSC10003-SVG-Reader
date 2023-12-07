@@ -32,7 +32,7 @@ public:
 	void setChangePositionDy(const std::string& dy);
 
 	// Virtual method
-	void setAttribute(const std::string& attribute, const std::string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Text() override = default;
 };
 

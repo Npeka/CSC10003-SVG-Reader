@@ -17,6 +17,7 @@
 
 // Define parameters needed for render lib
 #define Render_Window Gdiplus::Graphics& graphics
+#define Render_Parameters graphics
 
 // Function to convert from Color to Graphics library Colors
 Gdiplus::Color GDI_Color(const Color& color);
@@ -33,9 +34,9 @@ protected:
 	Gdiplus::Pen pen;
 	Gdiplus::SolidBrush brush;
 public:
-	Drawable() : pen(Gdiplus::Color(0, 0, 0)), brush(Gdiplus::Color(0, 0, 0)) {}
-	virtual void setAtrribute() = 0;
-	virtual void draw(Render_Window) = 0;
+	Drawable();
+	virtual void setDrawableAtrributes() {};
+	virtual void draw(Render_Window) {};
 	virtual ~Drawable() = default;
 };
 //-------------END-OF-DECLARATION------------//
@@ -53,7 +54,7 @@ public:
 	Drawable_Rectangle() = default;
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Rectangle() override = default;
 };
@@ -72,7 +73,7 @@ public:
 	Drawable_Ellipse() = default;
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Ellipse() override = default;
 };
@@ -91,7 +92,7 @@ public:
 	Drawable_Circle() = default;
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Circle() override = default;
 };
@@ -111,7 +112,7 @@ public:
 	Drawable_Line(const Line* line);
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Line() override = default;
 };
@@ -131,7 +132,7 @@ public:
 	Drawable_Polyline() = default;
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Polyline() override = default;
 };
@@ -149,7 +150,7 @@ public:
 	Drawable_Polygon() = default;
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Polygon() override = default;
 };
@@ -168,7 +169,7 @@ public:
 	Drawable_Text() = default;
 
 	// Virtual method
-    void setAtrribute();
+    void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Text() override = default;
 };
@@ -191,7 +192,7 @@ public:
 	Color getStroke();
 
 	// Virtual method
-	void setAtrribute();
+	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Path() override = default;
 };
