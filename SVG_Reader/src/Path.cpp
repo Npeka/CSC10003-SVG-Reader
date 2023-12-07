@@ -78,6 +78,9 @@ void Path::setPath(const std::string& line) {
 		}
 	}
 
+	std::ofstream ofs;
+	ofs.open("test.txt");
+
 	//Add initial point and update l, v, h, V, H, c for each path element 
 	Point initialSubpath;
 	for (int i = 0; i < path.size(); i++) {
@@ -107,7 +110,7 @@ void Path::setPath(const std::string& line) {
 			path[i].second.insert(path[i].second.begin(), end); // đưa point cuối của vector trước vào đầu vector sau
 		}
 
-		else if (cmd == 'h' || cmd == 'v' || cmd == 'c' || cmd == 'l' || cmd == 'H' || cmd == 'V') {
+		else if (cmd == 'h' || cmd == 'v' || cmd == 'c' || cmd == 'l') {
 			path[i].second.insert(path[i].second.begin(), end);
 			for (int j = 1; j < path[i].second.size(); j++) {
 				path[i].second[j].x += end.x;
@@ -115,15 +118,21 @@ void Path::setPath(const std::string& line) {
 			}
 		}
 
+		else if (cmd == 'H' || cmd == 'V') {
+			path[i].second.insert(path[i].second.begin(), end);
+			if (cmd == 'H') path[i].second[1].y = end.y;
+			if (cmd == 'V') path[i].second[1].x = end.x;
+		}
+
 		// vector<Point> in z path just contain the initialPoint of all path
 		else if (cmd == 'Z' || cmd == 'z') {
 			path[i].second.push_back(initialSubpath);
 			path[i].second.push_back(end);
 		}
-
-		//cout << cmd << endl;
+		
+		//ofs << cmd << std::endl;
 		//for (int j = 0; j < path[i].second.size(); j++) {
-		//	cout << path[i].second[j].x << " " << path[i].second[j].y << endl;
+		//	ofs << path[i].second[j].x << " " << path[i].second[j].y << std::endl;
 		//}
 	}	
 }
