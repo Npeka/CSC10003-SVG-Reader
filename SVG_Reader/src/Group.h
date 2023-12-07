@@ -12,9 +12,11 @@ public:
 	~Group() override;
 
 	void setParent(Group* parent);
-	void addDrawable(Drawable* drawable);
+	void setParentAttributes();
 	Group* getParent();
 	const std::vector<Drawable*>& getFigures() const;
+
+	void addDrawable(Drawable* drawable);
 	void draw(Render_Window) override;
 };
 

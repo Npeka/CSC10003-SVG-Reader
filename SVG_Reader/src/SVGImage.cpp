@@ -118,6 +118,7 @@ void SVGImage::parse(const std::string& nameFile) {
 		else if (word == "g") {
 			Group* newGroup = new Group();
 			newGroup->setParent(curGroup);		// Group
+			newGroup->setParentAttributes();	// Group parent
 			newGroup->setAttributes(info);		// Figure
 			curGroup->addDrawable(newGroup);	// Group parent
 			curGroup = newGroup;
@@ -140,5 +141,12 @@ void SVGImage::parse(const std::string& nameFile) {
 	}
 	figureFactory->deleteInstance();
 	inFile.close();
+}
+
+void SVG_Render(const SVGImage& svgImage, Render_Window) {
+	std::vector<Drawable*> figures = svgImage.getRoot()->getFigures();
+	for (auto& figure : figures) {
+		figure->draw(Render_Parameters);
+	}
 }
 //-----------END-OF-IMPLEMENTATION-----------//

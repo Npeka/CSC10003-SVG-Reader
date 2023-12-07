@@ -70,10 +70,12 @@ void Figure::setTransform(const std::string& transform) {
 }
 
 void Figure::setGroupAttributes(Figure* group) {
-	fill = group->fill;
-	stroke = group->stroke;
-	stroke_width = group->stroke_width;
-	transform = group->transform;
+	if (group != nullptr) {
+		fill = group->fill;
+		stroke = group->stroke;
+		stroke_width = group->stroke_width;
+		//transform = group->transform;
+	}
 }
 
 void Figure::setAttributes(const std::string& line) {
@@ -103,12 +105,12 @@ void Figure::setAttributes(const std::string& line) {
 // class FigureFactory
 // Private
 	// Attribute
-FigureFactory* FigureFactory::Instance = NULL;
+FigureFactory* FigureFactory::Instance = nullptr;
 
 // Public
 	// Method
 FigureFactory* FigureFactory::getInstance() {
-	if (Instance == NULL)
+	if (Instance == nullptr)
 		Instance = new FigureFactory();
 	return Instance;
 }
@@ -122,12 +124,12 @@ Figure* FigureFactory::getFigure(const std::string& figure) {
 	if (figure == "polygon") return new Drawable_Polygon();
 	if (figure == "text") return new Drawable_Text();
 	if (figure == "path") return new Drawable_Path();
-	return NULL;
+	return nullptr;
 }
 
 void FigureFactory::deleteInstance() {
-	if (Instance != NULL)
+	if (Instance != nullptr) 
 		delete Instance;
-	Instance = NULL;
+	Instance = nullptr;
 }
 //-----------END-OF-IMPLEMENTATION-----------//

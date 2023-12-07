@@ -55,6 +55,7 @@ public:
 	void setAttribute(const std::string& line);
 	void parse(const std::string& nameFile);
 };
+void SVG_Render(const SVGImage& svgImage, Render_Window);
 //-------------END-OF-DECLARATION------------//
 
 #endif // !SVG_IMAGE_H

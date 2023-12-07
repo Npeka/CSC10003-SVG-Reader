@@ -106,10 +106,6 @@ void Drawable_Circle::draw(Render_Window) {
 // class DrawableLine
 
 // Constructor
-Drawable_Line::Drawable_Line(const Line* other) : Line(*other) {
-	
-}
-
 void Drawable_Line::setDrawableAtrributes() {
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
@@ -282,8 +278,7 @@ void Drawable_Text::draw(Render_Window) {
 		
 	Transform_Second(transform, graphics);
 
-	if (font)
-		delete font;
+	if (font) delete font;
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
