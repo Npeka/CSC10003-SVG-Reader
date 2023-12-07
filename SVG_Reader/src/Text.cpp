@@ -18,9 +18,11 @@ const std::string Text::font[] = {
 Text::Text() {
 	x = 0;
 	y = 0;
+	dx = 0;
+	dy = 0;
 	font_family = "Times New Roman";
 	font_size = 16;
-	font_weight = "";
+	font_style = "regular";
 	data = "";
 }
 
@@ -29,7 +31,7 @@ Text::Text(const Text& text) : Figure(text) {
 	y = text.y;
 	font_family = text.font_family;
 	font_size = text.font_size;
-	font_weight = text.font_weight;
+	font_style = text.font_style;
 	data = text.data;
 }
 
@@ -42,12 +44,23 @@ void Text::setY(const std::string& y) {
 	check_exception("text", "y", this->y = stof(y));
 }
 
+void Text::setChangePositionDx(const std::string& dx) {
+	check_exception("text", "dx", this->dx = stof(dx));
+	this->x += this->dx;
+}
+
+void Text::setChangePositionDy(const std::string& dy) {
+	check_exception("text", "dy", this->dy = stof(dy));
+	this->y += this->dy;
+}
+
+
 void Text::setFontSize(const std::string& font_size) {
 	check_exception("text", "font-size", this->font_size = stof(font_size));
 }
 
-void Text::setFontWeight(const std::string& font_weight) {
-	this->font_weight = font_weight;
+void Text::setFontStyle(const std::string& font_style) {
+	this->font_style = font_style;
 }
 
 void Text::setFontFamily(const std::string& font_family) {
@@ -57,6 +70,10 @@ void Text::setFontFamily(const std::string& font_family) {
 		}
 	}
 	return;
+}
+
+void Text::setTextAnchor(const std::string& text_anchor) {
+	this->text_anchor = text_anchor;
 }
 
 void Text::setData(const std::string& data) {
@@ -76,6 +93,10 @@ void Text::setAttribute(const std::string& attribute, const std::string& value) 
 	if (attribute == "|") setData(value);
 	else if (attribute == "x") setX(value);
 	else if (attribute == "y") setY(value);
+	else if (attribute == "dx") setChangePositionDx(value);
+	else if (attribute == "dy") setChangePositionDy(value);
 	else if (attribute == "font-family") setFontFamily(value);
 	else if (attribute == "font-size") setFontSize(value);
+	else if (attribute == "font-style") setFontStyle(value);
+	else if (attribute == "text-anchor") setTextAnchor(value);
 }

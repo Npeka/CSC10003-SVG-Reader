@@ -185,7 +185,7 @@ void Drawable_Text::setAtrribute() {
 	this->x = x;
 	this->y = y;
 	this->font_size = font_size;
-	this->font_weight = font_weight;
+	this->font_style = font_style;
 	this->font_family = font_family;
 	this->data = data;
 
@@ -199,14 +199,14 @@ void Drawable_Text::setAtrribute() {
 	// Create a FontStyle variable 
 	Gdiplus::FontStyle fontStyle = Gdiplus::FontStyle::FontStyleRegular;
 
-	if (font_weight == "bold") {
+	if (font_style == "bold") {
 		fontStyle = Gdiplus::FontStyle::FontStyleBold;
 	}
-	else if (font_weight == "bold") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
+	else if (font_style == "italic") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
 
 	Gdiplus::REAL fontSize = static_cast<Gdiplus::REAL>(font_size);
 
-	Gdiplus::Unit unit = Gdiplus::UnitPoint;
+	Gdiplus::Unit unit = Gdiplus::UnitPixel;
 
 	auto tempFont = std::make_unique<Gdiplus::Font>(&fontFamily, fontSize, fontStyle, unit);
 
@@ -219,12 +219,61 @@ void Drawable_Text::setAtrribute() {
 void Drawable_Text::draw(Render_Window) {
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
 	std::wstring wideStringData = converter.from_bytes(data);	
-	Gdiplus::PointF position(x, y);
-	Gdiplus::FontFamily fontFamily();
-	Gdiplus::StringFormat stringFormat;
+
 	
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converterFontFamily;
+	std::wstring wideString = converterFontFamily.from_bytes(font_family);
+	Gdiplus::FontFamily fontFamily(wideString.c_str());
+
+	Gdiplus::StringFormat stringFormat;
+	stringFormat.SetAlignment(Gdiplus::StringAlignmentNear);
+	stringFormat.SetLineAlignment(Gdiplus::StringAlignmentNear);
+	if (text_anchor == "middle" || text_anchor == "end") {
+		Gdiplus::RectF layoutRect;
+		Gdiplus::PointF origin(x, y); // Adjust the origin based on your requirements
+
+		graphics.MeasureString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, origin, &stringFormat, &layoutRect);
+
+		float textHeight = layoutRect.Height;
+
+		if (text_anchor == "middle") {
+			stringFormat.SetAlignment(Gdiplus::StringAlignmentCenter);
+			stringFormat.SetLineAlignment(Gdiplus::StringAlignmentCenter);
+			y += 1.1 * textHeight / 2;
+		}
+		else if (text_anchor == "end") {
+			stringFormat.SetAlignment(Gdiplus::StringAlignmentFar);
+			stringFormat.SetLineAlignment(Gdiplus::StringAlignmentFar);
+			y += 1.1 * textHeight;
+		}
+	}
+
+	Gdiplus::PointF position(x, y - font_size);
+
+	graphics.SetTextRenderingHint(Gdiplus::TextRenderingHintAntiAlias);
+	Gdiplus::FontStyle fontStyle = Gdiplus::FontStyle::FontStyleRegular;
+	if (font_style == "bold") {
+		fontStyle = Gdiplus::FontStyle::FontStyleBold;
+	}
+	else if (font_style == "italic") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
+	Gdiplus::GraphicsPath path;
+	path.AddString(
+		wideStringData.c_str(),
+		static_cast<INT>(wideStringData.length()),
+		&fontFamily,
+		static_cast<INT>(fontStyle),
+		static_cast<Gdiplus::REAL>(font_size),
+		position,
+		&stringFormat
+	);
+	// Create a pen for the outline
+	Gdiplus::Pen pen(GDI_Color(stroke), stroke_width);
+	// Draw the outline
 	Transform_First(transform, graphics);
-	graphics.DrawString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, position, &brush);
+	
+	graphics.DrawString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, position, &stringFormat, &brush);
+	graphics.DrawPath(&pen, &path);	
+		
 	Transform_Second(transform, graphics);
 
 	if (font)
