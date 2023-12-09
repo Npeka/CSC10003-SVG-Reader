@@ -33,11 +33,9 @@ VOID OnPaint(HDC& hdc)
     graphics.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHighQuality);
     graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
 
-    SVGImage svg("sample.svg");
-    const Group* root = svg.getRoot();
-    for (const auto& figure : root->getFigures()) {
-		figure->draw(graphics);
-	}
+    // 01 - 02 - 09 bi loi chay chua duoc
+    SVGImage svg("svg-12.svg");
+    SVG_Render(svg, graphics);
 }
 
 void Translate(HWND& hWnd, float x, float y) {

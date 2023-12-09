@@ -1,6 +1,7 @@
 #ifndef RENDER_H
 #define RENDER_H
 
+//#include "SVGImage.h"
 #include "Header.h"
 #include "Rectangle.h"
 #include "Ellipse.h"
@@ -10,6 +11,7 @@
 #include "Polygon.h"
 #include "Path.h"
 #include "Text.h"
+
 
 // Include lib for render
 #include <windows.h>
@@ -109,7 +111,6 @@ private:
 public:
 	// Constructor 
 	Drawable_Line() = default;
-	Drawable_Line(const Line* line);
 
 	// Virtual method
 	void setDrawableAtrributes();
@@ -187,9 +188,6 @@ private:
 public:
 	// Constructor
 	Drawable_Path() = default;
-
-	//
-	Color getStroke();
 
 	// Virtual method
 	void setDrawableAtrributes();
