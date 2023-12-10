@@ -74,7 +74,6 @@ void Figure::setGroupAttributes(Figure* group) {
 		fill = group->fill;
 		stroke = group->stroke;
 		stroke_width = group->stroke_width;
-		//transform = group->transform;
 	}
 }
 
@@ -83,8 +82,7 @@ void Figure::setAttributes(const std::string& line) {
 	std::string attribute, value;
 	while (ss >> attribute) {
 		static char end;
-		end = (attribute == "|") ? '<' : '"';
-		getline(ss, value, end);
+		ss >> end;
 		getline(ss, value, end);
 		if (attribute == "fill") setFill(value);
 		else if (attribute == "stroke") setStroke(value);

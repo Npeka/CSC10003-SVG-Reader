@@ -38,7 +38,8 @@ private:
 	
 public:
 	// Constructor
-	SVGImage(const std::string& nameFile = "");
+	SVGImage();
+	SVGImage(const std::string& nameFile);
 	SVGImage(const SVGImage& svgImage);
 
 	// Destructor
@@ -52,10 +53,12 @@ public:
 	void setHeight(const std::string& height);
 	void setStyle(const std::string& style);
 	void setViewBox(const std::string& viewbox);
-	void setAttribute(const std::string& line);
+	void setSVGAttributes(const std::string& line);
 	void parse(const std::string& nameFile);
 };
+
 void SVG_Render(const SVGImage& svgImage, Render_Window);
+
 //-------------END-OF-DECLARATION------------//
 
 #endif // !SVG_IMAGE_H

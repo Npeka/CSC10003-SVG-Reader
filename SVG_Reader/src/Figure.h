@@ -5,7 +5,7 @@
 #include "Color.h"
 #include "Point.h"
 
-// class Ficgure
+// class Figure
 class Figure {
 protected:
 	Color fill;
@@ -56,6 +56,3 @@ public:
 //-------------END-OF-DECLARATION------------//
 
 #endif // !FIGURE_H
-
-
-

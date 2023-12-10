@@ -32,13 +32,16 @@ void SVGImage::standardizeTag(std::string& line) {
 
 // Public
 	// Constructors
-SVGImage::SVGImage(const std::string& nameFile) {
+SVGImage::SVGImage() {
 	root = new Group();
 	root->setParent(root);
 	width = 0;
 	height = 0;
 	background.setRGB(255, 255, 255);
-	parse(nameFile);
+}
+
+SVGImage::SVGImage(const std::string& nameFile) : SVGImage() {
+	if (nameFile != "") parse(nameFile);
 }
 
 SVGImage::SVGImage(const SVGImage& svgImage) {
@@ -80,7 +83,7 @@ void SVGImage::setViewBox(const std::string& viewbox) {
 	this->viewbox.setAttribute(viewbox);
 }
 
-void SVGImage::setAttribute(const std::string& line) {
+void SVGImage::setSVGAttributes(const std::string& line) {
 	std::stringstream ss(line);
 	std::string attribute, value;
 	while (ss >> attribute) {
@@ -114,7 +117,11 @@ void SVGImage::parse(const std::string& nameFile) {
 		}
 
 		standardizeTag(info);
-		if (word == "svg") setAttribute(info);
+		// Parse the node
+		if (word == "svg") setSVGAttributes(info);
+		else if (word == "defs") {
+
+		}
 		else if (word == "g") {
 			Group* newGroup = new Group();
 			newGroup->setParent(curGroup);		// Group
@@ -144,9 +151,10 @@ void SVGImage::parse(const std::string& nameFile) {
 }
 
 void SVG_Render(const SVGImage& svgImage, Render_Window) {
-	std::vector<Drawable*> figures = svgImage.getRoot()->getFigures();
+	const std::vector<Drawable*>& figures = svgImage.getRoot()->getFigures();
 	for (auto& figure : figures) {
 		figure->draw(Render_Parameters);
+		std::cout << "draw\n";
 	}
 }
 //-----------END-OF-IMPLEMENTATION-----------//

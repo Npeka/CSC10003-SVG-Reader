@@ -1,16 +1,9 @@
-﻿#include <SDKDDKVer.h>
-#define WIN32_LEAN_AND_MEAN   
-#include <stdlib.h>
-#include <malloc.h>
-#include <memory.h>
-#include <tchar.h>
-#include <windows.h>
+﻿//#define WIN32_LEAN_AND_MEAN   
+#include <winsock2.h>
 #include <objidl.h>
+#include <windows.h>
 #include <gdiplus.h>
 #pragma comment (lib,"Gdiplus.lib")
-
-//using namespace std;
-//using namespace Gdiplus;
 
 #include "src/SVGImage.h"
 
@@ -18,6 +11,7 @@ float offsetX = 0.0f;
 float offsetY = 0.0f;
 float rotationAngle = 0.0f;
 float zoomFactor = 1.0f;
+std::string filename = "sample.svg";
 
 VOID OnPaint(HDC& hdc)
 {
@@ -34,7 +28,7 @@ VOID OnPaint(HDC& hdc)
     graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
 
     // 01 - 02 - 09 bi loi chay chua duoc
-    SVGImage svg("svg-12.svg");
+    SVGImage svg(filename);
     SVG_Render(svg, graphics);
 }
 
@@ -54,9 +48,7 @@ void Zoom(HWND& hWnd, float zoom) {
     InvalidateRect(hWnd, NULL, TRUE);  // Gọi OnPaint để vẽ lại
 }
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message,
-    WPARAM wParam, LPARAM lParam)
-{
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
     HDC          hdc;
     PAINTSTRUCT  ps;
 
@@ -111,8 +103,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message,
     }
 } // WndProc
 
-INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
-{
+INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow) {
     HWND                hWnd;
     MSG                 msg;
     WNDCLASS            wndClass;
@@ -160,3 +151,9 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
     Gdiplus::GdiplusShutdown(gdiplusToken);
     return msg.wParam;
 }  // WinMain
+
+//int main(int argc, char* argv[]) {
+int main() {
+    INT result = WinMain(GetModuleHandle(NULL), NULL, GetCommandLineA(), SW_SHOWNORMAL);
+    return result;
+}
