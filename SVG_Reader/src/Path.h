@@ -16,7 +16,7 @@ public:
 	void setPath(const std::string& line);
 
 	// Virtual method 
-	void setAttribute(const std::string& attribute, const std::string& value) override;
+	void setAttributes(const std::string& attribute, const std::string& value) override;
 	~Path() override = default;
 };
 

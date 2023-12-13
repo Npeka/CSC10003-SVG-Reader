@@ -132,6 +132,7 @@
     <ClCompile Include="src\Color.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Figure.cpp" />
+    <ClCompile Include="src\Group.cpp" />
     <ClCompile Include="src\Line.cpp" />
     <ClCompile Include="src\Path.cpp" />
     <ClCompile Include="src\Point.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="src\Color.h" />
     <ClInclude Include="src\Ellipse.h" />
     <ClInclude Include="src\Figure.h" />
+    <ClInclude Include="src\Group.h" />
     <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\Line.h" />
     <ClInclude Include="src\Path.h" />

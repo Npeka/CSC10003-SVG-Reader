@@ -69,13 +69,20 @@ void Figure::setTransform(const std::string& transform) {
 	}
 }
 
-void Figure::setAttribute(const std::string& line) {
+void Figure::setGroupAttributes(Figure* group) {
+	if (group != nullptr) {
+		fill = group->fill;
+		stroke = group->stroke;
+		stroke_width = group->stroke_width;
+	}
+}
+
+void Figure::setAttributes(const std::string& line) {
 	std::stringstream ss(line);
 	std::string attribute, value;
 	while (ss >> attribute) {
 		static char end;
-		end = (attribute == "|") ? '<' : '"';
-		getline(ss, value, end);
+		ss >> end;
 		getline(ss, value, end);
 		if (attribute == "fill") setFill(value);
 		else if (attribute == "stroke") setStroke(value);
@@ -83,19 +90,10 @@ void Figure::setAttribute(const std::string& line) {
 		else if (attribute == "stroke-width") setStrokeWidth(value);
 		else if (attribute == "stroke-opacity") setStrokeOpacity(value);
 		else if (attribute == "transform") setTransform(value);
-		else setAttribute(attribute, value);
+		else setAttributes(attribute, value);
 		//cout << "{" << attribute << "," << value << "}\n";
 	}
 }
-
-void Figure::setGroup(const Figure* other) {
-	fill = other->fill;
-	stroke = other->stroke;
-	stroke_width = other->stroke_width;
-	transform = other->transform;
-}
-// Virtual method
-void Figure::setAttribute(const std::string& attribute, const std::string& value) {};
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
 
@@ -105,12 +103,12 @@ void Figure::setAttribute(const std::string& attribute, const std::string& value
 // class FigureFactory
 // Private
 	// Attribute
-FigureFactory* FigureFactory::Instance = NULL;
+FigureFactory* FigureFactory::Instance = nullptr;
 
 // Public
 	// Method
 FigureFactory* FigureFactory::getInstance() {
-	if (Instance == NULL)
+	if (Instance == nullptr)
 		Instance = new FigureFactory();
 	return Instance;
 }
@@ -124,12 +122,12 @@ Figure* FigureFactory::getFigure(const std::string& figure) {
 	if (figure == "polygon") return new Drawable_Polygon();
 	if (figure == "text") return new Drawable_Text();
 	if (figure == "path") return new Drawable_Path();
-	return NULL;
+	return nullptr;
 }
 
 void FigureFactory::deleteInstance() {
-	if (Instance != NULL)
+	if (Instance != nullptr) 
 		delete Instance;
-	Instance = NULL;
+	Instance = nullptr;
 }
 //-----------END-OF-IMPLEMENTATION-----------//

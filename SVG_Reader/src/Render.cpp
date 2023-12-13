@@ -31,10 +31,16 @@ void Transform_Second(const std::vector <std::pair <int, Point>>& t, Render_Wind
 		}
 	}
 }
+// class Drawable
+Drawable::Drawable() : pen(Gdiplus::Color(0, 0, 0)), brush(Gdiplus::Color(0, 0, 0)) {};
+/*
 
+
+
+*/
 // class DrawableRectangle
 // Constructor
-void Drawable_Rectangle::setAtrribute() {
+void Drawable_Rectangle::setDrawableAtrributes() {
 	rect = Gdiplus::Rect(x, y, width, height);
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
@@ -56,7 +62,7 @@ void Drawable_Rectangle::draw(Render_Window) {
 */
 // class DrawableEllipse
 // Constructor
-void Drawable_Ellipse::setAtrribute() {
+void Drawable_Ellipse::setDrawableAtrributes() {
 	ellipseRect = Gdiplus::Rect(cx - rx, cy - ry, 2 * rx, 2 * ry);
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
@@ -78,7 +84,7 @@ void Drawable_Ellipse::draw(Render_Window) {
 */
 // class DrawableCircle
 // Constructor
-void Drawable_Circle::setAtrribute() {
+void Drawable_Circle::setDrawableAtrributes() {
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
@@ -100,11 +106,7 @@ void Drawable_Circle::draw(Render_Window) {
 // class DrawableLine
 
 // Constructor
-Drawable_Line::Drawable_Line(const Line* other) : Line(*other) {
-	
-}
-
-void Drawable_Line::setAtrribute() {
+void Drawable_Line::setDrawableAtrributes() {
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);
 }
@@ -127,7 +129,7 @@ void Drawable_Line::draw(Render_Window) {
 
 // Public
 // Constructor
-void Drawable_Polyline::setAtrribute() {
+void Drawable_Polyline::setDrawableAtrributes() {
 	points = new Gdiplus::PointF[fpoint.size()];
 	for (int i = 0; i < fpoint.size(); i++) {
 		points[i].X = fpoint[i].x;
@@ -153,7 +155,7 @@ void Drawable_Polyline::draw(Render_Window) {
 */
 // class DrawablePolygon
 // Constructor
-void Drawable_Polygon::setAtrribute() {
+void Drawable_Polygon::setDrawableAtrributes() {
 	gdiPoints = new Gdiplus::PointF[point.size()];
 	for (size_t i = 0; i < point.size(); ++i) {
 		gdiPoints[i] = Gdiplus::PointF((point[i].x), (point[i].y));
@@ -181,11 +183,11 @@ void Drawable_Polygon::draw(Render_Window) {
 */
 // class DrawableText
 // Constructor
-void Drawable_Text::setAtrribute() {
+void Drawable_Text::setDrawableAtrributes() {
 	this->x = x;
 	this->y = y;
 	this->font_size = font_size;
-	this->font_weight = font_weight;
+	this->font_style = font_style;
 	this->font_family = font_family;
 	this->data = data;
 
@@ -199,14 +201,14 @@ void Drawable_Text::setAtrribute() {
 	// Create a FontStyle variable 
 	Gdiplus::FontStyle fontStyle = Gdiplus::FontStyle::FontStyleRegular;
 
-	if (font_weight == "bold") {
+	if (font_style == "bold") {
 		fontStyle = Gdiplus::FontStyle::FontStyleBold;
 	}
-	else if (font_weight == "bold") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
+	else if (font_style == "italic") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
 
 	Gdiplus::REAL fontSize = static_cast<Gdiplus::REAL>(font_size);
 
-	Gdiplus::Unit unit = Gdiplus::UnitPoint;
+	Gdiplus::Unit unit = Gdiplus::UnitPixel;
 
 	auto tempFont = std::make_unique<Gdiplus::Font>(&fontFamily, fontSize, fontStyle, unit);
 
@@ -219,16 +221,64 @@ void Drawable_Text::setAtrribute() {
 void Drawable_Text::draw(Render_Window) {
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
 	std::wstring wideStringData = converter.from_bytes(data);	
-	Gdiplus::PointF position(x, y);
-	Gdiplus::FontFamily fontFamily();
-	Gdiplus::StringFormat stringFormat;
+
 	
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converterFontFamily;
+	std::wstring wideString = converterFontFamily.from_bytes(font_family);
+	Gdiplus::FontFamily fontFamily(wideString.c_str());
+
+	Gdiplus::StringFormat stringFormat;
+	stringFormat.SetAlignment(Gdiplus::StringAlignmentNear);
+	stringFormat.SetLineAlignment(Gdiplus::StringAlignmentNear);
+	if (text_anchor == "middle" || text_anchor == "end") {
+		Gdiplus::RectF layoutRect;
+		Gdiplus::PointF origin(x, y); // Adjust the origin based on your requirements
+
+		graphics.MeasureString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, origin, &stringFormat, &layoutRect);
+
+		float textHeight = layoutRect.Height;
+
+		if (text_anchor == "middle") {
+			stringFormat.SetAlignment(Gdiplus::StringAlignmentCenter);
+			stringFormat.SetLineAlignment(Gdiplus::StringAlignmentCenter);
+			y += 1.1 * textHeight / 2;
+		}
+		else if (text_anchor == "end") {
+			stringFormat.SetAlignment(Gdiplus::StringAlignmentFar);
+			stringFormat.SetLineAlignment(Gdiplus::StringAlignmentFar);
+			y += 1.1 * textHeight;
+		}
+	}
+
+	Gdiplus::PointF position(x, y - font_size);
+
+	graphics.SetTextRenderingHint(Gdiplus::TextRenderingHintAntiAlias);
+	Gdiplus::FontStyle fontStyle = Gdiplus::FontStyle::FontStyleRegular;
+	if (font_style == "bold") {
+		fontStyle = Gdiplus::FontStyle::FontStyleBold;
+	}
+	else if (font_style == "italic") fontStyle = Gdiplus::FontStyle::FontStyleItalic;
+	Gdiplus::GraphicsPath path;
+	path.AddString(
+		wideStringData.c_str(),
+		static_cast<INT>(wideStringData.length()),
+		&fontFamily,
+		static_cast<INT>(fontStyle),
+		static_cast<Gdiplus::REAL>(font_size),
+		position,
+		&stringFormat
+	);
+	// Create a pen for the outline
+	Gdiplus::Pen pen(GDI_Color(stroke), stroke_width);
+	// Draw the outline
 	Transform_First(transform, graphics);
-	graphics.DrawString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, position, &brush);
+	
+	graphics.DrawString(wideStringData.c_str(), static_cast<INT>(wideStringData.length()), font, position, &stringFormat, &brush);
+	graphics.DrawPath(&pen, &path);	
+		
 	Transform_Second(transform, graphics);
 
-	if (font)
-		delete font;
+	if (font) delete font;
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -240,8 +290,7 @@ void Drawable_Text::draw(Render_Window) {
 // class SF_Path
 
 // Constructor
-void Drawable_Path::setAtrribute() {
-
+void Drawable_Path::setDrawableAtrributes() {
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
 	pen.SetWidth(stroke_width);

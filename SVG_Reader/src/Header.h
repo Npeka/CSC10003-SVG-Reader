@@ -12,6 +12,8 @@
 #include <vector>
 #include <locale>
 #include <codecvt>
+#include <cmath>
+#include <unordered_map>
 //-------------END-OF-DECLARATION------------//
 /*
 

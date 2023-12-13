@@ -61,7 +61,7 @@ public:
      * @param attribute The name of the attribute to set.
      * @param value The new value for the attribute.
      */
-    void setAttribute(const std::string& attribute, const std::string& value) override;
+    void setAttributes(const std::string& attribute, const std::string& value) override;
 
     /**
      * @brief Destructor for the Circle class.

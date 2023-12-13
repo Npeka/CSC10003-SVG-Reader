@@ -17,6 +17,6 @@ void Polygon::setPoint(const std::string& line) {
 }
 
 // Virtual method
-void Polygon::setAttribute(const std::string& attribute, const std::string& value) {
+void Polygon::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "points") setPoint(value);
 }

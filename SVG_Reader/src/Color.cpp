@@ -59,7 +59,9 @@ void Color::setRGB(const std::string& color) {
 	}
     else {
         int saveA = a;
-        *this = setColorByName(Color);
+        auto it = mapColor.find(Color);
+        if (it != mapColor.end())
+            *this = it->second;
         if (a == 255) a = saveA;
 	}
 }
@@ -79,487 +81,244 @@ Color& Color::operator=(const Color& color) {
     return *this;
 }
 
-const Color& setColorByName(const std::string& color) {
-    if (color == "aliceblue") return aliceblue;
-    if (color == "antiquewhite") return antiquewhite;
-    if (color == "aqua") return aqua;
-    if (color == "aquamarine") return aquamarine;
-    if (color == "azure") return azure;
-    if (color == "beige") return beige;
-    if (color == "bisque") return bisque;
-    if (color == "black") return black;
-    if (color == "blanchedalmond") return blanchedalmond;
-    if (color == "blue") return blue;
-    if (color == "blueviolet") return blueviolet;
-    if (color == "brown") return brown;
-    if (color == "burlywood") return burlywood;
-    if (color == "cadetblue") return cadetblue;
-    if (color == "chartreuse") return chartreuse;
-    if (color == "chocolate") return chocolate;
-    if (color == "coral") return coral;
-    if (color == "cornflowerblue") return cornflowerblue;
-    if (color == "cornsilk") return cornsilk;
-    if (color == "crimson") return crimson;
-    if (color == "cyan") return cyan;
-    if (color == "darkblue") return darkblue;
-    if (color == "darkcyan") return darkcyan;
-    if (color == "darkgoldenrod") return darkgoldenrod;
-    if (color == "darkgray") return darkgray;
-    if (color == "darkgreen") return darkgreen;
-    if (color == "darkkhaki") return darkkhaki;
-    if (color == "darkmagenta") return darkmagenta;
-    if (color == "darkolivegreen") return darkolivegreen;
-    if (color == "darkorange") return darkorange;
-    if (color == "darkorchid") return darkorchid;
-    if (color == "darkred") return darkred;
-    if (color == "darksalmon") return darksalmon;
-    if (color == "darkseagreen") return darkseagreen;
-    if (color == "darkslateblue") return darkslateblue;
-    if (color == "darkslategray") return darkslategray;
-    if (color == "darkturquoise") return darkturquoise;
-    if (color == "darkviolet") return darkviolet;
-    if (color == "deeppink") return deeppink;
-    if (color == "deepskyblue") return deepskyblue;
-    if (color == "dimgray") return dimgray;
-    if (color == "dodgerblue") return dodgerblue;
-    if (color == "firebrick") return firebrick;
-    if (color == "floralwhite") return floralwhite;
-    if (color == "forestgreen") return forestgreen;
-    if (color == "fuchsia") return fuchsia;
-    if (color == "gainsboro") return gainsboro;
-    if (color == "ghostwhite") return ghostwhite;
-    if (color == "gold") return gold;
-    if (color == "goldenrod") return goldenrod;
-    if (color == "gray") return gray;
-    if (color == "green") return green;
-    if (color == "greenyellow") return greenyellow;
-    if (color == "honeydew") return honeydew;
-    if (color == "hotpink") return hotpink;
-    if (color == "indianred") return indianred;
-    if (color == "indigo") return indigo;
-    if (color == "ivory") return ivory;
-    if (color == "khaki") return khaki;
-    if (color == "lavender") return lavender;
-    if (color == "lavenderblush") return lavenderblush;
-    if (color == "lawngreen") return lawngreen;
-    if (color == "lemonchiffon") return lemonchiffon;
-    if (color == "lightblue") return lightblue;
-    if (color == "lightcoral") return lightcoral;
-    if (color == "lightcyan") return lightcyan;
-    if (color == "lightgoldenrodyellow") return lightgoldenrodyellow;
-    if (color == "lightgray") return lightgray;
-    if (color == "lightgreen") return lightgreen;
-    if (color == "lightpink") return lightpink;
-    if (color == "lightsalmon") return lightsalmon;
-    if (color == "lightseagreen") return lightseagreen;
-    if (color == "lightskyblue") return lightskyblue;
-    if (color == "lightslategray") return lightslategray;
-    if (color == "lightsteelblue") return lightsteelblue;
-    if (color == "lightyellow") return lightyellow;
-    if (color == "lime") return lime;
-    if (color == "limegreen") return limegreen;
-    if (color == "linen") return linen;
-    if (color == "magenta") return magenta;
-    if (color == "maroon") return maroon;
-    if (color == "mediumaquamarine") return mediumaquamarine;
-    if (color == "mediumblue") return mediumblue;
-    if (color == "mediumorchid") return mediumorchid;
-    if (color == "mediumpurple") return mediumpurple;
-    if (color == "mediumseagreen") return mediumseagreen;
-    if (color == "mediumslateblue") return mediumslateblue;
-    if (color == "mediumspringgreen") return mediumspringgreen;
-    if (color == "mediumturquoise") return mediumturquoise;
-    if (color == "mediumvioletred") return mediumvioletred;
-    if (color == "midnightblue") return midnightblue;
-    if (color == "mintcream") return mintcream;
-    if (color == "mistyrose") return mistyrose;
-    if (color == "moccasin") return moccasin;
-    if (color == "navajowhite") return navajowhite;
-    if (color == "navy") return navy;
-    if (color == "oldlace") return oldlace;
-    if (color == "olive") return olive;
-    if (color == "olivedrab") return olivedrab;
-    if (color == "orange") return orange;
-    if (color == "orangered") return orangered;
-    if (color == "orchid") return orchid;
-    if (color == "palegoldenrod") return palegoldenrod;
-    if (color == "palegreen") return palegreen;
-    if (color == "paleturquoise") return paleturquoise;
-    if (color == "palevioletred") return palevioletred;
-    if (color == "papayawhip") return papayawhip;
-    if (color == "peachpuff") return peachpuff;
-    if (color == "peru") return peru;
-    if (color == "pink") return pink;
-    if (color == "plum") return plum;
-    if (color == "powderblue") return powderblue;
-    if (color == "purple") return purple;
-    if (color == "rebeccapurple") return rebeccapurple;
-    if (color == "red") return red;
-    if (color == "rosybrown") return rosybrown;
-    if (color == "royalblue") return royalblue;
-    if (color == "saddlebrown") return saddlebrown;
-    if (color == "salmon") return salmon;
-    if (color == "sandybrown") return sandybrown;
-    if (color == "seagreen") return seagreen;
-    if (color == "seashell") return seashell;
-    if (color == "sienna") return sienna;
-    if (color == "silver") return silver;
-    if (color == "skyblue") return skyblue;
-    if (color == "slateblue") return slateblue;
-    if (color == "slategray") return slategray;
-    if (color == "snow") return snow;
-    if (color == "springgreen") return springgreen;
-    if (color == "steelblue") return steelblue;
-    if (color == "teal") return teal;
-    if (color == "thistle") return thistle;
-    if (color == "tomato") return tomato;
-    if (color == "turquoise") return turquoise;
-    if (color == "violet") return violet;
-    if (color == "wheat") return wheat;
-    if (color == "white") return white;
-    if (color == "whitesmoke") return whitesmoke;
-    if (color == "yellow") return yellow;
-    if (color == "yellowgreen") return yellowgreen;
-    if (color == "CYAN") return CYAN;
-    if (color == "aliceBlue") return aliceBlue;             // Below had stroke-opacity
-    if (color == "antiqueWhite") return antiqueWhite;
-    if (color == "blanchedAlmond") return blanchedAlmond;
-    if (color == "blueViolet") return blueViolet;
-    if (color == "burlyWood") return burlyWood;
-    if (color == "cadetBlue") return cadetBlue;
-    if (color == "cornflowerBlue") return cornflowerBlue;
-    if (color == "crimson") return crimson;
-    if (color == "darkBlue") return darkBlue;
-    if (color == "darkCyan") return darkCyan;
-    if (color == "darkGoldenRod") return darkGoldenRod;
-    if (color == "darkGray") return darkGray;
-    if (color == "darkGrey") return darkGrey;
-    if (color == "darkGreen") return darkGreen;
-    if (color == "darkKhaki") return darkKhaki;
-    if (color == "darkMagenta") return darkMagenta;
-    if (color == "darkOliveGreen") return darkOliveGreen;
-    if (color == "darkOrange") return darkOrange;
-    if (color == "darkOrchid") return darkOrchid;
-    if (color == "darkRed") return darkRed;
-    if (color == "darkSalmon") return darkSalmon;
-    if (color == "darkSeaGreen") return darkSeaGreen;
-    if (color == "darkSlateBlue") return darkSlateBlue;
-    if (color == "darkSlateGray") return darkSlateGray;
-    if (color == "darkSlateGrey") return darkSlateGrey;
-    if (color == "darkTurquoise") return darkTurquoise;
-    if (color == "darkViolet") return darkViolet;
-    if (color == "deepPink") return deepPink;
-    if (color == "deepSkyBlue") return deepSkyBlue;
-    if (color == "dimGray") return dimGray;
-    if (color == "dimGrey") return dimGrey;
-    if (color == "dodgerBlue") return dodgerBlue;
-    if (color == "fireBrick") return fireBrick;
-    if (color == "floralWhite") return floralWhite;
-    if (color == "forestGreen") return forestGreen;
-    if (color == "gainsboro") return gainsboro;
-    if (color == "ghostWhite") return ghostWhite;
-    if (color == "goldenRod") return goldenRod;
-    if (color == "grey") return grey;
-    if (color == "greenYellow") return greenYellow;
-    if (color == "honeyDew") return honeyDew;
-    if (color == "hotPink") return hotPink;
-    if (color == "indianRed") return indianRed;
-    if (color == "lavenderBlush") return lavenderBlush;
-    if (color == "lawnGreen") return lawnGreen;
-    if (color == "lemonChiffon") return lemonChiffon;
-    if (color == "lightBlue") return lightBlue;
-    if (color == "lightCoral") return lightCoral;
-    if (color == "lightCyan") return lightCyan;
-    if (color == "lightGoldenRodYellow") return lightGoldenRodYellow;
-    if (color == "lightGray") return lightGray;
-    if (color == "lightGrey") return lightGrey;
-    if (color == "lightGreen") return lightGreen;
-    if (color == "lightPink") return lightPink;
-    if (color == "lightSalmon") return lightSalmon;
-    if (color == "lightSeaGreen") return lightSeaGreen;
-    if (color == "lightSkyBlue") return lightSkyBlue;
-    if (color == "lightSlateGray") return lightSlateGray;
-    if (color == "lightSlateGrey") return lightSlateGrey;
-    if (color == "lightSteelBlue") return lightSteelBlue;
-    if (color == "lightYellow") return lightYellow;
-    if (color == "limeGreen") return limeGreen;
-    if (color == "mediumAquaMarine") return mediumAquaMarine;
-    if (color == "mediumBlue") return mediumBlue;
-    if (color == "mediumOrchid") return mediumOrchid;
-    if (color == "mediumPurple") return mediumPurple;
-    if (color == "mediumSeaGreen") return mediumSeaGreen;
-    if (color == "mediumSlateBlue") return mediumSlateBlue;
-    if (color == "mediumSpringGreen") return mediumSpringGreen;
-    if (color == "mediumTurquoise") return mediumTurquoise;
-    if (color == "mediumVioletRed") return mediumVioletRed;
-    if (color == "midnightBlue") return midnightBlue;
-    if (color == "mintCream") return mintCream;
-    if (color == "mistyRose") return mistyRose;
-    if (color == "navajoWhite") return navajoWhite;
-    if (color == "oldLace") return oldLace;
-    if (color == "oliveDrab") return oliveDrab;
-    if (color == "orangeRed") return orangeRed;
-    if (color == "paleGoldenRod") return paleGoldenRod;
-    if (color == "paleGreen") return paleGreen;
-    if (color == "paleTurquoise") return paleTurquoise;
-    if (color == "paleVioletRed") return paleVioletRed;
-    if (color == "papayaWhip") return papayaWhip;
-    if (color == "peachPuff") return peachPuff;
-    if (color == "powderBlue") return powderBlue;
-    if (color == "rosyBrown") return rosyBrown;
-    if (color == "royalBlue") return royalBlue;
-    if (color == "saddleBrown") return saddleBrown;
-    if (color == "sandyBrown") return sandyBrown;
-    if (color == "seaGreen") return seaGreen;
-    if (color == "seaShell") return seaShell;
-    if (color == "skyBlue") return skyBlue;
-    if (color == "slateBlue") return slateBlue;
-    if (color == "slateGray") return slateGray;
-    if (color == "slateGrey") return slateGrey;
-    if (color == "springGreen") return springGreen;
-    if (color == "steelBlue") return steelBlue;
-    if (color == "blueSteel") return blueSteel;
-    if (color == "whiteSmoke") return whiteSmoke;
-    if (color == "yellowGreen") return yellowGreen;
-    return Color();
-}
-
-const Color aliceblue(240.f, 248.f, 255.f);
-const Color antiquewhite(250.f, 235.f, 215.f);
-const Color aqua(0.f, 255.f, 255.f);
-const Color aquamarine(127.f, 255.f, 212.f);
-const Color azure(240.f, 255.f, 255.f);
-const Color beige(245.f, 245.f, 220.f);
-const Color bisque(255.f, 228.f, 196.f);
-const Color black(0.f, 0.f, 0.f);
-const Color blanchedalmond(255.f, 235.f, 205.f);
-const Color blue(0.f, 0.f, 255.f);
-const Color blueviolet(138.f, 43.f, 226.f);
-const Color brown(165.f, 42.f, 42.f);
-const Color burlywood(222.f, 184.f, 135.f);
-const Color cadetblue(95.f, 158.f, 160.f);
-const Color chartreuse(127.f, 255.f, 0.f);
-const Color chocolate(210.f, 105.f, 30.f);
-const Color coral(255.f, 127.f, 80.f);
-const Color cornflowerblue(100.f, 149.f, 237.f);
-const Color cornsilk(255.f, 248.f, 220.f);
-const Color crimson(220.f, 20.f, 60.f);
-const Color cyan(0.f, 255.f, 255.f);
-const Color darkblue(0.f, 0.f, 139.f);
-const Color darkcyan(0.f, 139.f, 139.f);
-const Color darkgoldenrod(184.f, 134.f, 11.f);
-const Color darkgray(169.f, 169.f, 169.f);
-const Color darkgreen(0.f, 100.f, 0.f);
-const Color darkkhaki(189.f, 183.f, 107.f);
-const Color darkmagenta(139.f, 0.f, 139.f);
-const Color darkolivegreen(85.f, 107.f, 47.f);
-const Color darkorange(255.f, 140.f, 0.f);
-const Color darkorchid(153.f, 50.f, 204.f);
-const Color darkred(139.f, 0.f, 0.f);
-const Color darksalmon(233.f, 150.f, 122.f);
-const Color darkseagreen(143.f, 188.f, 143.f);
-const Color darkslateblue(72.f, 61.f, 139.f);
-const Color darkslategray(47.f, 79.f, 79.f);
-const Color darkturquoise(0.f, 206.f, 209.f);
-const Color darkviolet(148.f, 0.f, 211.f);
-const Color deeppink(255.f, 20.f, 147.f);
-const Color deepskyblue(0.f, 191.f, 255.f);
-const Color dimgray(105.f, 105.f, 105.f);
-const Color dodgerblue(30.f, 144.f, 255.f);
-const Color firebrick(178.f, 34.f, 34.f);
-const Color floralwhite(255.f, 250.f, 240.f);
-const Color forestgreen(34.f, 139.f, 34.f);
-const Color fuchsia(255.f, 0.f, 255.f);
-const Color gainsboro(220.f, 220.f, 220.f);
-const Color ghostwhite(248.f, 248.f, 255.f);
-const Color gold(255.f, 215.f, 0.f);
-const Color goldenrod(218.f, 165.f, 32.f);
-const Color gray(128.f, 128.f, 128.f);
-const Color green(0.f, 128.f, 0.f);
-const Color greenyellow(173.f, 255.f, 47.f);
-const Color honeydew(240.f, 255.f, 240.f);
-const Color hotpink(255.f, 105.f, 180.f);
-const Color indianred(205.f, 92.f, 92.f);
-const Color indigo(75.f, 0.f, 130.f);
-const Color ivory(255.f, 255.f, 240.f);
-const Color khaki(240.f, 230.f, 140.f);
-const Color lavender(230.f, 230.f, 250.f);
-const Color lavenderblush(255.f, 240.f, 245.f);
-const Color lawngreen(124.f, 252.f, 0.f);
-const Color lemonchiffon(255.f, 250.f, 205.f);
-const Color lightblue(173.f, 216.f, 230.f);
-const Color lightcoral(240.f, 128.f, 128.f);
-const Color lightcyan(224.f, 255.f, 255.f);
-const Color lightgoldenrodyellow(250.f, 250.f, 210.f);
-const Color lightgray(211.f, 211.f, 211.f);
-const Color lightgreen(144.f, 238.f, 144.f);
-const Color lightpink(255.f, 182.f, 193.f);
-const Color lightsalmon(255.f, 160.f, 122.f);
-const Color lightseagreen(32.f, 178.f, 170.f);
-const Color lightskyblue(135.f, 206.f, 250.f);
-const Color lightslategray(119.f, 136.f, 153.f);
-const Color lightsteelblue(176.f, 196.f, 222.f);
-const Color lightyellow(255.f, 255.f, 224.f);
-const Color lime(0.f, 255.f, 0.f);
-const Color limegreen(50.f, 205.f, 50.f);
-const Color linen(250.f, 240.f, 230.f);
-const Color magenta(255.f, 0.f, 255.f);
-const Color maroon(128.f, 0.f, 0.f);
-const Color mediumaquamarine(102.f, 205.f, 170.f);
-const Color mediumblue(0.f, 0.f, 205.f);
-const Color mediumorchid(186.f, 85.f, 211.f);
-const Color mediumpurple(147.f, 112.f, 219.f);
-const Color mediumseagreen(60.f, 179.f, 113.f);
-const Color mediumslateblue(123.f, 104.f, 238.f);
-const Color mediumspringgreen(0.f, 250.f, 154.f);
-const Color mediumturquoise(72.f, 209.f, 204.f);
-const Color mediumvioletred(199.f, 21.f, 133.f);
-const Color midnightblue(25.f, 25.f, 112.f);
-const Color mintcream(245.f, 255.f, 250.f);
-const Color mistyrose(255.f, 228.f, 225.f);
-const Color moccasin(255.f, 228.f, 181.f);
-const Color navajowhite(255.f, 222.f, 173.f);
-const Color navy(0.f, 0.f, 128.f);
-const Color oldlace(253.f, 245.f, 230.f);
-const Color olive(128.f, 128.f, 0.f);
-const Color olivedrab(107.f, 142.f, 35.f);
-const Color orange(255.f, 165.f, 0.f);
-const Color orangered(255.f, 69.f, 0.f);
-const Color orchid(218.f, 112.f, 214.f);
-const Color palegoldenrod(238.f, 232.f, 170.f);
-const Color palegreen(152.f, 251.f, 152.f);
-const Color paleturquoise(175.f, 238.f, 238.f);
-const Color palevioletred(219.f, 112.f, 147.f);
-const Color papayawhip(255.f, 239.f, 213.f);
-const Color peachpuff(255.f, 218.f, 185.f);
-const Color peru(205.f, 133.f, 63.f);
-const Color pink(255.f, 192.f, 203.f);
-const Color plum(221.f, 160.f, 221.f);
-const Color powderblue(176.f, 224.f, 230.f);
-const Color purple(128.f, 0.f, 128.f);
-const Color rebeccapurple(102.f, 51.f, 153.f);
-const Color red(255.f, 0.f, 0.f);
-const Color rosybrown(188.f, 143.f, 143.f);
-const Color royalblue(65.f, 105.f, 225.f);
-const Color saddlebrown(139.f, 69.f, 19.f);
-const Color salmon(250.f, 128.f, 114.f);
-const Color sandybrown(244.f, 164.f, 96.f);
-const Color seagreen(46.f, 139.f, 87.f);
-const Color seashell(255.f, 245.f, 238.f);
-const Color sienna(160.f, 82.f, 45.f);
-const Color silver(192.f, 192.f, 192.f);
-const Color skyblue(135.f, 206.f, 235.f);
-const Color slateblue(106.f, 90.f, 205.f);
-const Color slategray(112.f, 128.f, 144.f);
-const Color snow(255.f, 250.f, 250.f);
-const Color springgreen(0.f, 255.f, 127.f);
-const Color steelblue(70.f, 130.f, 180.f);
-const Color teal(0.f, 128.f, 128.f);
-const Color thistle(216.f, 191.f, 216.f);
-const Color tomato(255.f, 99.f, 71.f);
-const Color turquoise(64.f, 224.f, 208.f);
-const Color violet(238.f, 130.f, 238.f);
-const Color wheat(245.f, 222.f, 179.f);
-const Color white(255.f, 255.f, 255.f);
-const Color whitesmoke(245.f, 245.f, 245.f);
-const Color yellow(255.f, 255.f, 0.f);
-const Color yellowgreen(154.f, 205.f, 50.f);
-const Color CYAN(0.f, 255.f, 255.f); // here
-const Color aliceBlue(0.941176f * 255.0f, 0.972549f * 255.0f, 1.0f * 255.0f);
-const Color antiqueWhite(0.980392f * 255.0f, 0.921569f * 255.0f, 0.843137f * 255.0f);
-const Color blanchedAlmond(1.0f * 255.0f, 0.921569f * 255.0f, 0.803922f * 255.0f);
-const Color blueViolet(0.541176f * 255.0f, 0.168627f * 255.0f, 0.886275f * 255.0f);
-const Color burlyWood(0.870588f * 255.0f, 0.721569f * 255.0f, 0.529412f * 255.0f);
-const Color cadetBlue(0.372549f * 255.0f, 0.619608f * 255.0f, 0.627451f * 255.0f);
-const Color cornflowerBlue(0.392157f * 255.0f, 0.584314f * 255.0f, 0.929412f * 255.0f);
-const Color darkBlue(0.0f, 0.0f, 0.545098f * 255.0f);
-const Color darkCyan(0.0f, 0.545098f * 255.0f, 0.545098f * 255.0f);
-const Color darkGoldenRod(0.721569 * 255.0f, 0.52549 * 255.0f, 0.0431373 * 255.0f);
-const Color darkGray(0.662745 * 255.0f, 0.662745 * 255.0f, 0.662745 * 255.0f);
-const Color darkGrey(0.662745 * 255.0f, 0.662745 * 255.0f, 0.662745 * 255.0f);
-const Color darkGreen(0 * 255.0f, 0.392157 * 255.0f, 0 * 255.0f);
-const Color darkKhaki(0.741176 * 255.0f, 0.717647 * 255.0f, 0.419608 * 255.0f);
-const Color darkMagenta(0.545098 * 255.0f, 0 * 255.0f, 0.545098 * 255.0f);
-const Color darkOliveGreen(0.333333 * 255.0f, 0.419608 * 255.0f, 0.184314 * 255.0f);
-const Color darkOrange(1 * 255.0f, 0.54902 * 255.0f, 0 * 255.0f);
-const Color darkOrchid(0.6 * 255.0f, 0.196078 * 255.0f, 0.8 * 255.0f);
-const Color darkRed(0.545098 * 255.0f, 0 * 255.0f, 0 * 255.0f);
-const Color darkSalmon(0.913725 * 255.0f, 0.588235 * 255.0f, 0.478431 * 255.0f);
-const Color darkSeaGreen(0.560784 * 255.0f, 0.737255 * 255.0f, 0.560784 * 255.0f);
-const Color darkSlateBlue(0.282353 * 255.0f, 0.239216 * 255.0f, 0.545098 * 255.0f);
-const Color darkSlateGray(0.184314 * 255.0f, 0.309804 * 255.0f, 0.309804 * 255.0f);
-const Color darkSlateGrey(0.184314 * 255.0f, 0.309804 * 255.0f, 0.309804 * 255.0f);
-const Color darkTurquoise(0 * 255.0f, 0.807843 * 255.0f, 0.819608 * 255.0f);
-const Color darkViolet(0.580392 * 255.0f, 0 * 255.0f, 0.827451 * 255.0f);
-const Color deepPink(1 * 255.0f, 0.0784314 * 255.0f, 0.576471 * 255.0f);
-const Color deepSkyBlue(0 * 255.0f, 0.74902 * 255.0f, 1 * 255.0f);
-const Color dimGray(0.411765 * 255.0f, 0.411765 * 255.0f, 0.411765 * 255.0f);
-const Color dimGrey(0.411765 * 255.0f, 0.411765 * 255.0f, 0.411765 * 255.0f);
-const Color dodgerBlue(0.117647 * 255.0f, 0.564706 * 255.0f, 1 * 255.0f);
-const Color fireBrick(0.698039 * 255.0f, 0.133333 * 255.0f, 0.133333 * 255.0f);
-const Color floralWhite(1 * 255.0f, 0.980392 * 255.0f, 0.941176 * 255.0f);
-const Color forestGreen(0.133333 * 255.0f, 0.545098 * 255.0f, 0.133333 * 255.0f);
-const Color ghostWhite(0.972549 * 255.0f, 0.972549 * 255.0f, 1 * 255.0f);
-const Color goldenRod(0.854902 * 255.0f, 0.647059 * 255.0f, 0.12549 * 255.0f);
-const Color grey(0.501961 * 255.0f, 0.501961 * 255.0f, 0.501961 * 255.0f);
-const Color greenYellow(0.678431 * 255.0f, 1 * 255.0f, 0.184314 * 255.0f);
-const Color honeyDew(0.941176 * 255.0f, 1 * 255.0f, 0.941176 * 255.0f);
-const Color hotPink(1 * 255.0f, 0.411765 * 255.0f, 0.705882 * 255.0f);
-const Color indianRed(0.803922 * 255.0f, 0.360784 * 255.0f, 0.360784 * 255.0f);
-const Color lavenderBlush(1.0f * 255.0f, 0.941176f * 255.0f, 0.960784f * 255.0f);
-const Color lawnGreen(0.486275f * 255.0f, 0.988235f * 255.0f, 0.0f * 255.0f);
-const Color lemonChiffon(1.0f * 255.0f, 0.980392f * 255.0f, 0.803922f * 255.0f);
-const Color lightBlue(0.678431f * 255.0f, 0.847059f * 255.0f, 0.901961f * 255.0f);
-const Color lightCoral(0.941176f * 255.0f, 0.501961f * 255.0f, 0.501961f * 255.0f);
-const Color lightCyan(0.878431f * 255.0f, 1.0f * 255.0f, 1.0f * 255.0f);
-const Color lightGoldenRodYellow(0.980392f * 255.0f, 0.980392f * 255.0f, 0.823529f * 255.0f);
-const Color lightGray(0.827451f * 255.0f, 0.827451f * 255.0f, 0.827451f * 255.0f);
-const Color lightGrey(0.827451f * 255.0f, 0.827451f * 255.0f, 0.827451f * 255.0f);
-const Color lightGreen(0.564706f * 255.0f, 0.933333f * 255.0f, 0.564706f * 255.0f);
-const Color lightPink(1.0f * 255.0f, 0.713726f * 255.0f, 0.756863f * 255.0f);
-const Color lightSalmon(1.0f * 255.0f, 0.627451f * 255.0f, 0.478431f * 255.0f);
-const Color lightSeaGreen(0.12549f * 255.0f, 0.698039f * 255.0f, 0.666667f * 255.0f);
-const Color lightSkyBlue(0.529412f * 255.0f, 0.807843f * 255.0f, 0.980392f * 255.0f);
-const Color lightSlateGray(0.466667f * 255.0f, 0.533333f * 255.0f, 0.6f * 255.0f);
-const Color lightSlateGrey(0.466667f * 255.0f, 0.533333f * 255.0f, 0.6f * 255.0f);
-const Color lightSteelBlue(0.690196f * 255.0f, 0.768627f * 255.0f, 0.870588f * 255.0f);
-const Color lightYellow(1.0f * 255.0f, 1.0f * 255.0f, 0.878431f * 255.0f);
-const Color limeGreen(0.196078f * 255.0f, 0.803922f * 255.0f, 0.196078f * 255.0f);
-const Color mediumAquaMarine(0.4f * 255.0f, 0.803922f * 255.0f, 0.666667f * 255.0f);
-const Color mediumBlue(0.0f, 0.0f, 0.803922f * 255.0f);
-const Color mediumOrchid(0.729412f * 255.0f, 0.333333f * 255.0f, 0.827451f * 255.0f);
-const Color mediumPurple(0.576471f * 255.0f, 0.439216f * 255.0f, 0.858824f * 255.0f);
-const Color mediumSeaGreen(0.235294f * 255.0f, 0.701961f * 255.0f, 0.443137f * 255.0f);
-const Color mediumSlateBlue(0.482353f * 255.0f, 0.407843f * 255.0f, 0.933333f * 255.0f);
-const Color mediumSpringGreen(0.0f, 0.980392f * 255.0f, 0.603922f * 255.0f);
-const Color mediumTurquoise(0.282353f * 255.0f, 0.819608f * 255.0f, 0.8f * 255.0f);
-const Color mediumVioletRed(0.780392f * 255.0f, 0.0823529f * 255.0f, 0.521569f * 255.0f);
-const Color midnightBlue(0.0980392f * 255.0f, 0.0980392f * 255.0f, 0.439216f * 255.0f);
-const Color mintCream(0.960784f * 255.0f, 1.0f * 255.0f, 0.980392f * 255.0f);
-const Color mistyRose(1.0f * 255.0f, 0.894118f * 255.0f, 0.882353f * 255.0f);
-const Color navajoWhite(1.0f * 255.0f, 0.870588f * 255.0f, 0.678431f * 255.0f);
-const Color oldLace(0.992157f * 255.0f, 0.960784f * 255.0f, 0.901961f * 255.0f);
-const Color oliveDrab(0.419608f * 255.0f, 0.556863f * 255.0f, 0.137255f * 255.0f);
-const Color orangeRed(1.0f * 255.0f, 0.270588f * 255.0f, 0.0f * 255.0f);
-const Color paleGoldenRod(0.933333f * 255.0f, 0.909804f * 255.0f, 0.666667f * 255.0f);
-const Color paleGreen(0.596078f * 255.0f, 0.984314f * 255.0f, 0.596078f * 255.0f);
-const Color paleTurquoise(0.686275f * 255.0f, 0.933333f * 255.0f, 0.933333f * 255.0f);
-const Color paleVioletRed(0.858824f * 255.0f, 0.439216f * 255.0f, 0.576471f * 255.0f);
-const Color papayaWhip(1.0f * 255.0f, 0.937255f * 255.0f, 0.835294f * 255.0f);
-const Color peachPuff(1.0f * 255.0f, 0.854902f * 255.0f, 0.72549f * 255.0f);
-const Color powderBlue(0.690196f * 255.0f, 0.878431f * 255.0f, 0.901961f * 255.0f);
-const Color rosyBrown(0.737255f * 255.0f, 0.560784f * 255.0f, 0.560784f * 255.0f);
-const Color royalBlue(0.254902f * 255.0f, 0.411765f * 255.0f, 0.882353f * 255.0f);
-const Color saddleBrown(0.545098f * 255.0f, 0.270588f * 255.0f, 0.0745098f * 255.0f);
-const Color sandyBrown(0.956863f * 255.0f, 0.643137f * 255.0f, 0.376471f * 255.0f);
-const Color seaGreen(0.180392f * 255.0f, 0.545098f * 255.0f, 0.341176f * 255.0f);
-const Color seaShell(1.0f * 255.0f, 0.960784f * 255.0f, 0.933333f * 255.0f);
-const Color skyBlue(0.529412f * 255.0f, 0.807843f * 255.0f, 0.921569f * 255.0f);
-const Color slateBlue(0.415686f * 255.0f, 0.352941f * 255.0f, 0.803922f * 255.0f);
-const Color slateGray(0.439216f * 255.0f, 0.501961f * 255.0f, 0.564706f * 255.0f);
-const Color slateGrey(0.439216f * 255.0f, 0.501961f * 255.0f, 0.564706f * 255.0f);
-const Color springGreen(0.0f, 1.0f * 255.0f, 0.498039f * 255.0f);
-const Color steelBlue(0.27451f * 255.0f, 0.509804f * 255.0f, 0.705882f * 255.0f);
-const Color blueSteel(0.27451f * 255.0f, 0.509804f * 255.0f, 0.705882f * 255.0f);
-const Color whiteSmoke(0.960784f * 255.0f, 0.960784f * 255.0f, 0.960784f * 255.0f);
-const Color yellowGreen(0.603922f * 255.0f, 0.803922f * 255.0f, 0.196078f * 255.0f);
+std::unordered_map<std::string, Color> Color::mapColor {
+    {"CYAN", Color(0.f, 255.f, 255.f)},
+    {"aliceBlue", Color(0.941176f * 255.0f, 0.972549f * 255.0f, 1.0f * 255.0f)},
+    {"aliceblue", Color(240.f, 248.f, 255.f)},
+    {"antiqueWhite", Color(0.980392f * 255.0f, 0.921569f * 255.0f, 0.843137f * 255.0f)},
+    {"antiquewhite", Color(250.f, 235.f, 215.f)},
+    {"aqua", Color(0.f, 255.f, 255.f)},
+    {"aquamarine", Color(127.f, 255.f, 212.f)},
+    {"azure", Color(240.f, 255.f, 255.f)},
+    {"beige", Color(245.f, 245.f, 220.f)},
+    {"bisque", Color(255.f, 228.f, 196.f)},
+    {"black", Color(0.f, 0.f, 0.f)},
+    {"blanchedAlmond", Color(1.0f * 255.0f, 0.921569f * 255.0f, 0.803922f * 255.0f)},
+    {"blanchedalmond", Color(255.f, 235.f, 205.f)},
+    {"blue", Color(0.f, 0.f, 255.f)},
+    {"blueSteel", Color(0.27451f * 255.0f, 0.509804f * 255.0f, 0.705882f * 255.0f)},
+    {"blueViolet", Color(0.541176f * 255.0f, 0.168627f * 255.0f, 0.886275f * 255.0f)},
+    {"blueviolet", Color(138.f, 43.f, 226.f)},
+    {"brown", Color(165.f, 42.f, 42.f)},
+    {"burlyWood", Color(0.870588f * 255.0f, 0.721569f * 255.0f, 0.529412f * 255.0f)},
+    {"burlywood", Color(222.f, 184.f, 135.f)},
+    {"cadetBlue", Color(0.372549f * 255.0f, 0.619608f * 255.0f, 0.627451f * 255.0f)},
+    {"cadetblue", Color(95.f, 158.f, 160.f)},
+    {"chartreuse", Color(127.f, 255.f, 0.f)},
+    {"chocolate", Color(210.f, 105.f, 30.f)},
+    {"coral", Color(255.f, 127.f, 80.f)},
+    {"cornflowerBlue", Color(0.392157f * 255.0f, 0.584314f * 255.0f, 0.929412f * 255.0f)},
+    {"cornflowerblue", Color(100.f, 149.f, 237.f)},
+    {"cornsilk", Color(255.f, 248.f, 220.f)},
+    {"crimson", Color(220.f, 20.f, 60.f)},
+    {"cyan", Color(0.f, 255.f, 255.f)},
+    {"darkBlue", Color(0.0f, 0.0f, 0.545098f * 255.0f)},
+    {"darkCyan", Color(0.0f, 0.545098f * 255.0f, 0.545098f * 255.0f)},
+    {"darkGoldenRod", Color(0.721569 * 255.0f, 0.52549 * 255.0f, 0.0431373 * 255.0f)},
+    {"darkGray", Color(0.662745 * 255.0f, 0.662745 * 255.0f, 0.662745 * 255.0f)},
+    {"darkGreen", Color(0 * 255.0f, 0.392157 * 255.0f, 0 * 255.0f)},
+    {"darkGrey", Color(0.662745 * 255.0f, 0.662745 * 255.0f, 0.662745 * 255.0f)},
+    {"darkKhaki", Color(0.741176 * 255.0f, 0.717647 * 255.0f, 0.419608 * 255.0f)},
+    {"darkMagenta", Color(0.545098 * 255.0f, 0 * 255.0f, 0.545098 * 255.0f)},
+    {"darkOliveGreen", Color(0.333333 * 255.0f, 0.419608 * 255.0f, 0.184314 * 255.0f)},
+    {"darkOrange", Color(1 * 255.0f, 0.54902 * 255.0f, 0 * 255.0f)},
+    {"darkOrchid", Color(0.6 * 255.0f, 0.196078 * 255.0f, 0.8 * 255.0f)},
+    {"darkRed", Color(0.545098 * 255.0f, 0 * 255.0f, 0 * 255.0f)},
+    {"darkSalmon", Color(0.913725 * 255.0f, 0.588235 * 255.0f, 0.478431 * 255.0f)},
+    {"darkSeaGreen", Color(0.560784 * 255.0f, 0.737255 * 255.0f, 0.560784 * 255.0f)},
+    {"darkSlateBlue", Color(0.282353 * 255.0f, 0.239216 * 255.0f, 0.545098 * 255.0f)},
+    {"darkSlateGray", Color(0.184314 * 255.0f, 0.309804 * 255.0f, 0.309804 * 255.0f)},
+    {"darkSlateGrey", Color(0.184314 * 255.0f, 0.309804 * 255.0f, 0.309804 * 255.0f)},
+    {"darkTurquoise", Color(0 * 255.0f, 0.807843 * 255.0f, 0.819608 * 255.0f)},
+    {"darkViolet", Color(0.580392 * 255.0f, 0 * 255.0f, 0.827451 * 255.0f)},
+    {"darkblue", Color(0.f, 0.f, 139.f)},
+    {"darkcyan", Color(0.f, 139.f, 139.f)},
+    {"darkgoldenrod", Color(184.f, 134.f, 11.f)},
+    {"darkgray", Color(169.f, 169.f, 169.f)},
+    {"darkgreen", Color(0.f, 100.f, 0.f)},
+    {"darkkhaki", Color(189.f, 183.f, 107.f)},
+    {"darkmagenta", Color(139.f, 0.f, 139.f)},
+    {"darkolivegreen", Color(85.f, 107.f, 47.f)},
+    {"darkorange", Color(255.f, 140.f, 0.f)},
+    {"darkorchid", Color(153.f, 50.f, 204.f)},
+    {"darkred", Color(139.f, 0.f, 0.f)},
+    {"darksalmon", Color(233.f, 150.f, 122.f)},
+    {"darkseagreen", Color(143.f, 188.f, 143.f)},
+    {"darkslateblue", Color(72.f, 61.f, 139.f)},
+    {"darkslategray", Color(47.f, 79.f, 79.f)},
+    {"darkturquoise", Color(0.f, 206.f, 209.f)},
+    {"darkviolet", Color(148.f, 0.f, 211.f)},
+    {"deepPink", Color(1 * 255.0f, 0.0784314 * 255.0f, 0.576471 * 255.0f)},
+    {"deepSkyBlue", Color(0 * 255.0f, 0.74902 * 255.0f, 1 * 255.0f)},
+    {"deeppink", Color(255.f, 20.f, 147.f)},
+    {"deepskyblue", Color(0.f, 191.f, 255.f)},
+    {"dimGray", Color(0.411765 * 255.0f, 0.411765 * 255.0f, 0.411765 * 255.0f)},
+    {"dimGrey", Color(0.411765 * 255.0f, 0.411765 * 255.0f, 0.411765 * 255.0f)},
+    {"dimgray", Color(105.f, 105.f, 105.f)},
+    {"dodgerBlue", Color(0.117647 * 255.0f, 0.564706 * 255.0f, 1 * 255.0f)},
+    {"dodgerblue", Color(30.f, 144.f, 255.f)},
+    {"fireBrick", Color(0.698039 * 255.0f, 0.133333 * 255.0f, 0.133333 * 255.0f)},
+    {"firebrick", Color(178.f, 34.f, 34.f)},
+    {"floralWhite", Color(1 * 255.0f, 0.980392 * 255.0f, 0.941176 * 255.0f)},
+    {"floralwhite", Color(255.f, 250.f, 240.f)},
+    {"forestGreen", Color(0.133333 * 255.0f, 0.545098 * 255.0f, 0.133333 * 255.0f)},
+    {"forestgreen", Color(34.f, 139.f, 34.f)},
+    {"fuchsia", Color(255.f, 0.f, 255.f)},
+    {"gainsboro", Color(220.f, 220.f, 220.f)},
+    {"ghostWhite", Color(0.972549 * 255.0f, 0.972549 * 255.0f, 1 * 255.0f)},
+    {"ghostwhite", Color(248.f, 248.f, 255.f)},
+    {"gold", Color(255.f, 215.f, 0.f)},
+    {"goldenRod", Color(0.854902 * 255.0f, 0.647059 * 255.0f, 0.12549 * 255.0f)},
+    {"goldenrod", Color(218.f, 165.f, 32.f)},
+    {"gray", Color(128.f, 128.f, 128.f)},
+    {"green", Color(0.f, 128.f, 0.f)},
+    {"greenYellow", Color(0.678431 * 255.0f, 1 * 255.0f, 0.184314 * 255.0f)},
+    {"greenyellow", Color(173.f, 255.f, 47.f)},
+    {"grey", Color(0.501961 * 255.0f, 0.501961 * 255.0f, 0.501961 * 255.0f)},
+    {"honeyDew", Color(0.941176 * 255.0f, 1 * 255.0f, 0.941176 * 255.0f)},
+    {"honeydew", Color(240.f, 255.f, 240.f)},
+    {"hotPink", Color(1 * 255.0f, 0.411765 * 255.0f, 0.705882 * 255.0f)},
+    {"hotpink", Color(255.f, 105.f, 180.f)},
+    {"indianRed", Color(0.803922 * 255.0f, 0.360784 * 255.0f, 0.360784 * 255.0f)},
+    {"indianred", Color(205.f, 92.f, 92.f)},
+    {"indigo", Color(75.f, 0.f, 130.f)},
+    {"ivory", Color(255.f, 255.f, 240.f)},
+    {"khaki", Color(240.f, 230.f, 140.f)},
+    {"lavender", Color(230.f, 230.f, 250.f)},
+    {"lavenderBlush", Color(1.0f * 255.0f, 0.941176f * 255.0f, 0.960784f * 255.0f)},
+    {"lavenderblush", Color(255.f, 240.f, 245.f)},
+    {"lawnGreen", Color(0.486275f * 255.0f, 0.988235f * 255.0f, 0.0f * 255.0f)},
+    {"lawngreen", Color(124.f, 252.f, 0.f)},
+    {"lemonChiffon", Color(1.0f * 255.0f, 0.980392f * 255.0f, 0.803922f * 255.0f)},
+    {"lemonchiffon", Color(255.f, 250.f, 205.f)},
+    {"lightBlue", Color(0.678431f * 255.0f, 0.847059f * 255.0f, 0.901961f * 255.0f)},
+    {"lightCoral", Color(0.941176f * 255.0f, 0.501961f * 255.0f, 0.501961f * 255.0f)},
+    {"lightCyan", Color(0.878431f * 255.0f, 1.0f * 255.0f, 1.0f * 255.0f)},
+    {"lightGoldenRodYellow", Color(0.980392f * 255.0f, 0.980392f * 255.0f, 0.823529f * 255.0f)},
+    {"lightGray", Color(0.827451f * 255.0f, 0.827451f * 255.0f, 0.827451f * 255.0f)},
+    {"lightGreen", Color(0.564706f * 255.0f, 0.933333f * 255.0f, 0.564706f * 255.0f)},
+    {"lightGrey", Color(0.827451f * 255.0f, 0.827451f * 255.0f, 0.827451f * 255.0f)},
+    {"lightPink", Color(1.0f * 255.0f, 0.713726f * 255.0f, 0.756863f * 255.0f)},
+    {"lightSalmon", Color(1.0f * 255.0f, 0.627451f * 255.0f, 0.478431f * 255.0f)},
+    {"lightSeaGreen", Color(0.12549f * 255.0f, 0.698039f * 255.0f, 0.666667f * 255.0f)},
+    {"lightSkyBlue", Color(0.529412f * 255.0f, 0.807843f * 255.0f, 0.980392f * 255.0f)},
+    {"lightSlateGray", Color(0.466667f * 255.0f, 0.533333f * 255.0f, 0.6f * 255.0f)},
+    {"lightSlateGrey", Color(0.466667f * 255.0f, 0.533333f * 255.0f, 0.6f * 255.0f)},
+    {"lightSteelBlue", Color(0.690196f * 255.0f, 0.768627f * 255.0f, 0.870588f * 255.0f)},
+    {"lightYellow", Color(1.0f * 255.0f, 1.0f * 255.0f, 0.878431f * 255.0f)},
+    {"lightblue", Color(173.f, 216.f, 230.f)},
+    {"lightcoral", Color(240.f, 128.f, 128.f)},
+    {"lightcyan", Color(224.f, 255.f, 255.f)},
+    {"lightgoldenrodyellow", Color(250.f, 250.f, 210.f)},
+    {"lightgray", Color(211.f, 211.f, 211.f)},
+    {"lightgreen", Color(144.f, 238.f, 144.f)},
+    {"lightpink", Color(255.f, 182.f, 193.f)},
+    {"lightsalmon", Color(255.f, 160.f, 122.f)},
+    {"lightseagreen", Color(32.f, 178.f, 170.f)},
+    {"lightskyblue", Color(135.f, 206.f, 250.f)},
+    {"lightslategray", Color(119.f, 136.f, 153.f)},
+    {"lightsteelblue", Color(176.f, 196.f, 222.f)},
+    {"lightyellow", Color(255.f, 255.f, 224.f)},
+    {"lime", Color(0.f, 255.f, 0.f)},
+    {"limeGreen", Color(0.196078f * 255.0f, 0.803922f * 255.0f, 0.196078f * 255.0f)},
+    {"limegreen", Color(50.f, 205.f, 50.f)},
+    {"linen", Color(250.f, 240.f, 230.f)},
+    {"magenta", Color(255.f, 0.f, 255.f)},
+    {"maroon", Color(128.f, 0.f, 0.f)},
+    {"mediumAquaMarine", Color(0.4f * 255.0f, 0.803922f * 255.0f, 0.666667f * 255.0f)},
+    {"mediumBlue", Color(0.0f, 0.0f, 0.803922f * 255.0f)},
+    {"mediumOrchid", Color(0.729412f * 255.0f, 0.333333f * 255.0f, 0.827451f * 255.0f)},
+    {"mediumPurple", Color(0.576471f * 255.0f, 0.439216f * 255.0f, 0.858824f * 255.0f)},
+    {"mediumSeaGreen", Color(0.235294f * 255.0f, 0.701961f * 255.0f, 0.443137f * 255.0f)},
+    {"mediumSlateBlue", Color(0.482353f * 255.0f, 0.407843f * 255.0f, 0.933333f * 255.0f)},
+    {"mediumSpringGreen", Color(0.0f, 0.980392f * 255.0f, 0.603922f * 255.0f)},
+    {"mediumTurquoise", Color(0.282353f * 255.0f, 0.819608f * 255.0f, 0.8f * 255.0f)},
+    {"mediumVioletRed", Color(0.780392f * 255.0f, 0.0823529f * 255.0f, 0.521569f * 255.0f)},
+    {"mediumaquamarine", Color(102.f, 205.f, 170.f)},
+    {"mediumblue", Color(0.f, 0.f, 205.f)},
+    {"mediumorchid", Color(186.f, 85.f, 211.f)},
+    {"mediumpurple", Color(147.f, 112.f, 219.f)},
+    {"mediumseagreen", Color(60.f, 179.f, 113.f)},
+    {"mediumslateblue", Color(123.f, 104.f, 238.f)},
+    {"mediumspringgreen", Color(0.f, 250.f, 154.f)},
+    {"mediumturquoise", Color(72.f, 209.f, 204.f)},
+    {"mediumvioletred", Color(199.f, 21.f, 133.f)},
+    {"midnightBlue", Color(0.0980392f * 255.0f, 0.0980392f * 255.0f, 0.439216f * 255.0f)},
+    {"midnightblue", Color(25.f, 25.f, 112.f)},
+    {"mintCream", Color(0.960784f * 255.0f, 1.0f * 255.0f, 0.980392f * 255.0f)},
+    {"mintcream", Color(245.f, 255.f, 250.f)},
+    {"mistyRose", Color(1.0f * 255.0f, 0.894118f * 255.0f, 0.882353f * 255.0f)},
+    {"mistyrose", Color(255.f, 228.f, 225.f)},
+    {"moccasin", Color(255.f, 228.f, 181.f)},
+    {"navajoWhite", Color(1.0f * 255.0f, 0.870588f * 255.0f, 0.678431f * 255.0f)},
+    {"navajowhite", Color(255.f, 222.f, 173.f)},
+    {"navy", Color(0.f, 0.f, 128.f)},
+    {"oldLace", Color(0.992157f * 255.0f, 0.960784f * 255.0f, 0.901961f * 255.0f)},
+    {"oldlace", Color(253.f, 245.f, 230.f)},
+    {"olive", Color(128.f, 128.f, 0.f)},
+    {"oliveDrab", Color(0.419608f * 255.0f, 0.556863f * 255.0f, 0.137255f * 255.0f)},
+    {"olivedrab", Color(107.f, 142.f, 35.f)},
+    {"orange", Color(255.f, 165.f, 0.f)},
+    {"orangeRed", Color(1.0f * 255.0f, 0.270588f * 255.0f, 0.0f * 255.0f)},
+    {"orangered", Color(255.f, 69.f, 0.f)},
+    {"orchid", Color(218.f, 112.f, 214.f)},
+    {"paleGoldenRod", Color(0.933333f * 255.0f, 0.909804f * 255.0f, 0.666667f * 255.0f)},
+    {"paleGreen", Color(0.596078f * 255.0f, 0.984314f * 255.0f, 0.596078f * 255.0f)},
+    {"paleTurquoise", Color(0.686275f * 255.0f, 0.933333f * 255.0f, 0.933333f * 255.0f)},
+    {"paleVioletRed", Color(0.858824f * 255.0f, 0.439216f * 255.0f, 0.576471f * 255.0f)},
+    {"palegoldenrod", Color(238.f, 232.f, 170.f)},
+    {"palegreen", Color(152.f, 251.f, 152.f)},
+    {"paleturquoise", Color(175.f, 238.f, 238.f)},
+    {"palevioletred", Color(219.f, 112.f, 147.f)},
+    {"papayaWhip", Color(1.0f * 255.0f, 0.937255f * 255.0f, 0.835294f * 255.0f)},
+    {"papayawhip", Color(255.f, 239.f, 213.f)},
+    {"peachPuff", Color(1.0f * 255.0f, 0.854902f * 255.0f, 0.72549f * 255.0f)},
+    {"peachpuff", Color(255.f, 218.f, 185.f)},
+    {"peru", Color(205.f, 133.f, 63.f)},
+    {"pink", Color(255.f, 192.f, 203.f)},
+    {"plum", Color(221.f, 160.f, 221.f)},
+    {"powderBlue", Color(0.690196f * 255.0f, 0.878431f * 255.0f, 0.901961f * 255.0f)},
+    {"powderblue", Color(176.f, 224.f, 230.f)},
+    {"purple", Color(128.f, 0.f, 128.f)},
+    {"rebeccapurple", Color(102.f, 51.f, 153.f)},
+    {"red", Color(255.f, 0.f, 0.f)},
+    {"rosyBrown", Color(0.737255f * 255.0f, 0.560784f * 255.0f, 0.560784f * 255.0f)},
+    {"rosybrown", Color(188.f, 143.f, 143.f)},
+    {"royalBlue", Color(0.254902f * 255.0f, 0.411765f * 255.0f, 0.882353f * 255.0f)},
+    {"royalblue", Color(65.f, 105.f, 225.f)},
+    {"saddleBrown", Color(0.545098f * 255.0f, 0.270588f * 255.0f, 0.0745098f * 255.0f)},
+    {"saddlebrown", Color(139.f, 69.f, 19.f)},
+    {"salmon", Color(250.f, 128.f, 114.f)},
+    {"sandyBrown", Color(0.956863f * 255.0f, 0.643137f * 255.0f, 0.376471f * 255.0f)},
+    {"sandybrown", Color(244.f, 164.f, 96.f)},
+    {"seaGreen", Color(0.180392f * 255.0f, 0.545098f * 255.0f, 0.341176f * 255.0f)},
+    {"seaShell", Color(1.0f * 255.0f, 0.960784f * 255.0f, 0.933333f * 255.0f)},
+    {"seagreen", Color(46.f, 139.f, 87.f)},
+    {"seashell", Color(255.f, 245.f, 238.f)},
+    {"sienna", Color(160.f, 82.f, 45.f)},
+    {"silver", Color(192.f, 192.f, 192.f)},
+    {"skyBlue", Color(0.529412f * 255.0f, 0.807843f * 255.0f, 0.921569f * 255.0f)},
+    {"skyblue", Color(135.f, 206.f, 235.f)},
+    {"slateBlue", Color(0.415686f * 255.0f, 0.352941f * 255.0f, 0.803922f * 255.0f)},
+    {"slateGray", Color(0.439216f * 255.0f, 0.501961f * 255.0f, 0.564706f * 255.0f)},
+    {"slateGrey", Color(0.439216f * 255.0f, 0.501961f * 255.0f, 0.564706f * 255.0f)},
+    {"slateblue", Color(106.f, 90.f, 205.f)},
+    {"slategray", Color(112.f, 128.f, 144.f)},
+    {"snow", Color(255.f, 250.f, 250.f)},
+    {"springGreen", Color(0.0f, 1.0f * 255.0f, 0.498039f * 255.0f)},
+    {"springgreen", Color(0.f, 255.f, 127.f)},
+    {"steelBlue", Color(0.27451f * 255.0f, 0.509804f * 255.0f, 0.705882f * 255.0f)},
+    {"steelblue", Color(70.f, 130.f, 180.f)},
+    {"teal", Color(0.f, 128.f, 128.f)},
+    {"thistle", Color(216.f, 191.f, 216.f)},
+    {"tomato", Color(255.f, 99.f, 71.f)},
+    {"turquoise", Color(64.f, 224.f, 208.f)},
+    {"violet", Color(238.f, 130.f, 238.f)},
+    {"wheat", Color(245.f, 222.f, 179.f)},
+    {"white", Color(255.f, 255.f, 255.f)},
+    {"whiteSmoke", Color(0.960784f * 255.0f, 0.960784f * 255.0f, 0.960784f * 255.0f)},
+    {"whitesmoke", Color(245.f, 245.f, 245.f)},
+    {"yellow", Color(255.f, 255.f, 0.f)},
+    {"yellowGreen", Color(0.603922f * 255.0f, 0.803922f * 255.0f, 0.196078f * 255.0f)},
+    {"yellowgreen", Color(154.f, 205.f, 50.f)},
+};

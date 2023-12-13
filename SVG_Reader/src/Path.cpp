@@ -144,6 +144,6 @@ Path::Path(const Path& other) : Figure(other) {
 }
 
 // Virtual method
-void Path::setAttribute(const std::string& attribute, const std::string& value) {
+void Path::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "d") setPath(value);
 }

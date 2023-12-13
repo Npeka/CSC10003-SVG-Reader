@@ -5,7 +5,7 @@
 #include "Color.h"
 #include "Point.h"
 
-// class Ficgure
+// class Figure
 class Figure {
 protected:
 	Color fill;
@@ -27,11 +27,11 @@ public:
 	void setRotate(const std::string& rotate);
 	void setScale(const std::string& scale);
 	void setTransform(const std::string& transform);
-	void setGroup(const Figure* other);
-	void setAttribute(const std::string& line);
+	void setGroupAttributes(Figure* group);
+	void setAttributes(const std::string& line);
 
 	// Virtual method
-	virtual void setAttribute(const std::string& attribute, const std::string& value);
+	virtual void setAttributes(const std::string& attribute, const std::string& value) {};
 	virtual ~Figure() = default;
 };
 //-------------END-OF-DECLARATION------------//
@@ -56,6 +56,3 @@ public:
 //-------------END-OF-DECLARATION------------//
 
 #endif // !FIGURE_H
-
-
-

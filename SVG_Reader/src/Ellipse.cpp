@@ -30,7 +30,7 @@ void Ellipse::setRY(const std::string& ry) {
 }
 
 // Virtual method
-void Ellipse::setAttribute(const std::string& attribute, const std::string& value) {
+void Ellipse::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "cx") setCX(value);
 	else if (attribute == "cy") setCY(value);
 	else if (attribute == "rx") setRX(value);

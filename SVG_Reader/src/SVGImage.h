@@ -1,8 +1,7 @@
 #ifndef SVG_IMAGE_H
 #define SVG_IMAGE_H
 
-#include "Figure.h"
-#include "Render.h"
+#include "Group.h"
 
 // class ViewBox
 class ViewBox {
@@ -26,35 +25,40 @@ public:
 */
 // class SVGImage
 class SVGImage {
-public:
+private:
 	// Attribute
 	float width;
 	float height;
 	Color background;
 	ViewBox viewbox;
-	std::vector<Drawable*> figure;
+	Group* root;
 
 	// Methods
 	void standardizeTag(std::string& line);
 	
 public:
 	// Constructor
-	SVGImage(const std::string& nameFile = "");
+	SVGImage();
+	SVGImage(const std::string& nameFile);
 	SVGImage(const SVGImage& svgImage);
 
 	// Destructor
 	~SVGImage();
+	
+	// Getter
+	const Group* getRoot() const;
 
 	// Set attribute
 	void setWidth(const std::string& width);
 	void setHeight(const std::string& height);
 	void setStyle(const std::string& style);
 	void setViewBox(const std::string& viewbox);
-	void setAttribute(const std::string& line);
-
+	void setSVGAttributes(const std::string& line);
 	void parse(const std::string& nameFile);
-	void render() {};
 };
+
+void SVG_Render(const SVGImage& svgImage, Render_Window);
+
 //-------------END-OF-DECLARATION------------//
 
 #endif // !SVG_IMAGE_H

@@ -51,6 +51,6 @@ void Polyline::setPoint(const std::string& line) {
 }
 
 	// Virtual method
-void Polyline::setAttribute(const std::string& attribute, const std::string& value) {
+void Polyline::setAttributes(const std::string& attribute, const std::string& value) {
 	if (attribute == "points") setPoint(value);
 }
