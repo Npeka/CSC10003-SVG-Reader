@@ -130,12 +130,12 @@ private:
 
 public:
 	// Constructor
-	Drawable_Polyline() = default;
+	Drawable_Polyline();
 
 	// Virtual method
 	void setDrawableAtrributes();
 	void draw(Render_Window) override;
-	~Drawable_Polyline() override = default;
+	~Drawable_Polyline() override;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -148,12 +148,12 @@ private:
 	Gdiplus::PointF* gdiPoints;
 public:
 	// Constructor
-	Drawable_Polygon() = default;
+	Drawable_Polygon();
 
 	// Virtual method
 	void setDrawableAtrributes();
 	void draw(Render_Window) override;
-	~Drawable_Polygon() override = default;
+	~Drawable_Polygon() override;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -167,12 +167,12 @@ private:
 	Gdiplus::Font* font;
 public:
 	// Constructor
-	Drawable_Text() = default;
+	Drawable_Text();
 
 	// Virtual method
     void setDrawableAtrributes();
 	void draw(Render_Window) override;
-	~Drawable_Text() override = default;
+	~Drawable_Text() override;
 };
 //-------------END-OF-DECLARATION------------//
 /*
@@ -183,6 +183,7 @@ public:
 // class SF_Path
 class Drawable_Path : public Drawable, public Path {
 private:
+	Gdiplus::GraphicsPath* subpath;
 	Gdiplus::GraphicsPath Gpath;
 	int countSubpath; 
 public:

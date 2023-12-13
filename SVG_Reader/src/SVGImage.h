@@ -32,6 +32,7 @@ private:
 	Color background;
 	ViewBox viewbox;
 	Group* root;
+	std::string namefile;
 
 	// Methods
 	void standardizeTag(std::string& line);

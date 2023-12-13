@@ -129,6 +129,8 @@ void Drawable_Line::draw(Render_Window) {
 
 // Public
 // Constructor
+Drawable_Polyline::Drawable_Polyline() : points(nullptr) {}
+
 void Drawable_Polyline::setDrawableAtrributes() {
 	points = new Gdiplus::PointF[fpoint.size()];
 	for (int i = 0; i < fpoint.size(); i++) {
@@ -147,6 +149,10 @@ void Drawable_Polyline::draw(Render_Window) {
 	graphics.DrawLines(&pen, points, fpoint.size());
 	Transform_Second(transform, graphics);
 }
+
+Drawable_Polyline::~Drawable_Polyline() {
+	if (points != nullptr) delete[] points;
+}
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
 
@@ -155,10 +161,14 @@ void Drawable_Polyline::draw(Render_Window) {
 */
 // class DrawablePolygon
 // Constructor
+Drawable_Polygon::Drawable_Polygon() : gdiPoints(nullptr) {}
+
 void Drawable_Polygon::setDrawableAtrributes() {
 	gdiPoints = new Gdiplus::PointF[point.size()];
-	for (size_t i = 0; i < point.size(); ++i) {
-		gdiPoints[i] = Gdiplus::PointF((point[i].x), (point[i].y));
+	if (gdiPoints != nullptr) {
+		for (size_t i = 0; i < point.size(); ++i) {
+			gdiPoints[i] = Gdiplus::PointF((point[i].x), (point[i].y));
+		}
 	}
 	brush.SetColor(GDI_Color(fill));
 	pen.SetColor(GDI_Color(stroke));
@@ -168,12 +178,15 @@ void Drawable_Polygon::setDrawableAtrributes() {
 // Virtual method
 void Drawable_Polygon::draw(Render_Window) {
 	Transform_First(transform, graphics);
-	if (gdiPoints) {
+	if (gdiPoints != nullptr) {
 		graphics.FillPolygon(&brush, gdiPoints, static_cast<int>(point.size()));
 		graphics.DrawPolygon(&pen, gdiPoints, static_cast<int>(point.size()));
-		delete[] gdiPoints;
 	}
 	Transform_Second(transform, graphics);
+}
+
+Drawable_Polygon::~Drawable_Polygon() {
+	if (gdiPoints != nullptr) delete[] gdiPoints;
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -183,14 +196,9 @@ void Drawable_Polygon::draw(Render_Window) {
 */
 // class DrawableText
 // Constructor
-void Drawable_Text::setDrawableAtrributes() {
-	this->x = x;
-	this->y = y;
-	this->font_size = font_size;
-	this->font_style = font_style;
-	this->font_family = font_family;
-	this->data = data;
+Drawable_Text::Drawable_Text() : font(nullptr) {}
 
+void Drawable_Text::setDrawableAtrributes() {
 	brush.SetColor(GDI_Color(fill));
 
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
@@ -212,8 +220,6 @@ void Drawable_Text::setDrawableAtrributes() {
 
 	auto tempFont = std::make_unique<Gdiplus::Font>(&fontFamily, fontSize, fontStyle, unit);
 
-	if (font)
-		delete font;
 	font = new Gdiplus::Font(&fontFamily, fontSize, fontStyle, unit);
 }
 
@@ -277,8 +283,10 @@ void Drawable_Text::draw(Render_Window) {
 	graphics.DrawPath(&pen, &path);	
 		
 	Transform_Second(transform, graphics);
+}
 
-	if (font) delete font;
+Drawable_Text::~Drawable_Text() {
+	if (font != nullptr) delete font;
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*
@@ -300,8 +308,7 @@ void Drawable_Path::setDrawableAtrributes() {
 		if (x.first == 'z' || x.first == 'Z') countSubpath++;
 	}
 
-	Gdiplus::GraphicsPath* subpath;
-	subpath = new Gdiplus::GraphicsPath[countSubpath];
+	subpath = new Gdiplus::GraphicsPath[countSubpath + path.size()];
 	
 	int idx = 0; 
 
@@ -330,6 +337,8 @@ void Drawable_Path::setDrawableAtrributes() {
 	for (int i = 0; i < countSubpath; i++) {
 		Gpath.AddPath(&subpath[i], FALSE);
 	}
+	
+	if (subpath != nullptr) delete[] subpath;
 }
 
 // Virtual method

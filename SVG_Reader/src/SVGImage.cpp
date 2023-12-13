@@ -33,15 +33,17 @@ void SVGImage::standardizeTag(std::string& line) {
 // Public
 	// Constructors
 SVGImage::SVGImage() {
-	root = new Group();
-	root->setParent(root);
+	root = nullptr;
 	width = 0;
 	height = 0;
 	background.setRGB(255, 255, 255);
+	namefile = "";
 }
 
 SVGImage::SVGImage(const std::string& nameFile) : SVGImage() {
-	if (nameFile != "") parse(nameFile);
+	if (nameFile != "") {
+		parse(nameFile);
+	}
 }
 
 SVGImage::SVGImage(const SVGImage& svgImage) {
@@ -53,7 +55,10 @@ SVGImage::SVGImage(const SVGImage& svgImage) {
 
 	// Destructor
 SVGImage::~SVGImage() {
-	if (root != nullptr) delete root;
+	if (root != nullptr) {
+		delete root;
+		root = nullptr;
+	}
 }
 
 	// Getter
@@ -97,6 +102,19 @@ void SVGImage::setSVGAttributes(const std::string& line) {
 }
 
 void SVGImage::parse(const std::string& nameFile) {
+	if (nameFile == "" || nameFile == namefile) return;
+	namefile = nameFile;
+	if (root != nullptr) {
+		delete root;
+	}
+
+	root = new Group();
+	root->setParent(root);
+	width = 0;
+	height = 0;
+	viewbox = ViewBox();
+	background.setRGB(255, 255, 255);
+
 	std::ifstream inFile(nameFile);
 	std::string line;
 	FigureFactory* figureFactory = FigureFactory::getInstance();
@@ -146,6 +164,7 @@ void SVGImage::parse(const std::string& nameFile) {
 			}
 		}
 	}
+	
 	figureFactory->deleteInstance();
 	inFile.close();
 }
@@ -154,7 +173,6 @@ void SVG_Render(const SVGImage& svgImage, Render_Window) {
 	const std::vector<Drawable*>& figures = svgImage.getRoot()->getFigures();
 	for (auto& figure : figures) {
 		figure->draw(Render_Parameters);
-		std::cout << "draw\n";
 	}
 }
 //-----------END-OF-IMPLEMENTATION-----------//
