@@ -1,13 +1,19 @@
 ﻿#include "Path.h"
 
+std::ofstream ofs;
+
+
 // class Path
 // Set attribute
 void Path::setPath(const std::string& line) {
+	ofs.open("test.txt");
+
 	std::string value = line;
 	for (char& c : value) if (c == ',') c = ' ';
 	std::vector<int> pos;
 	std::vector<std::string> subline;
 
+	ofs << "value: " << value << std::endl;
 
 	for (int i = 0; i < value.length(); i++) {
 		if (isalpha(value[i])) pos.push_back(i);
@@ -71,6 +77,42 @@ void Path::setPath(const std::string& line) {
 			}
 		}
 
+		else if (cmd == 'S' || cmd == 's') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(2);
+				tmp[0] = { x, y };
+				for (int i = 1; i < 2; i++) {
+					ss >> x >> y;
+					tmp[i] = { x, y };
+				}
+				path.push_back({ cmd, tmp });
+			}
+		}
+
+		else if (cmd == 'Q' || cmd == 'q') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(2);
+				tmp[0] = { x, y };
+				for (int i = 1; i < 2; i++) {
+					ss >> x >> y;
+					tmp[i] = { x, y };
+				}
+				path.push_back({ cmd, tmp });
+			}
+		}
+
+		else if (cmd == 'T' || cmd == 't') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(1);
+				tmp[0] = { x, y };
+				path.push_back({ cmd, tmp });
+			}
+		}
+	
+		else if (cmd == 'A' || cmd == 'a') {
+			
+		}
+
 		// Add M point into tmp for later processing 
 		else if (cmd == 'Z' || cmd == 'z') {
 			std::vector<Point> tmp;
@@ -78,8 +120,7 @@ void Path::setPath(const std::string& line) {
 		}
 	}
 
-	std::ofstream ofs;
-	ofs.open("test.txt");
+
 
 	//Add initial point and update l, v, h, V, H, c for each path element 
 	Point initialSubpath;
@@ -118,6 +159,48 @@ void Path::setPath(const std::string& line) {
 			}
 		}
 
+		else if (cmd == 's' || cmd == 'S') {
+			Point prevEnd; 
+			char prevCmd = path[i - 1].first;
+
+			if (prevCmd == 'C' || prevCmd == 'c' || prevCmd == 'S' || prevCmd == 's')
+				prevEnd = path[i - 1].second[path[i - 1].second.size() - 2];
+			else prevEnd = end; 
+			
+			if (cmd == 's') {
+				path[i].second[0].x += end.x;
+				path[i].second[0].y += end.y;
+				path[i].second[1].x += end.x;
+				path[i].second[1].y += end.y;
+			}
+
+			Point controlPoint = { 2 * end.x - prevEnd.x, 2 * end.y - prevEnd.y };
+			path[i].second.insert(path[i].second.begin(), controlPoint);
+			path[i].second.insert(path[i].second.begin(), end);
+		}
+		
+		else if (cmd == 'Q' || cmd == 'q') {
+			path[i].second.insert(path[i].second.begin(), end);
+		}
+
+		else if (cmd == 'T' || cmd == 't') {
+			char prevCmd = path[i - 1].first; 
+			Point prevEnd; 
+
+			if (prevCmd == 'Q' || prevCmd == 'q' || prevCmd == 'T' || prevCmd == 't')
+				prevEnd = path[i - 1].second[path[i - 1].second.size() - 2];
+			else prevEnd = end; 
+
+			if (cmd == 't') {
+				path[i].second[0].x += end.x;
+				path[i].second[0].y += end.y;
+			}
+
+			Point controlPoint = { 2 * end.x - prevEnd.x, 2 * end.y - prevEnd.y };
+			path[i].second.insert(path[i].second.begin(), controlPoint);
+			path[i].second.insert(path[i].second.begin(), end);
+		}
+
 		else if (cmd == 'H' || cmd == 'V') {
 			path[i].second.insert(path[i].second.begin(), end);
 			if (cmd == 'H') path[i].second[1].y = end.y;
@@ -130,10 +213,10 @@ void Path::setPath(const std::string& line) {
 			path[i].second.push_back(end);
 		}
 		
-		//ofs << cmd << std::endl;
-		//for (int j = 0; j < path[i].second.size(); j++) {
-		//	ofs << path[i].second[j].x << " " << path[i].second[j].y << std::endl;
-		//}
+		ofs << cmd << std::endl;
+		for (int j = 0; j < path[i].second.size(); j++) {
+			ofs << path[i].second[j].x << " " << path[i].second[j].y << std::endl;
+		}
 	}	
 }
 

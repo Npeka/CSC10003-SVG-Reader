@@ -299,6 +299,7 @@ void Drawable_Path::setDrawableAtrributes() {
 	for (auto x : path) {
 		if (x.first == 'z' || x.first == 'Z') countSubpath++;
 	}
+	if (countSubpath == 0) countSubpath = 1; 
 
 	Gdiplus::GraphicsPath* subpath;
 	subpath = new Gdiplus::GraphicsPath[countSubpath];
@@ -306,9 +307,9 @@ void Drawable_Path::setDrawableAtrributes() {
 	int idx = 0; 
 
 	for (auto x : path) {
-		char cmd = x.first; 
+		char cmd = x.first;
 
-		if (cmd == 'c' || cmd == 'C') {
+		if (cmd == 'c' || cmd == 'C' || cmd == 's' || cmd == 'S') {
 			subpath[idx].AddBezier(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y, x.second[2].x, x.second[2].y, x.second[3].x, x.second[3].y); // add 4 points
 		}
 
@@ -318,6 +319,19 @@ void Drawable_Path::setDrawableAtrributes() {
 		else if (cmd == 'z' || cmd == 'Z') {
 			subpath[idx].AddLine(x.second[1].x, x.second[1].y, x.second[0].x, x.second[0].y);
 			idx++;
+		}
+
+		else if (cmd == 't' || cmd == 'T' || cmd == 'q' || cmd == 'Q') {
+			Gdiplus::Point* points = new Gdiplus::Point[3];
+			for (int i = 0; i < 3; i++) {
+				points[i].X = x.second[i].x;
+				points[i].Y = x.second[i].y;
+			}
+			subpath[idx].AddCurve(points, 3);
+		}
+
+		else if (cmd == 'a' || cmd == 'A') {
+
 		}
 
 		else if (cmd == 'M' || cmd == 'm') {
