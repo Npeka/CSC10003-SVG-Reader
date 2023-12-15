@@ -11,7 +11,7 @@ float offsetX = 0.0f;
 float offsetY = 0.0f;
 float rotationAngle = 0.0f;
 float zoomFactor = 1.0f;
-std::string filename = "sample.svg";
+std::string filename = "test case/sample.svg";
 
 VOID OnPaint(HDC& hdc)
 {
@@ -51,7 +51,6 @@ void Zoom(HWND& hWnd, float zoom) {
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
     HDC          hdc;
     PAINTSTRUCT  ps;
-
     switch (message)
     {
     case WM_PAINT:
@@ -128,7 +127,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow) {
 
     hWnd = CreateWindow(
         TEXT("GettingStarted"),   // window class name
-        TEXT("SVG Demo"),  // window caption
+        TEXT("SVG_Reader"),  // window caption
         WS_OVERLAPPEDWINDOW,      // window style
         CW_USEDEFAULT,            // initial x position
         CW_USEDEFAULT,            // initial y position
@@ -147,13 +146,13 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-
     Gdiplus::GdiplusShutdown(gdiplusToken);
+
     return msg.wParam;
 }  // WinMain
 
-//int main(int argc, char* argv[]) {
-int main() {
+int main(int argc, char* argv[]) {
+    if (argc > 1) filename = "test case/" + (std::string)argv[1];
     INT result = WinMain(GetModuleHandle(NULL), NULL, GetCommandLineA(), SW_SHOWNORMAL);
     return result;
 }
