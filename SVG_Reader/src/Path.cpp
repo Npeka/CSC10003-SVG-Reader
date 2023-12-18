@@ -1,27 +1,18 @@
 ﻿#include "Path.h"
 
-std::ofstream ofs;
-
-
-// class Path
 // Set attribute
-void Path::setPath(const std::string& line) {
-	ofs.open("test.txt");
-
-	std::string value = line;
-	for (char& c : value) if (c == ',') c = ' ';
+void Path::setPath(string& line) {
+	COMMA_TO_SPACE(line);
 	std::vector<int> pos;
 	std::vector<std::string> subline;
 
-	ofs << "value: " << value << std::endl;
-
-	for (int i = 0; i < value.length(); i++) {
-		if (isalpha(value[i])) pos.push_back(i);
-		if (i == value.length() - 1) pos.push_back(i + 1);
+	for (int i = 0; i < line.length(); i++) {
+		if (isalpha(line[i])) pos.push_back(i);
+		if (i == line.length() - 1) pos.push_back(i + 1);
 	}
 
 	for (int i = 0; i < pos.size() - 1; i++) {
-		std::string substring = value.substr(pos[i], pos[i + 1] - pos[i]);
+		std::string substring = line.substr(pos[i], pos[i + 1] - pos[i]);
 		subline.push_back(substring);
 	}
 
@@ -212,21 +203,10 @@ void Path::setPath(const std::string& line) {
 			path[i].second.push_back(initialSubpath);
 			path[i].second.push_back(end);
 		}
-		
-		ofs << cmd << std::endl;
-		for (int j = 0; j < path[i].second.size(); j++) {
-			ofs << path[i].second[j].x << " " << path[i].second[j].y << std::endl;
-		}
 	}	
 }
 
-
-//Constructor 
-Path::Path(const Path& other) : Figure(other) {
-	this->path = other.path; 
-}
-
 // Virtual method
-void Path::setAttributes(const std::string& attribute, const std::string& value) {
+void Path::setFigureAttributes(const string& attribute, string& value) {
 	if (attribute == "d") setPath(value);
 }

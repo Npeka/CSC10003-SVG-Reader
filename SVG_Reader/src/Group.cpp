@@ -1,17 +1,16 @@
 #include "Group.h"
 
-Group::Group() {
-	parent = nullptr;
-}
+Group::Group() :
+	parent(nullptr)
+{}
 
 Group::~Group() {
 	for (auto& figure : figures) {
-		if (figure != nullptr) {
-			delete figure;
-			figure = nullptr;
-		}
+		dealocate(figure);
 	}
+	parent = nullptr;
 	figures.clear();
+	childAttributes.clear();
 }
 
 void Group::setParent(Group* parent) {
@@ -20,10 +19,19 @@ void Group::setParent(Group* parent) {
 
 void Group::setParentAttributes() {
 	if (parent != nullptr) {
-		fill = parent->fill;
-		stroke = parent->stroke;
+		copyColor(fill, parent->fill);
+		copyColor(stroke, parent->stroke);
 		stroke_width = parent->stroke_width;
-		//transform = parent->transform;
+	}
+}
+
+void Group::setFigureAttributes(const string& attribute, string& value) {
+	childAttributes.push_back({ attribute, value });
+}
+
+void Group::setChildAttributes(Figure* figure) {
+	for (auto& attribute : childAttributes) {
+		figure->setFigureAttributes(attribute.first, attribute.second);
 	}
 }
 

@@ -1,30 +1,21 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include "Header.h"
+#include "SVG_Element.h"
 
-class Color {
-private:
-	static std::unordered_map<std::string, Color> mapColor;
+class Color : public SVG_Element {
 public:
-	// Attribute
-	float r;
-	float g;
-	float b;
-	float a;
+	float opacity;
 
-	// Constructor
+public:
 	Color();
-	Color(const std::string& color);
-	Color(const Color& color);
-	Color(const float& r, const float& g, const float& b , const float& a = 255);
-
-	// Set attribute
-	void setA(const std::string& a);
-	void setA(const float& a);
-	void setRGB(const std::string& color);
-	void setRGB(const float& r, const float& g, const float& b, const float& a = 255);
-	Color& operator=(const Color& color);
+	Color(const Color& other);
+	void setOpacity(string& opacity);
+	void setOpacity(const float& opacity);
+	void setElementAttributes(const string& attribute, string& value) override {};
 };
+
+void createColor(Color*& color, string name = "");
+void copyColor(Color*& color, Color* copy);
 
 #endif // !COLOR_H

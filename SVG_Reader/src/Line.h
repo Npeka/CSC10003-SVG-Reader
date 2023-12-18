@@ -3,25 +3,58 @@
 
 #include "Figure.h"
 
+/**
+ * @brief The Line class represents a line segment in a 2D space.
+ *
+ * This class is derived from the Figure class and includes attributes for two points (p1, p2)
+ * that define the endpoints of the line segment.
+ */
 class Line : public Figure {
 protected:
-	Point p1; 
-	Point p2;
+    Point p1; /**< The first endpoint of the line. */
+    Point p2; /**< The second endpoint of the line. */
+
 public:
-	// Constructor
-	Line();
-	Line(const Point& p1, const Point& p2);
-	Line(const Line& line);
+    /**
+     * @brief Default constructor for Line.
+     */
+    Line();
 
-	// Set attribute
-	void setX1(const std::string& x1);
-	void setY1(const std::string& y1);
-	void setX2(const std::string& x2);
-	void setY2(const std::string& y2);
+    /**
+     * @brief Set the x-coordinate of the first endpoint.
+     * @param x1 The x-coordinate to set.
+     */
+    void setX1(string& x1);
 
-	// Virtual method
-	void setAttributes(const std::string& attribute, const std::string& value) override;
-	~Line() override = default;
+    /**
+     * @brief Set the y-coordinate of the first endpoint.
+     * @param y1 The y-coordinate to set.
+     */
+    void setY1(string& y1);
+
+    /**
+     * @brief Set the x-coordinate of the second endpoint.
+     * @param x2 The x-coordinate to set.
+     */
+    void setX2(string& x2);
+
+    /**
+     * @brief Set the y-coordinate of the second endpoint.
+     * @param y2 The y-coordinate to set.
+     */
+    void setY2(string& y2);
+
+    /**
+     * @brief Virtual method to set attributes.
+     * @param attribute The attribute to set.
+     * @param value The value to set for the attribute.
+     */
+    void setFigureAttributes(const string& attribute, string& value) override;
+
+    /**
+     * @brief Destructor for Line.
+     */
+    ~Line() override = default;
 };
 
 #endif // !LINE_H
