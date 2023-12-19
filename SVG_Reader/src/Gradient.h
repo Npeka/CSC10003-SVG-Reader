@@ -27,6 +27,8 @@ public:
 	Gradient();
 	Gradient(const Gradient& other);
 	void addStop(string& line);
+	void setHref(string& href);
+	void setElementAttributes(const string& attribute, string& value) override;
 	vector<Stop> getColorOffset() const;
 	bool getIsPercent() const;
 

@@ -47,6 +47,7 @@ void RadialGradient::setElementAttributes(const string& attribute, string& value
 	else if (attribute == "fx") setFX(value);
 	else if (attribute == "fy") setFY(value);
 	else if (attribute == "fr") setFR(value);
+	else Gradient::setElementAttributes(attribute, value);
 }
 
 float RadialGradient::getCX() const {

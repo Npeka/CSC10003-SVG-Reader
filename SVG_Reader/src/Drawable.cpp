@@ -72,7 +72,6 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	Gdiplus::REAL* positions = new Gdiplus::REAL[size];
 	for (int i = size - 1; i >= 0; --i) {
 		positions[i] = 1 - ColorOffset[i].getOffset();
-		std::cout << positions[i] << std::endl;
 	}
 
 	radial->SetInterpolationColors(

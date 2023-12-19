@@ -9,9 +9,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Resource class">
-      <UniqueIdentifier>{74df2020-8b06-4e17-af65-b31ba542f427}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Figure">
       <UniqueIdentifier>{7eeaeb0b-9213-4590-8ef9-6612dc3fac8a}</UniqueIdentifier>
     </Filter>
@@ -24,40 +21,43 @@
     <Filter Include="Header Files\Other class">
       <UniqueIdentifier>{4e6637ff-1c5e-43ff-a4a7-7a1dc571712d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Figure">
+      <UniqueIdentifier>{74df2020-8b06-4e17-af65-b31ba542f427}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Text.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Circle.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Ellipse.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Figure.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Group.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Line.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Path.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Polygon.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Polyline.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\Rectangle.cpp">
-      <Filter>Resource Files\Resource class</Filter>
+      <Filter>Resource Files\Figure</Filter>
     </ClCompile>
     <ClCompile Include="src\RGB_Color.cpp">
       <Filter>Header Files\Color</Filter>

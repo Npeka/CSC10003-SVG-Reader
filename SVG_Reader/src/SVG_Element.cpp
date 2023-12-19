@@ -18,7 +18,7 @@ SVG_Element* SVG_Element::findGlobalElement(const string& id) {
 	getline(ss, name, '#');
 	if (name == id) return nullptr;
 	getline(ss, name, ')');
-	if (name[name.size() - 1] == '\'') name.pop_back();
+	if (name.size() != 0 && name[name.size() - 1] == '\'') name.pop_back();
 
 	// find element
 	auto it = id_map.find(name);

@@ -316,7 +316,6 @@ void Drawable_Path::setDrawableAtrributes() {
 
 // Virtual method
 void Drawable_Path::draw(Render_Window) {
-	std::cout << "Path" << std::endl;
 	Transform_First(transform, graphics);
 	if (fill->opacity) graphics.FillPath(brush, &Gpath);
 	if (stroke->opacity) graphics.DrawPath(pen, &Gpath);

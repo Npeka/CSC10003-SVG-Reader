@@ -33,6 +33,7 @@ void LinearGradient::setElementAttributes(const string& attribute, string& value
 	else if (attribute == "y1") setY1(value);
 	else if (attribute == "x2") setX2(value);
 	else if (attribute == "y2") setY2(value);
+	else Gradient::setElementAttributes(attribute, value);
 }
 
 Point LinearGradient::getP1() const {

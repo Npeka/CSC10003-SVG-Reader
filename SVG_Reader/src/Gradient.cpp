@@ -48,12 +48,21 @@ void Gradient::addStop(string& line) {
 		char end;
 		ss >> end;
 		getline(ss, value, end);
-
 		if (attribute == "stop-color") stop.setColor(value);
 		if (attribute == "offset") stop.setOffset(value);
-		//std::cout << attribute << " " << value << std::endl;
 	}
 	ColorOffset.push_back(stop);
+}
+
+void Gradient::setHref(string& href) {
+	auto gradient = findGlobalElement(href);
+	if (gradient != nullptr) {
+		ColorOffset = dynamic_cast<Gradient*>(gradient)->getColorOffset();
+	}
+}
+
+void Gradient::setElementAttributes(const string& attribute, string& value) {
+	if (attribute == "xlink:href") setHref(value);
 }
 
 vector<Stop> Gradient::getColorOffset() const {

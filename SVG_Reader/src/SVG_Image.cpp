@@ -148,7 +148,7 @@ void SVG_Image::parse(const string& nameFile) {
 					standardizeTag(info);
 					if (word == "stop") newGradient->addStop(info);
 					else if (isGradient(word.substr(1)) || word == "/defs") break;
-					std::cout << word << " | " << info << '\n';
+					//std::cout << line << '\n';
 				}
 			} continue;
 		}
