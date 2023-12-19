@@ -21,12 +21,15 @@ public:
 class Gradient : public Color {
 protected:
 	vector<Stop> ColorOffset;
+	bool isPercent;
 
 public:
-	Gradient() = default;
+	Gradient();
 	Gradient(const Gradient& other);
 	void addStop(string& line);
 	vector<Stop> getColorOffset() const;
+	bool getIsPercent() const;
+
 };
 
 Gradient* getGradient(const string& color);

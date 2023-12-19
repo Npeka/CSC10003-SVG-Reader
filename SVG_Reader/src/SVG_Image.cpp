@@ -139,7 +139,7 @@ void SVG_Image::parse(const string& nameFile) {
 		else if (isGradient(word)) {
 			Gradient* newGradient = getGradient(word);
 			newGradient->parseElementAttributes(info);	// Element
-			if (info.find("/") == string::npos){
+			if (info.find("/") == string::npos) {
 				while (getline(inFile, line, '>')) {
 					std::stringstream ss(line);
 					getline(ss, word, '<');
@@ -147,9 +147,10 @@ void SVG_Image::parse(const string& nameFile) {
 					getline(ss, info, '\0');
 					standardizeTag(info);
 					if (word == "stop") newGradient->addStop(info);
-					else if (isGradient(word.erase(0, 1))) break;
+					else if (isGradient(word.substr(1)) || word == "/defs") break;
+					std::cout << word << " | " << info << '\n';
 				}
-			}
+			} continue;
 		}
 		else if (word == "g") {
 			Group* newGroup = new Group();

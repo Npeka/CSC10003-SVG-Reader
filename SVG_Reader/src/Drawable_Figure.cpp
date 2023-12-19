@@ -2,11 +2,9 @@
 
 // class Drawable_Rectangle
 void Drawable_Rectangle::setDrawableAtrributes() {
-	rect = Gdiplus::Rect(x, y, width, height);
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
-	std::cout << dynamic_cast<RGB_Color*>(fill)->opacity << std::endl;
-	std::cout << dynamic_cast<RGB_Color*>(stroke)->opacity << std::endl;
+	rect = Gdiplus::RectF(x, y, width, height);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
@@ -24,9 +22,13 @@ void Drawable_Rectangle::draw(Render_Window) {
 */
 // class Drawable_Ellipse
 void Drawable_Ellipse::setDrawableAtrributes() {
-	ellipseRect = Gdiplus::Rect(cx - rx, cy - ry, 2 * rx, 2 * ry);
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
+	ellipseRect = Gdiplus::RectF(cx - rx, cy - ry, 2 * rx, 2 * ry);
+	// Set color
+	Gdiplus::RectF rect1(cx, cy, rx * 2, ry * 2);
+	Gdiplus::GraphicsPath path; path.AddEllipse(ellipseRect);
+	Gdiplus::RectF rect; path.GetBounds(&rect);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
@@ -44,9 +46,12 @@ void Drawable_Ellipse::draw(Render_Window) {
 */
 // class Drawable_Circle
 void Drawable_Circle::setDrawableAtrributes() {
-	circleRect = Gdiplus::Rect(cx - r, cy - r, 2 * r, 2 * r);
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
+	circleRect = Gdiplus::RectF(cx - r, cy - r, 2 * r, 2 * r);
+	// Set color
+	Gdiplus::GraphicsPath path; path.AddEllipse(circleRect);
+	Gdiplus::RectF rect; path.GetBounds(&rect);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
@@ -64,7 +69,7 @@ void Drawable_Circle::draw(Render_Window) {
 */
 // class Drawable_Line
 void Drawable_Line::setDrawableAtrributes() {
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, Gdiplus::RectF(0, 0, 0, 0)), stroke_width);
 }
 
 // Virtual method
@@ -92,8 +97,11 @@ void Drawable_Polyline::setDrawableAtrributes() {
 			gdiPoints[i].Y = points[i].y;
 		}
 	}
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
+
+	Gdiplus::GraphicsPath path; path.AddPolygon(gdiPoints, points.size());
+	Gdiplus::RectF rect; path.GetBounds(&rect);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
@@ -129,8 +137,11 @@ void Drawable_Polygon::setDrawableAtrributes() {
 			gdiPoints[i].Y = points[i].y;
 		}
 	}
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
+
+	Gdiplus::GraphicsPath path; path.AddPolygon(gdiPoints, points.size());
+	Gdiplus::RectF rect; path.GetBounds(&rect);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
@@ -154,9 +165,6 @@ Drawable_Polygon::~Drawable_Polygon() {
 */
 // class Drawable_Text
 void Drawable_Text::setDrawableAtrributes() {
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
-
 	// Init parameters for TextPath
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
 
@@ -224,6 +232,11 @@ Continue:
 		position,			// Position
 		&stringFormat		// String format
 	);
+
+	// Set graphics
+	Gdiplus::RectF rect; TextPath.GetBounds(&rect);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
@@ -245,9 +258,6 @@ void Drawable_Text::draw(Render_Window) {
 */
 // class Drawable_Path
 void Drawable_Path::setDrawableAtrributes() {
-	brush = GDI_Brush(fill);
-	pen = new Gdiplus::Pen(GDI_Brush(stroke), stroke_width);
-
 	countSubpath = 0;
 	for (auto x : path) {
 		if (x.first == 'z' || x.first == 'Z') countSubpath++;
@@ -298,10 +308,15 @@ void Drawable_Path::setDrawableAtrributes() {
 	}
 
 	if (subpath != nullptr) delete[] subpath;
+
+	Gdiplus::RectF rect; Gpath.GetBounds(&rect);
+	brush = GDI_Brush(fill, rect);
+	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
 }
 
 // Virtual method
 void Drawable_Path::draw(Render_Window) {
+	std::cout << "Path" << std::endl;
 	Transform_First(transform, graphics);
 	if (fill->opacity) graphics.FillPath(brush, &Gpath);
 	if (stroke->opacity) graphics.DrawPath(pen, &Gpath);

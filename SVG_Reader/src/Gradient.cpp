@@ -31,8 +31,13 @@ float Stop::getOffset() {
 }
 
 // Gradient
+Gradient::Gradient() : Color(),
+	isPercent(false)
+{}
+
 Gradient::Gradient(const Gradient& other) : Color(other),
-	ColorOffset(other.ColorOffset)
+	ColorOffset(other.ColorOffset),
+	isPercent(other.isPercent)
 {}
 
 void Gradient::addStop(string& line) {
@@ -46,10 +51,15 @@ void Gradient::addStop(string& line) {
 
 		if (attribute == "stop-color") stop.setColor(value);
 		if (attribute == "offset") stop.setOffset(value);
+		//std::cout << attribute << " " << value << std::endl;
 	}
 	ColorOffset.push_back(stop);
 }
 
 vector<Stop> Gradient::getColorOffset() const {
 	return ColorOffset;
+}
+
+bool Gradient::getIsPercent() const {
+	return isPercent;
 }

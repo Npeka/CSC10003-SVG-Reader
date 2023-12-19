@@ -14,7 +14,7 @@
 // DrawableRectangle
 class Drawable_Rectangle : public Drawable, public Rectangle {
 private:
-	Gdiplus::Rect rect;
+	Gdiplus::RectF rect;
 
 public:
 	// Constructor
@@ -34,7 +34,7 @@ public:
 // DrawableEllipse
 class Drawable_Ellipse : public Drawable, public Ellipse {
 private:
-	Gdiplus::Rect ellipseRect;
+	Gdiplus::RectF ellipseRect;
 public:
 	// Constructor
 	Drawable_Ellipse() = default;
@@ -53,7 +53,7 @@ public:
 // class DrawableCircle
 class Drawable_Circle : public Drawable, public Circle {
 private:
-	Gdiplus::Rect circleRect;
+	Gdiplus::RectF circleRect;
 public:
 	// Constructor
 	Drawable_Circle() = default;

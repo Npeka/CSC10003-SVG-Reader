@@ -8,6 +8,9 @@ protected:
 	float cx;
 	float cy;
 	float r;
+	float fx;
+	float fy;
+	float fr;
 
 public:
 	RadialGradient();
@@ -16,6 +19,9 @@ public:
 	void setCX(string& cx);
 	void setCY(string& cy);
 	void setR(string& r);
+	void setFX(string& fx);
+	void setFY(string& fy);
+	void setFR(string& fr);
 	void setElementAttributes(const string& attribute, string& value) override;
 
 	float getCX() const;

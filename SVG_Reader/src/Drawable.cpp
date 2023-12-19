@@ -1,14 +1,22 @@
-#include "Drawable.h"
+﻿#include "Drawable.h"
 
 Gdiplus::Color GDI_RGB(const RGB_Color& color) {
 	return Gdiplus::Color(color.opacity, color.r, color.g, color.b);
 }
 
-Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color) {
+Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color, const Gdiplus::RectF& rect) {
 	Point p1 = color.getP1();
 	Point p2 = color.getP2();
 	vector<Stop> ColorOffset = color.getColorOffset();
 	int size = ColorOffset.size();
+	bool isPercent = color.getIsPercent();
+
+	if (isPercent) {
+		p1.x = rect.GetLeft() + p1.x * (rect.GetRight() - rect.GetLeft()) / 100.0f;
+		p1.y = rect.GetTop() + p1.y * (rect.GetBottom() - rect.GetTop()) / 100.0f;
+		p2.x = rect.GetLeft() + p2.x * (rect.GetRight() - rect.GetLeft()) / 100.0f;
+		p2.y = rect.GetTop() + p2.y * (rect.GetBottom() - rect.GetTop()) / 100.0f;
+	}
 
 	Gdiplus::LinearGradientBrush* linear;
 	linear = new Gdiplus::LinearGradientBrush(
@@ -25,7 +33,7 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color) {
 
 	Gdiplus::REAL* positions = new Gdiplus::REAL[size];
 	for (int i = 0; i < size; ++i) {
-		positions[i] = ColorOffset[i].getOffset();
+		positions[i] = ColorOffset[i].getOffset() / 100;
 	}
 
 	linear->SetInterpolationColors(
@@ -34,13 +42,13 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color) {
 		size
 	);
 
-	//delete[] stopColors;
-	//delete[] positions;
+	delete[] stopColors;
+	delete[] positions;
 
 	return linear;
 }
 
-Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color) {
+Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::RectF& rect) {
 	int cx = color.getCX();
 	int cy = color.getCY();
 	int r = color.getR();
@@ -54,13 +62,17 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color) {
 	radial = new Gdiplus::PathGradientBrush(&path);
 
 	Gdiplus::Color* stopColors = new Gdiplus::Color[size];
-	for (int i = 0; i < size; ++i) {
+	for (int i = size - 1; i >= 0; --i) {
 		stopColors[i] = GDI_RGB(ColorOffset[i].getColor());
 	}
 
+	Gdiplus::Matrix matrix(0, -1.98198, 1.8439, 0, -1031.4, 454.004);
+	radial->SetTransform(&matrix);
+
 	Gdiplus::REAL* positions = new Gdiplus::REAL[size];
-	for (int i = 0; i < size; ++i) {
-		positions[i] = ColorOffset[i].getOffset();
+	for (int i = size - 1; i >= 0; --i) {
+		positions[i] = 1 - ColorOffset[i].getOffset();
+		std::cout << positions[i] << std::endl;
 	}
 
 	radial->SetInterpolationColors(
@@ -69,21 +81,21 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color) {
 		size
 	);
 
-	//delete[] stopColors;
-	//delete[] positions;
+	delete[] stopColors;
+	delete[] positions;
 
 	return radial;
 }
 
-Gdiplus::Brush* GDI_Brush(Color* color) {
+Gdiplus::Brush* GDI_Brush(Color* color, const Gdiplus::RectF& rect) {
 	if (dynamic_cast<RGB_Color*>(color)) {
 		return new Gdiplus::SolidBrush(GDI_RGB(*dynamic_cast<RGB_Color*>(color)));
 	}
 	else if (dynamic_cast<LinearGradient*>(color)) {
-		return GDI_LinearGradient(*dynamic_cast<LinearGradient*>(color));
+		return GDI_LinearGradient(*dynamic_cast<LinearGradient*>(color), rect);
 	}
 	else if (dynamic_cast<RadialGradient*>(color)) {
-		return GDI_RadialGradient(*dynamic_cast<RadialGradient*>(color));
+		return GDI_RadialGradient(*dynamic_cast<RadialGradient*>(color), rect);
 	}
 }
 

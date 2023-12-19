@@ -4,7 +4,7 @@
 #include "Gradient.h"
 
 class LinearGradient : public Gradient {
-protected:
+private:
 	Point p1;
 	Point p2;
 
