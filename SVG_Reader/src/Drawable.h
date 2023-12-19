@@ -27,6 +27,7 @@ class Drawable {
 protected:
 	Gdiplus::Brush* brush;
 	Gdiplus::Pen* pen;
+	Gdiplus::Brush* solidBrush;
 
 public:
 	Drawable();

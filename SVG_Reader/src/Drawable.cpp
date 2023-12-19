@@ -49,11 +49,14 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color, const Gdiplus::R
 }
 
 Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::RectF& rect) {
-	int cx = color.getCX();
-	int cy = color.getCY();
-	int r = color.getR();
+	float cx = color.getCX();
+	float cy = color.getCY();
+	float r = color.getR();
 	vector<Stop> ColorOffset = color.getColorOffset();
 	int size = ColorOffset.size();
+
+	vector<pair<int, vector<float>>> t = color.getTransform();
+
 
 	Gdiplus::GraphicsPath path;
 	path.AddEllipse(cx - r, cy - r, 2 * r, 2 * r);
@@ -62,16 +65,28 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	radial = new Gdiplus::PathGradientBrush(&path);
 
 	Gdiplus::Color* stopColors = new Gdiplus::Color[size];
-	for (int i = size - 1; i >= 0; --i) {
-		stopColors[i] = GDI_RGB(ColorOffset[i].getColor());
+	for (int i = 0; i < size; ++i) {
+		stopColors[i] = GDI_RGB(ColorOffset[size - i - 1].getColor());
+		
 	}
 
-	Gdiplus::Matrix matrix(0, -1.98198, 1.8439, 0, -1031.4, 454.004);
-	radial->SetTransform(&matrix);
+	for (int i = 0; i < t.size(); ++i) {
+		if (t[i].first == SVG_Matrix) {
+			Gdiplus::Matrix matrix(
+				t[i].second[0],
+				t[i].second[1],
+				t[i].second[2],
+				t[i].second[3],
+				t[i].second[4],
+				t[i].second[5]
+			);
+			radial->SetTransform(&matrix);
+		}
+	}
 
 	Gdiplus::REAL* positions = new Gdiplus::REAL[size];
-	for (int i = size - 1; i >= 0; --i) {
-		positions[i] = 1 - ColorOffset[i].getOffset();
+	for (int i = 0; i < size; ++i) {
+		positions[i] = 1 - ColorOffset[size - i - 1].getOffset();
 	}
 
 	radial->SetInterpolationColors(
@@ -129,10 +144,12 @@ void Transform_Second(const vector<pair<int, Point>>& t, Render_Window) {
 // class Drawable
 Drawable::Drawable() :
 	brush(nullptr),
-	pen(nullptr)
+	pen(nullptr),
+	solidBrush(nullptr)
 {}
 
 Drawable::~Drawable() {
 	dealocate(brush);
 	dealocate(pen);
+	dealocate(solidBrush);
 }

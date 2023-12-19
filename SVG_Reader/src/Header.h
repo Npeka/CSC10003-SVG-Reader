@@ -30,6 +30,7 @@ using std::pair;
 #define SVG_Translate 1
 #define SVG_Rotate 2
 #define SVG_Scale 3
+#define SVG_Matrix 4
 //-------------END-OF-DECLARATION------------//
 /*
 

@@ -312,12 +312,19 @@ void Drawable_Path::setDrawableAtrributes() {
 	Gdiplus::RectF rect; Gpath.GetBounds(&rect);
 	brush = GDI_Brush(fill, rect);
 	pen = new Gdiplus::Pen(GDI_Brush(stroke, rect), stroke_width);
+	vector<Stop> colorOffset = dynamic_cast<Gradient*>(fill)->getColorOffset();
+	RGB_Color* color = new RGB_Color(colorOffset[colorOffset.size() - 1].getColor());
+	solidBrush = GDI_Brush(color, rect);
 }
 
 // Virtual method
 void Drawable_Path::draw(Render_Window) {
 	Transform_First(transform, graphics);
-	if (fill->opacity) graphics.FillPath(brush, &Gpath);
+	if (fill->opacity)
+	{
+		graphics.FillPath(solidBrush, &Gpath);
+		graphics.FillPath(brush, &Gpath);
+	}
 	if (stroke->opacity) graphics.DrawPath(pen, &Gpath);
 	Transform_Second(transform, graphics);
 }
