@@ -2,7 +2,7 @@
 #include "LinearGradient.h"
 #include "RadialGradient.h"
 
-Color::Color() :
+Color::Color() : SVG_Element(),
 	opacity(255)
 {}
 
@@ -21,15 +21,14 @@ void Color::setOpacity(const float& opacity) {
 void createColor(Color*& color, string name) {
 	auto it = color->findGlobalElement(name);
 	if (it != nullptr) {
-		color = dynamic_cast<Color*>(it);
-		return;
+		copyColor(color, dynamic_cast<Color*>(it));
 	}
-	if (color == nullptr) color = new RGB_Color(name);
-	else dynamic_cast<RGB_Color*>(color)->setRGB(name);
+	else if (color == nullptr) color = new RGB_Color(name);
+	else color->setRGB(name);
 }
 
 void copyColor(Color*& color, Color* copy) {
-	if (color != nullptr) dealocate(color);
+	dealocate(color);
 	if (dynamic_cast<RGB_Color*>(copy)) {
 		color = new RGB_Color(*dynamic_cast<RGB_Color*>(copy));
 	} 

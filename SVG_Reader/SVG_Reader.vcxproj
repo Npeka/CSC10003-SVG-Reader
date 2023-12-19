@@ -148,6 +148,7 @@
     <ClCompile Include="src\SVG_Element.cpp" />
     <ClCompile Include="src\SVG_Image.cpp" />
     <ClCompile Include="src\Text.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Circle.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="src\SVG_Image.h" />
     <ClInclude Include="src\Gradient.h" />
     <ClInclude Include="src\Text.h" />
+    <ClInclude Include="src\Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

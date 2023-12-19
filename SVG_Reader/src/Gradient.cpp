@@ -14,12 +14,21 @@ Stop::Stop() :
 	offset(0) 
 {}
 
+Stop::Stop(const Stop& other) : 
+	color(other.color), 
+	offset(other.offset) 
+{}
+
 void Stop::setColor(string& color) {
 	this->color.setRGB(color);
 }
 
 void Stop::setOffset(string& offset) {
 	check_exception("Stop", "offset", this->offset = stof(offset));
+}
+
+void Stop::setOpacity(string& opacity) {
+	check_exception("Stop", "opacity", color.setOpacity(opacity));
 }
 
 RGB_Color Stop::getColor() {
@@ -31,11 +40,11 @@ float Stop::getOffset() {
 }
 
 // Gradient
-Gradient::Gradient() : Color(),
+Gradient::Gradient() : Color(), Transform(),
 	isPercent(false)
 {}
 
-Gradient::Gradient(const Gradient& other) : Color(other),
+Gradient::Gradient(const Gradient& other) : Color(other), Transform(other),
 	ColorOffset(other.ColorOffset),
 	isPercent(other.isPercent)
 {}
@@ -49,7 +58,8 @@ void Gradient::addStop(string& line) {
 		ss >> end;
 		getline(ss, value, end);
 		if (attribute == "stop-color") stop.setColor(value);
-		if (attribute == "offset") stop.setOffset(value);
+		else if (attribute == "stop-opacity") stop.setOpacity(value);
+		else if (attribute == "offset") stop.setOffset(value);
 	}
 	ColorOffset.push_back(stop);
 }
@@ -59,55 +69,6 @@ void Gradient::setHref(string& href) {
 	if (gradient != nullptr) {
 		ColorOffset = dynamic_cast<Gradient*>(gradient)->getColorOffset();
 	}
-}
-
-void Gradient::setTransform(string& transform) {
-	for (char& c : transform) if (c == '(' || c == ',') c = ' ';
-	std::stringstream ss(transform);
-	string attribute, value;
-	while (ss >> attribute) {
-		getline(ss, value, ')');
-		if (attribute == "translate") setTranslate(value);
-		else if (attribute == "rotate") setRotate(value);
-		else if (attribute == "scale") setScale(value);
-		else if (attribute == "matrix") setMatrix(value);
-	}
-}
-
-void Gradient::setTranslate(string& translate) {
-	std::stringstream ss(translate);
-	float x, y;
-	ss >> x >> y;
-	vector<float> value = { x, y };
-	transform.push_back({ SVG_Translate, value });
-}
-
-void Gradient::setRotate(string& rotate) {
-	std::stringstream ss(rotate);
-	float r;
-	ss >> r;
-	vector<float> value = { r };
-	transform.push_back({ SVG_Rotate, value });
-}
-
-void Gradient::setScale(string& scale) {
-	std::stringstream ss(scale);
-	float x, y(0);
-	ss >> x >> y;
-	if (y == 0) y = x;
-	vector<float> value = { x, y };
-	transform.push_back({ SVG_Scale, value });
-}
-
-void Gradient::setMatrix(string& matrix) {
-	std::stringstream ss(matrix);
-	float m;
-	vector<float> value;
-	for (int i = 0; i < 6; i++) {
-		ss >> m;
-		value.push_back(m);
-	}
-	transform.push_back({ SVG_Matrix, value });
 }
 
 void Gradient::setElementAttributes(const string& attribute, string& value) {
@@ -121,8 +82,4 @@ vector<Stop> Gradient::getColorOffset() const {
 
 bool Gradient::getIsPercent() const {
 	return isPercent;
-}
-
-vector<pair<int, vector<float>>> Gradient::getTransform() const {
-	return transform;
 }

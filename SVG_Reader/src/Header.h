@@ -24,6 +24,7 @@
 using std::string;
 using std::vector;
 using std::pair;
+typedef vector<pair<int, vector<float>>> Transform_Type;
 #define isGradient(word) (word == "linearGradient" || word == "radialGradient")
 
 // Transform type <class Figure>

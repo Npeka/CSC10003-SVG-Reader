@@ -4,16 +4,14 @@
 #include "SVG_Element.h"
 #include "Point.h"
 #include "RGB_Color.h"
-#include "LinearGradient.h"
-#include "RadialGradient.h"
+#include "Transform.h"
 
 // class Figure
-class Figure : public SVG_Element {
-public:
+class Figure : public SVG_Element , public Transform {
+protected:
 	Color* fill;
 	Color* stroke;
 	float stroke_width;
-	vector<pair<int, Point>> transform;
 
 public:
 	// Constructor
@@ -25,11 +23,6 @@ public:
 	void setStroke(string& stroke);
 	void setStrokeOpacity(string& stroke_opacity);
 	void setStrokeWidth(string& stroke_width);
-	void setTranslate(string& translate);
-	void setRotate(string& rotate);
-	void setScale(string& scale);
-	void setTransform(string& transform);
-	void setStyle(string& style);
 	void setGroupAttributes(Figure* group);
 	void setElementAttributes(const string& attribute, string& value) override final;
 

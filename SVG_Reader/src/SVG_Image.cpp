@@ -23,7 +23,7 @@ void ViewBox::setViewBox(string& viewbox) {
 // Private
 	// Methods
 
-void SVG_Image::standardizeTag(std::string& line) {
+void SVG_Image::standardizeTag(string& line) {
 	for (int i = 0; i < line.size(); ++i) {	
 		if (line[i] == '=') line[i] = ' ';
 		else if (line[i] == '|') return;
@@ -122,7 +122,7 @@ void SVG_Image::parse(const string& nameFile) {
 		std::stringstream ss(line);
 		string word, info;
 		getline(ss, word, '<');
-		getline(ss, word, ' ');
+		ss >> word;
 		getline(ss, info, '\0');
 
 		if (word == "text") {
@@ -177,7 +177,6 @@ void SVG_Image::parse(const string& nameFile) {
 			}
 		}
 	}
-	std::cout << line << '\n';
 	
 	figureFactory->deleteInstance();
 	inFile.close();

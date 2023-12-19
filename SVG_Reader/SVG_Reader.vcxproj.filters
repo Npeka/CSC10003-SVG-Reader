@@ -89,6 +89,9 @@
     <ClCompile Include="src\RadialGradient.cpp">
       <Filter>Header Files\Color</Filter>
     </ClCompile>
+    <ClCompile Include="src\Transform.cpp">
+      <Filter>Header Files\Other class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Drawable.h">
@@ -153,6 +156,9 @@
     </ClInclude>
     <ClInclude Include="src\RadialGradient.h">
       <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Transform.h">
+      <Filter>Header Files\Other class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

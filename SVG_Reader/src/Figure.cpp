@@ -30,47 +30,6 @@ void Figure::setStrokeWidth(string& stroke_width) {
 	check_exception("Figure", "stroke_width", this->stroke_width = stof(stroke_width));
 }
 
-void Figure::setTranslate(string& translate) {
-	std::stringstream ss(translate);
-	float x, y;
-	ss >> x >> y;
-	transform.push_back({ SVG_Translate, Point(x, y) });
-}
-
-void Figure::setRotate(string& rotate) {
-	transform.push_back({ SVG_Rotate, Point(stof(rotate), 0) });
-}
-
-void Figure::setScale(string& scale) {
-	std::stringstream ss(scale);
-	float x, y = 0;
-	ss >> x >> y;
-	if (y == 0) y = x;
-	transform.push_back({ SVG_Scale, Point(x, y) });
-}
-
-void Figure::setTransform(string& transform) {
-	for (char& c : transform) if (c == '(' || c == ',') c = ' ';
-	std::stringstream ss(transform);
-	string attribute, value;
-	while (ss >> attribute) {
-		getline(ss, value, ')');
-		if (attribute == "translate") setTranslate(value);
-		else if (attribute == "rotate") setRotate(value);
-		else if (attribute == "scale") setScale(value);
-	}
-}
-
-void Figure::setStyle(string& style) {
-	std::stringstream ss(style);
-	string attribute, value;
-	while (getline(ss, attribute, ':')) {
-		getline(ss, value, ';');
-		setElementAttributes(attribute, value);
-		//std::cout << attribute << " " << value << std::endl;
-	}
-}
-
 void Figure::setGroupAttributes(Figure* group) {
 	if (group != nullptr) {
 		copyColor(fill, group->fill);
@@ -86,14 +45,12 @@ void Figure::setElementAttributes(const string& attribute, string& value) {
 	else if (attribute == "stroke-opacity") setStrokeOpacity(value);
 	else if (attribute == "stroke-width") setStrokeWidth(value);
 	else if (attribute == "transform") setTransform(value);
-	else if (attribute == "style") setStyle(value);
 	else setFigureAttributes(attribute, value);
 }
 
 Figure::~Figure() {
 	dealocate(fill);
 	dealocate(stroke);
-	transform.clear();
 }
 //-----------END-OF-IMPLEMENTATION-----------//
 /*

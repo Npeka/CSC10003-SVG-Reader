@@ -11,154 +11,161 @@
 #include "Path.h"
 #include "Text.h"
 
-// DrawableRectangle
+/**
+ * @brief Represents a drawable rectangle.
+ */
 class Drawable_Rectangle : public Drawable, public Rectangle {
 private:
-	Gdiplus::RectF rect;
+	Gdiplus::RectF rect; /**< GDI+ rectangle representation. */
 
 public:
-	// Constructor
-	Drawable_Rectangle() = default;
-
-	// Virtual method
-	void setDrawableAtrributes();
-	void draw(Render_Window) override;
+	/**< Default constructor. */
+	Drawable_Rectangle() = default; 
+	/**< Virtual destructor. */
 	~Drawable_Rectangle() override = default;
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override;
+	/**< Draw the rectangle. */
+	void draw(Render_Window) override;
+	
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
 
-*/
-// DrawableEllipse
+/**
+ * @brief Represents a drawable ellipse.
+ */
 class Drawable_Ellipse : public Drawable, public Ellipse {
 private:
-	Gdiplus::RectF ellipseRect;
+	Gdiplus::RectF ellipseRect; /**< GDI+ ellipse representation. */
+
 public:
-	// Constructor
-	Drawable_Ellipse() = default;
-
-	// Virtual method
-	void setDrawableAtrributes();
-	void draw(Render_Window) override;
+	/**< Default constructor. */
+	Drawable_Ellipse() = default; 
+	/**< Virtual destructor. */
 	~Drawable_Ellipse() override = default;
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override;
+	/**< Draw the ellipse. */
+	void draw(Render_Window) override;  
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
 
-*/
-// class DrawableCircle
+/**
+ * @brief Represents a drawable circle.
+ */
 class Drawable_Circle : public Drawable, public Circle {
 private:
-	Gdiplus::RectF circleRect;
+	Gdiplus::RectF circleRect; /**< GDI+ circle representation. */
+
 public:
-	// Constructor
+	/**< Default constructor. */
 	Drawable_Circle() = default;
-
-	// Virtual method
-	void setDrawableAtrributes();
-	void draw(Render_Window) override;
+	/**< Virtual destructor. */
 	~Drawable_Circle() override = default;
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override;
+	/**< Draw the circle. */
+	void draw(Render_Window) override; 
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
 
-*/
-// class DrawableLine
+/**
+ * @brief Represents a drawable line.
+ */
 class Drawable_Line : public Drawable, public Line {
 public:
-	// Constructor 
-	Drawable_Line() = default;
-
-	// Virtual method
-	void setDrawableAtrributes();
-	void draw(Render_Window) override;
+	/**< Default constructor. */
+	Drawable_Line() = default;	 
+	/**< Virtual destructor. */
 	~Drawable_Line() override = default;
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override;  
+	/**< Draw the line. */
+	void draw(Render_Window) override;
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
 
-*/
-// class DrawablePolyline
+/**
+ * @brief Represents a drawable polyline.
+ */
 class Drawable_Polyline : public Drawable, public Polyline {
 private:
-	Gdiplus::PointF* gdiPoints;
+	Gdiplus::PointF* gdiPoints; /**< GDI+ points representation. */
 
 public:
-	// Constructor
-	Drawable_Polyline();
-
-	// Virtual method
-	void setDrawableAtrributes();
-	void draw(Render_Window) override;
+	/**< Default constructor. */
+	Drawable_Polyline(); 
+	/**< Virtual destructor. */
 	~Drawable_Polyline() override;
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override; 
+	/**< Draw the polyline. */
+	void draw(Render_Window) override; 
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
-*/
-// class DrawablePolygon
+
+/**
+ * @brief Represents a drawable polygon.
+ */
 class Drawable_Polygon : public Drawable, public Polygon {
 private:
-	Gdiplus::PointF* gdiPoints;
+	Gdiplus::PointF* gdiPoints; /**< GDI+ points representation. */
+
 public:
-	// Constructor
-	Drawable_Polygon();
-
-	// Virtual method
-	void setDrawableAtrributes();
+	/**< Default constructor. */
+	Drawable_Polygon(); 
+	/**< Virtual destructor. */
+	~Drawable_Polygon() override; 
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override;  
+	/**< Draw the polygon. */
 	void draw(Render_Window) override;
-	~Drawable_Polygon() override;
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
 
-*/
-// class DrawableText
+/**
+ * @brief Represents a drawable text element.
+ */
 class Drawable_Text : public Drawable, public Text {
 private:
-	Gdiplus::GraphicsPath TextPath;
+	Gdiplus::GraphicsPath TextPath; /**< GDI+ text path representation. */
 
 public:
-	// Constructor
+	/**< Default constructor. */
 	Drawable_Text() = default;
-
-	// Virtual method
-    void setDrawableAtrributes();
-	void draw(Render_Window) override;
+	/**< Virtual destructor. */
 	~Drawable_Text() override = default;
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override;
+	/**< Draw the text. */
+	void draw(Render_Window) override; 
 };
-//-------------END-OF-DECLARATION------------//
-/*
 
 
 
-*/
-// class SF_Path
+/**
+ * @brief Represents a drawable path element.
+ */
 class Drawable_Path : public Drawable, public Path {
 private:
-	Gdiplus::GraphicsPath Gpath;
-	int countSubpath;
+	Gdiplus::GraphicsPath Gpath; /**< GDI+ graphics path representation. */
+	int countSubpath; /**< Count of subpaths. */
 
 public:
-	// Constructor
-	Drawable_Path() = default;
-
-	// Virtual method
-	void setDrawableAtrributes();
-	void draw(Render_Window) override;
-	~Drawable_Path() override = default;
+	/**< Default constructor. */
+	Drawable_Path() = default; 
+	/**< Virtual destructor. */
+	~Drawable_Path() override = default; 
+	/**< Set drawable attributes. */
+	void setDrawableAtrributes() override; 
+	/**< Draw the path. */
+	void draw(Render_Window) override; 
 };
-//-------------END-OF-DECLARATION------------//
 
 #endif // _RENDER_H

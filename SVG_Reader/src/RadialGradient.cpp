@@ -61,3 +61,11 @@ float RadialGradient::getCY() const {
 float RadialGradient::getR() const {
 	return r;
 }
+
+float RadialGradient::getFX() const {
+	return fx;
+}
+
+float RadialGradient::getFY() const {
+	return fy;
+}

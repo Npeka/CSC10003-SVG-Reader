@@ -1,15 +1,15 @@
 #include "RGB_Color.h"
 
 // Constructor
-RGB_Color::RGB_Color() :
+RGB_Color::RGB_Color() : Color(),
     r(0), g(0), b(0)
 {}
 
-RGB_Color::RGB_Color(string& color) {
+RGB_Color::RGB_Color(string& color) : RGB_Color() {
     setRGB(color);
 }
 
-RGB_Color::RGB_Color(const RGB_Color& color) {
+RGB_Color::RGB_Color(const RGB_Color& color) : Color(color) {
     *this = color;
     balance();
 }
@@ -23,7 +23,6 @@ RGB_Color::RGB_Color(const float& r, const float& g, const float& b, const float
 }
 
 // Set attribute
-
 void RGB_Color::setRGB(string& color) {
     for (int i = 0; i < color.size(); i++) {
         if (color[i] == ' ') {

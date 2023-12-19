@@ -39,7 +39,7 @@ Group* Group::getParent() {
 	return parent;
 }
 
-const std::vector<Drawable*>& Group::getFigures() const {
+const vector<Drawable*>& Group::getFigures() const {
 	return figures;
 }
 
@@ -50,9 +50,9 @@ void Group::addDrawable(Drawable* drawable) {
 }
 
 void Group::draw(Render_Window) {
-	Transform_First(transform, Render_Parameters);
+	Transform_First(transforms, Render_Parameters);
 	for (auto& figure : figures) {
 		figure->draw(Render_Parameters);
 	}
-	Transform_Second(transform, Render_Parameters);
+	Transform_Second(transforms, Render_Parameters);
 }

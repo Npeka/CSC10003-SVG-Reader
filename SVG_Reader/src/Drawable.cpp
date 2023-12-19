@@ -52,14 +52,17 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	float cx = color.getCX();
 	float cy = color.getCY();
 	float r = color.getR();
+	float fx = color.getFX();
+	float fy = color.getFY();
 	vector<Stop> ColorOffset = color.getColorOffset();
 	int size = ColorOffset.size();
+	Transform_Type t = color.getTransform();
 
-	vector<pair<int, vector<float>>> t = color.getTransform();
-
-
-	Gdiplus::GraphicsPath path;
-	path.AddEllipse(cx - r, cy - r, 2 * r, 2 * r);
+	Gdiplus::GraphicsPath path, path2;
+	//path.AddEllipse(cx - r, cy - r, 2 * r, 2 * r);
+	path2.AddEllipse(Gdiplus::RectF(cx - r, cy - r, 2 * r, 2 * r));
+	Gdiplus::RectF rect2; path2.GetBounds(&rect2);
+	path.AddEllipse(rect2);
 
 	Gdiplus::PathGradientBrush* radial = nullptr;
 	radial = new Gdiplus::PathGradientBrush(&path);
@@ -67,8 +70,8 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	Gdiplus::Color* stopColors = new Gdiplus::Color[size];
 	for (int i = 0; i < size; ++i) {
 		stopColors[i] = GDI_RGB(ColorOffset[size - i - 1].getColor());
-		
 	}
+	//stopColors[0] = GDI_RGB(ColorOffset[size - 1].getColor());
 
 	for (int i = 0; i < t.size(); ++i) {
 		if (t[i].first == SVG_Matrix) {
@@ -102,41 +105,45 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 }
 
 Gdiplus::Brush* GDI_Brush(Color* color, const Gdiplus::RectF& rect) {
-	if (dynamic_cast<RGB_Color*>(color)) {
-		return new Gdiplus::SolidBrush(GDI_RGB(*dynamic_cast<RGB_Color*>(color)));
+	if (auto it = dynamic_cast<RGB_Color*>(color)) {
+		return new Gdiplus::SolidBrush(GDI_RGB(*it));
 	}
-	else if (dynamic_cast<LinearGradient*>(color)) {
-		return GDI_LinearGradient(*dynamic_cast<LinearGradient*>(color), rect);
+	else if (auto it = dynamic_cast<LinearGradient*>(color)) {
+		return GDI_LinearGradient(*it, rect);
 	}
-	else if (dynamic_cast<RadialGradient*>(color)) {
-		return GDI_RadialGradient(*dynamic_cast<RadialGradient*>(color), rect);
+	else if (auto it = dynamic_cast<RadialGradient*>(color)) {
+		return GDI_RadialGradient(*it, rect);
 	}
 }
 
-void Transform_First(const vector<pair<int, Point>>& t, Render_Window) {
+Gdiplus::Pen* GDI_Pen(Color* color, const float& stroke_width, const Gdiplus::RectF& rect) {
+	return new Gdiplus::Pen(GDI_Brush(color, rect), stroke_width);
+}
+
+void Transform_First(const Transform_Type& t, Render_Window) {
 	for (int i = 0; i < t.size(); ++i) {
 		if (t[i].first == SVG_Translate) {
-			graphics.TranslateTransform(t[i].second.x, t[i].second.y);
+			graphics.TranslateTransform(t[i].second[0], t[i].second[1]);
 		}
 		else if (t[i].first == SVG_Rotate) {
-			graphics.RotateTransform(t[i].second.x);
+			graphics.RotateTransform(t[i].second[0]);
 		}
 		else if (t[i].first == SVG_Scale) {
-			graphics.ScaleTransform(t[i].second.x, t[i].second.y);
+			graphics.ScaleTransform(t[i].second[0], t[i].second[1]);
 		}
 	}
 }
 
-void Transform_Second(const vector<pair<int, Point>>& t, Render_Window) {
+void Transform_Second(const Transform_Type& t, Render_Window) {
 	for (int i = t.size() - 1; i >= 0; --i) {
 		if (t[i].first == SVG_Translate) {
-			graphics.TranslateTransform(-t[i].second.x, -t[i].second.y);
+			graphics.TranslateTransform(-t[i].second[0], -t[i].second[1]);
 		}
 		else if (t[i].first == SVG_Rotate) {
-			graphics.RotateTransform(-t[i].second.x);
+			graphics.RotateTransform(-t[i].second[0]);
 		}
 		else if (t[i].first == SVG_Scale) {
-			graphics.ScaleTransform(1 / t[i].second.x, 1 / t[i].second.y);
+			graphics.ScaleTransform(1 / t[i].second[0], 1 / t[i].second[1]);
 		}
 	}
 }
