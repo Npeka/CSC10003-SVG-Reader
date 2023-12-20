@@ -54,8 +54,7 @@ void Gradient::addStop(string& line) {
 	string attribute, value;
 	Stop stop;
 	while (ss >> attribute) {
-		char end;
-		ss >> end;
+		char end; ss >> end;
 		getline(ss, value, end);
 		if (attribute == "stop-color") stop.setColor(value);
 		else if (attribute == "stop-opacity") stop.setOpacity(value);
