@@ -73,6 +73,10 @@ public:
      * @return Pointer to the root group.
      */
     const Group* getRoot() const;
+    
+    float getWidth() const;
+    float getHeight() const;
+    ViewBox getViewBox() const;
 
     /**
      * @brief Set the width of the SVG image.

@@ -4,8 +4,8 @@
 // Constructor
 ViewBox::ViewBox() {
 	min_x = min_y = 0;
-	width = 1024;
-	height = 720;
+	width = 0;
+	height = 0;
 }
 
 // Set attribute
@@ -56,6 +56,18 @@ SVG_Image::~SVG_Image() {
 // Getter
 const Group* SVG_Image::getRoot() const {
 	return root;
+}
+
+float SVG_Image::getWidth() const {
+	return width;
+}
+
+float SVG_Image::getHeight() const {
+	return height;
+}
+
+ViewBox SVG_Image::getViewBox() const {
+	return viewbox;
 }
 
 // Set attribute

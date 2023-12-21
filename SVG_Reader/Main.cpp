@@ -22,7 +22,7 @@ Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 ULONG_PTR gdiplusToken;
 
 // Init global SVG_Image and filename
-std::string filename = "test case/Instagram_logo_2016.svg";
+std::string filename = "test case/svg-06.svg";
 std::unique_ptr<SVG_Image> svg = std::make_unique<SVG_Image>();
 
 VOID OnPaint(HDC& hdc)
@@ -50,13 +50,11 @@ VOID OnPaint(HDC& hdc)
     // Init GDI+ Graphics
     Gdiplus::Graphics graphics(hdc);
 
-    // Set Clip and Translate from ViewBox to ViewPort
+    // Set GDI+ transform
+    graphics.RotateTransform(rotationAngle);
     graphics.SetClip(Gdiplus::RectF(offsetX, offsetY, width * zoomFactor, height * zoomFactor));
     graphics.TranslateTransform(offsetX, offsetY);
-
-    // Set Scale and Rotate
     graphics.ScaleTransform(zoomFactor * scale, zoomFactor * scale);
-    graphics.RotateTransform(rotationAngle);
 
     // Set GDI+ rendering graphics
     graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
