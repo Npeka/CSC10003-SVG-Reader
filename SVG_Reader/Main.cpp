@@ -22,22 +22,49 @@ Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 ULONG_PTR gdiplusToken;
 
 // Init global SVG_Image and filename
-std::string filename = "test case/chrome-logo.svg";
+std::string filename = "test case/Instagram_logo_2016.svg";
 std::unique_ptr<SVG_Image> svg = std::make_unique<SVG_Image>();
 
 VOID OnPaint(HDC& hdc)
 {
+    // Load SVG_Image
+    svg->parse(filename);
+
+    // Get ViewBox and ViewPort
+    ViewBox view = svg->getViewBox();
+    float width = svg->getWidth();
+    float height = svg->getHeight();
+    float scaleX = 1, scaleY = 1, scale = 1;
+    if (width && height && view.width && view.height) {
+        scaleX = width / view.width;
+        scaleY = height / view.height;
+        scale = (scaleX < scaleY) ? scaleX : scaleY;
+    }
+    static bool loop = true;
+    if (loop && view.width != 0 && view.width) {
+        offsetX += abs(width - view.width * scale) / 2;
+        offsetY += abs(height - view.height * scale) / 2;
+        loop = false;
+    }
+
+    // Init GDI+ Graphics
     Gdiplus::Graphics graphics(hdc);
-    graphics.ScaleTransform(zoomFactor, zoomFactor);
+
+    // Set Clip and Translate from ViewBox to ViewPort
+    graphics.SetClip(Gdiplus::RectF(offsetX, offsetY, width * zoomFactor, height * zoomFactor));
     graphics.TranslateTransform(offsetX, offsetY);
+
+    // Set Scale and Rotate
+    graphics.ScaleTransform(zoomFactor * scale, zoomFactor * scale);
     graphics.RotateTransform(rotationAngle);
 
+    // Set GDI+ rendering graphics
     graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
     graphics.SetCompositingMode(Gdiplus::CompositingModeSourceOver);
     graphics.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHighQuality);
     graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
 
-    svg->parse(filename);
+    // Render SVG_Image
     SVG_Render(*svg, graphics);
 }
 
