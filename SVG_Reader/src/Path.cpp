@@ -1,26 +1,28 @@
 ﻿#include "Path.h"
 
-
 // class Path
 // Set attribute
-void Path::setPath(const std::string& line) {
-
-	std::ofstream ofs("test1.txt", std::ios::app);
-
-	std::string value = line;
+void Path::setPath(string& line) {
+	string value = line;
 	for (char& c : value) if (c == ',') c = ' ';
-	std::vector<int> pos;
-	std::vector<std::string> subline;
-
-	ofs << "value: " << value << std::endl;
+	vector<int> pos;
+	vector<string> subline;
 
 	for (int i = 0; i < value.length(); i++) {
+		if (value[i] == 'e') {
+			string tmp = value.substr(i + 1);
+			std::stringstream ss(tmp);
+			float e = 0; ss >> e; e = std::abs(e);
+
+			value.erase(i, 1 + ss.tellg());
+			value.insert(i - 1, "0." + string(e - 1, '0'));
+		}
 		if (isalpha(value[i])) pos.push_back(i);
 		if (i == value.length() - 1) pos.push_back(i + 1);
 	}
 
 	for (int i = 0; i < pos.size() - 1; i++) {
-		std::string substring = value.substr(pos[i], pos[i + 1] - pos[i]);
+		string substring = value.substr(pos[i], pos[i + 1] - pos[i]);
 		subline.push_back(substring);
 	}
 
@@ -31,7 +33,7 @@ void Path::setPath(const std::string& line) {
 	for (int i = 0; i < subline.size(); i++) {
 		std::stringstream ss(subline[i]);
 		ss >> cmd;
-
+		std::cout << subline[i] << std::endl;
 		// in this case path.second contain array of Point
 		if (cmd == 'M' || cmd == 'm') {
 			std::vector<Point> tmp;
@@ -133,8 +135,6 @@ void Path::setPath(const std::string& line) {
 		}
 	}
 
-
-
 	//Add initial point and update l, v, h, V, H, c for each path element 
 	Point initialSubpath;
 	for (int i = 0; i < path.size(); i++) {
@@ -233,21 +233,10 @@ void Path::setPath(const std::string& line) {
 			path[i].second.push_back(end);
 			path[i].second.push_back(initialSubpath);
 		}
-		
-		ofs << cmd << std::endl;
-		for (int j = 0; j < path[i].second.size(); j++) {
-			ofs << path[i].second[j].x << " " << path[i].second[j].y << std::endl;
-		}
 	}	
 }
 
-
-//Constructor 
-Path::Path(const Path& other) : Figure(other) {
-	this->path = other.path; 
-}
-
 // Virtual method
-void Path::setAttributes(const std::string& attribute, const std::string& value) {
+void Path::setFigureAttributes(const string& attribute, string& value) {
 	if (attribute == "d") setPath(value);
 }

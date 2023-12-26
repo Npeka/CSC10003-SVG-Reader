@@ -10,6 +10,7 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color, const Gdiplus::R
 	vector<Stop> ColorOffset = color.getColorOffset();
 	int size = ColorOffset.size();
 	bool isPercent = color.getIsPercent();
+	Transform_Type t = color.getTransform();
 
 	if (isPercent) {
 		p1.x = rect.GetLeft() + p1.x * (rect.GetRight() - rect.GetLeft()) / 100.0f;
@@ -20,10 +21,10 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color, const Gdiplus::R
 
 	Gdiplus::LinearGradientBrush* linear;
 	linear = new Gdiplus::LinearGradientBrush(
-		Gdiplus::PointF(p1.x, p1.y),
-		Gdiplus::PointF(p2.x, p2.y),
+		rect,
 		GDI_RGB(ColorOffset[0].getColor()),
-		GDI_RGB(ColorOffset[size - 1].getColor())
+		GDI_RGB(ColorOffset[1].getColor()),
+		0
 	);
 
 	Gdiplus::Color* stopColors = new Gdiplus::Color[size];
@@ -33,7 +34,7 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color, const Gdiplus::R
 
 	Gdiplus::REAL* positions = new Gdiplus::REAL[size];
 	for (int i = 0; i < size; ++i) {
-		positions[i] = ColorOffset[i].getOffset() / 100;
+		positions[i] = ColorOffset[i].getOffset();
 	}
 
 	linear->SetInterpolationColors(
@@ -41,6 +42,18 @@ Gdiplus::Brush* GDI_LinearGradient(const LinearGradient& color, const Gdiplus::R
 		positions,
 		size
 	);
+
+	for (int i = 0; i < t.size(); i++) {
+		if (t[i].first == SVG_Translate) {
+			linear->TranslateTransform(t[i].second[0], t[i].second[1]);
+		}
+		else if (t[i].first == SVG_Rotate) {
+			linear->RotateTransform(t[i].second[0]);
+		}
+		else if (t[i].first == SVG_Scale) {
+			linear->ScaleTransform(t[i].second[0], t[i].second[1]);
+		}
+	}
 
 	delete[] stopColors;
 	delete[] positions;
@@ -52,17 +65,14 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	float cx = color.getCX();
 	float cy = color.getCY();
 	float r = color.getR();
-	float fx = color.getFX();
-	float fy = color.getFY();
+	/*float fx = color.getFX();
+	float fy = color.getFY();*/
 	vector<Stop> ColorOffset = color.getColorOffset();
 	int size = ColorOffset.size();
 	Transform_Type t = color.getTransform();
 
-	Gdiplus::GraphicsPath path, path2;
-	//path.AddEllipse(cx - r, cy - r, 2 * r, 2 * r);
-	path2.AddEllipse(Gdiplus::RectF(cx - r, cy - r, 2 * r, 2 * r));
-	Gdiplus::RectF rect2; path2.GetBounds(&rect2);
-	path.AddEllipse(rect2);
+	Gdiplus::GraphicsPath path;
+	path.AddEllipse(Gdiplus::RectF(cx - r, cy - r, r * 2, r * 2));
 
 	Gdiplus::PathGradientBrush* radial = nullptr;
 	radial = new Gdiplus::PathGradientBrush(&path);
@@ -71,17 +81,12 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	for (int i = 0; i < size; ++i) {
 		stopColors[i] = GDI_RGB(ColorOffset[size - i - 1].getColor());
 	}
-	//stopColors[0] = GDI_RGB(ColorOffset[size - 1].getColor());
 
 	for (int i = 0; i < t.size(); ++i) {
 		if (t[i].first == SVG_Matrix) {
 			Gdiplus::Matrix matrix(
-				t[i].second[0],
-				t[i].second[1],
-				t[i].second[2],
-				t[i].second[3],
-				t[i].second[4],
-				t[i].second[5]
+				t[i].second[0], t[i].second[1], t[i].second[2],
+				t[i].second[3], t[i].second[4], t[i].second[5]
 			);
 			radial->SetTransform(&matrix);
 		}
@@ -114,6 +119,7 @@ Gdiplus::Brush* GDI_Brush(Color* color, const Gdiplus::RectF& rect) {
 	else if (auto it = dynamic_cast<RadialGradient*>(color)) {
 		return GDI_RadialGradient(*it, rect);
 	}
+	return nullptr;
 }
 
 Gdiplus::Pen* GDI_Pen(Color* color, const float& stroke_width, const Gdiplus::RectF& rect) {

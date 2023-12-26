@@ -145,26 +145,29 @@ void SVG_Image::parse(const string& nameFile) {
 		}
 
 		standardizeTag(info);
-		//std::cout << word << " | " << info << '\n';
 		// Parse the node
 		if (word == "svg") setImageAttributes(info);
-		else if (isGradient(word)) {
+		else 
+		if (word == "linearGradient" || 
+			word == "radialGradient") {
 			Gradient* newGradient = getGradient(word);
 			newGradient->parseElementAttributes(info);	// Element
 			if (info.find("/") == string::npos) {
 				while (getline(inFile, line, '>')) {
 					std::stringstream ss(line);
-					getline(ss, word, '<');
-					getline(ss, word, ' ');
+					getline(ss, word, '<'); 
+					ss >> word;
 					getline(ss, info, '\0');
 					standardizeTag(info);
-					if (word == "stop") newGradient->addStop(info);
-					else if (isGradient(word.substr(1)) || word == "/defs") break;
-					//std::cout << line << '\n';
+					if (word == "stop") newGradient->addStop(info); else 
+					if (word == "/linearGradient" ||
+						word == "/radialGradient" || 
+						word == "/defs") break;
 				}
-			} continue;
+			}
 		}
-		else if (word == "g") {
+		else 
+		if (word == "g") {
 			Group* newGroup = new Group();
 			newGroup->setParent(curGroup);			// Group
 			newGroup->setParentAttributes();		// Group parent
@@ -172,7 +175,8 @@ void SVG_Image::parse(const string& nameFile) {
 			curGroup->addDrawable(newGroup);		// Group parent
 			curGroup = newGroup;
 		}
-		else if (word == "/g") {
+		else 
+		if (word == "/g") {
 			curGroup = curGroup->getParent();
 		}
 		else {

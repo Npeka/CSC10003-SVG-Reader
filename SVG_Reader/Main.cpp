@@ -22,7 +22,7 @@ Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 ULONG_PTR gdiplusToken;
 
 // Init global SVG_Image and filename
-std::string filename = "test case/svg-06.svg";
+std::string filename = "test case/Firefox_logo,_2019.svg";
 std::unique_ptr<SVG_Image> svg = std::make_unique<SVG_Image>();
 
 VOID OnPaint(HDC& hdc)
@@ -35,13 +35,17 @@ VOID OnPaint(HDC& hdc)
     float width = svg->getWidth();
     float height = svg->getHeight();
     float scaleX = 1, scaleY = 1, scale = 1;
+    if (width == 0 || height == 0) {
+        width = 800;    //GetSystemMetrics(SM_CXSCREEN);
+		height = 600;   //GetSystemMetrics(SM_CYSCREEN);
+	}
     if (width && height && view.width && view.height) {
         scaleX = width / view.width;
         scaleY = height / view.height;
         scale = (scaleX < scaleY) ? scaleX : scaleY;
     }
     static bool loop = true;
-    if (loop && view.width != 0 && view.width) {
+    if (loop && view.width && view.height) {
         offsetX += abs(width - view.width * scale) / 2;
         offsetY += abs(height - view.height * scale) / 2;
         loop = false;
@@ -52,8 +56,8 @@ VOID OnPaint(HDC& hdc)
 
     // Set GDI+ transform
     graphics.RotateTransform(rotationAngle);
-    graphics.SetClip(Gdiplus::RectF(offsetX, offsetY, width * zoomFactor, height * zoomFactor));
     graphics.TranslateTransform(offsetX, offsetY);
+    graphics.SetClip(Gdiplus::RectF(0, 0 , width * zoomFactor, height * zoomFactor));
     graphics.ScaleTransform(zoomFactor * scale, zoomFactor * scale);
 
     // Set GDI+ rendering graphics
