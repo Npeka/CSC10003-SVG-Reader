@@ -13,6 +13,11 @@
 #include "Text.h"
 
 
+const float TAU = M_PI * 2; 
+struct BezierCurve {
+	Point p1, p2, p3, p4;
+};
+
 // Include lib for render
 #include <windows.h>
 #include <gdiplus.h>
@@ -194,6 +199,37 @@ public:
 	void setDrawableAtrributes();
 	void draw(Render_Window) override;
 	~Drawable_Path() override = default;
+
+	// addition method 
+	float computeBinominal(int n, int k);
+	std::vector<Point> BezierCurveVertices(std::vector<Point> Pos, float smooth);
+	Point EllipticArcPoint(Point c, Point r, float xAngle, float t);
+	Point EllipticArcDerivative(Point c, Point r, float xAngle, float t);
+	Point EllipticArcControlPoint(Point c, Point r, float xAngle, float t);
+	Point EllipticArcControlPoint2(Point c, Point r, float xAngle, float t);
+	Point mapToEllipse(const Point& point, float rx, float ry, float cosphi, float sinphi, float centerx, float centery);
+	std::vector<Point> approxUnitArc(float ang1, float ang2);
+	float vectorAngle(float ux, float uy, float vx, float vy);
+	std::tuple<float, float, float, float> getArcCenter(
+		float px, float py,
+		float cx, float cy,
+		float rx, float ry,
+		int largeArcFlag, int sweepFlag,
+		float sinphi, float cosphi,
+		float pxp, float pyp
+	);
+	BezierCurve computeBezierCurve(const Point& startPoint, const Point& P1, const Point& P2, const Point& endPoint);
+	std::vector<BezierCurve> arcToBezier(
+		float px, float py,
+		float cx, float cy,
+		float rx, float ry,
+		float xAxisRotation,
+		int largeArcFlag,
+		int sweepFlag
+	);
+	std::vector<BezierCurve> arcToBezier(float cx, float cy, float rx, float ry, float startAngle, float endAngle, float xAxisRotation);
+	Point pointOnEllipse(float cx, float cy, float rx, float ry, float angle);
+	Point ellipseCenter(float cx, float cy, float rx, float ry, float xAxisRotation);
 };
 //-------------END-OF-DECLARATION------------//
 
