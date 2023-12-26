@@ -3,7 +3,7 @@
 
 // class Path
 // Set attribute
-void Path::setPath(const std::string& line) {
+void Path::setPath(std::string& line) {
 
 	std::ofstream ofs("test1.txt", std::ios::app);
 
@@ -248,6 +248,6 @@ Path::Path(const Path& other) : Figure(other) {
 }
 
 // Virtual method
-void Path::setAttributes(const std::string& attribute, const std::string& value) {
+void Path::setFigureAttributes(const std::string& attribute, std::string& value) {
 	if (attribute == "d") setPath(value);
 }

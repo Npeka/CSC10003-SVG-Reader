@@ -683,12 +683,10 @@ void Drawable_Path::setDrawableAtrributes() {
 				deltaAngle -= 2.0 * M_PI;
 			}
 
-
-
-			//subpath[idx].AddArc(
-			//	center.x - rx, center.y - ry, rx * 2, ry * 2,
-			//	fmod((startAngle * 180.0) / M_PI, 360),
-			//	fmod((deltaAngle * 180.0) / M_PI, 360));
+			subpath[idx].AddArc(
+				center.x - rx, center.y - ry, rx * 2, ry * 2,
+				fmod((startAngle * 180.0) / M_PI, 360),
+				fmod((deltaAngle * 180.0) / M_PI, 360));
 
 			//std::vector<BezierCurve> curves = arcToBezier(
 			//	start_point.x, start_point.y,
@@ -698,9 +696,6 @@ void Drawable_Path::setDrawableAtrributes() {
 			//	large_arc_flag,
 			//	sweep_flag
 			//);
-
-	
-
 		}
 
 		else if (cmd == 'M' || cmd == 'm') {
