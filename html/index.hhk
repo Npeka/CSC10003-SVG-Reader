@@ -1,0 +1,1834 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#ad0e3e52a130378dfabbb0adc10b80f79"><param name="Name" value="COMMA_TO_SPACE(line)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#ad1ecfcfc7bf34529c6a6d6c448bf70fe"><param name="Name" value="Circle()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#ad1ecfcfc7bf34529c6a6d6c448bf70fe"><param name="Name" value="Circle()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a6b31a4748e9cc73073cea31ca3e86ecf"><param name="Name" value="cx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a3949aaaecc72ef1ff9bbd1422e78d8fa"><param name="Name" value="cy"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a7bdbdaf7361494f294d9a18626d7500f"><param name="Name" value="r"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a8bdfc1d9172da3d3810cccb3abb431f1"><param name="Name" value="setCX(string &amp;cx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#ae298c0f696a30dc1f5190beee5724349"><param name="Name" value="setCY(string &amp;cy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a2c88b4e3050936045d9fdef671238c31"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a38aaed49082151038598e7b1c417b904"><param name="Name" value="setR(string &amp;r)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html"><param name="Name" value="Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#af7a52228c8211080cf2100b55c8a7a64"><param name="Name" value="~Circle() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428"><param name="Name" value="Color()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a866f5b3f4192cdd953900b3bdae4b2cd"><param name="Name" value="Color(const Color &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html"><param name="Name" value="Color.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html#a92600d7118c1901112277fd920fd1936"><param name="Name" value="copyColor(Color *&amp;color, Color *copy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html"><param name="Name" value="Color.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html#a734c320ce99c2f91bbe2cae1303eb7f0"><param name="Name" value="createColor(Color *&amp;color, string name)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html"><param name="Name" value="Color.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html#a92600d7118c1901112277fd920fd1936"><param name="Name" value="copyColor(Color *&amp;color, Color *copy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html"><param name="Name" value="Color.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html#a2207c82a8ec27d862be415036454c46f"><param name="Name" value="createColor(Color *&amp;color, string name=&quot;&quot;)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428"><param name="Name" value="Color()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a866f5b3f4192cdd953900b3bdae4b2cd"><param name="Name" value="Color(const Color &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a06d38e7b6f9176db6a54879d710500c4"><param name="Name" value="opacity"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a10f2e40dc8f1d7037077235dc67ab4fb"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a8e83cbea62f1510f9f4ce48dfc36d307"><param name="Name" value="setOpacity(const float &amp;opacity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a6ba5460fedaea355ba631651a2e9028c"><param name="Name" value="setOpacity(string &amp;opacity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html"><param name="Name" value="Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a09bee511003e0882218937aa80e27704"><param name="Name" value="setRGB(string &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#af4d7cdec586c6f74b24edcf70cfc24f0"><param name="Name" value="ColorOffset"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#aac88608db6081da479c772c96636acb1"><param name="Name" value="Drawable()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a61014730e2774f602bb2cf0c6fb20e99"><param name="Name" value="GDI_Brush(Color *color, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#aa67d97c471ced36e14dfc8097ad413f4"><param name="Name" value="GDI_LinearGradient(const LinearGradient &amp;color, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#aa21019769b5b2ffe11abd732d775efa8"><param name="Name" value="GDI_Pen(Color *color, const float &amp;stroke_width, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a32fd507c5dcdc5a9790e7d920ae690f5"><param name="Name" value="GDI_RGB(const RGB_Color &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#ae7054ca22036af6dcd52bd9e5a8b8a62"><param name="Name" value="GDI_RadialGradient(const RadialGradient &amp;color, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a138e54fbb7439030be2e244f209338f1"><param name="Name" value="Transform_First(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html"><param name="Name" value="Drawable.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a25b6ee5f8895162cdc353e14aad59ff3"><param name="Name" value="Transform_Second(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a35605e65a53133e119368eb22806c11a"><param name="Name" value="GDI_Brush(Color *color, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a14d9205897133aaad0e46885b0312095"><param name="Name" value="GDI_LinearGradient(const LinearGradient &amp;color, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a5abd334ee48df5b960bd4e95090a8b4d"><param name="Name" value="GDI_Pen(Color *color, const float &amp;stroke_width, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a32fd507c5dcdc5a9790e7d920ae690f5"><param name="Name" value="GDI_RGB(const RGB_Color &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a5f4d8847ea01647a0ba27ec4fba20870"><param name="Name" value="GDI_RadialGradient(const RadialGradient &amp;color, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#aec8c8721c424ae943601e428ed2f3bb6"><param name="Name" value="Render_Parameters"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#ae27435f626f015e181910fda1cba0e4b"><param name="Name" value="Render_Window"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a138e54fbb7439030be2e244f209338f1"><param name="Name" value="Transform_First(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html"><param name="Name" value="Drawable.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a25b6ee5f8895162cdc353e14aad59ff3"><param name="Name" value="Transform_Second(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#aac88608db6081da479c772c96636acb1"><param name="Name" value="Drawable()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a0060d24ea4401f2ac4378d04b2e525c6"><param name="Name" value="brush"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a1773f59fb44ce9250baa338f77e8fdc8"><param name="Name" value="draw(Render_Window)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#afbf6fdb9cb818fbf75d6297a1dfe1124"><param name="Name" value="pen"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#aa57ac045fc5de72cee5e2386f1d8fde7"><param name="Name" value="setDrawableAtrributes()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a64476ebac347ed69872df44d9a2ae0f2"><param name="Name" value="solidBrush"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html"><param name="Name" value="Drawable"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a5db44942658aab760a7418e338582e0a"><param name="Name" value="~Drawable()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html"><param name="Name" value="Drawable_Circle"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a96af30817b09be8df060b85ff34262ef"><param name="Name" value="Drawable_Circle()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html"><param name="Name" value="Drawable_Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a96af30817b09be8df060b85ff34262ef"><param name="Name" value="Drawable_Circle()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html"><param name="Name" value="Drawable_Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#ad8000d44b918f35d017592f19c29022a"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html"><param name="Name" value="Drawable_Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a76f5af72207996502bfe74ad480bdf16"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html"><param name="Name" value="Drawable_Circle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a1f68eea6fc75aef2528dd3bcb34b8502"><param name="Name" value="~Drawable_Circle() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a008a5a41a3ff38cd0695791574b884e4"><param name="Name" value="Drawable_Ellipse()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a008a5a41a3ff38cd0695791574b884e4"><param name="Name" value="Drawable_Ellipse()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a85e0d42b225ab2c0c7a99b2e0bdf4be6"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a98d1fe7e0dd9a2f37aa02917aabfbea6"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a7c8639274c6c99e971a444f333b3b77b"><param name="Name" value="~Drawable_Ellipse() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html"><param name="Name" value="Drawable_Line"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#a671d2950ee5cf14e29d8adf2d113fdf9"><param name="Name" value="Drawable_Line()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html"><param name="Name" value="Drawable_Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#a671d2950ee5cf14e29d8adf2d113fdf9"><param name="Name" value="Drawable_Line()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html"><param name="Name" value="Drawable_Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#aa2e6f655cd8b9216a4ce812bc02c1733"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html"><param name="Name" value="Drawable_Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#ad455fab978afb865bfdb87d5da93b689"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html"><param name="Name" value="Drawable_Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#a6cf7bbcc9dc2356988bb622fe287f85d"><param name="Name" value="~Drawable_Line() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html"><param name="Name" value="Drawable_Path"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#a26aee0b7f0092094039015a11a7bf8a2"><param name="Name" value="Drawable_Path()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html"><param name="Name" value="Drawable_Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#a26aee0b7f0092094039015a11a7bf8a2"><param name="Name" value="Drawable_Path()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html"><param name="Name" value="Drawable_Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#aa6c973679c30cfe58f72c3ba1c0b6987"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html"><param name="Name" value="Drawable_Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#a6a96852b87eb85df4dc8b69270658a95"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html"><param name="Name" value="Drawable_Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#afda38a6a157ed5b7b5f8af07db15d25e"><param name="Name" value="~Drawable_Path() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#a7c73496a77c57cfee8a4c60c76e099a6"><param name="Name" value="Drawable_Polygon()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#a7c73496a77c57cfee8a4c60c76e099a6"><param name="Name" value="Drawable_Polygon()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#ad71f17f1f7e2586ebff41657874b0f82"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#a0c4cfaec9657e25502cd79d15d32f503"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#abedfe34dcc97b19f2424e79a47a900ac"><param name="Name" value="~Drawable_Polygon() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a23402d9e6d37903f2a46c48d71443899"><param name="Name" value="Drawable_Polyline()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a23402d9e6d37903f2a46c48d71443899"><param name="Name" value="Drawable_Polyline()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a7b08f3e9dda0c8886471feb61c6fca3e"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a8dfc3f6c1ff9a8bb8fe66b14a083794f"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#abc662f3582b328aa35f91f07d07f745c"><param name="Name" value="~Drawable_Polyline() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#aa43d7d573d8d637aeec02b06283d4975"><param name="Name" value="Drawable_Rectangle()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#aa43d7d573d8d637aeec02b06283d4975"><param name="Name" value="Drawable_Rectangle()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#a259ec7ff643cb7d1b25f990ddb20d903"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#a405d676eb5e984691bfca48218bbe1f2"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#aade659218ee94a87b4d6344eb2ec8e68"><param name="Name" value="~Drawable_Rectangle() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html"><param name="Name" value="Drawable_Text"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a5611891e4dc8e1223dd8d566fe107edc"><param name="Name" value="Drawable_Text()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html"><param name="Name" value="Drawable_Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a5611891e4dc8e1223dd8d566fe107edc"><param name="Name" value="Drawable_Text()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html"><param name="Name" value="Drawable_Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a864d249cab8f7d656d0b5295b4f420e5"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html"><param name="Name" value="Drawable_Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a1ad4befbce75f614b6040ac9c2fc49ec"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html"><param name="Name" value="Drawable_Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#ad8c3685065a9214e710191ec1a4fffa7"><param name="Name" value="~Drawable_Text() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#aaff4917eddd8882616fe2f956151ba9b"><param name="Name" value="Ellipse()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#aaff4917eddd8882616fe2f956151ba9b"><param name="Name" value="Ellipse()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a5f88be0a0c6857c672d8157032dc6f4a"><param name="Name" value="cx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a57e8b2fb0822066ab8a2ad7703158261"><param name="Name" value="cy"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a722e7168215a2bf58e17738c445b26ba"><param name="Name" value="rx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a03ecbdeec53ca6e27ab0b62ad7b28823"><param name="Name" value="ry"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a48c323d4dacadeeb3d35477b301c5167"><param name="Name" value="setCX(string &amp;cx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a152993e46b19cba1d9e522ea65b4f7a2"><param name="Name" value="setCY(string &amp;cy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a74bcc586aa5b68ffdd01b8aa9ececea5"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#add1b61a8028d93afd7aab8419174cf36"><param name="Name" value="setRX(string &amp;rx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a30abbaa9b0c2f6bdf8d9c20a982c2eba"><param name="Name" value="setRY(string &amp;ry)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html"><param name="Name" value="Ellipse"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a30c4b8c38a02f969f53df78b3877beaa"><param name="Name" value="~Ellipse() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a1d9e03a4db51fcdca64aa5137e72b076"><param name="Name" value="Figure()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a1d9e03a4db51fcdca64aa5137e72b076"><param name="Name" value="Figure()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#af2b63271222a3d111825862474c64283"><param name="Name" value="fill"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#ad34363e50606878b793d047b315a3a3a"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override final"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#af0d5150d7a95dca0183836a6191333df"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#abab1592e36e7bc2aa511d5a90ba7487a"><param name="Name" value="setFill(string &amp;fill)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a68346297f8c8ede75b48abb1a6617fcb"><param name="Name" value="setFillOpacity(string &amp;fill_opacity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a4bf95ca469d0beee49cf57f1f237986a"><param name="Name" value="setGroupAttributes(Figure *group)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a48e4f4a1d3faca4cb1dd4c038231a568"><param name="Name" value="setStroke(string &amp;stroke)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#accce3755ee8310fd98eb049970c5cc24"><param name="Name" value="setStrokeOpacity(string &amp;stroke_opacity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#ac911d9e58e6bff67c200faf6ff7551ae"><param name="Name" value="setStrokeWidth(string &amp;stroke_width)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a2241f5fa6d817674435ed5ce79379da4"><param name="Name" value="stroke"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#aed7c25c80db9310a0ce8d2ab370f7e4f"><param name="Name" value="stroke_width"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html"><param name="Name" value="Figure"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#af155c20558330034441de6a19d94f4a7"><param name="Name" value="~Figure()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html"><param name="Name" value="FigureFactory"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html"><param name="Name" value="FigureFactory"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html#a9de0e616b10c1d44b20709f5a0cfd808"><param name="Name" value="deleteInstance()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html"><param name="Name" value="FigureFactory"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html#ac2c3553e1bee0306d9cc63a818eddb4a"><param name="Name" value="getFigure(const string &amp;figure)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html"><param name="Name" value="FigureFactory"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html#a06b857146d6b263a8cb512b489b12c78"><param name="Name" value="getInstance()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a61014730e2774f602bb2cf0c6fb20e99"><param name="Name" value="GDI_Brush(Color *color, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a35605e65a53133e119368eb22806c11a"><param name="Name" value="GDI_Brush(Color *color, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#aa67d97c471ced36e14dfc8097ad413f4"><param name="Name" value="GDI_LinearGradient(const LinearGradient &amp;color, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a14d9205897133aaad0e46885b0312095"><param name="Name" value="GDI_LinearGradient(const LinearGradient &amp;color, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#aa21019769b5b2ffe11abd732d775efa8"><param name="Name" value="GDI_Pen(Color *color, const float &amp;stroke_width, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a5abd334ee48df5b960bd4e95090a8b4d"><param name="Name" value="GDI_Pen(Color *color, const float &amp;stroke_width, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a32fd507c5dcdc5a9790e7d920ae690f5"><param name="Name" value="GDI_RGB(const RGB_Color &amp;color)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a32fd507c5dcdc5a9790e7d920ae690f5"><param name="Name" value="Drawable.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a32fd507c5dcdc5a9790e7d920ae690f5"><param name="Name" value="GDI_RGB(const RGB_Color &amp;color)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a32fd507c5dcdc5a9790e7d920ae690f5"><param name="Name" value="Drawable.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#ae7054ca22036af6dcd52bd9e5a8b8a62"><param name="Name" value="GDI_RadialGradient(const RadialGradient &amp;color, const Gdiplus::RectF &amp;rect)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a5f4d8847ea01647a0ba27ec4fba20870"><param name="Name" value="GDI_RadialGradient(const RadialGradient &amp;color, const Gdiplus::RectF &amp;rect={ 0, 0, 0, 0 })"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#adefc9d359417f35bfb200657a52b5049"><param name="Name" value="Gradient()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a9c6615cf7100371f682303dd6ab45ea4"><param name="Name" value="Gradient(const Gradient &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_gradient_8cpp.html#a0d101696b1b37b49b44616d14b2a48d4"><param name="Name" value="Gradient.cpp"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_gradient_8h.html#a0d101696b1b37b49b44616d14b2a48d4"><param name="Name" value="Gradient.h"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#af4d7cdec586c6f74b24edcf70cfc24f0"><param name="Name" value="ColorOffset"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#adefc9d359417f35bfb200657a52b5049"><param name="Name" value="Gradient()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a9c6615cf7100371f682303dd6ab45ea4"><param name="Name" value="Gradient(const Gradient &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a87a45dd0c9116b58892b28aac3a93066"><param name="Name" value="addStop(string &amp;line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a8a9991ef3b44daf45cb618dc49c79d02"><param name="Name" value="getColorOffset() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#ae086132ddbfa348a30fc8147fbba7751"><param name="Name" value="getIsPercent() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a84119facaffe6385e499b5fca15f0a3a"><param name="Name" value="isPercent"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a1ce3f88bc5cc49510c6671ef7ea4ba5b"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html"><param name="Name" value="Gradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#af0c7dc8bc447816fc94b5bca73d23d28"><param name="Name" value="setHref(string &amp;href)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a7b74f9ac68e0504ccf2e2854b7355ff1"><param name="Name" value="Group()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a7b74f9ac68e0504ccf2e2854b7355ff1"><param name="Name" value="Group()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a08a912e64981b223944d7bf009554ddd"><param name="Name" value="addDrawable(Drawable *drawable)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a42d0478bbbb64f044c71cff3faf1272f"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a8d0383418992dd1f45c201bd610a2802"><param name="Name" value="getFigures() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a6397acf0bae5979395edfbde96a9d5a7"><param name="Name" value="getParent()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a3a6824e9d828e22ca816ab4a0acc5ba4"><param name="Name" value="setChildAttributes(Figure *figure)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#aea63bc9d1e876e9b040738d245ca5eaf"><param name="Name" value="setFigureAttributes(const std::string &amp;attribute, std::string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a57dacda1f5e951aae89fda54af023f6c"><param name="Name" value="setParent(Group *parent)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#aa2254c8562fa9e9df50aa38c5591b03e"><param name="Name" value="setParentAttributes()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html"><param name="Name" value="Group"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#ad4276be657c9f9305ddb5e435275a198"><param name="Name" value="~Group() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#ad0e3e52a130378dfabbb0adc10b80f79"><param name="Name" value="COMMA_TO_SPACE(line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a7c60e95c939cc7352ce48e813a5d1a7e"><param name="Name" value="SVG_Matrix"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a33decbeb0b295f8709477605eea0c424"><param name="Name" value="SVG_Rotate"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a1b02e2a514282b45ba527479c06862d6"><param name="Name" value="SVG_Scale"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#acc67eeefa352e21704701236a6552de8"><param name="Name" value="SVG_Translate"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a8f20e738e9c2a332bd0e2eec722d62a2"><param name="Name" value="Transform_Type"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a525335710b53cb064ca56b936120431e"><param name="Name" value="_USE_MATH_DEFINES"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a7f3f7fac8fe5d06b53a92c57f22041c5"><param name="Name" value="check_exception(figure, attribute, code)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a423f4f6b2e7115a99861e26df7302071"><param name="Name" value="dealocate(pointer)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#aa2a7c8977a7886192b346466671fa8fc"><param name="Name" value="isGradient(word)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html"><param name="Name" value="Header.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a7accb9450be1d41848d52c39667545ed"><param name="Name" value="tag(figure)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#acc11b8a429d8cdd63ba6803dff5602b3"><param name="Name" value="Line()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#acc11b8a429d8cdd63ba6803dff5602b3"><param name="Name" value="Line()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a2ae082894080ee1d0757c40c2b4a7daf"><param name="Name" value="p1"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#abebd4172ec43b06b1b04bb59904fc2a4"><param name="Name" value="p2"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a30da98a60aa1f1f2b24ebb73982ebaf6"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a88e237c48829ea7711984de035e12c56"><param name="Name" value="setX1(string &amp;x1)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a937d230689136d2478538e7c7085eee4"><param name="Name" value="setX2(string &amp;x2)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a95c9608385b3493f7da779defdfd551c"><param name="Name" value="setY1(string &amp;y1)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a22c697fc7760ffb6c71ce1d27c73cd3d"><param name="Name" value="setY2(string &amp;y2)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html"><param name="Name" value="Line"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a1eb11f35f4f98a9c50c853928f9fd6de"><param name="Name" value="~Line() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a6f613ff16d7907cef032dd1da2f08e23"><param name="Name" value="LinearGradient()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a08a7199cdc366ed9406dcecb7a6d786d"><param name="Name" value="LinearGradient(const LinearGradient &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a6f613ff16d7907cef032dd1da2f08e23"><param name="Name" value="LinearGradient()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a08a7199cdc366ed9406dcecb7a6d786d"><param name="Name" value="LinearGradient(const LinearGradient &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#aa7e4651025849a678871d1c36f2f4f89"><param name="Name" value="getP1() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a06e5df90f3f5f2bdaab5a2ee0c1e985f"><param name="Name" value="getP2() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a2d50de3e5c4d4aa1078162481763184c"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a359d28c1361f004d60b3e51840553b6f"><param name="Name" value="setX1(string &amp;x1)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a9b3466d28adf93208928c1215d6cb132"><param name="Name" value="setX2(string &amp;x2)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#afff44d127a46b1ce56461718d43736a6"><param name="Name" value="setY1(string &amp;y1)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html"><param name="Name" value="LinearGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a8ad22bf4b1fcc6ddde358be442895908"><param name="Name" value="setY2(string &amp;y2)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#af499bd63e4872832110edc80ae991fdb"><param name="Name" value="OnPaint(HDC &amp;hdc)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#af6f3af459dcb3c0f88df918ceca3dbb5"><param name="Name" value="Rotate(HWND &amp;hWnd, float angle)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a23d75678fa2868bd1e45b3e2bde33b4c"><param name="Name" value="Translate(HWND &amp;hWnd, float x, float y)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a7cb06a0437dfcc2a983ffcd3dfe40063"><param name="Name" value="WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a30a1e3b0304f1b083637664cbda94e72"><param name="Name" value="WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a4b068d10904890da0821689a5efd5fc5"><param name="Name" value="Zoom(HWND &amp;hWnd, float zoom)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#ae80f820219e45772366a2a68de6a54c4"><param name="Name" value="filename"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#ab2b6f584520118c3ef1b640cde2248c1"><param name="Name" value="gdiplusStartupInput"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a0819643ceb158cbf389a3e399351810f"><param name="Name" value="gdiplusToken"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97"><param name="Name" value="main(int argc, char *argv[])"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a40e27a95878bc0a443bac4815628f3e2"><param name="Name" value="offsetX"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a577cbd3610eed001754028f74db1dd02"><param name="Name" value="offsetY"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a7768d5ba63e702c4e6a5a70e4b79512a"><param name="Name" value="rotationAngle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a784507f370c8fcc71f23e05ba78b78d1"><param name="Name" value="svg"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html"><param name="Name" value="Main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a4c0115542d198c9c7539a3c4eb45f3d7"><param name="Name" value="zoomFactor"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#af499bd63e4872832110edc80ae991fdb"><param name="Name" value="OnPaint(HDC &amp;hdc)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html"><param name="Name" value="Path"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a6ae58f503394f12a90ff7d059d30d26c"><param name="Name" value="Path()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html"><param name="Name" value="Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a6ae58f503394f12a90ff7d059d30d26c"><param name="Name" value="Path()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html"><param name="Name" value="Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#ac2984bc8c240d07febef4ee43e39ee7c"><param name="Name" value="path"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html"><param name="Name" value="Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a4a92fd7185f5c942cbff0bca556e0813"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html"><param name="Name" value="Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a80f441ae9a23df0db578615dff3cb2d5"><param name="Name" value="setPath(string &amp;line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html"><param name="Name" value="Path"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a8acdf031a4aed5aac2a581e3510c2151"><param name="Name" value="~Path() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#ad92f2337b839a94ce97dcdb439b4325a"><param name="Name" value="Point()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a53534941e7bcb3c6d3af84d58a542899"><param name="Name" value="Point(const Point &amp;point)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a7a12df6ec1accbeb21e5e00fce0c86e9"><param name="Name" value="Point(const float &amp;x, const float &amp;y)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#ad92f2337b839a94ce97dcdb439b4325a"><param name="Name" value="Point()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a53534941e7bcb3c6d3af84d58a542899"><param name="Name" value="Point(const Point &amp;point)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a7a12df6ec1accbeb21e5e00fce0c86e9"><param name="Name" value="Point(const float &amp;x, const float &amp;y)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a05dfe2dfbde813ad234b514f30e662f1"><param name="Name" value="x"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a6101960c8d2d4e8ea1d32c9234bbeb8d"><param name="Name" value="y"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html"><param name="Name" value="Point"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#aa1fcbfbf1e997b4f6bd064afeda495f7"><param name="Name" value="~Point()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html"><param name="Name" value="Polygon"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ab38fb21b6d757ed9352af97af5cbdb14"><param name="Name" value="Polygon()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html"><param name="Name" value="Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ab38fb21b6d757ed9352af97af5cbdb14"><param name="Name" value="Polygon()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html"><param name="Name" value="Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#a845c503238b8eb7d6d45facad082e4ae"><param name="Name" value="points"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html"><param name="Name" value="Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#a567c5f2830824d64afa5e1809a333e66"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html"><param name="Name" value="Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ac88621b22273259f54a2221ff26eb4ce"><param name="Name" value="setPoint(string &amp;line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html"><param name="Name" value="Polygon"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ad289583dba86760f78296670c95b1eb7"><param name="Name" value="~Polygon() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html"><param name="Name" value="Polyline"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#a3dd7ad8a7275e24977d399e1f00a6997"><param name="Name" value="Polyline()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html"><param name="Name" value="Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#a3dd7ad8a7275e24977d399e1f00a6997"><param name="Name" value="Polyline()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html"><param name="Name" value="Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#a723e53d19040dedddb05ff90bc2ce10a"><param name="Name" value="points"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html"><param name="Name" value="Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#ada7008b191f791645d186079f303902d"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html"><param name="Name" value="Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#afe2d353ed88d8e57934ad6bc610776eb"><param name="Name" value="setPoint(string &amp;line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html"><param name="Name" value="Polyline"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#af77a79ed0a14a8334cfd92cd17063fec"><param name="Name" value="~Polyline() override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aed506511efced473d6baaf5099518672"><param name="Name" value="RGB_Color()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a68f5f142b298f54cc156d86bcb3da2b0"><param name="Name" value="RGB_Color(const RGB_Color &amp;color)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a78e405e217d6854aafaac8392aea202b"><param name="Name" value="RGB_Color(const float &amp;r, const float &amp;g, const float &amp;b, const float &amp;a=255)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a3c429586c3d32fed06eb1bd1a40ccdc7"><param name="Name" value="RGB_Color(string &amp;color)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aed506511efced473d6baaf5099518672"><param name="Name" value="RGB_Color()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a68f5f142b298f54cc156d86bcb3da2b0"><param name="Name" value="RGB_Color(const RGB_Color &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a78e405e217d6854aafaac8392aea202b"><param name="Name" value="RGB_Color(const float &amp;r, const float &amp;g, const float &amp;b, const float &amp;a=255)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a3c429586c3d32fed06eb1bd1a40ccdc7"><param name="Name" value="RGB_Color(string &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#abe1d7362f1e4e2520e651fb5e2af50f2"><param name="Name" value="b"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a342292c6bdbd0a265026983768133266"><param name="Name" value="balance()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aff798bbd727fa025f26ed7aed8846609"><param name="Name" value="g"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a9d03618e38d393f76d3e426a9dd53195"><param name="Name" value="operator=(const RGB_Color &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a475e266e018ddd055774b5bbbea1b6c4"><param name="Name" value="r"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a202686fc16a47d4eccaf1752f325fbe0"><param name="Name" value="setRGB(const float &amp;r, const float &amp;g, const float &amp;b, const float &amp;a=255)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html"><param name="Name" value="RGB_Color"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aa8af7aa94ae784b9e1440c3002339fcb"><param name="Name" value="setRGB(string &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ad738544977b744c9396e713cabd7a003"><param name="Name" value="RadialGradient()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a47221455c43f273aa86f14de3baf3f16"><param name="Name" value="RadialGradient(const RadialGradient &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ad738544977b744c9396e713cabd7a003"><param name="Name" value="RadialGradient()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a47221455c43f273aa86f14de3baf3f16"><param name="Name" value="RadialGradient(const RadialGradient &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#afe88280f037b994bed837387c60880dc"><param name="Name" value="cx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a31d99269732821d75300f1a05c556ceb"><param name="Name" value="cy"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ae7605bf1826a8ce248c14bc3e9ea2654"><param name="Name" value="fr"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a16e0c52dfa064319a366bfafdfb63d39"><param name="Name" value="fx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#afb9926d1c3bc9dea8c53f9551c42d43c"><param name="Name" value="fy"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a863a3e860dac88ae792981a3fe1b994e"><param name="Name" value="getCX() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a53c9f1448cbd03a0dac41f678605e4ad"><param name="Name" value="getCY() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a89e4bbaeeb0be286a3daaa8478877119"><param name="Name" value="getFX() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a812325cfff2934dd508a33328fda2d56"><param name="Name" value="getFY() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#aca874295c3ebeecb17f9565361f77c0d"><param name="Name" value="getR() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ad7d3a77a0f727ad18e522c2c70f9ac76"><param name="Name" value="r"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a62a714f3cbea61ecdf64016522c527ad"><param name="Name" value="setCX(string &amp;cx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a30946d95809b9629651ece896b2b31cc"><param name="Name" value="setCY(string &amp;cy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a79609403f0e5a12cd179cc0f1b357fc7"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a1a67cb76e2ca4e00dd3ebbc64a244373"><param name="Name" value="setFR(string &amp;fr)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#af6bf916f010a8b5998c7e5d5902c80e3"><param name="Name" value="setFX(string &amp;fx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a6900aca733eb7b06c614008f658be9ca"><param name="Name" value="setFY(string &amp;fy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html"><param name="Name" value="RadialGradient"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a4979a1855ad858bf9415805765ab6324"><param name="Name" value="setR(string &amp;r)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a8a933e0ebd9e80ce91e61ffe87fd577e"><param name="Name" value="Rectangle()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a8a933e0ebd9e80ce91e61ffe87fd577e"><param name="Name" value="Rectangle()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a080c1530eb46073e9880b01d14c341fd"><param name="Name" value="height"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#aa3e5b776fd94103d9364adbbb1c52052"><param name="Name" value="rx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#adbbf8bbfc2979d4ffcff12c257b3dc9c"><param name="Name" value="ry"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a6d4e2d75de815e0d911b3b3c4288e249"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a011239e7558d684e6f34ba15166381ac"><param name="Name" value="setHeight(string &amp;height)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a1b9d6be6ea6a3381cc0534fc18b7d0dd"><param name="Name" value="setRX(string &amp;rx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a6cb1405cb331ed9b07e462ddc625242f"><param name="Name" value="setRY(string &amp;ry)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a3c87aee5fae9a5a4e8ba96656b047f38"><param name="Name" value="setWidth(string &amp;width)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a3d01497ab863686dc24f9f8b041ae805"><param name="Name" value="setX(string &amp;x)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a8235fb87cd3ccd7cf5b7fa22e6e063c6"><param name="Name" value="setY(string &amp;y)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#adbe8ae69919acc459e7ab155a69bc8ff"><param name="Name" value="width"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a40917b61b33bf046d189be401c13cc7f"><param name="Name" value="x"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a86f71f891bada4e5e920a4a9b7c505a3"><param name="Name" value="y"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html"><param name="Name" value="Rectangle"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#ab9f43716b07131b960f922e118b43f5c"><param name="Name" value="~Rectangle() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#aec8c8721c424ae943601e428ed2f3bb6"><param name="Name" value="Render_Parameters"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#ae27435f626f015e181910fda1cba0e4b"><param name="Name" value="Render_Window"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#af6f3af459dcb3c0f88df918ceca3dbb5"><param name="Name" value="Rotate(HWND &amp;hWnd, float angle)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a503b3880730d6a08af41cbb806cc9739"><param name="Name" value="SVG_Element()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a95fd599eda6fe484efb8b4d5a9de4cba"><param name="Name" value="SVG_Element(const SVG_Element &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a503b3880730d6a08af41cbb806cc9739"><param name="Name" value="SVG_Element()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a95fd599eda6fe484efb8b4d5a9de4cba"><param name="Name" value="SVG_Element(const SVG_Element &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a5c349f1c68c36d85d4efdcf8fb0e3d9e"><param name="Name" value="findGlobalElement(const string &amp;id)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a1e55af16239f509607b3ebfb3b2f9e5d"><param name="Name" value="getID() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a23a9bb56557cf022e79e0b3bc50bf5af"><param name="Name" value="id"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a9750c6fa54afacf20954fe18f8c6a5e6"><param name="Name" value="parseElementAttributes(string &amp;line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a744114e67e7e2260096171265238da15"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value)=0"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a5f0fa6983d8881824625c8f861a0ceae"><param name="Name" value="setID(const string &amp;id)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a4cd5adb912bf4a3d3b6fe50b38ae2a58"><param name="Name" value="setStyle(string &amp;style)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html"><param name="Name" value="SVG_Element"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#ac636f7f932f679c2fb23ed1f7b9b9fe0"><param name="Name" value="~SVG_Element()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#accdb9b0973d7253a8691bfce3f3943b3"><param name="Name" value="SVG_Image()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a5f1a0c0bd12e1efd742b0c6c3a385849"><param name="Name" value="SVG_Image(const string &amp;nameFile)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_s_v_g___image_8cpp.html#afbf267f242c9930aefdf7b97dff68f27"><param name="Name" value="SVG_Image.cpp"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_s_v_g___image_8h.html#afbf267f242c9930aefdf7b97dff68f27"><param name="Name" value="SVG_Image.h"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#accdb9b0973d7253a8691bfce3f3943b3"><param name="Name" value="SVG_Image()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a5f1a0c0bd12e1efd742b0c6c3a385849"><param name="Name" value="SVG_Image(const string &amp;nameFile)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8d326868faae8bf0a42933234edaa9a1"><param name="Name" value="getRoot() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a14fb440e30678b2f29a18cfce25ecb83"><param name="Name" value="parse(const string &amp;nameFile)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#ad155f583992164c23a2d54d1981ccac7"><param name="Name" value="renewImage()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#ab73df5e72dde27f8877e347adef550d8"><param name="Name" value="setHeight(string &amp;height)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#abfe9aadee24b260634023d0cb8944f66"><param name="Name" value="setImageAttributes(string &amp;line)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8918de24c750df7d283d0975aa19b9d8"><param name="Name" value="setStyle(string &amp;style)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8f80f3afd6c2dfff7c6f9d985a215e90"><param name="Name" value="setWidth(string &amp;width)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html"><param name="Name" value="SVG_Image"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a5980e1cb07cb8d20389acc6263b6ac87"><param name="Name" value="~SVG_Image()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a7c60e95c939cc7352ce48e813a5d1a7e"><param name="Name" value="SVG_Matrix"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_s_v_g___image_8cpp.html#afbf267f242c9930aefdf7b97dff68f27"><param name="Name" value="SVG_Render(const SVG_Image &amp;svgImage, Render_Window)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_s_v_g___image_8cpp.html#afbf267f242c9930aefdf7b97dff68f27"><param name="Name" value="SVG_Image.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_s_v_g___image_8h.html#afbf267f242c9930aefdf7b97dff68f27"><param name="Name" value="SVG_Render(const SVG_Image &amp;svgImage, Render_Window)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_s_v_g___image_8h.html#afbf267f242c9930aefdf7b97dff68f27"><param name="Name" value="SVG_Image.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a33decbeb0b295f8709477605eea0c424"><param name="Name" value="SVG_Rotate"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a1b02e2a514282b45ba527479c06862d6"><param name="Name" value="SVG_Scale"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#acc67eeefa352e21704701236a6552de8"><param name="Name" value="SVG_Translate"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#ab8870f949c69cda03c4055524ed13c31"><param name="Name" value="Stop()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aad5ce092a4d47a56358e6bb67f8673cb"><param name="Name" value="Stop(const Stop &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#ab8870f949c69cda03c4055524ed13c31"><param name="Name" value="Stop()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aad5ce092a4d47a56358e6bb67f8673cb"><param name="Name" value="Stop(const Stop &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#abfaa4183c4109e40362fb39bfb9b7709"><param name="Name" value="getColor()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#a123bca1dfbfaf7b9e72bc4324ada34ae"><param name="Name" value="getOffset()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#a89a6dff87f4f6f8a6aa5059a56cf168b"><param name="Name" value="setColor(string &amp;color)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aeeb1c438da6d9c8eadeb12e740f425d4"><param name="Name" value="setOffset(string &amp;offset)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html"><param name="Name" value="Stop"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aebdcf0e0180b60ef7c9fb6605005f8d7"><param name="Name" value="setOpacity(string &amp;opacity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab3e26143fccc52699bcc5149cae852bc"><param name="Name" value="Text()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab3e26143fccc52699bcc5149cae852bc"><param name="Name" value="Text()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#afd9a19805b838612cfa03ca01866023e"><param name="Name" value="data"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a5a0a40ac5f7750d938842da2c6ada1b8"><param name="Name" value="dx"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a972f9681f04e7e15ed23ff6d39af85c8"><param name="Name" value="dy"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#af86f4df9b59e8b0d07690ec52d5bc3ba"><param name="Name" value="font_family"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a71158226b190f16477820e45b549133f"><param name="Name" value="font_size"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a86d1f75511c0c9ff735f6669cdd287f9"><param name="Name" value="font_style"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab790c00b54e1de5c347ea3f38e0f800a"><param name="Name" value="setData(string &amp;data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a87e2a9c882e3a72e66db67d3ed4cb653"><param name="Name" value="setDx(string &amp;dx)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#abc15985a2451f8326ff8939295486303"><param name="Name" value="setDy(string &amp;dy)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a8c2c7fdc1a9fbbc9eedfecaa126dfd25"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#abde5fd53d7b46c34d4efa67faf07bf8d"><param name="Name" value="setFontFamily(string &amp;font_family)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a4a759050f5160cbdb8b018070576fcac"><param name="Name" value="setFontSize(string &amp;font_size)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#aabd127999e9a889993f7f8c33223beff"><param name="Name" value="setFontStyle(string &amp;font_style)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a54fa32a07248bd41f3f7c4b491d7131c"><param name="Name" value="setTextAnchor(string &amp;text_anchor)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a239ef624e839caf000215cfdb03e46f1"><param name="Name" value="setX(string &amp;x)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a765a3a8cd0a02f4102b3316c2dd0b2bf"><param name="Name" value="setY(string &amp;y)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#af29b53ea6e14e53366eddbabcc6aa659"><param name="Name" value="text_anchor"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a6103b11e00565b1972638a4d6924a981"><param name="Name" value="x"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab7b5229279ef8b23b5beaf9b5752206c"><param name="Name" value="y"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html"><param name="Name" value="Text"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a342401fbc97a2b4c902c076e86ba43bd"><param name="Name" value="~Text() override=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a144ce8dcafd13ca66acb5a1636cfc297"><param name="Name" value="Transform()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a32e14e9f06877459a5731ad34656798b"><param name="Name" value="Transform(const Transform &amp;other)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a144ce8dcafd13ca66acb5a1636cfc297"><param name="Name" value="Transform()=default"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a32e14e9f06877459a5731ad34656798b"><param name="Name" value="Transform(const Transform &amp;other)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#aa71d6450247ca3c952928d12276bbcfa"><param name="Name" value="getTransform() const"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#acea91af00ec6be3faf356d6c3cf9e6bd"><param name="Name" value="setMatrix(string &amp;matrix)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#ab3418da00ec2a0f77bb550217755d293"><param name="Name" value="setRotate(string &amp;rotate)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a218d553f33aeb02c2904668f184ade6c"><param name="Name" value="setScale(string &amp;scale)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#ab137be2967869fc4a6788867bebd039f"><param name="Name" value="setTransform(string &amp;transform)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a21542aad47efd234d4ef11164dcb1254"><param name="Name" value="setTranslate(string &amp;translate)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#ad9f7eb682cc1ae8002b3315030baa258"><param name="Name" value="transforms"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html"><param name="Name" value="Transform"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#aa72e286c069850db80927b0e6554cd3e"><param name="Name" value="~Transform()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a138e54fbb7439030be2e244f209338f1"><param name="Name" value="Transform_First(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a138e54fbb7439030be2e244f209338f1"><param name="Name" value="Drawable.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a138e54fbb7439030be2e244f209338f1"><param name="Name" value="Transform_First(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a138e54fbb7439030be2e244f209338f1"><param name="Name" value="Drawable.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a25b6ee5f8895162cdc353e14aad59ff3"><param name="Name" value="Transform_Second(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8cpp.html#a25b6ee5f8895162cdc353e14aad59ff3"><param name="Name" value="Drawable.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a25b6ee5f8895162cdc353e14aad59ff3"><param name="Name" value="Transform_Second(const Transform_Type &amp;t, Render_Window)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_drawable_8h.html#a25b6ee5f8895162cdc353e14aad59ff3"><param name="Name" value="Drawable.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a8f20e738e9c2a332bd0e2eec722d62a2"><param name="Name" value="Transform_Type"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a23d75678fa2868bd1e45b3e2bde33b4c"><param name="Name" value="Translate(HWND &amp;hWnd, float x, float y)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a23ee8257f489c18146082bf7c58a09e1"><param name="Name" value="ViewBox()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a23ee8257f489c18146082bf7c58a09e1"><param name="Name" value="ViewBox()"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a51f1acb4b632dd094d12da26545a57e3"><param name="Name" value="height"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#ae646877c202c5c1dbc1841003ef7ab1c"><param name="Name" value="min_x"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a6d03b2bb9613a8d56bd0d0d281656242"><param name="Name" value="min_y"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a1a682da188fdd89e40c0c21533d374e4"><param name="Name" value="setViewBox(string &amp;viewBox)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html"><param name="Name" value="ViewBox"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#aefb5fc61151ede749dba2c476d6cecf6"><param name="Name" value="width"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a7cb06a0437dfcc2a983ffcd3dfe40063"><param name="Name" value="WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a30a1e3b0304f1b083637664cbda94e72"><param name="Name" value="WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a4b068d10904890da0821689a5efd5fc5"><param name="Name" value="Zoom(HWND &amp;hWnd, float zoom)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a525335710b53cb064ca56b936120431e"><param name="Name" value="_USE_MATH_DEFINES"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a08a912e64981b223944d7bf009554ddd"><param name="Name" value="addDrawable(Drawable *drawable)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a87a45dd0c9116b58892b28aac3a93066"><param name="Name" value="addStop(string &amp;line)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#abe1d7362f1e4e2520e651fb5e2af50f2"><param name="Name" value="b"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a342292c6bdbd0a265026983768133266"><param name="Name" value="balance()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a0060d24ea4401f2ac4378d04b2e525c6"><param name="Name" value="brush"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a7f3f7fac8fe5d06b53a92c57f22041c5"><param name="Name" value="check_exception(figure, attribute, code)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html#a92600d7118c1901112277fd920fd1936"><param name="Name" value="copyColor(Color *&amp;color, Color *copy)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html#a92600d7118c1901112277fd920fd1936"><param name="Name" value="Color.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html#a92600d7118c1901112277fd920fd1936"><param name="Name" value="copyColor(Color *&amp;color, Color *copy)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html#a92600d7118c1901112277fd920fd1936"><param name="Name" value="Color.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8cpp.html#a734c320ce99c2f91bbe2cae1303eb7f0"><param name="Name" value="createColor(Color *&amp;color, string name)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_color_8h.html#a2207c82a8ec27d862be415036454c46f"><param name="Name" value="createColor(Color *&amp;color, string name=&quot;&quot;)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a6b31a4748e9cc73073cea31ca3e86ecf"><param name="Name" value="cx"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a6b31a4748e9cc73073cea31ca3e86ecf"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a5f88be0a0c6857c672d8157032dc6f4a"><param name="Name" value="cx"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a5f88be0a0c6857c672d8157032dc6f4a"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#afe88280f037b994bed837387c60880dc"><param name="Name" value="cx"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#afe88280f037b994bed837387c60880dc"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a3949aaaecc72ef1ff9bbd1422e78d8fa"><param name="Name" value="cy"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a3949aaaecc72ef1ff9bbd1422e78d8fa"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a57e8b2fb0822066ab8a2ad7703158261"><param name="Name" value="cy"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a57e8b2fb0822066ab8a2ad7703158261"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a31d99269732821d75300f1a05c556ceb"><param name="Name" value="cy"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a31d99269732821d75300f1a05c556ceb"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#afd9a19805b838612cfa03ca01866023e"><param name="Name" value="data"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a423f4f6b2e7115a99861e26df7302071"><param name="Name" value="dealocate(pointer)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html#a9de0e616b10c1d44b20709f5a0cfd808"><param name="Name" value="deleteInstance()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#ad8000d44b918f35d017592f19c29022a"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#ad8000d44b918f35d017592f19c29022a"><param name="Name" value="Drawable_Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a85e0d42b225ab2c0c7a99b2e0bdf4be6"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a85e0d42b225ab2c0c7a99b2e0bdf4be6"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#aa2e6f655cd8b9216a4ce812bc02c1733"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#aa2e6f655cd8b9216a4ce812bc02c1733"><param name="Name" value="Drawable_Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#aa6c973679c30cfe58f72c3ba1c0b6987"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#aa6c973679c30cfe58f72c3ba1c0b6987"><param name="Name" value="Drawable_Path"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#ad71f17f1f7e2586ebff41657874b0f82"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#ad71f17f1f7e2586ebff41657874b0f82"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a7b08f3e9dda0c8886471feb61c6fca3e"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a7b08f3e9dda0c8886471feb61c6fca3e"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#a259ec7ff643cb7d1b25f990ddb20d903"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#a259ec7ff643cb7d1b25f990ddb20d903"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a864d249cab8f7d656d0b5295b4f420e5"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a864d249cab8f7d656d0b5295b4f420e5"><param name="Name" value="Drawable_Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a42d0478bbbb64f044c71cff3faf1272f"><param name="Name" value="draw(Render_Window) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a42d0478bbbb64f044c71cff3faf1272f"><param name="Name" value="Group"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a1773f59fb44ce9250baa338f77e8fdc8"><param name="Name" value="draw(Render_Window)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a5a0a40ac5f7750d938842da2c6ada1b8"><param name="Name" value="dx"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a972f9681f04e7e15ed23ff6d39af85c8"><param name="Name" value="dy"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#ae80f820219e45772366a2a68de6a54c4"><param name="Name" value="filename"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#af2b63271222a3d111825862474c64283"><param name="Name" value="fill"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a5c349f1c68c36d85d4efdcf8fb0e3d9e"><param name="Name" value="findGlobalElement(const string &amp;id)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#af86f4df9b59e8b0d07690ec52d5bc3ba"><param name="Name" value="font_family"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a71158226b190f16477820e45b549133f"><param name="Name" value="font_size"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a86d1f75511c0c9ff735f6669cdd287f9"><param name="Name" value="font_style"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ae7605bf1826a8ce248c14bc3e9ea2654"><param name="Name" value="fr"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a16e0c52dfa064319a366bfafdfb63d39"><param name="Name" value="fx"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#afb9926d1c3bc9dea8c53f9551c42d43c"><param name="Name" value="fy"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aff798bbd727fa025f26ed7aed8846609"><param name="Name" value="g"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#ab2b6f584520118c3ef1b640cde2248c1"><param name="Name" value="gdiplusStartupInput"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a0819643ceb158cbf389a3e399351810f"><param name="Name" value="gdiplusToken"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a863a3e860dac88ae792981a3fe1b994e"><param name="Name" value="getCX() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a53c9f1448cbd03a0dac41f678605e4ad"><param name="Name" value="getCY() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#abfaa4183c4109e40362fb39bfb9b7709"><param name="Name" value="getColor()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a8a9991ef3b44daf45cb618dc49c79d02"><param name="Name" value="getColorOffset() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a89e4bbaeeb0be286a3daaa8478877119"><param name="Name" value="getFX() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a812325cfff2934dd508a33328fda2d56"><param name="Name" value="getFY() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html#ac2c3553e1bee0306d9cc63a818eddb4a"><param name="Name" value="getFigure(const string &amp;figure)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a8d0383418992dd1f45c201bd610a2802"><param name="Name" value="getFigures() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_gradient_8cpp.html#a0d101696b1b37b49b44616d14b2a48d4"><param name="Name" value="getGradient(const string &amp;color)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_gradient_8cpp.html#a0d101696b1b37b49b44616d14b2a48d4"><param name="Name" value="Gradient.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_gradient_8h.html#a0d101696b1b37b49b44616d14b2a48d4"><param name="Name" value="getGradient(const string &amp;color)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_gradient_8h.html#a0d101696b1b37b49b44616d14b2a48d4"><param name="Name" value="Gradient.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a1e55af16239f509607b3ebfb3b2f9e5d"><param name="Name" value="getID() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure_factory.html#a06b857146d6b263a8cb512b489b12c78"><param name="Name" value="getInstance()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#ae086132ddbfa348a30fc8147fbba7751"><param name="Name" value="getIsPercent() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#a123bca1dfbfaf7b9e72bc4324ada34ae"><param name="Name" value="getOffset()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#aa7e4651025849a678871d1c36f2f4f89"><param name="Name" value="getP1() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a06e5df90f3f5f2bdaab5a2ee0c1e985f"><param name="Name" value="getP2() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a6397acf0bae5979395edfbde96a9d5a7"><param name="Name" value="getParent()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#aca874295c3ebeecb17f9565361f77c0d"><param name="Name" value="getR() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8d326868faae8bf0a42933234edaa9a1"><param name="Name" value="getRoot() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#aa71d6450247ca3c952928d12276bbcfa"><param name="Name" value="getTransform() const"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a080c1530eb46073e9880b01d14c341fd"><param name="Name" value="height"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a080c1530eb46073e9880b01d14c341fd"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a51f1acb4b632dd094d12da26545a57e3"><param name="Name" value="height"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a51f1acb4b632dd094d12da26545a57e3"><param name="Name" value="ViewBox"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a23a9bb56557cf022e79e0b3bc50bf5af"><param name="Name" value="id"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#aa2a7c8977a7886192b346466671fa8fc"><param name="Name" value="isGradient(word)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a84119facaffe6385e499b5fca15f0a3a"><param name="Name" value="isPercent"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97"><param name="Name" value="main(int argc, char *argv[])"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#ae646877c202c5c1dbc1841003ef7ab1c"><param name="Name" value="min_x"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a6d03b2bb9613a8d56bd0d0d281656242"><param name="Name" value="min_y"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a40e27a95878bc0a443bac4815628f3e2"><param name="Name" value="offsetX"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a577cbd3610eed001754028f74db1dd02"><param name="Name" value="offsetY"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a06d38e7b6f9176db6a54879d710500c4"><param name="Name" value="opacity"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a9d03618e38d393f76d3e426a9dd53195"><param name="Name" value="operator=(const RGB_Color &amp;color)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a2ae082894080ee1d0757c40c2b4a7daf"><param name="Name" value="p1"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#abebd4172ec43b06b1b04bb59904fc2a4"><param name="Name" value="p2"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a14fb440e30678b2f29a18cfce25ecb83"><param name="Name" value="parse(const string &amp;nameFile)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a9750c6fa54afacf20954fe18f8c6a5e6"><param name="Name" value="parseElementAttributes(string &amp;line)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#ac2984bc8c240d07febef4ee43e39ee7c"><param name="Name" value="path"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#afbf6fdb9cb818fbf75d6297a1dfe1124"><param name="Name" value="pen"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#a845c503238b8eb7d6d45facad082e4ae"><param name="Name" value="points"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#a845c503238b8eb7d6d45facad082e4ae"><param name="Name" value="Polygon"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#a723e53d19040dedddb05ff90bc2ce10a"><param name="Name" value="points"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#a723e53d19040dedddb05ff90bc2ce10a"><param name="Name" value="Polyline"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a7bdbdaf7361494f294d9a18626d7500f"><param name="Name" value="r"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a7bdbdaf7361494f294d9a18626d7500f"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a475e266e018ddd055774b5bbbea1b6c4"><param name="Name" value="r"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a475e266e018ddd055774b5bbbea1b6c4"><param name="Name" value="RGB_Color"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ad7d3a77a0f727ad18e522c2c70f9ac76"><param name="Name" value="r"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#ad7d3a77a0f727ad18e522c2c70f9ac76"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#ad155f583992164c23a2d54d1981ccac7"><param name="Name" value="renewImage()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a7768d5ba63e702c4e6a5a70e4b79512a"><param name="Name" value="rotationAngle"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a722e7168215a2bf58e17738c445b26ba"><param name="Name" value="rx"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a722e7168215a2bf58e17738c445b26ba"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#aa3e5b776fd94103d9364adbbb1c52052"><param name="Name" value="rx"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#aa3e5b776fd94103d9364adbbb1c52052"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a03ecbdeec53ca6e27ab0b62ad7b28823"><param name="Name" value="ry"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a03ecbdeec53ca6e27ab0b62ad7b28823"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#adbbf8bbfc2979d4ffcff12c257b3dc9c"><param name="Name" value="ry"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#adbbf8bbfc2979d4ffcff12c257b3dc9c"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a8bdfc1d9172da3d3810cccb3abb431f1"><param name="Name" value="setCX(string &amp;cx)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a8bdfc1d9172da3d3810cccb3abb431f1"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a48c323d4dacadeeb3d35477b301c5167"><param name="Name" value="setCX(string &amp;cx)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a48c323d4dacadeeb3d35477b301c5167"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a62a714f3cbea61ecdf64016522c527ad"><param name="Name" value="setCX(string &amp;cx)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a62a714f3cbea61ecdf64016522c527ad"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#ae298c0f696a30dc1f5190beee5724349"><param name="Name" value="setCY(string &amp;cy)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#ae298c0f696a30dc1f5190beee5724349"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a152993e46b19cba1d9e522ea65b4f7a2"><param name="Name" value="setCY(string &amp;cy)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a152993e46b19cba1d9e522ea65b4f7a2"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a30946d95809b9629651ece896b2b31cc"><param name="Name" value="setCY(string &amp;cy)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a30946d95809b9629651ece896b2b31cc"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a3a6824e9d828e22ca816ab4a0acc5ba4"><param name="Name" value="setChildAttributes(Figure *figure)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#a89a6dff87f4f6f8a6aa5059a56cf168b"><param name="Name" value="setColor(string &amp;color)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab790c00b54e1de5c347ea3f38e0f800a"><param name="Name" value="setData(string &amp;data)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a76f5af72207996502bfe74ad480bdf16"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a76f5af72207996502bfe74ad480bdf16"><param name="Name" value="Drawable_Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a98d1fe7e0dd9a2f37aa02917aabfbea6"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a98d1fe7e0dd9a2f37aa02917aabfbea6"><param name="Name" value="Drawable_Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#ad455fab978afb865bfdb87d5da93b689"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#ad455fab978afb865bfdb87d5da93b689"><param name="Name" value="Drawable_Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#a6a96852b87eb85df4dc8b69270658a95"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#a6a96852b87eb85df4dc8b69270658a95"><param name="Name" value="Drawable_Path"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#a0c4cfaec9657e25502cd79d15d32f503"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#a0c4cfaec9657e25502cd79d15d32f503"><param name="Name" value="Drawable_Polygon"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a8dfc3f6c1ff9a8bb8fe66b14a083794f"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#a8dfc3f6c1ff9a8bb8fe66b14a083794f"><param name="Name" value="Drawable_Polyline"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#a405d676eb5e984691bfca48218bbe1f2"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#a405d676eb5e984691bfca48218bbe1f2"><param name="Name" value="Drawable_Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a1ad4befbce75f614b6040ac9c2fc49ec"><param name="Name" value="setDrawableAtrributes() override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#a1ad4befbce75f614b6040ac9c2fc49ec"><param name="Name" value="Drawable_Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#aa57ac045fc5de72cee5e2386f1d8fde7"><param name="Name" value="setDrawableAtrributes()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a87e2a9c882e3a72e66db67d3ed4cb653"><param name="Name" value="setDx(string &amp;dx)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#abc15985a2451f8326ff8939295486303"><param name="Name" value="setDy(string &amp;dy)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#ad34363e50606878b793d047b315a3a3a"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override final"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a10f2e40dc8f1d7037077235dc67ab4fb"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a10f2e40dc8f1d7037077235dc67ab4fb"><param name="Name" value="Color"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a1ce3f88bc5cc49510c6671ef7ea4ba5b"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#a1ce3f88bc5cc49510c6671ef7ea4ba5b"><param name="Name" value="Gradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a2d50de3e5c4d4aa1078162481763184c"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a2d50de3e5c4d4aa1078162481763184c"><param name="Name" value="LinearGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a79609403f0e5a12cd179cc0f1b357fc7"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a79609403f0e5a12cd179cc0f1b357fc7"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a744114e67e7e2260096171265238da15"><param name="Name" value="setElementAttributes(const string &amp;attribute, string &amp;value)=0"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a1a67cb76e2ca4e00dd3ebbc64a244373"><param name="Name" value="setFR(string &amp;fr)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#af6bf916f010a8b5998c7e5d5902c80e3"><param name="Name" value="setFX(string &amp;fx)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a6900aca733eb7b06c614008f658be9ca"><param name="Name" value="setFY(string &amp;fy)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#aea63bc9d1e876e9b040738d245ca5eaf"><param name="Name" value="setFigureAttributes(const std::string &amp;attribute, std::string &amp;value) override"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a2c88b4e3050936045d9fdef671238c31"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a2c88b4e3050936045d9fdef671238c31"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a74bcc586aa5b68ffdd01b8aa9ececea5"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a74bcc586aa5b68ffdd01b8aa9ececea5"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a30da98a60aa1f1f2b24ebb73982ebaf6"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a30da98a60aa1f1f2b24ebb73982ebaf6"><param name="Name" value="Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a4a92fd7185f5c942cbff0bca556e0813"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a4a92fd7185f5c942cbff0bca556e0813"><param name="Name" value="Path"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#a567c5f2830824d64afa5e1809a333e66"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#a567c5f2830824d64afa5e1809a333e66"><param name="Name" value="Polygon"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#ada7008b191f791645d186079f303902d"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#ada7008b191f791645d186079f303902d"><param name="Name" value="Polyline"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a6d4e2d75de815e0d911b3b3c4288e249"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a6d4e2d75de815e0d911b3b3c4288e249"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a8c2c7fdc1a9fbbc9eedfecaa126dfd25"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value) override"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a8c2c7fdc1a9fbbc9eedfecaa126dfd25"><param name="Name" value="Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#af0d5150d7a95dca0183836a6191333df"><param name="Name" value="setFigureAttributes(const string &amp;attribute, string &amp;value)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#abab1592e36e7bc2aa511d5a90ba7487a"><param name="Name" value="setFill(string &amp;fill)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a68346297f8c8ede75b48abb1a6617fcb"><param name="Name" value="setFillOpacity(string &amp;fill_opacity)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#abde5fd53d7b46c34d4efa67faf07bf8d"><param name="Name" value="setFontFamily(string &amp;font_family)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a4a759050f5160cbdb8b018070576fcac"><param name="Name" value="setFontSize(string &amp;font_size)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#aabd127999e9a889993f7f8c33223beff"><param name="Name" value="setFontStyle(string &amp;font_style)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a4bf95ca469d0beee49cf57f1f237986a"><param name="Name" value="setGroupAttributes(Figure *group)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a011239e7558d684e6f34ba15166381ac"><param name="Name" value="setHeight(string &amp;height)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a011239e7558d684e6f34ba15166381ac"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#ab73df5e72dde27f8877e347adef550d8"><param name="Name" value="setHeight(string &amp;height)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#ab73df5e72dde27f8877e347adef550d8"><param name="Name" value="SVG_Image"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_gradient.html#af0c7dc8bc447816fc94b5bca73d23d28"><param name="Name" value="setHref(string &amp;href)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a5f0fa6983d8881824625c8f861a0ceae"><param name="Name" value="setID(const string &amp;id)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#abfe9aadee24b260634023d0cb8944f66"><param name="Name" value="setImageAttributes(string &amp;line)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#acea91af00ec6be3faf356d6c3cf9e6bd"><param name="Name" value="setMatrix(string &amp;matrix)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aeeb1c438da6d9c8eadeb12e740f425d4"><param name="Name" value="setOffset(string &amp;offset)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a8e83cbea62f1510f9f4ce48dfc36d307"><param name="Name" value="setOpacity(const float &amp;opacity)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a6ba5460fedaea355ba631651a2e9028c"><param name="Name" value="setOpacity(string &amp;opacity)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a6ba5460fedaea355ba631651a2e9028c"><param name="Name" value="Color"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aebdcf0e0180b60ef7c9fb6605005f8d7"><param name="Name" value="setOpacity(string &amp;opacity)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_stop.html#aebdcf0e0180b60ef7c9fb6605005f8d7"><param name="Name" value="Stop"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#a57dacda1f5e951aae89fda54af023f6c"><param name="Name" value="setParent(Group *parent)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#aa2254c8562fa9e9df50aa38c5591b03e"><param name="Name" value="setParentAttributes()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a80f441ae9a23df0db578615dff3cb2d5"><param name="Name" value="setPath(string &amp;line)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ac88621b22273259f54a2221ff26eb4ce"><param name="Name" value="setPoint(string &amp;line)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ac88621b22273259f54a2221ff26eb4ce"><param name="Name" value="Polygon"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#afe2d353ed88d8e57934ad6bc610776eb"><param name="Name" value="setPoint(string &amp;line)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#afe2d353ed88d8e57934ad6bc610776eb"><param name="Name" value="Polyline"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a38aaed49082151038598e7b1c417b904"><param name="Name" value="setR(string &amp;r)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#a38aaed49082151038598e7b1c417b904"><param name="Name" value="Circle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a4979a1855ad858bf9415805765ab6324"><param name="Name" value="setR(string &amp;r)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_radial_gradient.html#a4979a1855ad858bf9415805765ab6324"><param name="Name" value="RadialGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#a202686fc16a47d4eccaf1752f325fbe0"><param name="Name" value="setRGB(const float &amp;r, const float &amp;g, const float &amp;b, const float &amp;a=255)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a09bee511003e0882218937aa80e27704"><param name="Name" value="setRGB(string &amp;color)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_color.html#a09bee511003e0882218937aa80e27704"><param name="Name" value="Color"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aa8af7aa94ae784b9e1440c3002339fcb"><param name="Name" value="setRGB(string &amp;color)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_r_g_b___color.html#aa8af7aa94ae784b9e1440c3002339fcb"><param name="Name" value="RGB_Color"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#add1b61a8028d93afd7aab8419174cf36"><param name="Name" value="setRX(string &amp;rx)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#add1b61a8028d93afd7aab8419174cf36"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a1b9d6be6ea6a3381cc0534fc18b7d0dd"><param name="Name" value="setRX(string &amp;rx)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a1b9d6be6ea6a3381cc0534fc18b7d0dd"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a30abbaa9b0c2f6bdf8d9c20a982c2eba"><param name="Name" value="setRY(string &amp;ry)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a30abbaa9b0c2f6bdf8d9c20a982c2eba"><param name="Name" value="Ellipse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a6cb1405cb331ed9b07e462ddc625242f"><param name="Name" value="setRY(string &amp;ry)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a6cb1405cb331ed9b07e462ddc625242f"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#ab3418da00ec2a0f77bb550217755d293"><param name="Name" value="setRotate(string &amp;rotate)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a218d553f33aeb02c2904668f184ade6c"><param name="Name" value="setScale(string &amp;scale)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a48e4f4a1d3faca4cb1dd4c038231a568"><param name="Name" value="setStroke(string &amp;stroke)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#accce3755ee8310fd98eb049970c5cc24"><param name="Name" value="setStrokeOpacity(string &amp;stroke_opacity)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#ac911d9e58e6bff67c200faf6ff7551ae"><param name="Name" value="setStrokeWidth(string &amp;stroke_width)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a4cd5adb912bf4a3d3b6fe50b38ae2a58"><param name="Name" value="setStyle(string &amp;style)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#a4cd5adb912bf4a3d3b6fe50b38ae2a58"><param name="Name" value="SVG_Element"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8918de24c750df7d283d0975aa19b9d8"><param name="Name" value="setStyle(string &amp;style)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8918de24c750df7d283d0975aa19b9d8"><param name="Name" value="SVG_Image"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a54fa32a07248bd41f3f7c4b491d7131c"><param name="Name" value="setTextAnchor(string &amp;text_anchor)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#ab137be2967869fc4a6788867bebd039f"><param name="Name" value="setTransform(string &amp;transform)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#a21542aad47efd234d4ef11164dcb1254"><param name="Name" value="setTranslate(string &amp;translate)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#a1a682da188fdd89e40c0c21533d374e4"><param name="Name" value="setViewBox(string &amp;viewBox)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a3c87aee5fae9a5a4e8ba96656b047f38"><param name="Name" value="setWidth(string &amp;width)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a3c87aee5fae9a5a4e8ba96656b047f38"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8f80f3afd6c2dfff7c6f9d985a215e90"><param name="Name" value="setWidth(string &amp;width)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a8f80f3afd6c2dfff7c6f9d985a215e90"><param name="Name" value="SVG_Image"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a3d01497ab863686dc24f9f8b041ae805"><param name="Name" value="setX(string &amp;x)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a3d01497ab863686dc24f9f8b041ae805"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a239ef624e839caf000215cfdb03e46f1"><param name="Name" value="setX(string &amp;x)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a239ef624e839caf000215cfdb03e46f1"><param name="Name" value="Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a88e237c48829ea7711984de035e12c56"><param name="Name" value="setX1(string &amp;x1)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a88e237c48829ea7711984de035e12c56"><param name="Name" value="Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a359d28c1361f004d60b3e51840553b6f"><param name="Name" value="setX1(string &amp;x1)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a359d28c1361f004d60b3e51840553b6f"><param name="Name" value="LinearGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a937d230689136d2478538e7c7085eee4"><param name="Name" value="setX2(string &amp;x2)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a937d230689136d2478538e7c7085eee4"><param name="Name" value="Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a9b3466d28adf93208928c1215d6cb132"><param name="Name" value="setX2(string &amp;x2)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a9b3466d28adf93208928c1215d6cb132"><param name="Name" value="LinearGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a8235fb87cd3ccd7cf5b7fa22e6e063c6"><param name="Name" value="setY(string &amp;y)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a8235fb87cd3ccd7cf5b7fa22e6e063c6"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a765a3a8cd0a02f4102b3316c2dd0b2bf"><param name="Name" value="setY(string &amp;y)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a765a3a8cd0a02f4102b3316c2dd0b2bf"><param name="Name" value="Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a95c9608385b3493f7da779defdfd551c"><param name="Name" value="setY1(string &amp;y1)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a95c9608385b3493f7da779defdfd551c"><param name="Name" value="Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#afff44d127a46b1ce56461718d43736a6"><param name="Name" value="setY1(string &amp;y1)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#afff44d127a46b1ce56461718d43736a6"><param name="Name" value="LinearGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a22c697fc7760ffb6c71ce1d27c73cd3d"><param name="Name" value="setY2(string &amp;y2)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a22c697fc7760ffb6c71ce1d27c73cd3d"><param name="Name" value="Line"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a8ad22bf4b1fcc6ddde358be442895908"><param name="Name" value="setY2(string &amp;y2)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_linear_gradient.html#a8ad22bf4b1fcc6ddde358be442895908"><param name="Name" value="LinearGradient"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a64476ebac347ed69872df44d9a2ae0f2"><param name="Name" value="solidBrush"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#a2241f5fa6d817674435ed5ce79379da4"><param name="Name" value="stroke"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#aed7c25c80db9310a0ce8d2ab370f7e4f"><param name="Name" value="stroke_width"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a784507f370c8fcc71f23e05ba78b78d1"><param name="Name" value="svg"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_header_8h.html#a7accb9450be1d41848d52c39667545ed"><param name="Name" value="tag(figure)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#af29b53ea6e14e53366eddbabcc6aa659"><param name="Name" value="text_anchor"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#ad9f7eb682cc1ae8002b3315030baa258"><param name="Name" value="transforms"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#adbe8ae69919acc459e7ab155a69bc8ff"><param name="Name" value="width"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#adbe8ae69919acc459e7ab155a69bc8ff"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#aefb5fc61151ede749dba2c476d6cecf6"><param name="Name" value="width"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_view_box.html#aefb5fc61151ede749dba2c476d6cecf6"><param name="Name" value="ViewBox"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a05dfe2dfbde813ad234b514f30e662f1"><param name="Name" value="x"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a05dfe2dfbde813ad234b514f30e662f1"><param name="Name" value="Point"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a40917b61b33bf046d189be401c13cc7f"><param name="Name" value="x"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a40917b61b33bf046d189be401c13cc7f"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a6103b11e00565b1972638a4d6924a981"><param name="Name" value="x"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a6103b11e00565b1972638a4d6924a981"><param name="Name" value="Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a6101960c8d2d4e8ea1d32c9234bbeb8d"><param name="Name" value="y"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#a6101960c8d2d4e8ea1d32c9234bbeb8d"><param name="Name" value="Point"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a86f71f891bada4e5e920a4a9b7c505a3"><param name="Name" value="y"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#a86f71f891bada4e5e920a4a9b7c505a3"><param name="Name" value="Rectangle"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab7b5229279ef8b23b5beaf9b5752206c"><param name="Name" value="y"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#ab7b5229279ef8b23b5beaf9b5752206c"><param name="Name" value="Text"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_main_8cpp.html#a4c0115542d198c9c7539a3c4eb45f3d7"><param name="Name" value="zoomFactor"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_circle.html#af7a52228c8211080cf2100b55c8a7a64"><param name="Name" value="~Circle() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable.html#a5db44942658aab760a7418e338582e0a"><param name="Name" value="~Drawable()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___circle.html#a1f68eea6fc75aef2528dd3bcb34b8502"><param name="Name" value="~Drawable_Circle() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___ellipse.html#a7c8639274c6c99e971a444f333b3b77b"><param name="Name" value="~Drawable_Ellipse() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___line.html#a6cf7bbcc9dc2356988bb622fe287f85d"><param name="Name" value="~Drawable_Line() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___path.html#afda38a6a157ed5b7b5f8af07db15d25e"><param name="Name" value="~Drawable_Path() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polygon.html#abedfe34dcc97b19f2424e79a47a900ac"><param name="Name" value="~Drawable_Polygon() override"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___polyline.html#abc662f3582b328aa35f91f07d07f745c"><param name="Name" value="~Drawable_Polyline() override"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___rectangle.html#aade659218ee94a87b4d6344eb2ec8e68"><param name="Name" value="~Drawable_Rectangle() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_drawable___text.html#ad8c3685065a9214e710191ec1a4fffa7"><param name="Name" value="~Drawable_Text() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_ellipse.html#a30c4b8c38a02f969f53df78b3877beaa"><param name="Name" value="~Ellipse() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_figure.html#af155c20558330034441de6a19d94f4a7"><param name="Name" value="~Figure()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_group.html#ad4276be657c9f9305ddb5e435275a198"><param name="Name" value="~Group() override"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_line.html#a1eb11f35f4f98a9c50c853928f9fd6de"><param name="Name" value="~Line() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_path.html#a8acdf031a4aed5aac2a581e3510c2151"><param name="Name" value="~Path() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_point.html#aa1fcbfbf1e997b4f6bd064afeda495f7"><param name="Name" value="~Point()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polygon.html#ad289583dba86760f78296670c95b1eb7"><param name="Name" value="~Polygon() override"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_polyline.html#af77a79ed0a14a8334cfd92cd17063fec"><param name="Name" value="~Polyline() override"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_rectangle.html#ab9f43716b07131b960f922e118b43f5c"><param name="Name" value="~Rectangle() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___element.html#ac636f7f932f679c2fb23ed1f7b9b9fe0"><param name="Name" value="~SVG_Element()=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_v_g___image.html#a5980e1cb07cb8d20389acc6263b6ac87"><param name="Name" value="~SVG_Image()"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_text.html#a342401fbc97a2b4c902c076e86ba43bd"><param name="Name" value="~Text() override=default"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_transform.html#aa72e286c069850db80927b0e6554cd3e"><param name="Name" value="~Transform()"></OBJECT>
+</UL>
+</BODY>
+</HTML>

@@ -1,35 +1,69 @@
-﻿//#define WIN32_LEAN_AND_MEAN   
-#include <winsock2.h>
+﻿#include <winsock2.h>
 #include <objidl.h>
 #include <windows.h>
 #include <gdiplus.h>
 #pragma comment (lib,"Gdiplus.lib")
 
-#include "src/SVGImage.h"
+#include "src/SVG_Image.h"
 
 float offsetX = 0.0f;
 float offsetY = 0.0f;
 float rotationAngle = 0.0f;
 float zoomFactor = 1.0f;
-std::string filename = "test case/sample.svg";
+
+// Apple_logo_black.svg
+// Firefox_logo,_2019.svg
+// chrome-logo.svg
+// Instagram_logo_2016.svg
+// TikTok_logo.svg
+
+// Init GDI+ startup
+Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+ULONG_PTR gdiplusToken;
+
+// Init global SVG_Image and filename
+std::string filename = "test case/svg-06.svg";
+std::unique_ptr<SVG_Image> svg = std::make_unique<SVG_Image>();
 
 VOID OnPaint(HDC& hdc)
 {
-    Gdiplus::Graphics graphics(hdc);
-    graphics.ScaleTransform(zoomFactor, zoomFactor);
-    graphics.TranslateTransform(offsetX, offsetY);
-    graphics.RotateTransform(rotationAngle);
+    // Load SVG_Image
+    svg->parse(filename);
 
+    // Get ViewBox and ViewPort
+    ViewBox view = svg->getViewBox();
+    float width = svg->getWidth();
+    float height = svg->getHeight();
+    float scaleX = 1, scaleY = 1, scale = 1;
+    if (width && height && view.width && view.height) {
+        scaleX = width / view.width;
+        scaleY = height / view.height;
+        scale = (scaleX < scaleY) ? scaleX : scaleY;
+    }
+    static bool loop = true;
+    if (loop && view.width != 0 && view.width) {
+        offsetX += abs(width - view.width * scale) / 2;
+        offsetY += abs(height - view.height * scale) / 2;
+        loop = false;
+    }
+
+    // Init GDI+ Graphics
+    Gdiplus::Graphics graphics(hdc);
+
+    // Set GDI+ transform
+    graphics.RotateTransform(rotationAngle);
+    graphics.SetClip(Gdiplus::RectF(offsetX, offsetY, width * zoomFactor, height * zoomFactor));
+    graphics.TranslateTransform(offsetX, offsetY);
+    graphics.ScaleTransform(zoomFactor * scale, zoomFactor * scale);
+
+    // Set GDI+ rendering graphics
     graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
-    graphics.SetTextRenderingHint(Gdiplus::TextRenderingHintAntiAlias);
-    graphics.SetTextContrast(100);
     graphics.SetCompositingMode(Gdiplus::CompositingModeSourceOver);
     graphics.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHighQuality);
     graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQuality);
 
-    // 01 - 02 - 09 bi loi chay chua duoc
-    SVGImage svg(filename);
-    SVG_Render(svg, graphics);
+    // Render SVG_Image
+    SVG_Render(*svg, graphics);
 }
 
 void Translate(HWND& hWnd, float x, float y) {
@@ -44,11 +78,21 @@ void Rotate(HWND& hWnd, float angle) {
 }
 
 void Zoom(HWND& hWnd, float zoom) {
-    zoomFactor *= zoom;  // Tăng tỷ lệ zoom (có thể điều chỉnh)
-    InvalidateRect(hWnd, NULL, TRUE);  // Gọi OnPaint để vẽ lại
+    zoomFactor *= zoom;
+    InvalidateRect(hWnd, NULL, TRUE);
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+    /*int argc;
+    LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+    wstring wide_filename;
+    if (argc > 1)
+    {
+        wide_filename = argv[1];
+        filename = string(wide_filename.begin(), wide_filename.end());
+    }
+    LocalFree(argv);*/
+
     HDC          hdc;
     PAINTSTRUCT  ps;
     switch (message)
@@ -106,8 +150,8 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow) {
     HWND                hWnd;
     MSG                 msg;
     WNDCLASS            wndClass;
-    Gdiplus::GdiplusStartupInput gdiplusStartupInput;
-    ULONG_PTR           gdiplusToken;
+    //Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+    //ULONG_PTR           gdiplusToken;
 
     // Initialize GDI+.
     GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
@@ -140,7 +184,6 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow) {
 
     ShowWindow(hWnd, iCmdShow);
     UpdateWindow(hWnd);
-
     while (GetMessage(&msg, NULL, 0, 0))
     {
         TranslateMessage(&msg);
@@ -152,7 +195,8 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow) {
 }  // WinMain
 
 int main(int argc, char* argv[]) {
-    if (argc > 1) filename = "test case/" + (std::string)argv[1];
+    GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+    if (argc > 1) filename = "test case/" + (string)argv[1];
     INT result = WinMain(GetModuleHandle(NULL), NULL, GetCommandLineA(), SW_SHOWNORMAL);
     return result;
 }
