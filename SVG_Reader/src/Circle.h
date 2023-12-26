@@ -6,8 +6,8 @@
 /**
  * @brief The Circle class represents a circle in a 2D space.
  *
- * This class is derived from the Figure class and includes attributes
- * such as center coordinates (cx, cy) and radius (r).
+ * This class is derived from the Figure class and includes attributes for the center
+ * coordinates (cx, cy) and the radius (r) of the circle.
  */
 class Circle : public Figure {
 protected:
@@ -17,56 +17,37 @@ protected:
 
 public:
     /**
-     * @brief Default constructor for the Circle class.
-     *
-     * Initializes the circle with default values.
+     * @brief Default constructor for Circle.
      */
     Circle();
 
     /**
-     * @brief Copy constructor for the Circle class.
-     *
-     * Creates a copy of the given Circle object.
-     *
-     * @param circle The Circle object to be copied.
+     * @brief Set the x-coordinate of the center.
+     * @param cx The x-coordinate to set.
      */
-    Circle(const Circle& circle);
+    void setCX(string& cx);
 
     /**
-     * @brief Set the X-coordinate of the center.
-     *
-     * @param cx The new value for the X-coordinate.
+     * @brief Set the y-coordinate of the center.
+     * @param cy The y-coordinate to set.
      */
-    void setCX(const std::string& cx);
-
-    /**
-     * @brief Set the Y-coordinate of the center.
-     *
-     * @param cy The new value for the Y-coordinate.
-     */
-    void setCY(const std::string& cy);
+    void setCY(string& cy);
 
     /**
      * @brief Set the radius of the circle.
-     *
-     * @param r The new value for the radius.
+     * @param r The radius to set.
      */
-    void setR(const std::string& r);
+    void setR(string& r);
 
     /**
-     * @brief Set an attribute of the circle based on the attribute name and value.
-     *
-     * This method is overridden from the base class Figure.
-     *
-     * @param attribute The name of the attribute to set.
-     * @param value The new value for the attribute.
+     * @brief Virtual method to set attributes.
+     * @param attribute The attribute to set.
+     * @param value The value to set for the attribute.
      */
-    void setAttributes(const std::string& attribute, const std::string& value) override;
+    void setFigureAttributes(const string& attribute, string& value) override;
 
     /**
-     * @brief Destructor for the Circle class.
-     *
-     * The destructor is set to the default implementation.
+     * @brief Destructor for Circle.
      */
     ~Circle() override = default;
 };

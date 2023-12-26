@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -120,7 +120,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -130,35 +130,49 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\Circle.cpp" />
     <ClCompile Include="src\Color.cpp" />
+    <ClCompile Include="src\Drawable.cpp" />
+    <ClCompile Include="src\Drawable_Figure.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Figure.cpp" />
+    <ClCompile Include="src\Gradient.cpp" />
     <ClCompile Include="src\Group.cpp" />
     <ClCompile Include="src\Line.cpp" />
+    <ClCompile Include="src\LinearGradient.cpp" />
     <ClCompile Include="src\Path.cpp" />
     <ClCompile Include="src\Point.cpp" />
     <ClCompile Include="src\Polygon.cpp" />
     <ClCompile Include="src\Polyline.cpp" />
+    <ClCompile Include="src\RadialGradient.cpp" />
     <ClCompile Include="src\Rectangle.cpp" />
-    <ClCompile Include="src\Render.cpp" />
-    <ClCompile Include="src\SVGImage.cpp" />
+    <ClCompile Include="src\RGB_Color.cpp" />
+    <ClCompile Include="src\SVG_Element.cpp" />
+    <ClCompile Include="src\SVG_Image.cpp" />
     <ClCompile Include="src\Text.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Circle.h" />
     <ClInclude Include="src\Color.h" />
+    <ClInclude Include="src\Drawable.h" />
+    <ClInclude Include="src\Drawable_Figure.h" />
     <ClInclude Include="src\Ellipse.h" />
     <ClInclude Include="src\Figure.h" />
     <ClInclude Include="src\Group.h" />
     <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\Line.h" />
+    <ClInclude Include="src\LinearGradient.h" />
     <ClInclude Include="src\Path.h" />
     <ClInclude Include="src\Point.h" />
     <ClInclude Include="src\Polygon.h" />
     <ClInclude Include="src\Polyline.h" />
+    <ClInclude Include="src\RadialGradient.h" />
     <ClInclude Include="src\Rectangle.h" />
-    <ClInclude Include="src\Render.h" />
-    <ClInclude Include="src\SVGImage.h" />
+    <ClInclude Include="src\RGB_Color.h" />
+    <ClInclude Include="src\SVG_Element.h" />
+    <ClInclude Include="src\SVG_Image.h" />
+    <ClInclude Include="src\Gradient.h" />
     <ClInclude Include="src\Text.h" />
+    <ClInclude Include="src\Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

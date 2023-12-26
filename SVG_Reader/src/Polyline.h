@@ -3,29 +3,39 @@
 
 #include "Figure.h"
 
+/**
+ * @brief The Polyline class represents a polyline in a 2D space.
+ *
+ * This class is derived from the Figure class and includes a vector of points (points)
+ * representing the vertices of the polyline.
+ */
 class Polyline : public Figure {
 protected:
-	// Attribute
-	std::vector <FPoint> fpoint;
+    std::vector<Point> points; /**< Vector of points representing the vertices of the polyline. */
 
-	// Methods
-	FPoint IntersectionPoint(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
-	bool checkIntersection(const FPoint& p1, const FPoint& p2, const FPoint& p3, const FPoint& p4);
-	void updateListPoint(std::vector<FPoint>& FPoint);
-	float getAngle(const FPoint& start, const FPoint& end);
 public:
-	// Constructor
-	Polyline() = default;
-	Polyline(const Polyline& polyline);
+    /**s
+     * @brief Default constructor for Polyline.
+     */
+    Polyline() = default;
 
-	// Set attribute
-	void setPoint(const std::string& line);
+    /**
+     * @brief Set a point for the polyline based on a string representation.
+     * @param line The string representation of the point.
+     */
+    void setPoint(string& line);
 
-	// Virtual method
-	void setAttributes(const std::string& attribute, const std::string& value) override;
-	~Polyline() override = default;
+    /**
+     * @brief Virtual method to set attributes.
+     * @param attribute The attribute to set.
+     * @param value The value to set for the attribute.
+     */
+    void setFigureAttributes(const string& attribute, string& value) override;
+
+    /**
+     * @brief Destructor for Polyline.
+     */
+    ~Polyline() override;
 };
 
 #endif // !POLYLINE_H
-
-

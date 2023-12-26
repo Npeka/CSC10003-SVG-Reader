@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 124 124" fill="none">
-<path d="M 10 10 h 10 10" fill="white" stroke = "red"/>
-<path d="M 10 10 V 30 5" fill="white" stroke = "blue"/> 
-<path d="M 10 20 H 30 5" fill="white" stroke = "black"/>  
-</svg>

@@ -12,18 +12,28 @@
 #include <vector>
 #include <locale>
 #include <codecvt>
+#include <cmath> 
+#include <unordered_map>
+#include <limits>
+#include <tuple>
 //-------------END-OF-DECLARATION------------//
 /*
 
 
 
 */
+// std class
+using std::string;
+using std::vector;
+using std::pair;
+typedef vector<pair<int, vector<float>>> Transform_Type;
+#define isGradient(word) (word == "linearGradient" || word == "radialGradient")
+
 // Transform type <class Figure>
 #define SVG_Translate 1
 #define SVG_Rotate 2
 #define SVG_Scale 3
-// type <class Figure>
-
+#define SVG_Matrix 4
 //-------------END-OF-DECLARATION------------//
 /*
 
@@ -31,6 +41,11 @@
 
 */
 // Define shorter code
+#define dealocate(pointer) \
+	if (pointer != nullptr) { \
+		delete pointer; \
+		pointer = nullptr; \
+	} 
 #define tag(figure) "<" << figure << ">"
 #define check_exception(figure, attribute, code) \
 	try { code; } \
@@ -56,7 +71,5 @@
 
 
 */
-// namespace
-//using namespace std;
 
 #endif // !HEADER_H

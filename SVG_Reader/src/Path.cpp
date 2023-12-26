@@ -1,13 +1,18 @@
 ﻿#include "Path.h"
 
+
 // class Path
 // Set attribute
 void Path::setPath(const std::string& line) {
+
+	std::ofstream ofs("test1.txt", std::ios::app);
+
 	std::string value = line;
 	for (char& c : value) if (c == ',') c = ' ';
 	std::vector<int> pos;
 	std::vector<std::string> subline;
 
+	ofs << "value: " << value << std::endl;
 
 	for (int i = 0; i < value.length(); i++) {
 		if (isalpha(value[i])) pos.push_back(i);
@@ -42,9 +47,9 @@ void Path::setPath(const std::string& line) {
 			while (ss >> x >> y) {
 				std::vector<Point> tmp(3);
 				tmp[0] = { x, y };
-				for (int i = 1; i < 3; i++) {
+				for (int j = 1; j < 3; j++) {
 					ss >> x >> y;
-					tmp[i] = { x, y };
+					tmp[j] = { x, y };
 				}
 				path.push_back({ cmd, tmp });
 			}
@@ -71,12 +76,64 @@ void Path::setPath(const std::string& line) {
 			}
 		}
 
+		else if (cmd == 'S' || cmd == 's') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(2);
+				tmp[0] = { x, y };
+				for (int j = 1; j < 2; j++) {
+					ss >> x >> y;
+					tmp[j] = { x, y };
+				}
+				path.push_back({ cmd, tmp });
+			}
+		}
+
+		else if (cmd == 'Q' || cmd == 'q') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(2);
+				tmp[0] = { x, y };
+				for (int j = 1; j < 2; j++) {
+					ss >> x >> y;
+					tmp[j] = { x, y };
+				}
+				path.push_back({ cmd, tmp });
+			}
+		}
+
+		else if (cmd == 'T' || cmd == 't') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(1);
+				tmp[0] = { x, y };
+				path.push_back({ cmd, tmp });
+			}
+		}
+		
+		// save into 4 points: first point save rx, ry; second point save x-axis rotation; third point save 
+		// largerc flag and sweep flag; last point save end point
+		else if (cmd == 'A' || cmd == 'a') {
+			while (ss >> x >> y) {
+				std::vector<Point> tmp(4);
+				tmp[0] = { x, y };
+				ss >> x; 
+				tmp[1] = { x, 0 };
+
+				for (int j = 2; j < 4; j++) {
+					ss >> x >> y;
+					tmp[j] = { x, y };
+				}
+
+				path.push_back({ cmd, tmp });
+			}
+		}
+
 		// Add M point into tmp for later processing 
 		else if (cmd == 'Z' || cmd == 'z') {
 			std::vector<Point> tmp;
 			path.push_back({ cmd, tmp });
 		}
 	}
+
+
 
 	//Add initial point and update l, v, h, V, H, c for each path element 
 	Point initialSubpath;
@@ -100,14 +157,14 @@ void Path::setPath(const std::string& line) {
 					path[i].second[j].y += path[i].second[j - 1].y;
 				}
 			}
-			initialSubpath = path[i].second.back();
+			initialSubpath = path[i].second[0];
 		}
 
 		if (cmd == 'C' || cmd == 'L') {
 			path[i].second.insert(path[i].second.begin(), end); // đưa point cuối của vector trước vào đầu vector sau
 		}
 
-		else if (cmd == 'h' || cmd == 'v' || cmd == 'c' || cmd == 'l' || cmd == 'H' || cmd == 'V') {
+		else if (cmd == 'h' || cmd == 'v' || cmd == 'c' || cmd == 'l') {
 			path[i].second.insert(path[i].second.begin(), end);
 			for (int j = 1; j < path[i].second.size(); j++) {
 				path[i].second[j].x += end.x;
@@ -115,16 +172,72 @@ void Path::setPath(const std::string& line) {
 			}
 		}
 
-		// vector<Point> in z path just contain the initialPoint of all path
-		else if (cmd == 'Z' || cmd == 'z') {
-			path[i].second.push_back(initialSubpath);
-			path[i].second.push_back(end);
+		else if (cmd == 's' || cmd == 'S') {
+			Point prevEnd; 
+			char prevCmd = path[i - 1].first;
+
+			if (prevCmd == 'C' || prevCmd == 'c' || prevCmd == 'S' || prevCmd == 's')
+				prevEnd = path[i - 1].second[path[i - 1].second.size() - 2];
+			else prevEnd = end; 
+			
+			if (cmd == 's') {
+				path[i].second[0].x += end.x;
+				path[i].second[0].y += end.y;
+				path[i].second[1].x += end.x;
+				path[i].second[1].y += end.y;
+			}
+
+			Point controlPoint = { 2 * end.x - prevEnd.x, 2 * end.y - prevEnd.y };
+			path[i].second.insert(path[i].second.begin(), controlPoint);
+			path[i].second.insert(path[i].second.begin(), end);
+		}
+		
+		else if (cmd == 'Q' || cmd == 'q') {
+			path[i].second.insert(path[i].second.begin(), end);
 		}
 
-		//cout << cmd << endl;
-		//for (int j = 0; j < path[i].second.size(); j++) {
-		//	cout << path[i].second[j].x << " " << path[i].second[j].y << endl;
-		//}
+		else if (cmd == 'T' || cmd == 't') {
+			char prevCmd = path[i - 1].first; 
+			Point prevEnd; 
+
+			if (prevCmd == 'Q' || prevCmd == 'q' || prevCmd == 'T' || prevCmd == 't')
+				prevEnd = path[i - 1].second[path[i - 1].second.size() - 2];
+			else prevEnd = end; 
+
+			if (cmd == 't') {
+				path[i].second[0].x += end.x;
+				path[i].second[0].y += end.y;
+			}
+
+			Point controlPoint = { 2 * end.x - prevEnd.x, 2 * end.y - prevEnd.y };
+			path[i].second.insert(path[i].second.begin(), controlPoint);
+			path[i].second.insert(path[i].second.begin(), end);
+		}
+
+		else if (cmd == 'H' || cmd == 'V') {
+			path[i].second.insert(path[i].second.begin(), end);
+			if (cmd == 'H') path[i].second[1].y = end.y;
+			if (cmd == 'V') path[i].second[1].x = end.x;
+		}
+
+		else if (cmd == 'A' || cmd == 'a') {
+			if (cmd == 'a') {
+				path[i].second[3].x += end.x; 
+				path[i].second[3].y += end.y;
+			}
+			path[i].second.insert(path[i].second.begin(), end);
+		}
+
+		// vector<Point> in z path just contain the initialPoint of all path
+		else if (cmd == 'Z' || cmd == 'z') {
+			path[i].second.push_back(end);
+			path[i].second.push_back(initialSubpath);
+		}
+		
+		ofs << cmd << std::endl;
+		for (int j = 0; j < path[i].second.size(); j++) {
+			ofs << path[i].second[j].x << " " << path[i].second[j].y << std::endl;
+		}
 	}	
 }
 

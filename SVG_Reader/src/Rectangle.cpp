@@ -1,47 +1,39 @@
 #include "Rectangle.h"
 
 // Constructor
-Rectangle::Rectangle() {
-	x = y = rx = ry = 0; 
-	width = height = 0;
-}
-
-Rectangle::Rectangle(const Rectangle& rectangle) : Figure(rectangle) {
-	x = rectangle.x;
-	y = rectangle.y;
-	rx = rectangle.rx;
-	ry = rectangle.ry;
-	width = rectangle.width;
-	height = rectangle.height;
-}
+Rectangle::Rectangle() :
+	x(0), y(0), 
+	rx(0), ry(0),
+	width(0), height(0)
+{}
 
 // Set attribute
-void Rectangle::setX(const std::string& x) {
+void Rectangle::setX(string& x) {
 	check_exception("rectangle", "x", this->x = stof(x));
 }
 
-void Rectangle::setY(const std::string& y) {
+void Rectangle::setY(string& y) {
 	check_exception("rectangle", "y", this->y = stof(y));
 }
 
-void Rectangle::setRX(const std::string& rx) {
+void Rectangle::setRX(string& rx) {
 	check_exception("rectangle", "rx", this->rx = stof(rx));
 }
 
-void Rectangle::setRY(const std::string& ry) {
+void Rectangle::setRY(string& ry) {
 	check_exception("rectangle", "ry", this->ry = stof(ry));
 }
 
-void Rectangle::setWidth(const std::string& width) {
+void Rectangle::setWidth(string& width) {
 	check_exception("rectangle", "width", this->width = stof(width));
 }
 
-void Rectangle::setHeight(const std::string& height) {
+void Rectangle::setHeight(string& height) {
 	check_exception("rectangle", "height", this->height = stof(height));
 }
 
 // Virtual method
-void Rectangle::setAttributes(const std::string& attribute, const std::string& value) {
+void Rectangle::setFigureAttributes(const string& attribute, string& value) {
 	if (attribute == "x") setX(value);
 	else if (attribute == "y") setY(value);
 	else if (attribute == "rx") setRX(value);
