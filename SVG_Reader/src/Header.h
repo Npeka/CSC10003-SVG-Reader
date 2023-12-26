@@ -14,6 +14,8 @@
 #include <codecvt>
 #include <cmath>
 #include <unordered_map>
+#include <limits>
+#include <tuple>
 //-------------END-OF-DECLARATION------------//
 /*
 
