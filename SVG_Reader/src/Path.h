@@ -12,7 +12,7 @@
  */
 class Path : public Figure {
 protected:
-    vector<pair<char, vector<Point>>> path; /**< Vector of pairs representing the path. */
+    vector<pair<char, vector<float>>> path; /**< Vector of pairs representing the path. */
 
 public:
     /**

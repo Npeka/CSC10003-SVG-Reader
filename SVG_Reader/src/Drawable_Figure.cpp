@@ -453,9 +453,7 @@ Point Drawable_Path::EllipticArcDerivative(Point c, Point r, float xAngle, float
 float Drawable_Path::computeBinominal(int n, int k) {
 	float value = 1.0;
 
-	for (int i = 1; i <= k; i++)
-	{
-
+	for (float i = 1; i <= k; i++) {
 		value = value * ((n + 1 - i) / i);
 	}
 
@@ -466,7 +464,7 @@ float Drawable_Path::computeBinominal(int n, int k) {
 	return value;
 }
 
-vector<Point> Drawable_Path::BezierCurveVertices(std::vector<Point> Position, float smooth) {
+vector<Point> Drawable_Path::BezierCurveVertices(vector<Point> Position, float smooth) {
 	vector<Point> CurvePositions;
 
 	int n = Position.size() - 1;
@@ -524,54 +522,55 @@ vector<BezierCurve> Drawable_Path::arcToBezier(float cx, float cy, float rx, flo
 }
 
 void Drawable_Path::setDrawableAtrributes() {
-	countSubpath = 0;
-	for (auto x : path) {
-		if (x.first == 'z' || x.first == 'Z') countSubpath++;
-	}
-	if (countSubpath == 0) countSubpath = 1;
-
-	Gdiplus::GraphicsPath* subpath = new Gdiplus::GraphicsPath[countSubpath + path.size()];
-
-	int idx = 0;
-
 	for (int i = 0; i < path.size(); i++) {
-		pair<char, vector<Point>> x = path[i];
-		char cmd = x.first;
-
-		if (cmd == 'c' || cmd == 'C' || cmd == 's' || cmd == 'S') {
-			subpath[idx].AddBezier(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y, x.second[2].x, x.second[2].y, x.second[3].x, x.second[3].y); // add 4 points
-		}
-
-		else if (cmd == 'L' || cmd == 'l' || cmd == 'h' || cmd == 'v' || cmd == 'H' || cmd == 'V') {
-			subpath[idx].AddLine(x.second[0].x, x.second[0].y, x.second[1].x, x.second[1].y);
+		char cmd = path[i].first;
+		vector<float> point = path[i].second;
+		
+		if (cmd == 'M' || cmd == 'm') {
+			Gpath.StartFigure();
 		}
 
 		else if (cmd == 'z' || cmd == 'Z') {
-			subpath[idx].AddLine(x.second[1].x, x.second[1].y, x.second[0].x, x.second[0].y);
-			idx++;
+			Gpath.CloseFigure();
 		}
 
-		else if (cmd == 't' || cmd == 'T' || cmd == 'q' || cmd == 'Q') {
-			std::vector<Point> tmp = BezierCurveVertices(x.second, 0.1);
-			int tmpSize = tmp.size();
-			Gdiplus::Point* points = new Gdiplus::Point[tmpSize];
-			for (int j = 0; j < tmpSize; j++) {
-				points[j].X = tmp[j].x;
-				points[j].Y = tmp[j].y;
+		else if (string("CcSs").find(cmd) != string::npos) {
+			Gpath.AddBezier(
+				point[0], point[1], point[2], point[3],
+				point[4], point[5], point[6], point[7]
+			); // add 4 points
+		}
+
+		else if (string("LHVlhv").find(cmd) != string::npos) {
+			Gpath.AddLine(
+				point[0], point[1], point[2], point[3]
+			);
+		}
+
+		else if (string("TQtq").find(cmd) != string::npos) {
+			vector<Point> tmp;
+			for (int i = 0; i < point.size(); i += 2) {
+				tmp.push_back({ point[i], point[i + 1] });
 			}
-			subpath[idx].AddCurve(points, tmpSize);
+			tmp = BezierCurveVertices(tmp, 0.1);
+
+			int tmpSize = tmp.size();
+			Gdiplus::PointF* points = new Gdiplus::PointF[tmpSize];
+			for (int j = 0; j < tmpSize; j++) {
+				points[j] = { tmp[j].x, tmp[j].y };
+				
+			}
+			Gpath.AddCurve(points, tmpSize);
 		}
 
-		else if (cmd == 'a' || cmd == 'A') {
-
-			Point start_point{ x.second[0].x, x.second[0].y };
-			float rx = x.second[1].x;
-			float ry = x.second[1].y;
-			float x_axis_rotation = x.second[2].x;
-			bool large_arc_flag = x.second[3].x;
-			bool sweep_flag = x.second[3].y;
-
-			Point end_point{ x.second[4].x, x.second[4].y };
+		else if (cmd == 'A' || cmd == 'a') {
+			Point start_point{ point[0], point[1] };
+			Point end_point{ point[7], point[8] };
+			float rx = point[2];
+			float ry = point[3];
+			float x_axis_rotation = point[4];
+			bool large_arc_flag = point[5];
+			bool sweep_flag = point[6];
 
 			float angle = x_axis_rotation * static_cast<float>(M_PI) / 180.0;
 			float cosAngle = cos(angle);
@@ -579,8 +578,8 @@ void Drawable_Path::setDrawableAtrributes() {
 
 			Point point1;
 			float constant = cosAngle * cosAngle - (sinAngle * -sinAngle);
-			point1.x = constant * (x.second[0].x - end_point.x) / 2.0;
-			point1.y = constant * (x.second[0].y - end_point.y) / 2.0;
+			point1.x = constant * (point[0] - end_point.x) / 2.0;
+			point1.y = constant * (point[1] - end_point.y) / 2.0;
 
 			float radii_check = (point1.x * point1.x) / (rx * rx) +
 				(point1.y * point1.y) / (ry * ry);
@@ -608,8 +607,8 @@ void Drawable_Path::setDrawableAtrributes() {
 
 			Point center;
 			constant = cosAngle * cosAngle - (sinAngle * -sinAngle);
-			center.x = constant * point2.x + (x.second[0].x + end_point.x) / 2.0;
-			center.y = constant * point2.y + (x.second[0].y + end_point.y) / 2.0;
+			center.x = constant * point2.x + (point[0] + end_point.x) / 2.0;
+			center.y = constant * point2.y + (point[1] + end_point.y) / 2.0;
 
 			float startAngle =
 				atan2((point1.y - point2.y) / ry, (point1.x - point2.x) / rx);
@@ -625,38 +624,26 @@ void Drawable_Path::setDrawableAtrributes() {
 				deltaAngle -= 2.0 * M_PI;
 			}
 
-			subpath[idx].AddArc(
-				center.x - rx, center.y - ry, rx * 2, ry * 2,
+			Gdiplus::GraphicsPath arcPath;
+			arcPath.AddArc(
+				center.x - rx,
+				center.y - ry,
+				rx * 2,
+				ry * 2,
 				fmod((startAngle * 180.0) / M_PI, 360),
 				fmod((deltaAngle * 180.0) / M_PI, 360)
 			);
-			/*
-			std::vector<BezierCurve> curves = arcToBezier(
-				start_point.x, start_point.y,
-				end_point.x, end_point.y,
-				rx, ry,
-				x_axis_rotation,
-				large_arc_flag,
-				sweep_flag
-			);*/
-		}
-
-		else if (cmd == 'M' || cmd == 'm') {
-			for (int j = 0; j < x.second.size() - 1; j++) {
-				subpath[idx].AddLine(x.second[j].x, x.second[j].y, x.second[j + 1].x, x.second[j + 1].y);
-			}
-			if (i != path.size() - 1)
-				if (path[i + 1].first == 'M' || path[i + 1].first == 'm') idx++;
+			Gdiplus::Matrix matrix;
+			if (rx != ry)
+				//matrix.RotateAt(x_axis_rotation, Gdiplus::PointF(point[0], point[1]));
+			arcPath.Transform(&matrix);
+			
+			Gpath.AddPath(&arcPath, true);
+			//Gpath.StartFigure();
 		}
 	}
 
-	for (int i = 0; i < countSubpath; i++) {
-		Gpath.AddPath(&subpath[i], FALSE);
-	}
-
-	if (subpath != nullptr) delete[] subpath;
-
-	Gdiplus::RectF rect; Gpath.GetBounds(&rect);
+	Gdiplus::RectF rect; Gpath.GetBounds(&rect); rect.X = 0, rect.Y = 0;
 	brush = GDI_Brush(fill, rect);
 	pen = GDI_Pen(stroke, stroke_width, rect);
 	if (dynamic_cast<LinearGradient*>(fill) || dynamic_cast<RadialGradient*>(fill)) {

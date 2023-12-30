@@ -20,6 +20,7 @@ float zoomFactor = 1.0f;
 // Init GDI+ startup
 Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 ULONG_PTR gdiplusToken;
+RECT windowRect;
 
 // Init global SVG_Image and filename
 std::string filename = "test case/Firefox_logo,_2019.svg";
@@ -36,8 +37,8 @@ VOID OnPaint(HDC& hdc)
     float height = svg->getHeight();
     float scaleX = 1, scaleY = 1, scale = 1;
     if (width == 0 || height == 0) {
-        width = 800;    //GetSystemMetrics(SM_CXSCREEN);
-		height = 600;   //GetSystemMetrics(SM_CYSCREEN);
+        width = windowRect.right - windowRect.left;
+        height = windowRect.bottom - windowRect.top;
 	}
     if (width && height && view.width && view.height) {
         scaleX = width / view.width;
@@ -57,7 +58,8 @@ VOID OnPaint(HDC& hdc)
     // Set GDI+ transform
     graphics.RotateTransform(rotationAngle);
     graphics.TranslateTransform(offsetX, offsetY);
-    graphics.SetClip(Gdiplus::RectF(0, 0 , width * zoomFactor, height * zoomFactor));
+    if (view.height != 0 || view.width != 0)
+    graphics.SetClip(Gdiplus::RectF(0, 0, width * zoomFactor, height * zoomFactor));
     graphics.ScaleTransform(zoomFactor * scale, zoomFactor * scale);
 
     // Set GDI+ rendering graphics
@@ -96,7 +98,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
         filename = string(wide_filename.begin(), wide_filename.end());
     }
     LocalFree(argv);*/
-
+    GetWindowRect(hWnd, &windowRect);
     HDC          hdc;
     PAINTSTRUCT  ps;
     switch (message)

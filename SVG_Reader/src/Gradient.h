@@ -9,7 +9,7 @@
  * @brief Represents a color stop in a gradient.
  */
 class Stop {
-private:
+public:
     RGB_Color color; /**< RGB color of the stop. */
     float offset; /**< Offset position of the stop. */
 
@@ -89,6 +89,8 @@ public:
      * @param href String representation of the href attribute.
      */
     void setHref(string& href);
+
+    void setGradientUnits(string& gradientUnits);
 
     /**
      * @brief Dummy method to set element attributes (not implemented).

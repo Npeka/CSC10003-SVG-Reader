@@ -70,9 +70,15 @@ void Gradient::setHref(string& href) {
 	}
 }
 
+void Gradient::setGradientUnits(string& gradientUnits) {
+	if (gradientUnits == "userSpaceOnUse") isPercent = false;
+	else if (gradientUnits == "objectBoundingBox") isPercent = true;
+}
+
 void Gradient::setElementAttributes(const string& attribute, string& value) {
 	if (attribute == "xlink:href") setHref(value);
 	else if (attribute == "gradientTransform") setTransform(value);
+	else if (attribute == "gradientUnits") setGradientUnits(value);
 }
 
 vector<Stop> Gradient::getColorOffset() const {
