@@ -656,8 +656,34 @@ void Drawable_Path::setDrawableAtrributes() {
 // Virtual method
 void Drawable_Path::draw(Render_Window) {
 	Transform_First(transforms, graphics);
+	Gdiplus::Region* region = new Gdiplus::Region(&Gpath);
+	if (dynamic_cast<RadialGradient*>(fill)) {
+		float cy = dynamic_cast<RadialGradient*>(fill)->getCY();
+		float cx = dynamic_cast<RadialGradient*>(fill)->getCX();
+		float r = dynamic_cast<RadialGradient*>(fill)->getR();
+		Transform_Type t = dynamic_cast<RadialGradient*>(fill)->getTransform();
+
+		Gdiplus::GraphicsPath path;
+		path.AddEllipse(Gdiplus::RectF(cx - r, cy - r, r * 2, r * 2));
+
+		for (int i = 0; i < t.size(); ++i) {
+			if (t[i].first == SVG_Matrix) {
+				Gdiplus::Matrix matrix(
+					t[i].second[0], t[i].second[1], t[i].second[2],
+					t[i].second[3], t[i].second[4], t[i].second[5]
+				);
+				path.Transform(&matrix);
+				//radial->MultiplyTransform(&matrix);
+			}
+		}
+
+		region->Exclude(&path);
+	}
+
 	if (fill->opacity) {
-		if (solidBrush) graphics.FillPath(solidBrush, &Gpath);
+		if (solidBrush) {
+			graphics.FillRegion(solidBrush, region);
+		}
 		graphics.FillPath(brush, &Gpath);
 	}
 	if (stroke->opacity) graphics.DrawPath(pen, &Gpath);

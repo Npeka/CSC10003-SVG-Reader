@@ -134,26 +134,25 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 		RGB_Color first = ColorOffset[0].getColor();
 		float offset = ColorOffset[0].getOffset();
 		RGB_Color zero;
-		zero.r = first.r * (1 - offset);
-		zero.g = first.g * (1 - offset);
-		zero.b = first.b * (1 - offset);
-		zero.opacity = first.opacity * (1 - offset);
-		zero.balance();
+		zero.g = first.g; // * (1 - offset);
+		zero.b = first.b; // * (1 - offset);
+		zero.r = first.r; // * (1 - offset);
+		zero.opacity = first.opacity; // *(1 - offset);
 		Stop stop;
 		stop.color = zero;
 		stop.offset = 0;
 		ColorOffset.insert(ColorOffset.begin(), stop);
 		size++;
 	}
-
+	
 	if (ColorOffset[size - 1].getOffset() != 1) {
 		RGB_Color last = ColorOffset[size - 1].getColor();
 		float offset = ColorOffset[size - 1].getOffset();
 		RGB_Color one;
-		one.r = last.r * (1 - offset);
-		one.g = last.g * (1 - offset);
-		one.b = last.b * (1 - offset);
-		one.opacity = last.opacity * (1 - offset);
+		one.r = last.r; // * (1 - offset);
+		one.g = last.g; // * (1 - offset);
+		one.b = last.b; // * (1 - offset);
+		one.opacity = last.opacity; // *(1 - offset);
 		one.balance();
 		Stop stop;
 		stop.color = one;
@@ -161,6 +160,7 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 		ColorOffset.push_back(stop);
 		size++;
 	}
+	
 
 	Gdiplus::Color* stopColors = new Gdiplus::Color[size];
 	for (int i = 0; i < size; ++i) {
@@ -199,7 +199,7 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 			//radial->MultiplyTransform(&matrix);
 		}
 	}
-
+	
 	delete[] stopColors;
 	delete[] positions;
 
