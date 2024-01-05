@@ -24,7 +24,12 @@ public:
      * @param other The Stop object to copy.
      */
     Stop(const Stop& other);
-
+    
+/**
+	 * @brief Constructor for Stop.
+	 * @param color RGB color of the stop.
+	 * @param offset Offset position of the stop.
+	 */
     Stop(const RGB_Color& color, const float& offset);
 
     /**

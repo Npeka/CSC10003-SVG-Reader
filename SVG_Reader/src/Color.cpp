@@ -18,25 +18,27 @@ void Color::setOpacity(const float& opacity) {
 	this->opacity = opacity * 255;
 }
 
-void createColor(Color*& color, string name) {
-	auto it = color->findGlobalElement(name);
+void createColor(Color*& color, string name, const Defs_Type* defs) {
+	auto it = findGlobalElement(name, defs);
 	if (it != nullptr) {
 		copyColor(color, dynamic_cast<Color*>(it));
 	}
-	else if (color == nullptr) color = new RGB_Color(name);
-	else color->setRGB(name);
+	else {
+		dealocate(color);
+		color = new RGB_Color(name);
+	}
 }
 
 void copyColor(Color*& color, Color* copy) {
 	dealocate(color);
-	if (dynamic_cast<RGB_Color*>(copy)) {
-		color = new RGB_Color(*dynamic_cast<RGB_Color*>(copy));
+	if (auto it = dynamic_cast<RGB_Color*>(copy)) {
+		color = new RGB_Color(*it);
 	} 
-	else if (dynamic_cast<LinearGradient*>(copy)) {
-		color = new LinearGradient(*dynamic_cast<LinearGradient*>(copy));
+	else if (auto it = dynamic_cast<LinearGradient*>(copy)) {
+		color = new LinearGradient(*it);
 	}
-	else if (dynamic_cast<RadialGradient*>(copy)) {
-		color = new RadialGradient(*dynamic_cast<RadialGradient*>(copy));
+	else if (auto it = dynamic_cast<RadialGradient*>(copy)) {
+		color = new RadialGradient(*it);
 	}
 }
 

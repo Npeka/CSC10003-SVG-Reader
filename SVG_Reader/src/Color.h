@@ -36,12 +36,6 @@ public:
     void setOpacity(string& opacity);
 
     /**
-     * @brief Virtual method to set RGB color (to be overridden by derived classes).
-     * @param color String representation of the RGB color.
-     */
-    virtual void setRGB(string& color) {};
-
-    /**
      * @brief Dummy method to set element attributes (not implemented).
      * @param attribute The attribute to set.
      * @param value The value to set for the attribute.
@@ -54,7 +48,7 @@ public:
  * @param color Pointer to the Color object.
  * @param name Optional name for the color (default is an empty string).
  */
-void createColor(Color*& color, string name = "");
+void createColor(Color*& color, string name, const Defs_Type* defs);
 
 /**
  * @brief Helper function to copy a Color object.

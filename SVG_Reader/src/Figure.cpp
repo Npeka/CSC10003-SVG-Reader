@@ -11,7 +11,7 @@ Figure::Figure() :
 
 // Set attribute
 void Figure::setFill(string& fill) {
-    createColor(this->fill, fill);
+    createColor(this->fill, fill, id_map);
 }
 
 void Figure::setFillOpacity(string& fill_opacity) {
@@ -19,7 +19,7 @@ void Figure::setFillOpacity(string& fill_opacity) {
 }
 
 void Figure::setStroke(string& stroke) {
-	createColor(this->stroke, stroke);
+	createColor(this->stroke, stroke, id_map);
 }
 
 void Figure::setStrokeOpacity(string& stroke_opacity) {

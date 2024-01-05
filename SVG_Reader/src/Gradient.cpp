@@ -74,7 +74,7 @@ void Gradient::addStop(string& line) {
 }
 
 void Gradient::setHref(string& href) {
-	auto gradient = findGlobalElement(href);
+	auto gradient = findGlobalElement(href, id_map);
 	if (gradient != nullptr) {
 		ColorOffset = dynamic_cast<Gradient*>(gradient)->getColorOffset();
 	}
