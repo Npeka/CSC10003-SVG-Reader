@@ -164,53 +164,18 @@ private:
 
 public:
 	/**< Default constructor. */
-	Drawable_Path() = default; 
+	Drawable_Path() = default;
 	/**< Virtual destructor. */
-	~Drawable_Path() override = default; 
+	~Drawable_Path() override = default;
 	/**< Set drawable attributes. */
-	void setDrawableAtrributes() override; 
+	void setDrawableAtrributes() override;
 	/**< Draw the path. */
-	void draw(Render_Window) override; 
+	void draw(Render_Window) override;
 
 private:
 	float computeBinominal(int n, int k);
 	vector<Point> BezierCurveVertices(std::vector<Point> Pos, float smooth);
-	Point EllipticArcPoint(Point c, Point r, float xAngle, float t);
-	Point EllipticArcDerivative(Point c, Point r, float xAngle, float t);
-	Point EllipticArcControlPoint(Point c, Point r, float xAngle, float t);
-	Point EllipticArcControlPoint2(Point c, Point r, float xAngle, float t);
-	Point mapToEllipse(const Point& point, float rx, float ry, float cosphi, float sinphi, float centerx, float centery);
-	vector<Point> approxUnitArc(float ang1, float ang2);
-	float vectorAngle(float ux, float uy, float vx, float vy);
-	std::tuple<float, float, float, float> getArcCenter(
-		float px, float py,
-		float cx, float cy,
-		float rx, float ry,
-		int largeArcFlag, int sweepFlag,
-		float sinphi, float cosphi,
-		float pxp, float pyp
-	);
-	BezierCurve computeBezierCurve(const Point& startPoint, const Point& P1, const Point& P2, const Point& endPoint);
-	vector<BezierCurve> arcToBezier(
-		float px, float py,
-		float cx, float cy,
-		float rx, float ry,
-		float xAxisRotation,
-		int largeArcFlag,
-		int sweepFlag
-	);
-	vector<BezierCurve> arcToBezier(float cx, float cy, float rx, float ry, float startAngle, float endAngle, float xAxisRotation);
-	Point pointOnEllipse(float cx, float cy, float rx, float ry, float angle);
-	Point ellipseCenter(float cx, float cy, float rx, float ry, float xAxisRotation);
-	float  radian(float ux, float uy, float vx, float vy) {
-		float  dot = ux * vx + uy * vy;
-		float  mod = sqrt((ux * ux + uy * uy) * (vx * vx + vy * vy));
-		float  rad = acos(dot / mod);
-		if (ux * vy - uy * vx < 0.0) {
-			rad = -rad;
-		}
-		return rad;
-	}
+	float  radian(float ux, float uy, float vx, float vy);
 };
 
 #endif // _RENDER_H

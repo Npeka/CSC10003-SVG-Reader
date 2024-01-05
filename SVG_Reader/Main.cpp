@@ -23,13 +23,13 @@ ULONG_PTR gdiplusToken;
 RECT windowRect;
 
 // Init global SVG_Image and filename
-std::string filename = "test case/Firefox_logo,_2019.svg";
+std::string filename = "test case/sample.svg";
 std::unique_ptr<SVG_Image> svg = std::make_unique<SVG_Image>();
 
 VOID OnPaint(HDC& hdc)
 {
     // Load SVG_Image
-    svg->parse(filename);
+    svg->parseImage(filename);
 
     // Get ViewBox and ViewPort
     ViewBox view = svg->getViewBox();

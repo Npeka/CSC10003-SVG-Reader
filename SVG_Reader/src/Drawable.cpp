@@ -118,8 +118,7 @@ Gdiplus::Brush* GDI_RadialGradient(const RadialGradient& color, const Gdiplus::R
 	float cy = color.getCY();
 	float r = color.getR();
 	float rx = r, ry = r;
-	/*float fx = color.getFX();
-	float fy = color.getFY();*/
+
 	vector<Stop> ColorOffset = color.getColorOffset();
 	int size = ColorOffset.size();
 	bool isPercent = color.getIsPercent();
@@ -244,7 +243,6 @@ void Transform_First(const Transform_Type& t, Render_Window) {
 				t[i].second[0], t[i].second[1], t[i].second[2],
 				t[i].second[3], t[i].second[4], t[i].second[5]
 			);
-			//graphics.SetTransform(&matrix);
 		}
 	}
 }

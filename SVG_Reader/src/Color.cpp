@@ -23,10 +23,10 @@ void createColor(Color*& color, string name, const Defs_Type* defs) {
 	if (it != nullptr) {
 		copyColor(color, dynamic_cast<Color*>(it));
 	}
-	else {
-		dealocate(color);
+	else if (color == nullptr) {
 		color = new RGB_Color(name);
 	}
+	else dynamic_cast<RGB_Color*>(color)->setRGB(name);
 }
 
 void copyColor(Color*& color, Color* copy) {
