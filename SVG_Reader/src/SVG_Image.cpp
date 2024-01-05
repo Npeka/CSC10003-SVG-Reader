@@ -2,11 +2,12 @@
 
 // class ViewBox
 // Constructor
-ViewBox::ViewBox() {
-	min_x = min_y = 0;
-	width = 0;
-	height = 0;
-}
+ViewBox::ViewBox() :
+	min_x(0),
+	min_y(0),
+	width(0),
+	height(0)
+{}
 
 // Set attribute
 void ViewBox::setViewBox(string& viewbox) {
@@ -43,7 +44,7 @@ SVG_Image::SVG_Image() :
 
 SVG_Image::SVG_Image(const string& nameFile) : SVG_Image() {
 	if (nameFile != "") {
-		parse(nameFile);
+		parseImage(nameFile);
 	}
 }
 
@@ -51,23 +52,17 @@ SVG_Image::SVG_Image(const string& nameFile) : SVG_Image() {
 SVG_Image::~SVG_Image() {
 	dealocate(root);
 	dealocate(background);
+	id_map.clear();
 }
 
-// Getter
-const Group* SVG_Image::getRoot() const {
-	return root;
-}
+void SVG_Image::renewImage() {
+	dealocate(root);
+	dealocate(background);
 
-float SVG_Image::getWidth() const {
-	return width;
-}
-
-float SVG_Image::getHeight() const {
-	return height;
-}
-
-ViewBox SVG_Image::getViewBox() const {
-	return viewbox;
+	width = height = 0;
+	viewbox = ViewBox();
+	root = new Group(); root->setParent(root);
+	background = new RGB_Color(255, 255, 255);
 }
 
 // Set attribute
@@ -79,13 +74,23 @@ void SVG_Image::setHeight(string& height) {
 	check_exception("SVG_Image", "height", this->height = std::stof(height));
 }
 
-void SVG_Image::setStyle(string& style) {
+void SVG_Image::setStyleImage(string& style) {
 	std::stringstream ss(style);
 	string attribute, value;
 	while (getline(ss, attribute, ':')) {
 		getline(ss, value, ';');
 		if (attribute == "background-color") 
 			background->setElementAttributes("",value);
+		else setImageAttributes(value);
+	}
+}
+
+void SVG_Image::setStyleElement(SVG_Element* element, string& style) {
+	std::stringstream ss(style);
+	string attribute, value;
+	while (getline(ss, attribute, ':')) {
+		getline(ss, value, ';');
+		element->setElementAttributes(attribute, value);
 	}
 }
 
@@ -97,22 +102,26 @@ void SVG_Image::setImageAttributes(string& line) {
 		getline(ss, value, end);
 		if (attribute == "width") setWidth(value);
 		else if (attribute == "height") setHeight(value);
-		else if (attribute == "style") setStyle(value);
+		else if (attribute == "style") setStyleImage(value);
 		else if (attribute == "viewBox") viewbox.setViewBox(value);
 	}
 }
-void SVG_Image::renewImage() {
-	dealocate(root);
-	dealocate(background);
 
-	width = 0;
-	height = 0;
-	viewbox = ViewBox();
-	root = new Group(); root->setParent(root);
-	background = new RGB_Color(255, 255, 255);
+void SVG_Image::parseElementAttributes(SVG_Element* element, string& line) {
+	element->setID_Map(&id_map);
+	std::stringstream ss(line);
+	string attribute, value;
+	while (ss >> attribute) {
+		char end;
+		ss >> end;
+		getline(ss, value, end);
+		if (attribute == "id") element->setID(value, &id_map);
+		else if (attribute == "style") setStyleElement(element, value);
+		else element->setElementAttributes(attribute, value);
+	}
 }
 
-void SVG_Image::parse(const string& nameFile) {
+void SVG_Image::parseImage(const string& nameFile) {
 	if (nameFile == "" || nameFile == namefile) return;
 	
 	// Init new SVG_Image
@@ -151,7 +160,7 @@ void SVG_Image::parse(const string& nameFile) {
 		if (word == "linearGradient" || 
 			word == "radialGradient") {
 			Gradient* newGradient = getGradient(word);
-			newGradient->parseElementAttributes(info);	// Element
+			parseElementAttributes(newGradient, info);	// Element
 			if (info.find("/") == string::npos) {
 				while (getline(inFile, line, '>')) {
 					std::stringstream ss(line);
@@ -171,7 +180,7 @@ void SVG_Image::parse(const string& nameFile) {
 			Group* newGroup = new Group();
 			newGroup->setParent(curGroup);			// Group
 			newGroup->setParentAttributes();		// Group parent
-			newGroup->parseElementAttributes(info);	// Element
+			parseElementAttributes(newGroup, info);	// Element
 			curGroup->addDrawable(newGroup);		// Group parent
 			curGroup = newGroup;
 		}
@@ -184,7 +193,7 @@ void SVG_Image::parse(const string& nameFile) {
 			if (newFigure != nullptr) {
 				curGroup->setChildAttributes(newFigure);
 				newFigure->setGroupAttributes(curGroup);
-				newFigure->parseElementAttributes(info);	// virtual Figure
+				parseElementAttributes(newFigure, info);	// Element
 				Drawable* newDrawable = dynamic_cast<Drawable*>(newFigure);
 				if (newDrawable != nullptr) {
 					newDrawable->setDrawableAtrributes();
@@ -196,6 +205,27 @@ void SVG_Image::parse(const string& nameFile) {
 	
 	figureFactory->deleteInstance();
 	inFile.close();
+}
+
+// Getter
+const Group* SVG_Image::getRoot() const {
+	return root;
+}
+
+float SVG_Image::getWidth() const {
+	return width;
+}
+
+float SVG_Image::getHeight() const {
+	return height;
+}
+
+ViewBox SVG_Image::getViewBox() const {
+	return viewbox;
+}
+
+Defs_Type SVG_Image::getDefs() const {
+	return id_map;
 }
 
 void SVG_Render(const SVG_Image& svgImage, Render_Window) {

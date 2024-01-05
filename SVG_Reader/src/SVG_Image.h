@@ -44,6 +44,7 @@ private:
     Group* root; /**< Root group containing drawable figures. */
     Color* background; /**< Background color of the SVG image. */
     string namefile; /**< File name of the SVG image. */
+    Defs_Type id_map; /**< Map of IDs to SVG elements. */
 
     /**
      * @brief Standardize an SVG tag in the given line.
@@ -69,14 +70,9 @@ public:
     ~SVG_Image();
 
     /**
-     * @brief Get the root group of the SVG image.
-     * @return Pointer to the root group.
+     * @brief Renew the SVG image by clearing and recreating it.
      */
-    const Group* getRoot() const;
-    
-    float getWidth() const;
-    float getHeight() const;
-    ViewBox getViewBox() const;
+    void renewImage();
 
     /**
      * @brief Set the width of the SVG image.
@@ -94,7 +90,15 @@ public:
      * @brief Set the style of the SVG image.
      * @param style The style to set.
      */
-    void setStyle(string& style);
+    void setStyleImage(string& style);
+
+    /**
+     * @brief Set the style of an SVG element.
+     *
+     * @param element Pointer to the SVG element.
+     * @param style CSS styles to apply.
+     */
+    void setStyleElement(SVG_Element* element, string& style);
 
     /**
      * @brief Set the attributes of the SVG image.
@@ -103,15 +107,48 @@ public:
     void setImageAttributes(string& line);
 
     /**
-     * @brief Renew the SVG image by clearing and recreating it.
+     * @brief Parse SVG element attributes from a string and apply them.
+     *
+     * @param element Pointer to the SVG element.
+     * @param line String containing the attributes to parse.
      */
-    void renewImage();
+    void parseElementAttributes(SVG_Element* element, string& line);
 
     /**
      * @brief Parse the SVG file with the given name.
      * @param nameFile The file name of the SVG image to parse.
      */
-    void parse(const string& nameFile);
+    void parseImage(const string& nameFile);
+
+    /**
+     * @brief Get the root group of the SVG image.
+     * @return Pointer to the root group.
+     */
+    const Group* getRoot() const;
+
+    /**
+    * @brief Get the width of the SVG image.
+    * @return The width of the SVG image.
+    */
+    float getWidth() const;
+
+    /**
+     * @brief Get the height of the SVG image.
+     * @return The height of the SVG image.
+     */
+    float getHeight() const;
+
+    /**
+     * @brief Get the ViewBox representing the coordinate system of the SVG image.
+     * @return The ViewBox of the SVG image.
+     */
+    ViewBox getViewBox() const;
+
+    /**
+     * @brief Get the map of IDs to SVG elements (Defs_Type).
+     * @return The map of IDs to SVG elements.
+     */
+    Defs_Type getDefs() const;
 };
 
 /**

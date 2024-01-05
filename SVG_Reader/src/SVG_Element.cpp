@@ -1,30 +1,36 @@
 #include "SVG_Element.h"
 
-std::unordered_map<string, SVG_Element*> SVG_Element::id_map;
-
 SVG_Element::SVG_Element() :
-	id("")
+	id(""),
+	id_map(nullptr)
 {}
 
 SVG_Element::SVG_Element(const SVG_Element& other) :
-	id(other.id)
+	id(other.id),
+	id_map(other.id_map)
 {}
 
-void SVG_Element::setID(const string& id) {
+void SVG_Element::setID(const string& id, Defs_Type* id_map) {
+	if (id == "") return;
+	if (id_map == nullptr) return;
 	this->id = id;
-	id_map[id] = this;
-}
-
-void SVG_Element::setStyle(string& style) {
-	std::stringstream ss(style);
-	string attribute, value;
-	while (getline(ss, attribute, ':')) {
-		getline(ss, value, ';');
-		setElementAttributes(attribute, value);
+	this->id_map = id_map;
+	auto it = id_map->find(id);
+	if (it == id_map->end()) {
+		(*id_map)[id] = this;
 	}
 }
 
-SVG_Element* SVG_Element::findGlobalElement(const string& id) {
+void SVG_Element::setID_Map(Defs_Type* id_map) {
+	this->id_map = id_map;
+}
+
+string SVG_Element::getID() const {
+	return id;
+}
+
+SVG_Element* findGlobalElement(const string& id, const Defs_Type* id_map) {
+	if (id_map == nullptr) return nullptr;
 	// parse id
 	std::stringstream ss(id);
 	string name;
@@ -34,25 +40,8 @@ SVG_Element* SVG_Element::findGlobalElement(const string& id) {
 	if (name.size() != 0 && name[name.size() - 1] == '\'') name.pop_back();
 
 	// find element
-	auto it = id_map.find(name);
-	if (it != id_map.end())
+	auto it = id_map->find(name);
+	if (it != id_map->end())
 		return it->second;
 	return nullptr;
-}
-
-void SVG_Element::parseElementAttributes(string& line) {
-	std::stringstream ss(line);
-	string attribute, value;
-	while (ss >> attribute) {
-		char end;
-		ss >> end;
-		getline(ss, value, end);
-		if (attribute == "id") setID(value);
-		else if (attribute == "style") setStyle(value);
-		else setElementAttributes(attribute, value);
-	}
-}
-
-string SVG_Element::getID() const {
-	return id;
 }

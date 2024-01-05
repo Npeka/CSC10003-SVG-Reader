@@ -2,6 +2,8 @@
 #define SVG_ELEMENT_H
 
 #include "Header.h"
+class SVG_Element;
+typedef std::unordered_map<string, SVG_Element*> Defs_Type; /**< Type definition for the map of IDs to SVG elements. */
 
 /**
  * @brief Base class representing an element in an SVG document.
@@ -10,11 +12,9 @@
  * and attributes. It also includes a virtual method for setting element attributes.
  */
 class SVG_Element {
-private:
-    static std::unordered_map<string, SVG_Element*> id_map; /**< Static map to store SVG elements by ID. */
-
 protected:
     string id; /**< ID of the SVG element. */
+    Defs_Type* id_map; /**< Map of IDs to SVG elements. */
 
 public:
     /**
@@ -37,13 +37,13 @@ public:
      * @brief Set the ID of the SVG element.
      * @param id The ID to set.
      */
-    void setID(const string& id);
+    void setID(const string& id, Defs_Type* image = nullptr);
 
     /**
-     * @brief Set the style of the SVG element.
-     * @param style The style to set.
-     */
-    void setStyle(string& style);
+    * @brief Set the map of IDs to SVG elements.
+    * @param id_map The map of IDs to SVG elements.
+    */
+    void setID_Map(Defs_Type* id_map);
 
     /**
      * @brief Get the ID of the SVG element.
@@ -52,24 +52,20 @@ public:
     string getID() const;
 
     /**
-     * @brief Find a global SVG element by ID.
-     * @param id The ID to search for.
-     * @return Pointer to the found SVG element, or nullptr if not found.
-     */
-    SVG_Element* findGlobalElement(const string& id);
-
-    /**
-     * @brief Parse the attributes of the SVG element from the given line.
-     * @param line The line containing the attributes to parse.
-     */
-    void parseElementAttributes(string& line);
-
-    /**
      * @brief Virtual method to set attributes for the SVG element.
      * @param attribute The attribute to set.
      * @param value The value to set for the attribute.
      */
     virtual void setElementAttributes(const string& attribute, string& value) = 0;
 };
+
+/**
+ * @brief Find a global SVG element by its ID.
+ *
+ * @param id The ID of the SVG element to find.
+ * @param id_map Pointer to the map of global IDs to SVG elements.
+ * @return Pointer to the found SVG element, or nullptr if not found.
+ */
+SVG_Element* findGlobalElement(const string& id, const Defs_Type* id_map);
 
 #endif // !SVG_ELEMENT_H
