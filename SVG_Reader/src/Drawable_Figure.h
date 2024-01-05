@@ -202,6 +202,15 @@ private:
 	vector<BezierCurve> arcToBezier(float cx, float cy, float rx, float ry, float startAngle, float endAngle, float xAxisRotation);
 	Point pointOnEllipse(float cx, float cy, float rx, float ry, float angle);
 	Point ellipseCenter(float cx, float cy, float rx, float ry, float xAxisRotation);
+	float  radian(float ux, float uy, float vx, float vy) {
+		float  dot = ux * vx + uy * vy;
+		float  mod = sqrt((ux * ux + uy * uy) * (vx * vx + vy * vy));
+		float  rad = acos(dot / mod);
+		if (ux * vy - uy * vx < 0.0) {
+			rad = -rad;
+		}
+		return rad;
+	}
 };
 
 #endif // _RENDER_H

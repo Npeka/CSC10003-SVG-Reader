@@ -25,6 +25,8 @@ public:
      */
     Stop(const Stop& other);
 
+    Stop(const RGB_Color& color, const float& offset);
+
     /**
      * @brief Set the color of the stop.
      * @param color String representation of the RGB color.

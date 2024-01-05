@@ -571,15 +571,15 @@ void Drawable_Path::setDrawableAtrributes() {
 			float x_axis_rotation = point[4];
 			bool large_arc_flag = point[5];
 			bool sweep_flag = point[6];
-
+			/*
 			float angle = x_axis_rotation * static_cast<float>(M_PI) / 180.0;
 			float cosAngle = cos(angle);
 			float sinAngle = sin(angle);
 
 			Point point1;
 			float constant = cosAngle * cosAngle - (sinAngle * -sinAngle);
-			point1.x = constant * (point[0] - end_point.x) / 2.0;
-			point1.y = constant * (point[1] - end_point.y) / 2.0;
+			point1.x = constant * (start_point.x - end_point.x) / 2.0;
+			point1.y = constant * (start_point.y - end_point.y) / 2.0;
 
 			float radii_check = (point1.x * point1.x) / (rx * rx) +
 				(point1.y * point1.y) / (ry * ry);
@@ -607,8 +607,54 @@ void Drawable_Path::setDrawableAtrributes() {
 
 			Point center;
 			constant = cosAngle * cosAngle - (sinAngle * -sinAngle);
-			center.x = constant * point2.x + (point[0] + end_point.x) / 2.0;
-			center.y = constant * point2.y + (point[1] + end_point.y) / 2.0;
+			center.x = constant * point2.x + (start_point.x + end_point.x) / 2.0;
+			center.y = constant * point2.y + (start_point.y + end_point.y) / 2.0;
+
+			Point vector = { point[0] - point[7], point[1] - point[8] };
+			float rotateAngle = 180 - atan2(vector.y, vector.x) * 180 / M_PI;
+			if (x_axis_rotation && rx != ry) {
+				//if (abs(rotateAngle) < abs(x_axis_rotation))
+				rotateAngle = x_axis_rotation;
+
+				std::cout << rotateAngle << std::endl;
+
+				Gdiplus::Matrix matrix;
+				matrix.RotateAt(-rotateAngle, Gdiplus::PointF(center.x, center.y));
+				Gdiplus::PointF start = { start_point.x, start_point.y };
+				Gdiplus::PointF end = { end_point.x, end_point.y };
+				matrix.TransformPoints(&start, 1);
+				matrix.TransformPoints(&end, 1);
+
+				start_point = { start.X, start.Y };
+				end_point = { end.X, end.Y };
+
+				constant = cosAngle * cosAngle - (sinAngle * -sinAngle);
+				point1.x = constant * (start_point.x - end_point.x) / 2.0;
+				point1.y = constant * (start_point.y - end_point.y) / 2.0;
+
+				radii_check = (point1.x * point1.x) / (rx * rx) +
+					(point1.y * point1.y) / (ry * ry);
+
+				if (radii_check > 1.0) {
+					rx = std::sqrt(radii_check) * rx;
+					ry = std::sqrt(radii_check) * ry;
+				}
+
+				sign = (large_arc_flag == sweep_flag ? -1 : 1);
+
+				numo = (rx * rx) * (ry * ry) -
+					(rx * rx) * (point1.y * point1.y) -
+					(ry * ry) * (point1.x * point1.x);
+				deno = (rx * rx) * (point1.y * point1.y) +
+					(ry * ry) * (point1.x * point1.x);
+
+				if (numo < 0) {
+					numo = std::abs(numo);
+				}
+
+				point2.x = sign * std::sqrt(numo / deno) * (rx * point1.y / ry);
+				point2.y = sign * std::sqrt(numo / deno) * (-ry * point1.x / rx);
+			}
 
 			float startAngle =
 				atan2((point1.y - point2.y) / ry, (point1.x - point2.x) / rx);
@@ -623,49 +669,110 @@ void Drawable_Path::setDrawableAtrributes() {
 			else if (!sweep_flag && deltaAngle > 0) {
 				deltaAngle -= 2.0 * M_PI;
 			}
+			*/
+
+			float cx, cy, startAngle, deltaAngle, endAngle;
+			float PIx2 = M_PI * 2.0;
+			float phi = x_axis_rotation * M_PI / 180;
+
+			if (rx < 0) {
+				rx = -rx;
+			}
+			if (ry < 0) {
+				ry = -ry;
+			}
+
+			// SVG use degrees, if your input is degree from svg,
+			// you should convert degree to radian as following line.
+			// phi = phi * Math.PI / 180;
+			Point start = { point[0], point[1] };
+			Point end = { point[7], point[8] };
+
+			float s_phi = sin(phi);
+			float c_phi = cos(phi);
+			float hd_x = (start.x - end.x) / 2.0; // half diff of x
+			float hd_y = (start.y - end.y) / 2.0; // half diff of y
+			float hs_x = (start.x + end.x) / 2.0; // half sum of x
+			float hs_y = (start.y + end.y) / 2.0; // half sum of y
+
+			// F6.5.1
+			float x1_ = c_phi * hd_x + s_phi * hd_y;
+			float y1_ = c_phi * hd_y - s_phi * hd_x;
+
+			// F.6.6 Correction of out-of-range radii
+			//   Step 3: Ensure radii are large enough
+			float lambda = (x1_ * x1_) / (rx * rx) + (y1_ * y1_) / (ry * ry);
+			if (lambda > 1) {
+				rx = rx * sqrt(lambda);
+				ry = ry * sqrt(lambda);
+			}
+
+			float rxry = rx * ry;
+			float rxy1_ = rx * y1_;
+			float ryx1_ = ry * x1_;
+			float sum_of_sq = rxy1_ * rxy1_ + ryx1_ * ryx1_; // sum of square
+			float coe = sqrt(abs((rxry * rxry - sum_of_sq) / sum_of_sq));
+			if (large_arc_flag == sweep_flag) { coe = -coe; }
+
+			// F6.5.2
+			float cx_ = coe * rxy1_ / ry;
+			float cy_ = -coe * ryx1_ / rx;
+
+			// F6.5.3
+			cx = c_phi * cx_ - s_phi * cy_ + hs_x;
+			cy = s_phi * cx_ + c_phi * cy_ + hs_y;
+		
+			float xcr1 = (x1_ - cx_) / rx;
+			float xcr2 = (x1_ + cx_) / rx;
+			float ycr1 = (y1_ - cy_) / ry;
+			float ycr2 = (y1_ + cy_) / ry;
+
+			// F6.5.5
+			startAngle = radian(1.0, 0.0, xcr1, ycr1);
+
+			// F6.5.6
+			deltaAngle = radian(xcr1, ycr1, -xcr2, -ycr2);
+			while (deltaAngle > PIx2) { deltaAngle -= PIx2; }
+			while (deltaAngle < 0.0) { deltaAngle += PIx2; }
+			if (sweep_flag == false || sweep_flag == 0) { deltaAngle -= PIx2; }
+			endAngle = startAngle + deltaAngle;
+			while (endAngle > PIx2) { endAngle -= PIx2; }
+			while (endAngle < 0.0) { endAngle += PIx2; }
 
 			Gdiplus::GraphicsPath arcPath;
 			arcPath.AddArc(
-				center.x - rx,
-				center.y - ry,
+				cx - rx,
+				cy - ry,
 				rx * 2,
 				ry * 2,
-				fmod((startAngle * 180.0) / M_PI, 360),
-				fmod((deltaAngle * 180.0) / M_PI, 360)
+				startAngle * 180 / M_PI - x_axis_rotation,
+				deltaAngle * 180 / M_PI + x_axis_rotation
 			);
+
 			Gdiplus::Matrix matrix;
-			if (rx != ry)
-				//matrix.RotateAt(x_axis_rotation, Gdiplus::PointF(point[0], point[1]));
+			matrix.RotateAt(x_axis_rotation, Gdiplus::PointF(cx, cy));
 			arcPath.Transform(&matrix);
-			
-			Gpath.AddPath(&arcPath, true);
-			//Gpath.StartFigure();
+			Gpath.AddPath(&arcPath, true);	
 		}
 	}
 
 	Gdiplus::RectF rect; Gpath.GetBounds(&rect); rect.X = 0, rect.Y = 0;
 	brush = GDI_Brush(fill, rect);
 	pen = GDI_Pen(stroke, stroke_width, rect);
-	if (dynamic_cast<LinearGradient*>(fill) || dynamic_cast<RadialGradient*>(fill)) {
-		vector<Stop> colorOffset = dynamic_cast<Gradient*>(fill)->getColorOffset();
-		RGB_Color* color = new RGB_Color(colorOffset[colorOffset.size() - 1].getColor());
+
+	if (auto it = dynamic_cast<RadialGradient*>(fill)) {
+		RGB_Color* color = new RGB_Color(
+			it->getColorOffset()[it->getColorOffset().size() - 1].getColor()
+		);
 		solidBrush = GDI_Brush(color, rect);
-	}
-}
 
-// Virtual method
-void Drawable_Path::draw(Render_Window) {
-	Transform_First(transforms, graphics);
-	Gdiplus::Region* region = new Gdiplus::Region(&Gpath);
-	if (dynamic_cast<RadialGradient*>(fill)) {
-		float cy = dynamic_cast<RadialGradient*>(fill)->getCY();
-		float cx = dynamic_cast<RadialGradient*>(fill)->getCX();
-		float r = dynamic_cast<RadialGradient*>(fill)->getR();
-		Transform_Type t = dynamic_cast<RadialGradient*>(fill)->getTransform();
+		float cx = it->getCX();
+		float cy = it->getCY();
+		float r = it->getR();
 
+		Transform_Type t = it->getTransform();
 		Gdiplus::GraphicsPath path;
 		path.AddEllipse(Gdiplus::RectF(cx - r, cy - r, r * 2, r * 2));
-
 		for (int i = 0; i < t.size(); ++i) {
 			if (t[i].first == SVG_Matrix) {
 				Gdiplus::Matrix matrix(
@@ -673,17 +780,19 @@ void Drawable_Path::draw(Render_Window) {
 					t[i].second[3], t[i].second[4], t[i].second[5]
 				);
 				path.Transform(&matrix);
-				//radial->MultiplyTransform(&matrix);
 			}
 		}
 
+		region = new Gdiplus::Region(&Gpath);
 		region->Exclude(&path);
 	}
+}
 
+// Virtual method
+void Drawable_Path::draw(Render_Window) {
+	Transform_First(transforms, graphics);
 	if (fill->opacity) {
-		if (solidBrush) {
-			graphics.FillRegion(solidBrush, region);
-		}
+		if (solidBrush) graphics.FillRegion(solidBrush, region);
 		graphics.FillPath(brush, &Gpath);
 	}
 	if (stroke->opacity) graphics.DrawPath(pen, &Gpath);

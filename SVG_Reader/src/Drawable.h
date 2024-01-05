@@ -84,6 +84,7 @@ protected:
     Gdiplus::Brush* brush; /**< GDI+ Brush for filling shapes. */
     Gdiplus::Pen* pen;     /**< GDI+ Pen for outlining shapes. */
     Gdiplus::Brush* solidBrush; /**< GDI+ SolidBrush for solid color. */
+    Gdiplus::Region* region;
 
 public:
     /**

@@ -19,11 +19,21 @@ Stop::Stop(const Stop& other) :
 	offset(other.offset) 
 {}
 
+Stop::Stop(const RGB_Color& color, const float& offset) :
+	color(color),
+	offset(offset)
+{}
+
 void Stop::setColor(string& color) {
 	this->color.setRGB(color);
 }
 
 void Stop::setOffset(string& offset) {
+	if (offset.find("%") != string::npos) {
+		int pos = offset.find("%");
+		offset.erase(pos);
+		offset.insert(pos, "e-2");
+	}
 	check_exception("Stop", "offset", this->offset = stof(offset));
 }
 
