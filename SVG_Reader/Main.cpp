@@ -21,13 +21,13 @@ float zoomFactor = 1.0f;
 Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 ULONG_PTR gdiplusToken;
 RECT windowRect;
+UINT dpi;
 
 // Init global SVG_Image and filename
-std::string filename = "test case/sample.svg";
+std::string filename = "test case/svg-17.svg";
 std::unique_ptr<SVG_Image> svg = std::make_unique<SVG_Image>();
 
-VOID OnPaint(HDC& hdc)
-{
+VOID OnPaint(HDC& hdc) {
     // Load SVG_Image
     svg->parseImage(filename);
 
@@ -37,32 +37,29 @@ VOID OnPaint(HDC& hdc)
     float height = svg->getHeight();
     float scaleX = 1, scaleY = 1, scale = 1;
     if (width == 0 || height == 0) {
-        width = windowRect.right - windowRect.left;
-        height = windowRect.bottom - windowRect.top;
-	}
-    if (width && height && view.width && view.height) {
+        width = windowRect.right - windowRect.left - 16;
+        height = windowRect.bottom - windowRect.top - 39;
+    }
+    float tmpX = 0, tmpY = 0;
+    if (view.width && view.height) {
         scaleX = width / view.width;
         scaleY = height / view.height;
         scale = (scaleX < scaleY) ? scaleX : scaleY;
+        tmpX = (width - view.width * scale) / 2;
+        tmpY = (height - view.height * scale) / 2;
+       
     }
-    static bool loop = true;
-    if (loop && view.width && view.height) {
-        offsetX += abs(width - view.width * scale) / 2;
-        offsetY += abs(height - view.height * scale) / 2;
-        loop = false;
-    }
-
     // Init GDI+ Graphics
     Gdiplus::Graphics graphics(hdc);
 
     // Set GDI+ transform
     graphics.RotateTransform(rotationAngle);
-    graphics.TranslateTransform(offsetX, offsetY);
-    if (view.height != 0 || view.width != 0)
+    graphics.TranslateTransform(offsetX + tmpX, offsetY + tmpY);
+    if (view.width != 0 || view.height != 0)
     graphics.SetClip(Gdiplus::RectF(0, 0, width * zoomFactor, height * zoomFactor));
     graphics.ScaleTransform(zoomFactor * scale, zoomFactor * scale);
 
-    // Set GDI+ rendering graphics
+    // Set GDI + rendering graphics
     graphics.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
     graphics.SetCompositingMode(Gdiplus::CompositingModeSourceOver);
     graphics.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHighQuality);
@@ -89,16 +86,8 @@ void Zoom(HWND& hWnd, float zoom) {
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-    /*int argc;
-    LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
-    wstring wide_filename;
-    if (argc > 1)
-    {
-        wide_filename = argv[1];
-        filename = string(wide_filename.begin(), wide_filename.end());
-    }
-    LocalFree(argv);*/
     GetWindowRect(hWnd, &windowRect);
+    dpi = GetDpiForWindow(hWnd);
     HDC          hdc;
     PAINTSTRUCT  ps;
     switch (message)

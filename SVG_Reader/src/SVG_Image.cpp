@@ -68,10 +68,14 @@ void SVG_Image::renewImage() {
 // Set attribute
 void SVG_Image::setWidth(string& width) {
 	check_exception("SVG_Image", "width", this->width = std::stof(width));
+	if (width.find("pt") != string::npos) this->width *= 96.f / 72.f; else 
+	if (width.find("cm") != string::npos) this->width *= 96.f / 2.54f;
 }
 
 void SVG_Image::setHeight(string& height) {
 	check_exception("SVG_Image", "height", this->height = std::stof(height));
+	if (height.find("pt") != string::npos) this->height *= 96.f / 72.f; else
+	if (height.find("cm") != string::npos) this->height *= 96.f / 2.54f;
 }
 
 void SVG_Image::setStyleImage(string& style) {
@@ -112,8 +116,7 @@ void SVG_Image::parseElementAttributes(SVG_Element* element, string& line) {
 	std::stringstream ss(line);
 	string attribute, value;
 	while (ss >> attribute) {
-		char end;
-		ss >> end;
+		char end; ss >> end;
 		getline(ss, value, end);
 		if (attribute == "id") element->setID(value, &id_map);
 		else if (attribute == "style") setStyleElement(element, value);
